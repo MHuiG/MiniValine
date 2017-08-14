@@ -56,20 +56,22 @@ import Valine from 'valine'
     <title>Valine - A simple comment system based on Leancloud.</title>
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <script src="./dist/Valine.min.js"></script>
+  	<!--Get visitors' ip for spam check-->
+  	<script src="//pv.sohu.com/cityjson?ie=utf-8"></script>
 </head>
 <body>
     <div class="comment"></div>
     <script>
-        new Valine({
-            av: AV, // source from av-min.js
-            el: '.comment' ,
-            notify:true, // 邮件提醒 v1.1.4新增
-            verify:true, // 验证码 v1.1.4新增
-            app_id: 'your appid',
-            app_key: 'your appkey',
-            // [v1.0.7 new]留言框占位提示文字
-            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
-        });
+      new Valine({
+          av: AV,
+          el: '#disqus_thread',
+          notify: false,
+          verify: false,
+          app_id: 'Your App ID',
+          app_key: 'Your Key',
+          placeholder: '老司机来一发吧 O(∩_∩)O~~',
+          ip: returnCitySN["cip"]
+      });
     </script>
 </body>
 </html>
