@@ -6,7 +6,7 @@ import snarkdown from 'snarkdown';
 var gravatar = require('gravatar-api');
 var gravatar_options = {
     email: '',
-    parameters: {'size': '80'},
+    parameters: {'size': '96'},
     secure: true
 }
 
@@ -15,6 +15,7 @@ const path = location.pathname;
 const defaultComment = {
     comment: '',
     rid: '',
+    at:'',
     nick: '小可爱',
     mail: '',
     link: '',
@@ -72,9 +73,15 @@ class Valine {
                                 </section>
                                 <div style="display:none;" class="vmark"></div>
                            </div>
-                           <div class="info"><div class="count col"></div></div><ul class="vlist"><li class="vloading"></li><li class="vempty"></li></ul>`;
+                           <div class="info">
+                                <div class="col">共 <span class="count"></span> 条评论</div>
+                                <div class="col power float-right">
+                                    <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
+                                    Markdown is supported
+                                </div>
+                           </div>
+                           <ul class="vlist"><li class="vloading"></li><li class="vempty"></li></ul>`;
             _root.el.innerHTML = eleHTML;
-
             // Empty Data
             let vempty = _root.el.querySelector('.vempty');
             _root.nodata = {
@@ -164,7 +171,7 @@ class Valine {
         query.find().then(rets => {
             // let _temp = [];
             let len = rets.length;
-            _root.el.querySelector('.count').innerHTML = `共<span class="num">${len}</span>条评论`;
+            _root.el.querySelector('.count').innerHTML = `${len}`;
             if (len) {
                 for (let i = len - 1; i > -1; i--) {
                     let commentItem = rets[i];
@@ -173,6 +180,7 @@ class Valine {
                     }
                     let _vcard = document.createElement('li');
                     _vcard.setAttribute('class', 'vcard');
+                    _vcard.setAttribute('id', commentItem.id);
                     gravatar_options['email'] = commentItem.get('mail');
                     // language=HTML
                     _vcard.innerHTML = `<img class="vavatar" src="${gravatar.imageUrl(gravatar_options)}"/>
@@ -364,6 +372,8 @@ class Valine {
             let comment = new Ct();
             for (let i in defaultComment) {
                 if (defaultComment.hasOwnProperty(i)) {
+                    if (i === 'at')
+                        continue;
                     let _v = defaultComment[i];
                     comment.set(i, _v);
                 }
@@ -376,10 +386,11 @@ class Valine {
                     link: defaultComment['link'],
                     mail: defaultComment['mail']
                 }));
-                let _count = _root.el.querySelector('.num');
+                let _count = _root.el.querySelector('.count');
                 _count.innerText = Number(_count.innerText) + 1;
                 let _vcard = document.createElement('li');
                 _vcard.setAttribute('class', 'vcard');
+                _vcard.setAttribute('id', commentItem.id);
                 gravatar_options['email'] = commentItem.get('mail');
                 // language=HTML
                 _vcard.innerHTML = `<img class="vavatar" src="${gravatar.imageUrl(gravatar_options)}"/>
@@ -457,6 +468,7 @@ class Valine {
                 let at = el.getAttribute('at');
                 let rid = el.getAttribute('rid');
                 defaultComment['rid'] = rid;
+                defaultComment['at'] = at;
                 inputs['comment'].value += `${at} ，`;
                 inputs['comment'].focus();
             })
@@ -482,7 +494,7 @@ const Event = {
 
 
 const getLink = (target) => {
-    return target.link || (target.mail && `mailto:${target.mail}`) || 'javascript:void(0);';
+    return target.link || 'javascript:void(0);';
 }
 
 const check = {
