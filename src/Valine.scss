@@ -206,6 +206,10 @@
         width: 4rem;
         position: relative;
         border-radius: 50%;
+        &:hover {
+          transform: rotate(1turn);
+          -webkit-transform: rotate(1turn);
+        }
       }
       .vhead {
         line-height: 1;
