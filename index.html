@@ -150,14 +150,14 @@
     <script>
         var valine = new Valine();
         valine.init({
-            //notify: true,
+            av: AV,
+            notify: false,
             verify: false,
             el: '.comment',
-            notify: false, // 邮件提醒
-            verify: false, // 验证码
             app_id: 'BNpgDs8pijTCrki1l50W3W9e-gzGzoHsz',
             app_key: '0f9WD97PmD9KtQsOfXHlili1',
-            placeholder: '留下你的足迹~'
+            placeholder: '留下你的足迹~',
+            ip: returnCitySN["cip"]
         })
     </script>
 
