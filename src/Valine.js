@@ -1,18 +1,14 @@
 require('./Valine.scss');
 import snarkdown from 'snarkdown';
+var crypto = require('blueimp-md5');
 
-
-// By Deserts: gravatar image
-var gravatar = require('gravatar-api');
-var gravatar_options = {
-    email: '',
-    parameters: {'size': '96'},
-    secure: true
-}
+// Gravatar by Deserts
+var GRAVATAR_BASE_URL = 'https://gravatar.cat.net/avatar/';
 
 const path = location.pathname;
 
 const defaultComment = {
+    ip: '',
     comment: '',
     rid: '',
     at:'',
@@ -38,6 +34,7 @@ class Valine {
         let _root = this;
         // version
         _root.version = '1.1.4';
+        getIp();
         // Valine init
         !!option && _root.init(option);
     }
@@ -50,8 +47,6 @@ class Valine {
         let _root = this;
         _root.notify = option.notify || !1;
         _root.verify = option.verify || !1;
-        // ip addr
-        _root.ip = option.ip || '127.0.0.1';
         let av = option.av || _root.v;
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
@@ -165,6 +160,7 @@ class Valine {
         _root.loading.show();
         // Build Query
         let query = new _root.v.Query('Comment');
+        query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash', 'like', 'pin']);
         query.equalTo('url', path);
         query.descending('createdAt');
         query.limit('1000');
@@ -181,15 +177,15 @@ class Valine {
                     let _vcard = document.createElement('li');
                     _vcard.setAttribute('class', 'vcard');
                     _vcard.setAttribute('id', commentItem.id);
-                    gravatar_options['email'] = commentItem.get('mail');
+                    let gravatar_url = GRAVATAR_BASE_URL + commentItem.get('emailHash') + '?size=96';
                     // language=HTML
-                    _vcard.innerHTML = `<img class="vavatar" src="${gravatar.imageUrl(gravatar_options)}"/>
+                    _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
                                         <div class="text-wrapper">
                                             <div class="vhead" >
-                                                <a href="${getLink({link: commentItem.get('link'), mail: commentItem.get('mail') })}" target="_blank" rel="nofollow" > ${commentItem.get("nick")}</a>
+                                                <a href="${commentItem.get('link') || 'javascript:void(0);'}" target="_blank" rel="nofollow" > ${commentItem.get("nick")}</a>
                                                 <span class="spacer">•</span><span class="vtime">${dateFormat(commentItem.get("createdAt"))}</span>
                                             </div>
-                                            <div class="vcomment">${commentItem.get("comment")}</div>
+                                            <div class="vcomment">${commentItem.get('comment')}</div>
                                             <a rid='${commentItem.id}' at='@${commentItem.get('nick')}' class="vat">回复</a>
                                         </div>`;
 
@@ -378,7 +374,7 @@ class Valine {
                     comment.set(i, _v);
                 }
             }
-            comment.set('ip', _root.ip);
+            comment.set('emailHash', crypto(defaultComment.mail.toLowerCase().trim()));
             comment.setACL(getAcl());
             comment.save().then((commentItem) => {
                 store && store.setItem('ValineCache', JSON.stringify({
@@ -391,12 +387,12 @@ class Valine {
                 let _vcard = document.createElement('li');
                 _vcard.setAttribute('class', 'vcard');
                 _vcard.setAttribute('id', commentItem.id);
-                gravatar_options['email'] = commentItem.get('mail');
+                let gravatar_url = GRAVATAR_BASE_URL + commentItem.get('emailHash') + '?size=96';
                 // language=HTML
-                _vcard.innerHTML = `<img class="vavatar" src="${gravatar.imageUrl(gravatar_options)}"/>
+                _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
                                     <div class="text-wrapper">
                                     <div class="vhead" >
-                                    <a href="${getLink({link: commentItem.get('link'), mail: commentItem.get('mail')})}" target="_blank" rel="nofollow" >${commentItem.get('nick')}</a>
+                                    <a href="${commentItem.get('link') || 'javascript:void(0);'}" target="_blank" rel="nofollow" >${commentItem.get('nick')}</a>
                                     <span class="spacer">•</span><span class="vtime">${dateFormat(commentItem.get("createdAt"))}</span>
                                     </div>
                                     <div class="vcomment">${commentItem.get('comment')}</div>
@@ -492,11 +488,6 @@ const Event = {
     }
 }
 
-
-const getLink = (target) => {
-    return target.link || 'javascript:void(0);';
-}
-
 const check = {
     mail(m) {
         return {
@@ -564,4 +555,26 @@ const padWithZeros = (vNumber, width) => {
     return numAsString;
 }
 
+const loadJS = function (url, success) {
+    var domScript = document.createElement('script');
+    domScript.src = url;
+    success = success || function () {
+    };
+    domScript.onload = domScript.onreadystatechange = function () {
+        if (!this.readyState || 'loaded' === this.readyState || 'complete' === this.readyState) {
+            success();
+            this.onload = this.onreadystatechange = null;
+            // this.parentNode.removeChild(this);
+        }
+    };
+    document.getElementsByTagName('head')[0].appendChild(domScript);
+};
+
+const getIp = function(){
+    $.getJSON("https://api.ip.sb/jsonip?callback=?",
+        function(json) {
+            defaultComment['ip'] = json.ip;
+        }
+    );
+};
 module.exports = Valine;

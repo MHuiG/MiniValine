@@ -51,7 +51,7 @@
     },
     "dependencies": {
         "babel": "^6.23.0",
-        "gravatar-api": "^1.5.0",
+        "blueimp-md5": "^2.8.0",
         "source-map": "^0.5.6"
     }
 }
