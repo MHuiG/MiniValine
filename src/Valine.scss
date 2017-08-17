@@ -1,22 +1,27 @@
 .valine {
   * {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Mirages Custom', 'Merriweather', 'Open Sans', "Segoe UI", Roboto, "PingFang SC", "Microsoft Yahei", "WenQuanYi Micro Hei", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
+    font-family: PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,STHeitiSC-Light,simsun,WenQuanYi Zen Hei,WenQuanYi Micro Hei,"sans-serif";
+    font-size: 100%;
+    font-weight: normal;
     line-height: 1.42857143;
-    color: #555;
+    color: #3c484e;
     transition: all .3s ease;
+    margin: 0;
+    padding: 0;
   }
   .vwrap {
+    overflow: hidden;
+    position: relative;
     .textarea-wrapper {
-      margin-bottom: 1rem;
+      margin-bottom: 0.625em;
       textarea {
         color: #4b5b62;
         width: 100%;
         background: #fafdff;
-        border: .1rem solid #edf4f8;
-        border-radius: .2rem;
-        padding: .6rem .8rem;
+        border: .06em solid #edf4f8;
+        border-radius: .2em;
+        padding: .4em .5em;
         min-height: 10em;
         resize: none;
         &:focus {
@@ -33,18 +38,18 @@
       .input-wrapper {
         -ms-flex: 1 1 27%;
         flex: 1 1 27%;
-        padding-right: 1rem;
+        padding-right: 0.6em;
         width: 27%;
-        line-height: 2.4rem;
-        margin: 0 0 1rem;
+        margin: 0 0 .6em;
 
         input {
           color: #4b5b62;
           background: #fafdff;
-          border: .1rem solid #edf4f8;
-          border-radius: .2rem;
-          padding: .6rem .8rem;
-          line-height: 2.2;
+          border: .06em solid #edf4f8;
+          border-radius: .2em;
+          padding: .4em .5em;
+          line-height: 2;
+          font-size: 1em !important;
           &:focus {
             border-color: #c4c8cb;
             outline: 0
@@ -53,21 +58,35 @@
       }
 
       input {
-        width: 100%
+        width: 100%;
       }
 
       .post-action {
         -ms-flex: 1 1 19%;
         flex: 1 1 19%;
-        line-height: 2.4rem;
-        margin: 0 0 1rem;
+        width: 19%;
+        margin: 0 0 .6em;
+
         button {
+          color: #fff;
           width: 100%;
-          line-height: 2.2;
+          line-height: 2;
           font-weight: bolder;
+          background: #33b1ff;
+          border: .06em solid #edf4f8;
+          border-radius: .2em;
+          padding: .4em .5em;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          font-size: 1em !important;
         }
       }
-      @media screen and(max-width: 640px) {
+      @media screen and(max-width: 720px) {
         display: block;
         .input-wrapper, .post-action{
           -ms-flex: 1 1 100%;
@@ -86,7 +105,7 @@
       left: 0;
       top: 0;
       .valert {
-        padding: 15px 0;
+        padding: 3em 0 0 0;
         .vtext {
           color: #fff;
           padding: 15px;
@@ -103,7 +122,7 @@
       }
       @media screen and(max-width: 720px) {
         .valert {
-          padding: 30px 0;
+          padding: 8em 0;
           .vtext {
             color: #fff;
             padding: 10px;
@@ -115,7 +134,6 @@
   .info {
     padding: 5px;
     .col {
-      font-size: 1.5rem;
       display: inline-block;
       vertical-align: middle;
     }
@@ -125,12 +143,12 @@
       fill: currentColor;
     }
     .count {
-      font-size: 2rem;
+      font-size: 1.5em;
     }
   }
   .power {
     color: #999;
-    font-size: 1rem !important;
+    font-size: 0.625em !important;
   }
   a {
     text-decoration: none;
@@ -155,32 +173,26 @@
   .pd10 {
     padding: 10px;
   }
-
-  .vinput {
-    padding: .6rem .8rem;
-    background: #f4f8fb;
-    border: .1rem solid #eee;
-    border-radius: .2rem;
-  }
   .vbtn {
     display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background: #33b1ff;
-    border: .1rem solid #33b1ff;
-    border-radius: .2rem;
+    border: .06em solid #33b1ff;
+    border-radius: .2em;
     color: #fff;
-    padding: .6rem 3rem;
+    padding: .5em 1.5em;
     cursor: pointer;
     white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     outline: none;
     min-width: 60px;
     max-width: 100%;
-    & + .vbtn {
-      margin-left: 20px;
-    }
+    margin: 0 1em;
   }
   .vbtn:active,
   .vbtn:hover {
@@ -193,17 +205,17 @@
     .vcard {
       display: flex;
       display: -ms-flexbox;
-      margin-top: 2rem;
+      padding-top: 2em;
       // padding: 8px 0;
       // &+.vcard {
       //     border-top: 1px solid #dedede;
       // }
       .vavatar {
-        margin-right: 1.5rem;
+        margin-right: 1em;
         margin-top: 0.1em;
         display: inline-block;
-        height: 4rem;
-        width: 4rem;
+        height: 3em;
+        width: 3em;
         position: relative;
         border-radius: 50%;
         &:hover {
@@ -215,18 +227,17 @@
         line-height: 1;
         a {
           font-weight: bolder;
-          font-size: 1.5rem;
+          font-size: 1em;
           color: rgba(0, 0, 0, .7);
         }
         .spacer {
           color: #ccc;
-          margin-left: 1rem;
-          margin-right: 1rem;
+          margin-left: .3em;
+          margin-right: .3em;
         }
         .vtime {
           color: #a9a4a4;
           display: inline-block;
-          padding: 0 5px;
         }
       }
       .vcomment {
@@ -235,15 +246,14 @@
         word-break: break-all;
         text-align: justify;
         line-height: 1.8;
-        margin-top: 0.5rem;
-        margin-bottom: 1rem;
+        margin-top: 0.3em;
+        margin-bottom: .6em;
         pre.code {
           overflow: auto;
         }
       }
       .vat {
         color: #33b1ff;
-        margin-top: 1rem;
         cursor: pointer;
       }
       .vat:hover {

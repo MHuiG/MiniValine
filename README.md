@@ -3,28 +3,25 @@
 [![version](https://img.shields.io/github/release/xCss/Valine.svg?style=flat-square)](https://github.com/xCss/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine) [![build](https://img.shields.io/circleci/project/github/xCss/Valine/master.svg?style=flat-square)](https://circleci.com/gh/xCss/Valine) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat-square)](#donate)  
 > A simple comment system based on Leancloud.  
 ------------------------------
-**[Live Demo](https://xcss.github.io/Valine/)**
+**[Live Demo](https://panjunwen.github.io/Valine/)**
 
-[中文教程](https://ioliu.cn/2017/add-valine-comments-to-your-blog/)
+[中文教程](https://panjunwen.com/diy-a-comment-system/)
 
 - High speed.
 - Safe by default.
 - Easy to customize.
-- [Support mail notifier](https://github.com/xCss/Valine/wiki/Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E8%AE%BE%E7%BD%AE).
-- Support validation code.
 - No server-side implementation.
 - Support part of the markdown syntax.
 
 **Table of content**
 - [Installation](#installation)
-- [Useage](#useage)
+- [Usage](#Usage)
 - [Contributors](#contributors)
 - [Features](#features)
-- [Donate](#donate)
 - [License](#license)
 
 ## Installation
-**1. Installation**   
+**1. Quick Installation**   
 > :warning: **You must first reference the package AV in the web page**  
 > `<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>`
 ```html
@@ -32,20 +29,21 @@
 ```
 or
 ```html
-<script src="https://xcss.github.io/Valine/dist/Valine.min.js"></script>
+<script src="https://panjunwen.github.io/Valine/dist/Valine.min.js"></script>
 ```
-or via `npm`
-```bash
-npm install valine --save
-```
-```js
-import Valine from 'valine'
-```
-**2. Get `appId`/`appKey` from Leancloud**  
-[Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `leancloud`.  
-[Click here](https://leancloud.cn/dashboard/applist.html#/newapp) Create new application in `Leancloud`, and you will get `appId`/`appKey`.
+**2. Get `App ID`/`App Key` from LeanCloud**  
+[Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
+[Click here](https://leancloud.cn/dashboard/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
 
-## Useage
+**3. Transfer Your Data**
+
+[Disqus2LeanCloud](http://disqus.panjunwen.com/)
+
+**4. Administration**
+
+[Valine Admin](https://github.com/panjunwen/Valine-Admin)
+
+## Usage
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -56,8 +54,6 @@ import Valine from 'valine'
     <title>Valine - A simple comment system based on Leancloud.</title>
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <script src="./dist/Valine.min.js"></script>
-  	<!--Get visitors' ip for spam check-->
-  	<script src="//pv.sohu.com/cityjson?ie=utf-8"></script>
 </head>
 <body>
     <div class="comment"></div>
@@ -65,32 +61,22 @@ import Valine from 'valine'
       new Valine({
           av: AV,
           el: '#disqus_thread',
-          notify: false,
-          verify: false,
           app_id: 'Your App ID',
           app_key: 'Your Key',
-          placeholder: '老司机来一发吧 O(∩_∩)O~~',
-          ip: returnCitySN["cip"]
+          placeholder: '老司机来一发吧 O(∩_∩)O~~'
       });
     </script>
 </body>
 </html>
 ```
 ## Contributors
-- [Contributors](https://github.com/xCss/Valine/graphs/contributors)
+- [Contributors](https://github.com/panjunwen/Valine/graphs/contributors)
 
 ## Features
 - Support for full markdown syntax
 - Syntax highlighting
 - And more...
 
-## Donate
-If you are enjoying this app, please consider making a donation to keep it alive, I will try my best to dedicate more time or even full time to work on it. 😉
-
-- [Donate via Wechat](https://ws1.sinaimg.cn/large/006qRazegy1fibhig0ywqj30es0erabm.jpg)
-- [Donate via Alipay](https://ws1.sinaimg.cn/large/006qRazegy1fibhifhhfnj30ix0io0tt.jpg)
-
-If you are not available for this, simply spreading the word for us would help too!
-
 ## License
+
 [GPL-2.0](https://github.com/xCss/Valine/blob/master/LICENSE)

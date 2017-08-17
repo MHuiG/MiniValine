@@ -45,8 +45,6 @@ class Valine {
      */
     init(option) {
         let _root = this;
-        _root.notify = option.notify || !1;
-        _root.verify = option.verify || !1;
         let av = option.av || _root.v;
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
@@ -64,7 +62,7 @@ class Valine {
                                     <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="名字" value=""></div>
                                     <div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="E-mail" value=""></div>
                                     <div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="网站 (可选)" value=""></div>
-                                    <div class="post-action"><button type="button" class="vsubmit vbtn">提交</button></div>
+                                    <div class="post-action"><button type="button" class="vsubmit">提交</button></div>
                                 </section>
                                 <div style="display:none;" class="vmark"></div>
                            </div>
@@ -72,7 +70,7 @@ class Valine {
                                 <div class="col">共 <span class="count"></span> 条评论</div>
                                 <div class="col power float-right">
                                     <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
-                                    Markdown is supported
+                                    <span>Markdown is supported</span>
                                 </div>
                            </div>
                            <ul class="vlist"><li class="vloading"></li><li class="vempty"></li></ul>`;
@@ -305,11 +303,7 @@ class Valine {
                     type: 1,
                     text: '您的网址和邮箱格式不正确, 是否继续提交?',
                     cb() {
-                        if (_root.notify || _root.verify) {
-                            verifyEvt(commitEvt)
-                        } else {
-                            commitEvt();
-                        }
+                        commitEvt();
                     }
                 })
             } else if (!mailRet.k) {
@@ -319,11 +313,7 @@ class Valine {
                     type: 1,
                     text: '您的邮箱格式不正确, 是否继续提交?',
                     cb() {
-                        if (_root.notify || _root.verify) {
-                            verifyEvt(commitEvt)
-                        } else {
-                            commitEvt();
-                        }
+                        commitEvt();
                     }
                 })
             } else if (defaultComment.link.length !== 0 && !linkRet.k) {
@@ -333,21 +323,13 @@ class Valine {
                     type: 1,
                     text: '您的网址格式不正确, 是否继续提交?',
                     cb() {
-                        if (_root.notify || _root.verify) {
-                            verifyEvt(commitEvt)
-                        } else {
-                            commitEvt();
-                        }
+                        commitEvt();
                     }
                 })
             } else {
                 defaultComment['mail'] = mailRet.v;
                 defaultComment['link'] = linkRet.v;
-                if (_root.notify || _root.verify) {
-                    verifyEvt(commitEvt)
-                } else {
-                    commitEvt();
-                }
+                commitEvt();
             }
         }
 
@@ -423,41 +405,6 @@ class Valine {
             })
         }
 
-        let verifyEvt = (fn) => {
-            let x = Math.floor((Math.random() * 20) + 1);
-            let y = Math.floor((Math.random() * 20) + 1);
-            let z = Math.floor((Math.random() * 20) + 1);
-            let opt = ['+', '-', 'x'];
-            let o1 = opt[Math.floor(Math.random() * 3)];
-            let o2 = opt[Math.floor(Math.random() * 3)];
-            let expre = `${x}${o1}${y}${o2}${z}`;
-            let subject = `${expre} = <input class='vcode vinput' >`;
-            _root.alert.show({
-                type: 1,
-                text: subject,
-                ctxt: '取消',
-                otxt: '确认',
-                cb() {
-                    let code = +_root.el.querySelector('.vcode').value;
-                    let ret = (new Function(`return ${expre.replace(/x/g, '*')}`))();
-                    if (ret === code) {
-                        fn && fn();
-                    } else {
-                        _root.alert.show({
-                            type: 1,
-                            text: '(T＿T)这么简单都算错，也是没谁了',
-                            ctxt: '伤心了，不回了',
-                            otxt: '再试试?',
-                            cb() {
-                                verifyEvt(fn);
-                                return;
-                            }
-                        })
-                    }
-                }
-            })
-        }
-
         // at event
         _root.bindAt = (el) => {
             Event.on('click', el, (e) => {
@@ -465,7 +412,7 @@ class Valine {
                 let rid = el.getAttribute('rid');
                 defaultComment['rid'] = rid;
                 defaultComment['at'] = at;
-                inputs['comment'].value += `${at} ，`;
+                inputs['comment'].value = `${at} ，` + inputs['comment'].value;
                 inputs['comment'].focus();
             })
         }
