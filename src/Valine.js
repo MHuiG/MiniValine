@@ -191,14 +191,12 @@ class Valine {
                     let _vlis = _vlist.querySelectorAll('li');
                     let _vat = _vcard.querySelector('.vat');
                     let _as = _vcard.querySelectorAll('a');
-                    for (let k in _as) {
-                        if (_as.hasOwnProperty(k)) {
-                            let item = _as[k];
-                            if (item.getAttribute('class') != 'at') {
-                                item.setAttribute('target', '_blank');
-                                item.setAttribute('rel', 'nofollow');
-                            }
-                        }
+                    for (let i=0,len=_as.length;i<len;i++) {
+                      let item = _as[i];
+                      if (item && item.getAttribute('class') != 'at') {
+                        item.setAttribute('target', '_blank');
+                        item.setAttribute('rel', 'nofollow');
+                      }
                     }
                     _root.bindAt(_vat);
                     _vlist.insertBefore(_vcard, _vlis[1]);
@@ -384,15 +382,14 @@ class Valine {
                 let _vlist = _root.el.querySelector('.vlist');
                 let _vlis = _vlist.querySelectorAll('li');
                 let _as = _vcard.querySelectorAll('a');
-                for (let k in _as) {
-                    if (_as.hasOwnProperty(k)) {
-                        let item = _as[k];
-                        if (item.getAttribute('class') !== 'at') {
-                            item.setAttribute('target', '_blank');
-                            item.setAttribute('rel', 'nofollow');
-                        }
-                    }
+                for (let i=0,len=_as.length;i<len;i++) {
+                  let item = _as[i];
+                  if (item && item.getAttribute('class') != 'at') {
+                    item.setAttribute('target', '_blank');
+                    item.setAttribute('rel', 'nofollow');
+                  }
                 }
+
                 let _vat = _vcard.querySelector('.vat');
                 _root.bindAt(_vat);
                 _vlist.insertBefore(_vcard, _vlis[1]);
