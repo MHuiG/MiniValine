@@ -3,7 +3,7 @@ import snarkdown from 'snarkdown';
 var crypto = require('blueimp-md5');
 
 // Gravatar by Deserts
-var GRAVATAR_BASE_URL = 'https://gravatar.cat.net/avatar/';
+var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
 
 const path = location.pathname;
 
