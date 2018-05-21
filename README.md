@@ -61,6 +61,7 @@ or
       new Valine({
           av: AV,
           el: '#disqus_thread',
+          smiles_url: 'https://panjunwen.com/smiles', // i.e. smile gif can be access on https://panjunwen.com/smiles/smile.gif
           app_id: 'Your App ID',
           app_key: 'Your Key',
           placeholder: '老司机来一发吧 O(∩_∩)O~~'

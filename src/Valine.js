@@ -92,7 +92,7 @@ class Valine {
                                 <div class="col">共 <span class="count">0</span> 条评论</div>
                                 <div class="col power float-right">
                                     <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
-                                    <span>Markdown is supported</span>
+                                    <span>Markdown supported</span>
                                 </div>
                            </div>
                            <div class="vsubmitting" style="display:none;"></div>
