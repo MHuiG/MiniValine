@@ -1,22 +1,21 @@
 require('./Valine.scss');
-import snarkdown from 'snarkdown';
+import marked from 'marked';
+
 var crypto = require('blueimp-md5');
 
 // Gravatar by Deserts
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
 
-const path = location.pathname;
 
 const defaultComment = {
-    ip: '',
     comment: '',
     rid: '',
-    at:'',
+    at: '',
     nick: '小可爱',
     mail: '',
     link: '',
     ua: navigator.userAgent,
-    url: path,
+    url: location.pathname,
     pin: 0,
     like: 0
 };
@@ -33,8 +32,7 @@ class Valine {
     constructor(option) {
         let _root = this;
         // version
-        _root.version = '1.1.4';
-        getIp();
+        _root.version = '1.1.5';
         // Valine init
         !!option && _root.init(option);
     }
@@ -57,6 +55,30 @@ class Valine {
             let eleHTML = `<div class="vwrap">
                                 <div class="textarea-wrapper">
                                     <textarea class="veditor" placeholder="${placeholder}"></textarea>
+                                    <p class="comment-smiles">
+                                        <img src="${option.smiles_url}/mrgreen.gif">
+                                        <img src="${option.smiles_url}/neutral.gif">
+                                        <img src="${option.smiles_url}/twisted.gif">
+                                        <img src="${option.smiles_url}/arrow.gif">
+                                        <img src="${option.smiles_url}/eek.gif">
+                                        <img src="${option.smiles_url}/smile.gif">
+                                        <img src="${option.smiles_url}/confused.gif">
+                                        <img src="${option.smiles_url}/cool.gif">
+                                        <img src="${option.smiles_url}/evil.gif">
+                                        <img src="${option.smiles_url}/biggrin.gif">
+                                        <img src="${option.smiles_url}/idea.gif">
+                                        <img src="${option.smiles_url}/redface.gif">
+                                        <img src="${option.smiles_url}/razz.gif">
+                                        <img src="${option.smiles_url}/rolleyes.gif">
+                                        <img src="${option.smiles_url}/wink.gif">
+                                        <img src="${option.smiles_url}/cry.gif">
+                                        <img src="${option.smiles_url}/surprised.gif">
+                                        <img src="${option.smiles_url}/lol.gif">
+                                        <img src="${option.smiles_url}/mad.gif">
+                                        <img src="${option.smiles_url}/sad.gif">
+                                        <img src="${option.smiles_url}/exclaim.gif">
+                                        <img src="${option.smiles_url}/question.gif">
+                                    </p>
                                 </div>
                                 <section class="auth-section">
                                     <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="名字" value=""></div>
@@ -67,13 +89,16 @@ class Valine {
                                 <div style="display:none;" class="vmark"></div>
                            </div>
                            <div class="info">
-                                <div class="col">共 <span class="count"></span> 条评论</div>
+                                <div class="col">共 <span class="count">0</span> 条评论</div>
                                 <div class="col power float-right">
                                     <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
                                     <span>Markdown is supported</span>
                                 </div>
                            </div>
-                           <ul class="vlist"><li class="vloading"></li><li class="vempty"></li></ul>`;
+                           <div class="vsubmitting" style="display:none;"></div>
+                           <ul class="vlist"><li class="vempty"></li></ul>
+                           <div class="vloading"></div>
+                           <div class="vpage txt-center"></div>`;
             _root.el.innerHTML = eleHTML;
             // Empty Data
             let vempty = _root.el.querySelector('.vempty');
@@ -95,7 +120,7 @@ class Valine {
             _root.v = av;
 
         } catch (ex) {
-            let issue = 'https://github.com/xCss/Valine/issues';
+            let issue = 'https://github.com/panjunwen/Valine/issues';
             if (_root.el) _root.nodata.show(`<pre style="color:red;text-align:left;">${ex}<br>Valine:<b>${_root.version}</b><br>反馈：${issue}</pre>`);
             else console && console.log(`%c${ex}\n%cValine%c${_root.version} ${issue}`, 'color:red;', 'background:#000;padding:5px;line-height:30px;color:#fff;', 'background:#456;line-height:30px;padding:5px;color:#fff;');
             return;
@@ -117,6 +142,17 @@ class Valine {
             }
         };
 
+        let vsubmitting = _root.el.querySelector('.vsubmitting');
+        vsubmitting.innerHTML = _spinner;
+        _root.submitting = {
+            show() {
+                vsubmitting.setAttribute('style', 'display:block;');
+            },
+            hide() {
+                vsubmitting.setAttribute('style', 'display:none;');
+                _root.nodata.hide();
+            }
+        };
 
         let _mark = _root.el.querySelector('.vmark');
         // alert
@@ -156,67 +192,200 @@ class Valine {
         }
 
         _root.loading.show();
-        // Build Query
-        let query = new _root.v.Query('Comment');
-        query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash', 'like', 'pin']);
-        query.equalTo('url', path);
-        query.descending('createdAt');
-        query.limit('1000');
-        query.find().then(rets => {
-            // let _temp = [];
-            let len = rets.length;
-            _root.el.querySelector('.count').innerHTML = `${len}`;
-            if (len) {
-                for (let i = len - 1; i > -1; i--) {
-                    let commentItem = rets[i];
-                    if (commentItem.get('isSpam')) {
-                        continue;
-                    }
-                    let _vcard = document.createElement('li');
-                    _vcard.setAttribute('class', 'vcard');
-                    _vcard.setAttribute('id', commentItem.id);
-                    let gravatar_url = GRAVATAR_BASE_URL + commentItem.get('emailHash') + '?size=96';
-                    // language=HTML
-                    _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
-                                        <div class="text-wrapper">
-                                            <div class="vhead" >
-                                                <a href="${commentItem.get('link') || 'javascript:void(0);'}" target="_blank" rel="nofollow" > ${commentItem.get("nick")}</a>
-                                                <span class="spacer">•</span><span class="vtime">${dateFormat(commentItem.get("createdAt"))}</span>
-                                            </div>
-                                            <div class="vcomment">${commentItem.get('comment')}</div>
-                                            <a rid='${commentItem.id}' at='@${commentItem.get('nick')}' class="vat">回复</a>
-                                        </div>`;
-
-                    let _vlist = _root.el.querySelector('.vlist');
-                    let _vlis = _vlist.querySelectorAll('li');
-                    let _vat = _vcard.querySelector('.vat');
-                    let _as = _vcard.querySelectorAll('a');
-                    for (let i=0,len=_as.length;i<len;i++) {
-                      let item = _as[i];
-                      if (item && item.getAttribute('class') != 'at') {
-                        item.setAttribute('target', '_blank');
-                        item.setAttribute('rel', 'nofollow');
-                      }
-                    }
-                    _root.bindAt(_vat);
-                    _vlist.insertBefore(_vcard, _vlis[1]);
-                }
-            }
-            _root.loading.hide();
-        }).catch(ex => {
-            //err(ex)
-            _root.loading.hide();
-        })
-
-        // Bind Event
-        _root.bind();
+        var query = new _root.v.Query('Comment');
+        query.equalTo('url', defaultComment['url']);
+        query.count().then(function (count) {
+            _root.el.querySelector('.count').innerHTML = `${count}`;
+            _root.bind(option);
+        }, function (error) {
+            console.log(error);
+        });
     }
 
     /**
      * Bind Event
      */
-    bind() {
+    bind(option) {
         let _root = this;
+        // Smile pictures
+        let vsmiles = _root.el.querySelector('.comment-smiles');
+        Event.on('click', vsmiles, (e) => {
+            var textField = _root.el.querySelector('.veditor');
+            let imgSrc = e.target.src;
+            if ( typeof imgSrc == 'undefined' ) return;
+            // var tag = " ![](/" + imgSrc.replace(/^.*\/(.*\.gif)$/, '$1') + ") ";
+            var tag = "!(:" + imgSrc.replace(/^.*\/(.*)\.gif$/, '$1') + ":)";
+            if (document.selection) {
+                textField.focus();
+                sel = document.selection.createRange();
+                sel.text = tag;
+                textField.focus();
+            } else if (textField.selectionStart || textField.selectionStart == '0') {
+                var startPos = textField.selectionStart;
+                var endPos = textField.selectionEnd;
+                var cursorPos = endPos;
+                textField.value = textField.value.substring(0, startPos) + tag + textField.value.substring(endPos, textField.value.length);
+                cursorPos += tag.length;
+                textField.focus();
+                textField.selectionStart = cursorPos;
+                textField.selectionEnd = cursorPos
+            } else {
+                textField.value += tag;
+                textField.focus()
+            }
+            let submitBtn = _root.el.querySelector('.vsubmit');
+            if (submitBtn.getAttribute('disabled')) submitBtn.removeAttribute('disabled');
+        })
+
+        // Query && show comment list
+
+        let expandEvt = (el) => {
+            if (el.offsetHeight > 180) {
+                el.classList.add('expand');
+                Event.on('click', el, (e) => {
+                    el.setAttribute('class', 'vcomment');
+                })
+            }
+        }
+
+        let commonQuery = () => {
+            let query = new _root.v.Query('Comment');
+            query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash', 'like', 'pin']);
+            query.equalTo('url', defaultComment['url']);
+            query.addDescending('like')
+            query.addDescending('createdAt');
+            return query;
+        }
+
+        var num = 1;
+        let query = (n = 1) => {
+            _root.loading.show();
+            var size = 10;
+            var count = Number(_root.el.querySelector('.count').innerText);
+            let cq = commonQuery();
+            cq.limit(size);
+            cq.skip((n - 1) * size);
+            cq.find().then(rets => {
+                let len = rets.length;
+                if (len) {
+                    // _root.el.querySelector('.vlist').innerHTML = '';
+                    for (let i = 0; i < len; i++) {
+                        insertComment(rets[i], false)
+                    }
+                    var _vpage = _root.el.querySelector('.vpage');
+                    _vpage.innerHTML = size * n < count ? `<div id="vmore" class="more">加载更多评论（剩余${count - size * n}/${count}条）</div>` : '';
+                    var _vmore = _vpage.querySelector('#vmore');
+                    if (_vmore) {
+                        Event.on('click', _vmore, (e) => {
+                            _vpage.innerHTML = '';
+                            query(++num)
+                        })
+                    }
+                }
+                _root.loading.hide();
+            }).catch(ex => {
+                console.log(ex);
+                _root.loading.hide();
+            })
+        }
+        query();
+
+        let insertComment = (ret, top=true) => {
+            let _vcard = document.createElement('li');
+            _vcard.setAttribute('class', 'vcard');
+            _vcard.setAttribute('id', ret.id);
+            let gravatar_url = GRAVATAR_BASE_URL + ret.get('emailHash') + '?size=96';
+            // language=HTML
+            _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
+                                        <section class="text-wrapper">
+                                            <div class="vhead" >
+                                                <a href="${ret.get('link') || 'javascript:void(0);'}" target="_blank" rel="nofollow" > ${ret.get("nick")}</a>
+                                                <span class="spacer">•</span>
+                                                <span class="vtime">${timeAgo(ret.get("createdAt"))}</span>
+                                            </div>
+                                            <div class="vcomment">${ret.get('comment')}</div>
+                                            <div class="vfooter">
+                                                <div class="like">
+                                                    <div class="like-count" id="like-count-${ret.id}">
+                                                        ${ret.get("like") > 0 ? ret.get("like") : ""}
+                                                    </div>
+                                                    <div class="heart" id="heart-${ret.id}"></div>
+                                                </div>
+                                                <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
+                                            </div>
+                                        </section>`;
+            let _vlist = _root.el.querySelector('.vlist');
+            let _vlis = _vlist.querySelectorAll('li');
+            let _vat = _vcard.querySelector('.vat');
+            let _as = _vcard.querySelectorAll('a');
+            for (let i = 0, len = _as.length; i < len; i++) {
+                let item = _as[i];
+                if (item && item.getAttribute('class') != 'at') {
+                    item.setAttribute('target', '_blank');
+                    item.setAttribute('rel', 'nofollow');
+                }
+            }
+            if (!top) _vlist.appendChild(_vcard);
+            else _vlist.insertBefore(_vcard, _vlis[0]);
+            let _vcontent = _vcard.querySelector('.vcomment');
+            expandEvt(_vcontent);
+            bindAtEvt(_vat);
+            bindLikeEvt(_vcard, ret.id);
+        }
+
+        let bindLikeEvt = (el, rid) => {
+            let btn = el.querySelector(`#heart-${rid}`);
+            let state = 0;
+            let evt = (e) => {
+                Event.off('click', btn, evt);
+                var wwin = btn.getAttribute("class");
+                if (wwin === 'heart') {
+                    btn.classList.add("heart-animation");
+                    if (state == 0){
+                        try {
+                            updateLikeCount(el, rid, 1);
+                            state = 1;
+                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart heart-checked');`, 700);
+                        }
+                        catch (error) {
+                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart');`, 700);
+                            console.log(error);
+                        }
+                    }
+                } else {
+                    btn.setAttribute('class', "heart");
+                    setTimeout(`document.querySelector('#heart-${rid}').classList.add('heart-animation');`, 100);
+                    if (state > 0){
+                        try {
+                            updateLikeCount(el, rid, -1);
+                            state = 0;
+                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart');`, 700);
+                        }
+                        catch (error) {
+                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart heart-checked');`, 700);
+                            console.log(error);
+                        }
+                    }
+                }
+                Event.on('click', btn, evt);
+            }
+            Event.on('click', btn, evt);
+        }
+
+        let updateLikeCount = (el, rid, n) => {            
+            var commentItem = _root.v.Object.createWithoutData('Comment', rid);
+            var query = new _root.v.Query('Comment');
+            query.select(['like']);
+            query.get(rid).then((oldItem) => {
+                var origin = oldItem.get("like");
+                commentItem.set('like', n + origin > 0 ? n + origin : 0);
+                commentItem.save().then(() => {
+                        let vcount = el.querySelector(`#like-count-${rid}`);
+                        vcount.innerHTML = `${n + origin > 0 ? n + origin : ""}`;
+                    }
+                );
+            })
+        }
 
         let mapping = {
             veditor: "comment",
@@ -284,8 +453,9 @@ class Valine {
             if (defaultComment.nick == '') {
                 defaultComment['nick'] = '小调皮';
             }
-
-            defaultComment.comment = snarkdown(defaultComment.comment);
+            // replace smiles
+            defaultComment.comment = defaultComment.comment.replace(/!\(:(\w+):\)/g, `![](${option.smiles_url}/$1.gif)`);
+            defaultComment.comment = marked(defaultComment.comment);
             let idx = defaultComment.comment.indexOf(defaultComment.at);
             if (idx > -1 && defaultComment.at != '') {
                 let at = `<a class="at" href='#${defaultComment.rid}'>${defaultComment.at}</a>`;
@@ -294,19 +464,17 @@ class Valine {
             // veirfy
             let mailRet = check.mail(defaultComment.mail);
             let linkRet = check.link(defaultComment.link);
-            if (!mailRet.k && defaultComment.link.length !== 0 && !linkRet.k) {
-                defaultComment['mail'] = '';
-                defaultComment['link'] = '';
+            defaultComment['mail'] = mailRet.k ? mailRet.v : '';
+            defaultComment['link'] = linkRet.k ? linkRet.v : '';
+            if (!mailRet.k && !linkRet.k) {
                 _root.alert.show({
                     type: 1,
                     text: '您的网址和邮箱格式不正确, 是否继续提交?',
                     cb() {
-                        commitEvt();
+                        commitEvt()
                     }
                 })
             } else if (!mailRet.k) {
-                defaultComment['mail'] = '';
-                defaultComment['link'] = linkRet.v;
                 _root.alert.show({
                     type: 1,
                     text: '您的邮箱格式不正确, 是否继续提交?',
@@ -314,9 +482,7 @@ class Valine {
                         commitEvt();
                     }
                 })
-            } else if (defaultComment.link.length !== 0 && !linkRet.k) {
-                defaultComment['link'] = '';
-                defaultComment['mail'] = mailRet.v;
+            } else if (!linkRet.k) {
                 _root.alert.show({
                     type: 1,
                     text: '您的网址格式不正确, 是否继续提交?',
@@ -325,8 +491,6 @@ class Valine {
                     }
                 })
             } else {
-                defaultComment['mail'] = mailRet.v;
-                defaultComment['link'] = linkRet.v;
                 commitEvt();
             }
         }
@@ -335,13 +499,13 @@ class Valine {
         let getAcl = () => {
             let acl = new _root.v.ACL();
             acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(false);
+            acl.setPublicWriteAccess(true);
             return acl;
         }
 
         let commitEvt = () => {
             submitBtn.setAttribute('disabled', true);
-            _root.loading.show();
+            _root.submitting.show();
             // 声明类型
             let Ct = _root.v.Object.extend('Comment');
             // 新建对象
@@ -364,46 +528,18 @@ class Valine {
                 }));
                 let _count = _root.el.querySelector('.count');
                 _count.innerText = Number(_count.innerText) + 1;
-                let _vcard = document.createElement('li');
-                _vcard.setAttribute('class', 'vcard');
-                _vcard.setAttribute('id', commentItem.id);
-                let gravatar_url = GRAVATAR_BASE_URL + commentItem.get('emailHash') + '?size=96';
-                // language=HTML
-                _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
-                                    <div class="text-wrapper">
-                                    <div class="vhead" >
-                                    <a href="${commentItem.get('link') || 'javascript:void(0);'}" target="_blank" rel="nofollow" >${commentItem.get('nick')}</a>
-                                    <span class="spacer">•</span><span class="vtime">${dateFormat(commentItem.get("createdAt"))}</span>
-                                    </div>
-                                    <div class="vcomment">${commentItem.get('comment')}</div>
-                                    <a rid='${commentItem.id}' at='@${commentItem.get('nick')}' class="vat">回复</a>
-                                    </div>`;
-
-                let _vlist = _root.el.querySelector('.vlist');
-                let _vlis = _vlist.querySelectorAll('li');
-                let _as = _vcard.querySelectorAll('a');
-                for (let i=0,len=_as.length;i<len;i++) {
-                  let item = _as[i];
-                  if (item && item.getAttribute('class') != 'at') {
-                    item.setAttribute('target', '_blank');
-                    item.setAttribute('rel', 'nofollow');
-                  }
-                }
-
-                let _vat = _vcard.querySelector('.vat');
-                _root.bindAt(_vat);
-                _vlist.insertBefore(_vcard, _vlis[1]);
-
+                insertComment(commentItem, true);
                 submitBtn.removeAttribute('disabled');
-                _root.loading.hide();
+                _root.submitting.hide();
+                _root.nodata.hide();
                 _root.reset();
             }).catch(ex => {
-                _root.loading.hide();
+                _root.submitting.hide();
             })
         }
 
         // at event
-        _root.bindAt = (el) => {
+        let bindAtEvt = (el) => {
             Event.on('click', el, (e) => {
                 let at = el.getAttribute('at');
                 let rid = el.getAttribute('rid');
@@ -440,9 +576,7 @@ const check = {
         };
     },
     link(l) {
-        if (l.length > 0) {
-            l = /^(http|https)/.test(l) ? l : `http://${l}`;
-        }
+        l = (l.length > 0 && (/^(http|https)/.test(l)) ? l : `http://${l}`);
         return {
             k: /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/.test(l),
             v: l
@@ -491,6 +625,43 @@ const dateFormat = (date) => {
     // return `${vYear}-${vMonth}-${vDay} ${vHour}:${vMinute}:${vSecond}`;
 }
 
+const timeAgo = (date) => {
+    try {
+        var oldTime = date.getTime();
+        var currTime = new Date().getTime();
+        var diffValue = currTime - oldTime;
+
+        var days = Math.floor(diffValue / (24 * 3600 * 1000));
+        if (days === 0) {
+            //计算相差小时数
+            var leave1 = diffValue % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
+            var hours = Math.floor(leave1 / (3600 * 1000));
+            if (hours === 0) {
+                //计算相差分钟数
+                var leave2 = leave1 % (3600 * 1000); //计算小时数后剩余的毫秒数
+                var minutes = Math.floor(leave2 / (60 * 1000));
+                if (minutes === 0) {
+                    //计算相差秒数
+                    var leave3 = leave2 % (60 * 1000); //计算分钟数后剩余的毫秒数
+                    var seconds = Math.round(leave3 / 1000);
+                    return seconds + ' 秒前';
+                }
+                return minutes + ' 分钟前';
+            }
+            return hours + ' 小时前';
+        }
+        if (days < 0) return '刚刚';
+
+        if (days < 8) {
+            return days + ' 天前';
+        } else {
+            return dateFormat(date)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const padWithZeros = (vNumber, width) => {
     var numAsString = vNumber.toString();
     while (numAsString.length < width) {
@@ -514,11 +685,4 @@ const loadJS = function (url, success) {
     document.getElementsByTagName('head')[0].appendChild(domScript);
 };
 
-const getIp = function(){
-    $.getJSON("https://api.ip.sb/jsonip?callback=?",
-        function(json) {
-            defaultComment['ip'] = json.ip;
-        }
-    );
-};
 module.exports = Valine;

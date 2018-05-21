@@ -15,14 +15,18 @@
     position: relative;
     .textarea-wrapper {
       margin-bottom: 0.625em;
+      color: #4b5b62;
+      width: 100%;
+      background: #fafdff;
+      border: .06em solid #edf4f8;
+      border-radius: .2em;
+      padding: .4em .5em;
       textarea {
         color: #4b5b62;
         width: 100%;
         background: #fafdff;
-        border: .06em solid #edf4f8;
-        border-radius: .2em;
-        padding: .4em .5em;
-        min-height: 10em;
+        border: none;
+        min-height: 8em;
         resize: none;
         &:focus {
           border-color: #c4c8cb;
@@ -149,6 +153,7 @@
   .power {
     color: #999;
     font-size: 0.625em !important;
+    position:relative;
   }
   a {
     text-decoration: none;
@@ -198,6 +203,19 @@
   .vbtn:hover {
     border-color: #33b1ff;
   }
+  .vpage {
+    margin: 1.5rem;
+    .more {
+      width: 100%;
+      height: 2.5em;
+      line-height: 2.5em;
+      text-align: center;
+      cursor: pointer;
+      color: #828586;
+      background: #f8f8f8;
+      border-radius: 1.25em;
+    }
+  }
   .vlist {
     // border-top: 1px solid #dedede;
     // border-bottom: 1px solid #dedede;
@@ -225,10 +243,15 @@
           -webkit-transform: rotate(1turn);
         }
       }
-
       .text-wrapper{
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
         .vhead {
           line-height: 1;
+          margin-bottom: 1em;
           a {
             font-weight: bolder;
             font-size: 1em;
@@ -236,29 +259,78 @@
           }
           .spacer {
             color: #ccc;
-            margin-left: .3em;
-            margin-right: .3em;
+            margin-left: 0.3em;
+            margin-right: 0.3em;
           }
           .vtime {
             color: #a9a4a4;
             display: inline-block;
+            font-weight: normal;
           }
+          
+        }
+        .vfooter {
+          position: relative;
+          height: 3em;
         }
         .vcomment {
-          word-wrap: break-word;
-          white-space: pre-wrap;
-          word-break: break-all;
-          text-align: justify;
-          line-height: 1.8;
-          margin-top: 0.3em;
-          margin-bottom: .6em;
-          pre.code {
+          position: relative;
+          p {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            word-break: break-all;
+            text-align: justify;
+            line-height: 1.8;
+          }
+          pre {
             overflow: auto;
+            padding: 6px 10px;
+            word-wrap: break-word;
+            color: #555;
+            background: #f5f2f2;
+            border-radius: 3px;
+            font-size: .875rem;
+            margin: 5px 0;
+          }
+          &.expand {
+            cursor: pointer;
+            max-height: 11.25rem;
+            overflow: hidden;
+            &:before {
+                display: block;
+                content: "";
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 0;
+                bottom: 3.15rem;
+                pointer-events: none;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .8));
+            }
+            &:after {
+                display: block;
+                content: "展开       ";
+                text-align: center;
+                color: #828586;
+                position: absolute;
+                width: 100%;
+                height: 3.15rem;
+                line-height: 3.15rem;
+                left: 0;
+                bottom: 0;
+                pointer-events: none;
+                background: rgba(255, 255, 255, .9);
+            }
           }
         }
         .vat {
           color: #33b1ff;
           cursor: pointer;
+          display: inline-block;
+          font-weight: normal;
+          position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
         }
         .vat:hover {
           color: #005e99;
@@ -327,4 +399,53 @@
       -webkit-transform: scaleY(1.0);
     }
   }
+}
+
+.like{
+  position: absolute;
+  margin-left: 3em;
+  height: 3em;
+  .heart-checked {
+    background-position:right !important;
+  }
+  .heart{
+      background:url(https://cloud.panjunwen.com/2018/05/5429406-1516e14e9fc2b898.png);
+      background-position:left;
+      background-repeat:no-repeat;
+      background-size:2900%;
+      width: 3em;
+      height: 3em;
+      display:inline-block;
+      position:relative;
+      left:0;top:0;z-index:0;
+      cursor: pointer;
+    }
+  @keyframes heartBlast {
+    0% {background-position:left;}
+    100% {background-position:right;}
+  }
+
+  .like-count {
+    text-align: right;
+    color: #8e8e8e;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 2.8em;
+  }
+  .heart-animation {
+    display:inline-block;
+    animation-name:heartBlast;
+    animation-duration:.8s;
+    animation-iteration-count:1;
+    animation-timing-function:steps(28);
+    background-position:right;
+  }
+}
+
+.comment-smiles img {
+  width: 28px !important;
+  height: auto !important;
+  max-height: none !important;
+  cursor: pointer;
 }
