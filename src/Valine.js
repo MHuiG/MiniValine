@@ -11,7 +11,7 @@ const defaultComment = {
     comment: '',
     rid: '',
     at: '',
-    nick: '小可爱',
+    nick: '访客',
     mail: '',
     link: '',
     ua: navigator.userAgent,
@@ -51,7 +51,7 @@ class Valine {
             }
             _root.el = el;
             _root.el.classList.add('valine');
-            let placeholder = option.placeholder || 'ヾﾉ≧∀≦)o来啊，快活啊!';
+            let placeholder = option.placeholder || '';
             let eleHTML = `<div class="vwrap">
                                 <div class="textarea-wrapper">
                                     <textarea class="veditor" placeholder="${placeholder}"></textarea>
@@ -81,18 +81,17 @@ class Valine {
                                     </p>
                                 </div>
                                 <section class="auth-section">
-                                    <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="名字" value=""></div>
-                                    <div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="E-mail" value=""></div>
+                                    <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="昵称" value=""></div>
+                                    <div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="邮箱" value=""></div>
                                     <div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="网站 (可选)" value=""></div>
                                     <div class="post-action"><button type="button" class="vsubmit">提交</button></div>
                                 </section>
                                 <div style="display:none;" class="vmark"></div>
                            </div>
                            <div class="info">
-                                <div class="col">共 <span class="count">0</span> 条评论</div>
+                                <div class="col">已有 <span class="count">0</span> 条评论</div>
                                 <div class="col power float-right">
-                                    <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg>
-                                    <span>Markdown supported</span>
+                                    <a href="https://segmentfault.com/markdown" target="_blank"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a>
                                 </div>
                            </div>
                            <div class="vsubmitting" style="display:none;"></div>
@@ -233,6 +232,7 @@ class Valine {
                 textField.value += tag;
                 textField.focus()
             }
+            defaultComment["comment"] = textField.value;
             let submitBtn = _root.el.querySelector('.vsubmit');
             if (submitBtn.getAttribute('disabled')) submitBtn.removeAttribute('disabled');
         })
@@ -252,10 +252,10 @@ class Valine {
             let query = new _root.v.Query('Comment');
             query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash', 'like', 'pin']);
             query.equalTo('url', defaultComment['url']);
-            query.addDescending('like')
             query.addDescending('createdAt');
+            query.addDescending('like');
             return query;
-        }
+        };
 
         var num = 1;
         let query = (n = 1) => {
@@ -309,7 +309,7 @@ class Valine {
                                                     <div class="like-count" id="like-count-${ret.id}">
                                                         ${ret.get("like") > 0 ? ret.get("like") : ""}
                                                     </div>
-                                                    <div class="heart" id="heart-${ret.id}"></div>
+                                                    <div class="heart" id="heart-${ret.id}" style="background:url(//cloud.panjunwen.com/heart.png);background-position:left;background-repeat:no-repeat;background-size:2900%;"></div>
                                                 </div>
                                                 <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
                                             </div>
@@ -469,7 +469,7 @@ class Valine {
             if (!mailRet.k && !linkRet.k) {
                 _root.alert.show({
                     type: 1,
-                    text: '您的网址和邮箱格式不正确, 是否继续提交?',
+                    text: '您的网址和邮箱格式不正确, 将导致无法正确显示头像和接收回复通知邮件。是否继续提交?',
                     cb() {
                         commitEvt()
                     }
@@ -477,7 +477,7 @@ class Valine {
             } else if (!mailRet.k) {
                 _root.alert.show({
                     type: 1,
-                    text: '您的邮箱格式不正确, 是否继续提交?',
+                    text: '您的邮箱格式不正确, 将导致无法正确显示头像和接收回复通知邮件。是否继续提交?',
                     cb() {
                         commitEvt();
                     }
@@ -578,7 +578,7 @@ const check = {
     link(l) {
         l = (l.length > 0 && (/^(http|https)/.test(l)) ? l : `http://${l}`);
         return {
-            k: /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/.test(l),
+            k: l.length > 0 ? true : /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/.test(l),
             v: l
         };
     }
@@ -651,12 +651,10 @@ const timeAgo = (date) => {
             return hours + ' 小时前';
         }
         if (days < 0) return '刚刚';
-
-        if (days < 8) {
-            return days + ' 天前';
-        } else {
-            return dateFormat(date)
-        }
+        else if (days < 30) return days + ' 天前';
+        else if (days < 365) return Math.floor(days / 30) + ' 月前';
+        else return Math.floor(days / 365) + ' 年前';
+        return dateFormat(date);
     } catch (error) {
         console.log(error)
     }

@@ -18,8 +18,8 @@
       color: #4b5b62;
       width: 100%;
       background: #fafdff;
-      border: .06em solid #edf4f8;
-      border-radius: .2em;
+      border: 1px solid #e9eff3;
+      border-radius: 0;
       padding: .4em .5em;
       textarea {
         color: #4b5b62;
@@ -49,8 +49,8 @@
         input {
           color: #4b5b62;
           background: #fafdff;
-          border: .06em solid #edf4f8;
-          border-radius: .2em;
+          border: 1px solid #e9eff3;
+          border-radius: 0;
           padding: .4em .5em;
           line-height: 2;
           font-size: 1em !important;
@@ -76,9 +76,9 @@
           width: 100%;
           line-height: 2;
           font-weight: bolder;
-          background: #33b1ff;
-          border: .06em solid #edf4f8;
-          border-radius: .2em;
+          border-radius: .1em;
+          border: 1px solid #e9eff3;
+          background-color: #207CDF;
           padding: .4em .5em;
           -webkit-appearance: none;
           -moz-appearance: none;
@@ -88,6 +88,9 @@
           -ms-user-select: none;
           user-select: none;
           font-size: 1em !important;
+        }
+        button:hover {
+          background-color: #106CCA;
         }
       }
       @media screen and(max-width: 720px) {
@@ -147,7 +150,7 @@
       fill: currentColor;
     }
     .count {
-      font-size: 1.5em;
+      //font-size: 1.5em;
     }
   }
   .power {
@@ -183,9 +186,9 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: #33b1ff;
-    border: .06em solid #33b1ff;
-    border-radius: .2em;
+    border: 1px solid #e9eff3;
+    background-color: #207CDF;
+    border-radius: .1em;
     color: #fff;
     padding: .5em 1.5em;
     cursor: pointer;
@@ -202,6 +205,7 @@
   .vbtn:active,
   .vbtn:hover {
     border-color: #33b1ff;
+
   }
   .vpage {
     margin: 1.5rem;
@@ -409,10 +413,6 @@
     background-position:right !important;
   }
   .heart{
-      background:url(https://cloud.panjunwen.com/2018/05/5429406-1516e14e9fc2b898.png);
-      background-position:left;
-      background-repeat:no-repeat;
-      background-size:2900%;
       width: 3em;
       height: 3em;
       display:inline-block;
