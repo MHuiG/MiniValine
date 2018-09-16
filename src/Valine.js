@@ -5,6 +5,8 @@ var crypto = require('blueimp-md5');
 
 // Gravatar by Deserts
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
+var EMPTY_EMAIL_HASH = 'd41d8cd98f00b204e9800998ecf8427e'
+var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e'
 
 
 const defaultComment = {
@@ -16,8 +18,7 @@ const defaultComment = {
     link: '',
     ua: navigator.userAgent,
     url: location.pathname,
-    pin: 0,
-    like: 0
+    pin: 0
 };
 
 const toString = {}.toString;
@@ -54,33 +55,19 @@ class Valine {
             let placeholder = option.placeholder || '';
             let eleHTML = `<div class="vwrap">
                                 <div class="textarea-wrapper">
-                                    <textarea class="veditor" placeholder="${placeholder}"></textarea>
-                                    <p class="comment-smiles">
-                                        <img src="${option.smiles_url}/mrgreen.gif">
-                                        <img src="${option.smiles_url}/neutral.gif">
-                                        <img src="${option.smiles_url}/twisted.gif">
-                                        <img src="${option.smiles_url}/arrow.gif">
-                                        <img src="${option.smiles_url}/eek.gif">
-                                        <img src="${option.smiles_url}/smile.gif">
-                                        <img src="${option.smiles_url}/confused.gif">
-                                        <img src="${option.smiles_url}/cool.gif">
-                                        <img src="${option.smiles_url}/evil.gif">
-                                        <img src="${option.smiles_url}/biggrin.gif">
-                                        <img src="${option.smiles_url}/idea.gif">
-                                        <img src="${option.smiles_url}/redface.gif">
-                                        <img src="${option.smiles_url}/razz.gif">
-                                        <img src="${option.smiles_url}/rolleyes.gif">
-                                        <img src="${option.smiles_url}/wink.gif">
-                                        <img src="${option.smiles_url}/cry.gif">
-                                        <img src="${option.smiles_url}/surprised.gif">
-                                        <img src="${option.smiles_url}/lol.gif">
-                                        <img src="${option.smiles_url}/mad.gif">
-                                        <img src="${option.smiles_url}/sad.gif">
-                                        <img src="${option.smiles_url}/exclaim.gif">
-                                        <img src="${option.smiles_url}/question.gif">
-                                    </p>
+                                    <div class="comment_trigger">
+                                        <div class="avatar"><img class="visitor_avatar" src="${GRAVATAR_BASE_URL + DEFAULT_EMAIL_HASH + '?size=80'}"></div>
+                                        <div class="trigger_title">${placeholder}</div>
+                                    </div>
+                                    <div>
+                                        <textarea placeholder="" class="veditor"></textarea>
+                                        <div class="comment-smiles">
+                                            <div class="vsmile-btn-wrap"><svg class="vsmile-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2372" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.6em" height="1.6em"><defs><style type="text/css"></style></defs><path d="M16 512c0 274 222 496 496 496s496-222 496-496S786 16 512 16 16 238 16 512z m400-96c0 35.4-28.6 64-64 64s-64-28.6-64-64 28.6-64 64-64 64 28.6 64 64z m317 33c-29.6-26.4-92.4-26.4-122 0L592 466c-16.6 14.8-43.2 0.8-39.6-21.6 8-50.4 68.4-84.2 119.8-84.2S784 394 792 444.4c3.4 22.2-22.8 36.6-39.6 21.6l-19.4-17zM331.6 651.6C376.4 705.4 442 736 512 736s135.6-30.8 180.4-84.4c27.2-32.4 76.2 8.4 49.2 41C684.6 760.8 601 800 512 800s-172.6-39.2-229.6-107.6c-27-32.6 22.4-73.4 49.2-40.8z" fill="" p-id="2373"></path></svg></div>
+                                            <div class="vsmile-icons" style="display:none"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <section class="auth-section">
+                                <section class="auth-section" style="display:none;">
                                     <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="昵称" value=""></div>
                                     <div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="邮箱" value=""></div>
                                     <div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="网站 (可选)" value=""></div>
@@ -112,6 +99,14 @@ class Valine {
             }
             _root.nodata.show();
 
+            // load smiles image
+            let _smile_wrapper = _root.el.querySelector('.vsmile-icons');            
+            let smile_names = option.emoticon_list || ["mrgreen", "neutral", "twisted", "arrow", "eek", "smile", "confused", "cool", "evil", "biggrin", "idea", "redface", "razz", "rolleyes", "wink", "cry", "surprised", "lol", "mad", "sad", "exclaim", "question"];
+            for(let i in smile_names) {
+                let img = document.createElement('img');
+                img.setAttribute('src', `${option.emoticon_url}/${smile_names[i]}`);
+                _smile_wrapper.appendChild(img) ;
+            }
             av.init({
                 appId: option.app_id || option.appId,
                 appKey: option.app_key || option.appKey
@@ -207,13 +202,13 @@ class Valine {
     bind(option) {
         let _root = this;
         // Smile pictures
-        let vsmiles = _root.el.querySelector('.comment-smiles');
+        let vsmiles = _root.el.querySelector('.vsmile-icons');
         Event.on('click', vsmiles, (e) => {
             var textField = _root.el.querySelector('.veditor');
             let imgSrc = e.target.src;
             if ( typeof imgSrc == 'undefined' ) return;
             // var tag = " ![](/" + imgSrc.replace(/^.*\/(.*\.gif)$/, '$1') + ") ";
-            var tag = "!(:" + imgSrc.replace(/^.*\/(.*)\.gif$/, '$1') + ":)";
+            var tag = "!(:" + decodeURI(imgSrc).replace(/^.*\/(.*)$/, '$1') + ":)";
             if (document.selection) {
                 textField.focus();
                 sel = document.selection.createRange();
@@ -236,6 +231,24 @@ class Valine {
             let submitBtn = _root.el.querySelector('.vsubmit');
             if (submitBtn.getAttribute('disabled')) submitBtn.removeAttribute('disabled');
         })
+        let comment_trigger = _root.el.querySelector('.comment_trigger');
+        Event.on('click', comment_trigger, (e) => {
+            comment_trigger.setAttribute('style', 'display:none');
+            _root.el.querySelector('.auth-section').removeAttribute('style');
+            _root.el.querySelector('.veditor').focus();
+        })
+        let smile_btn = _root.el.querySelector('.vsmile-btn');
+        let smile_icons = _root.el.querySelector('.vsmile-icons');
+        Event.on('click', smile_btn, (e)=>{
+            if (smile_icons.getAttribute('triggered')) {
+                smile_icons.setAttribute('style', 'display:none;');
+                smile_icons.removeAttribute('triggered');
+            }
+            else {
+                smile_icons.removeAttribute('style');
+                smile_icons.setAttribute('triggered', 1);
+            }
+        });
 
         // Query && show comment list
 
@@ -250,10 +263,9 @@ class Valine {
 
         let commonQuery = () => {
             let query = new _root.v.Query('Comment');
-            query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash', 'like', 'pin']);
+            query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash']);
             query.equalTo('url', defaultComment['url']);
             query.addDescending('createdAt');
-            query.addDescending('like');
             return query;
         };
 
@@ -294,7 +306,8 @@ class Valine {
             let _vcard = document.createElement('li');
             _vcard.setAttribute('class', 'vcard');
             _vcard.setAttribute('id', ret.id);
-            let gravatar_url = GRAVATAR_BASE_URL + ret.get('emailHash') + '?size=96';
+            let emailHash = ret.get('emailHash') == EMPTY_EMAIL_HASH ? DEFAULT_EMAIL_HASH : ret.get('emailHash')
+            let gravatar_url = GRAVATAR_BASE_URL + emailHash + '?size=80';
             // language=HTML
             _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
                                         <section class="text-wrapper">
@@ -304,16 +317,10 @@ class Valine {
                                                 <span class="vtime">${timeAgo(ret.get("createdAt"))}</span>
                                             </div>
                                             <div class="vcomment">${ret.get('comment')}</div>
-                                            <div class="vfooter">
-                                                <div class="like">
-                                                    <div class="like-count" id="like-count-${ret.id}">
-                                                        ${ret.get("like") > 0 ? ret.get("like") : ""}
-                                                    </div>
-                                                    <div class="heart" id="heart-${ret.id}" style="background:url(//cloud.panjunwen.com/heart.png);background-position:left;background-repeat:no-repeat;background-size:2900%;"></div>
-                                                </div>
-                                                <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
-                                            </div>
-                                        </section>`;
+                                            
+                                        </section>
+                                        <div class="vfooter">
+                                        <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>`;
             let _vlist = _root.el.querySelector('.vlist');
             let _vlis = _vlist.querySelectorAll('li');
             let _vat = _vcard.querySelector('.vat');
@@ -330,61 +337,6 @@ class Valine {
             let _vcontent = _vcard.querySelector('.vcomment');
             expandEvt(_vcontent);
             bindAtEvt(_vat);
-            bindLikeEvt(_vcard, ret.id);
-        }
-
-        let bindLikeEvt = (el, rid) => {
-            let btn = el.querySelector(`#heart-${rid}`);
-            let state = 0;
-            let evt = (e) => {
-                Event.off('click', btn, evt);
-                var wwin = btn.getAttribute("class");
-                if (wwin === 'heart') {
-                    btn.classList.add("heart-animation");
-                    if (state == 0){
-                        try {
-                            updateLikeCount(el, rid, 1);
-                            state = 1;
-                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart heart-checked');`, 700);
-                        }
-                        catch (error) {
-                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart');`, 700);
-                            console.log(error);
-                        }
-                    }
-                } else {
-                    btn.setAttribute('class', "heart");
-                    setTimeout(`document.querySelector('#heart-${rid}').classList.add('heart-animation');`, 100);
-                    if (state > 0){
-                        try {
-                            updateLikeCount(el, rid, -1);
-                            state = 0;
-                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart');`, 700);
-                        }
-                        catch (error) {
-                            setTimeout(`document.querySelector('#heart-${rid}').setAttribute('class', 'heart heart-checked');`, 700);
-                            console.log(error);
-                        }
-                    }
-                }
-                Event.on('click', btn, evt);
-            }
-            Event.on('click', btn, evt);
-        }
-
-        let updateLikeCount = (el, rid, n) => {            
-            var commentItem = _root.v.Object.createWithoutData('Comment', rid);
-            var query = new _root.v.Query('Comment');
-            query.select(['like']);
-            query.get(rid).then((oldItem) => {
-                var origin = oldItem.get("like");
-                commentItem.set('like', n + origin > 0 ? n + origin : 0);
-                commentItem.save().then(() => {
-                        let vcount = el.querySelector(`#like-count-${rid}`);
-                        vcount.innerHTML = `${n + origin > 0 ? n + origin : ""}`;
-                    }
-                );
-            })
         }
 
         let mapping = {
@@ -415,6 +367,10 @@ class Valine {
                     let k = m[i];
                     _root.el.querySelector(`.v${k}`).value = s[k];
                     defaultComment[k] = s[k];
+                }
+                if (s['mail'] != '') {
+                    let el = _root.el.querySelector('.visitor_avatar');
+                    el.setAttribute('src', GRAVATAR_BASE_URL + crypto(s['mail'].toLowerCase().trim()) + '?size=80');
                 }
             }
         }
@@ -454,7 +410,7 @@ class Valine {
                 defaultComment['nick'] = '小调皮';
             }
             // replace smiles
-            defaultComment.comment = defaultComment.comment.replace(/!\(:(\w+):\)/g, `![](${option.smiles_url}/$1.gif)`);
+            defaultComment.comment = defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `![](${option.emoticon_url}/$1)`);
             defaultComment.comment = marked(defaultComment.comment);
             let idx = defaultComment.comment.indexOf(defaultComment.at);
             if (idx > -1 && defaultComment.at != '') {
@@ -499,7 +455,7 @@ class Valine {
         let getAcl = () => {
             let acl = new _root.v.ACL();
             acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
+            acl.setPublicWriteAccess(false);
             return acl;
         }
 
@@ -547,6 +503,10 @@ class Valine {
                 defaultComment['at'] = at;
                 inputs['comment'].value = `${at} ，` + inputs['comment'].value;
                 inputs['comment'].focus();
+                // remove comment trigger
+                _root.el.querySelector('.comment_trigger').setAttribute('style', 'display:none');
+                _root.el.querySelector('.auth-section').removeAttribute('style');
+                _root.el.querySelector('.veditor').focus();
             })
         }
 
@@ -571,14 +531,16 @@ const Event = {
 const check = {
     mail(m) {
         return {
-            k: /[\w-\.]+@([\w-]+\.)+[a-z]{2,3}/.test(m),
+            k: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/.test(m),
             v: m
         };
     },
     link(l) {
-        l = (l.length > 0 && (/^(http|https)/.test(l)) ? l : `http://${l}`);
+        if (l.length > 0) {
+            l = /^(http|https)/.test(l) ? l : `http://${l}`;
+        }
         return {
-            k: l.length > 0 ? true : /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/.test(l),
+            k: l.length > 0 ? /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/.test(l) : true,
             v: l
         };
     }
