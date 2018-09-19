@@ -4,8 +4,8 @@ import marked from 'marked';
 var crypto = require('blueimp-md5');
 
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
-var EMPTY_EMAIL_HASH = 'd41d8cd98f00b204e9800998ecf8427e'
-var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e'
+var EMPTY_EMAIL_HASH = 'd41d8cd98f00b204e9800998ecf8427e';
+var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e';
 
 
 const defaultComment = {
@@ -260,11 +260,12 @@ class Valine {
                     el.setAttribute('class', 'vcomment');
                 })
             }
-        }
+        };
 
         let commonQuery = () => {
             let query = new _root.v.Query('Comment');
-            query.select(['nick', 'comment', 'link', 'rid', 'isSpam', 'emailHash']);
+            query.select(['nick', 'comment', 'link', 'rid', 'emailHash']);
+            query.notEqualTo('isSpam', true);
             query.equalTo('url', defaultComment['url']);
             query.addDescending('createdAt');
             return query;
