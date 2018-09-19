@@ -3,13 +3,13 @@ import marked from 'marked';
 
 var crypto = require('blueimp-md5');
 
-// Gravatar by Deserts
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
 var EMPTY_EMAIL_HASH = 'd41d8cd98f00b204e9800998ecf8427e'
 var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e'
 
 
 const defaultComment = {
+    ip: '',
     comment: '',
     rid: '',
     at: '',
@@ -34,6 +34,7 @@ class Valine {
         let _root = this;
         // version
         _root.version = '1.1.7';
+        getIp();
         // Valine init
         !!option && _root.init(option);
     }
@@ -643,6 +644,14 @@ const loadJS = function (url, success) {
         }
     };
     document.getElementsByTagName('head')[0].appendChild(domScript);
+};
+
+const getIp = function(){
+    $.getJSON("https://api.ip.sb/jsonip?callback=?",
+        function(json) {
+            defaultComment['ip'] = json.ip;
+        }
+    );
 };
 
 module.exports = Valine;
