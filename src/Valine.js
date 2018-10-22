@@ -648,7 +648,7 @@ const loadJS = function (url, success) {
 };
 
 const getIp = function(){
-    $.getJSON("https://api.ipify.org/?format=jsonp",
+    $.getJSON("https://api.ipify.org/?format=jsonp?callback=?",
         function(json) {
             defaultComment['ip'] = json.ip;
         }
