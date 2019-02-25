@@ -1,5 +1,5 @@
 require('./Valine.scss');
-import marked from 'marked';
+var md = require('markdown-it')();
 
 var crypto = require('blueimp-md5');
 
@@ -389,7 +389,7 @@ class Valine {
                 }
             }
             defaultComment['rid'] = '';
-            defaultComment['nick'] = '小可爱';
+            defaultComment['nick'] = '访客';
             getCache();
         }
 
@@ -409,11 +409,12 @@ class Valine {
                 return;
             }
             if (defaultComment.nick == '') {
-                defaultComment['nick'] = '小调皮';
+                defaultComment['nick'] = '访客';
             }
             // replace smiles
             defaultComment.comment = defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `![](${option.emoticon_url}/$1)`);
-            defaultComment.comment = marked(defaultComment.comment);
+            // render markdown
+            defaultComment.comment = md.render(HtmlUtil.decode(defaultComment.comment));
             let idx = defaultComment.comment.indexOf(defaultComment.at);
             if (idx > -1 && defaultComment.at != '') {
                 let at = `<a class="at" href='#${defaultComment.rid}'>${defaultComment.at}</a>`;
@@ -426,27 +427,21 @@ class Valine {
             defaultComment['link'] = linkRet.k ? linkRet.v : '';
             if (!mailRet.k && !linkRet.k) {
                 _root.alert.show({
-                    type: 1,
-                    text: '您的网址和邮箱格式不正确, 将导致无法正确显示头像和接收回复通知邮件。是否继续提交?',
-                    cb() {
-                        commitEvt()
-                    }
+                    type: 0,
+                    text: '您的网址和邮箱格式不正确，请修正后提交！',
+                    ctxt: '返回修改'
                 })
             } else if (!mailRet.k) {
                 _root.alert.show({
-                    type: 1,
-                    text: '您的邮箱格式不正确, 将导致无法正确显示头像和接收回复通知邮件。是否继续提交?',
-                    cb() {
-                        commitEvt();
-                    }
+                    type: 0,
+                    text: '请认真评论并填写正确的邮箱地址！<br>已开启<a href="https://deserts.io/diy-a-comment-system/" target="_blank">隐私防护</a>不会泄露您的个人信息，<a href="https://akismet.com/privacy/" target="_blank">了解反垃圾系统如何处理您的数据。</a>',
+                    ctxt: '返回修改'
                 })
             } else if (!linkRet.k) {
                 _root.alert.show({
-                    type: 1,
-                    text: '您的网址格式不正确, 是否继续提交?',
-                    cb() {
-                        commitEvt();
-                    }
+                    type: 0,
+                    text: '您的网址格式不正确，请修正后提交！',
+                    ctxt: '返回修改'
                 })
             } else {
                 commitEvt();

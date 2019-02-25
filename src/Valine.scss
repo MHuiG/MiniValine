@@ -7,8 +7,6 @@
     line-height: 1.42857143;
     color: #3c484e;
     transition: all .3s ease;
-    margin: 0;
-    padding: 0;
   }
   .vwrap {
     overflow: hidden;
@@ -181,7 +179,7 @@
       left: 0;
       top: 0;
       .valert {
-        padding: 3em 0 0 0;
+        padding: 2em 0 0 0;
         .vtext {
           color: #fff;
           padding: 15px;
@@ -234,10 +232,6 @@
     &:hover {
       // color: #3eb0ef;
     }
-  }
-  ul,
-  li {
-    list-style: none;
   }
   .txt-center {
     text-align: center;
@@ -294,6 +288,9 @@
     // border-top: 1px solid #dedede;
     // border-bottom: 1px solid #dedede;
     width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     .vcard {
       display: flex;
       display: -ms-flexbox;
@@ -372,6 +369,11 @@
         
         .vcomment {
           position: relative;
+          blockquote {
+            p {
+              padding-left: 12px;
+            }
+          }
           p {
             word-wrap: break-word;
             white-space: pre-wrap;
