@@ -12,28 +12,36 @@
     overflow: hidden;
     position: relative;
     border: 1px solid #ededed;
-
-    .comment-smiles {
-      margin: 0;
-      padding: 0 1em;
-      margin: .5em 0;
-      .vsmile-btn-wrap {
-        width: 100%;
-        height: 1.7em;
+    .veditor-area{
+      position: inherit;
+    }
+    .btn-wrap {
+      position: absolute !important;
+      right: 1.5em;
+      bottom: 0;
+      .vfunction-btn{
+      display: inline-block;
         svg {
-          fill: #aaaaaa;
-          // float: right;
+          fill: #bbb;
           cursor: pointer;
           &:hover{
             fill: #777777;
           }
+          &:active{
+            fill: #777777;
+          }
         }
       }
+    }
+    
+    .vextra-area {
+      margin: .4em 0 .4em .5em;
+      
       .vsmile-icons {
         padding: .2em 0;
-        margin: .3em 0;
         border-top: 1px solid #ededed;
         border-radius: 0;
+        margin: .3em 0;
         max-height: 64px;
         overflow: auto;
         img {
@@ -42,7 +50,14 @@
           margin-right: 4px;
           cursor: pointer;          
         }
-        
+      }
+      .vpreview-text {
+        border-top: 1px solid #ededed;
+        border-radius: 0;
+        padding: .5em .5em;
+        margin: .3em 0;
+        max-height: 10em;
+        overflow: auto;
       }
     }
     .textarea-wrapper {
@@ -90,7 +105,7 @@
         background: #fff;
         border: none;
         resize: none;
-        min-height: 3em;
+        min-height: 6em;
         &:focus {
           border-color: #c4c8cb;
           outline: 0

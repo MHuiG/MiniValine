@@ -1,5 +1,5 @@
 require('./Valine.scss');
-var md = require('markdown-it')();
+var md = require('marked');
 
 var crypto = require('blueimp-md5');
 
@@ -60,12 +60,16 @@ class Valine {
                                         <div class="avatar"><img class="visitor_avatar" src="${GRAVATAR_BASE_URL + DEFAULT_EMAIL_HASH + '?size=80'}"></div>
                                         <div class="trigger_title">${placeholder}</div>
                                     </div>
-                                    <div>
+                                    <div class="veditor-area">
                                         <textarea placeholder="" class="veditor"></textarea>
-                                        <div class="comment-smiles">
-                                            <div class="vsmile-btn-wrap"><svg class="vsmile-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2372" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.6em" height="1.6em"><defs><style type="text/css"></style></defs><path d="M16 512c0 274 222 496 496 496s496-222 496-496S786 16 512 16 16 238 16 512z m400-96c0 35.4-28.6 64-64 64s-64-28.6-64-64 28.6-64 64-64 64 28.6 64 64z m317 33c-29.6-26.4-92.4-26.4-122 0L592 466c-16.6 14.8-43.2 0.8-39.6-21.6 8-50.4 68.4-84.2 119.8-84.2S784 394 792 444.4c3.4 22.2-22.8 36.6-39.6 21.6l-19.4-17zM331.6 651.6C376.4 705.4 442 736 512 736s135.6-30.8 180.4-84.4c27.2-32.4 76.2 8.4 49.2 41C684.6 760.8 601 800 512 800s-172.6-39.2-229.6-107.6c-27-32.6 22.4-73.4 49.2-40.8z" fill="" p-id="2373"></path></svg></div>
-                                            <div class="vsmile-icons" style="display:none"></div>
+                                        <div class="btn-wrap">
+                                            <div class="vpreview-btn vfunction-btn" title="预览"><svg t="1551146416896" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2051" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5em" height="1.5em"><defs><style type="text/css"></style></defs><path d="M862.516 161.07l44.62 44.38-286.303 288.866-45.668-45.615L862.516 161.07z m1.233 1.233" p-id="2052"></path><path d="M832.162 959.558H128.025V191.784h512.099v64.169H192.037V895.64h576.112V512.127h64.012v447.431z m0.833 0.533" p-id="2053"></path><path d="M256.05 703.994h384.075v63.919H256.05v-63.919z m0-127.769l320.062-0.069v63.919H256.05v-63.85z m0-128.317h192.037v63.891l-192.037 0.028v-63.919z m0 0" p-id="2054"></path></svg></div>
+                                            <div class="vemoji-btn vfunction-btn" title="表情"><svg t="1551146424708" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2169" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5em" height="1.5em"><defs><style type="text/css"></style></defs><path d="M513.028 63.766c-247.628 0-448.369 200.319-448.369 447.426S265.4 958.617 513.028 958.617s448.369-200.319 448.369-447.426S760.655 63.766 513.028 63.766z m-0.203 823.563c-207.318 0-375.382-167.71-375.382-374.592s168.064-374.592 375.382-374.592 375.382 167.71 375.382 374.592-168.064 374.592-375.382 374.592z" p-id="2170"></path><path d="M514.029 767.816c-99.337 0-188.031-54.286-251.889-146.146-10.647-16.703-7.1-33.399 7.094-45.93 14.192-12.529 28.384-8.349 39.025 8.349 49.67 75.164 124.174 116.92 205.77 116.92s163.199-45.93 209.316-125.268c10.647-16.703 24.833-16.703 39.025-8.349 14.194 12.524 14.194 29.227 7.094 45.93-60.312 96.035-152.553 154.494-255.435 154.494zM464.292 402.959l-45.151-45.151-0.05 0.05-90.45-90.45-45.15 45.15 90.45 90.45-90.45 90.451 45.15 45.15 90.45-90.45 0.05 0.05 45.151-45.151-0.05-0.05zM556.611 402.959l45.151-45.151 0.05 0.05 90.45-90.45 45.15 45.15-90.45 90.45 90.45 90.451-45.15 45.15-90.45-90.45-0.05 0.05-45.151-45.151 0.05-0.05z" p-id="2171"></path></svg></div>
                                         </div>
+                                    </div>
+                                    <div class="vextra-area">
+                                        <div class="vsmile-icons" style="display:none"></div>
+                                        <div class="vpreview-text" style="display:none"></div>
                                     </div>
                                 </div>
                                 <section class="auth-section" style="display:none;">
@@ -238,18 +242,6 @@ class Valine {
             _root.el.querySelector('.auth-section').removeAttribute('style');
             _root.el.querySelector('.veditor').focus();
         })
-        let smile_btn = _root.el.querySelector('.vsmile-btn');
-        let smile_icons = _root.el.querySelector('.vsmile-icons');
-        Event.on('click', smile_btn, (e)=>{
-            if (smile_icons.getAttribute('triggered')) {
-                smile_icons.setAttribute('style', 'display:none;');
-                smile_icons.removeAttribute('triggered');
-            }
-            else {
-                smile_icons.removeAttribute('style');
-                smile_icons.setAttribute('triggered', 1);
-            }
-        });
 
         // Query && show comment list
 
@@ -354,7 +346,8 @@ class Valine {
                 let _el = _root.el.querySelector(`.${i}`);
                 inputs[_v] = _el;
                 Event.on('input', _el, (e) => {
-                    defaultComment[_v] = HtmlUtil.encode(_el.value.replace(/(^\s*)|(\s*$)/g, ""));
+                    // defaultComment[_v] = HtmlUtil.encode(_el.value.replace(/(^\s*)|(\s*$)/g, ""));
+                    defaultComment[_v] = _el.value;
                 });
             }
         }
@@ -391,6 +384,14 @@ class Valine {
             defaultComment['rid'] = '';
             defaultComment['nick'] = '访客';
             getCache();
+            if (smile_icons.getAttribute('triggered')) {
+                smile_icons.setAttribute('style', 'display:none;');
+                smile_icons.removeAttribute('triggered');
+            }
+            if (preview_text.getAttribute('triggered')) {
+                preview_text.setAttribute('style', 'display:none;');
+                preview_text.removeAttribute('triggered');
+            }
         }
 
         // submit
@@ -412,9 +413,9 @@ class Valine {
                 defaultComment['nick'] = '访客';
             }
             // replace smiles
-            defaultComment.comment = defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `![](${option.emoticon_url}/$1)`);
+            defaultComment.comment = defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${option.emoticon_url}/$1" alt="$1" style="height: 32px;">`);
             // render markdown
-            defaultComment.comment = md.render(HtmlUtil.decode(defaultComment.comment));
+            defaultComment.comment = md(defaultComment.comment);
             let idx = defaultComment.comment.indexOf(defaultComment.at);
             if (idx > -1 && defaultComment.at != '') {
                 let at = `<a class="at" href='#${defaultComment.rid}'>${defaultComment.at}</a>`;
@@ -447,6 +448,46 @@ class Valine {
                 commitEvt();
             }
         }
+
+        let smile_btn = _root.el.querySelector('.vemoji-btn');
+        let smile_icons = _root.el.querySelector('.vsmile-icons');
+        Event.on('click', smile_btn, (e)=>{
+            if (preview_text.getAttribute('triggered')) {
+                preview_text.setAttribute('style', 'display:none;');
+                preview_text.removeAttribute('triggered');
+            }
+            if (smile_icons.getAttribute('triggered')) {
+                smile_icons.setAttribute('style', 'display:none;');
+                smile_icons.removeAttribute('triggered');
+            }
+            else {
+                smile_icons.removeAttribute('style');
+                smile_icons.setAttribute('triggered', 1);
+            }
+        });
+
+        let preview_btn = _root.el.querySelector('.vpreview-btn');
+        let preview_text = _root.el.querySelector('.vpreview-text');
+        Event.on('click', preview_btn, (e)=>{
+            if (smile_icons.getAttribute('triggered')) {
+                smile_icons.setAttribute('style', 'display:none;');
+                smile_icons.removeAttribute('triggered');
+            }
+            if (preview_text.getAttribute('triggered')) {
+                preview_text.setAttribute('style', 'display:none;');
+                preview_text.removeAttribute('triggered');
+            }
+            else {
+                if (defaultComment.comment == '') {
+                    inputs['comment'].focus();
+                    return;
+                }
+                // render markdown
+                preview_text.innerHTML = md(defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${option.emoticon_url}/$1" alt="$1" style="height: 32px;">`));
+                preview_text.removeAttribute('style');
+                preview_text.setAttribute('triggered', 1);
+            }
+        });
 
         // setting access
         let getAcl = () => {

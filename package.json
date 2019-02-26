@@ -51,7 +51,7 @@
     "dependencies": {
         "babel": "^6.23.0",
         "blueimp-md5": "^2.8.0",
-        "markdown-it": "^8.4.2",
+        "marked": "^0.6.1",
         "source-map": "^0.5.6"
     }
 }
