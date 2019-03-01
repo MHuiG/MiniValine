@@ -8,6 +8,11 @@
     color: #3c484e;
     transition: all .3s ease;
   }
+  .vemoticon-img {
+    display: inline-block;
+    max-height: 32px;
+    margin: 0 2px;
+  }
   .vwrap {
     overflow: hidden;
     position: relative;
@@ -244,6 +249,7 @@
   a {
     text-decoration: none;
     color: #3eb0ef;
+    border: none;
     &:hover {
       // color: #3eb0ef;
     }

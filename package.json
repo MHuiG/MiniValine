@@ -52,6 +52,7 @@
         "babel": "^6.23.0",
         "blueimp-md5": "^2.8.0",
         "marked": "^0.6.1",
-        "source-map": "^0.5.6"
+        "source-map": "^0.5.6",
+        "xss": "^1.0.3"
     }
 }
