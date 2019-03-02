@@ -357,10 +357,6 @@
         width: 3em;
         position: relative;
         border-radius: 50%;
-        &:hover {
-          transform: rotate(1turn);
-          -webkit-transform: rotate(1turn);
-        }
       }
       .text-wrapper{
         overflow: visible;

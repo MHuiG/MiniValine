@@ -4,7 +4,6 @@ var xss = require('xss');
 var crypto = require('blueimp-md5');
 
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
-var EMPTY_EMAIL_HASH = 'd41d8cd98f00b204e9800998ecf8427e';
 var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e';
 
 
@@ -303,8 +302,8 @@ class Valine {
             let _vcard = document.createElement('li');
             _vcard.setAttribute('class', 'vcard');
             _vcard.setAttribute('id', ret.id);
-            let emailHash = ret.get('emailHash') == EMPTY_EMAIL_HASH ? DEFAULT_EMAIL_HASH : ret.get('emailHash')
-            let gravatar_url = GRAVATAR_BASE_URL + emailHash + '?size=80';
+            let emailHash = ret.get('emailHash')
+            let gravatar_url = GRAVATAR_BASE_URL + emailHash + '?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80';
             // language=HTML
             _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
                                         <section class="text-wrapper">
@@ -366,7 +365,7 @@ class Valine {
                 }
                 if (s['mail'] != '') {
                     let el = _root.el.querySelector('.visitor_avatar');
-                    el.setAttribute('src', GRAVATAR_BASE_URL + crypto(s['mail'].toLowerCase().trim()) + '?size=80');
+                    el.setAttribute('src', GRAVATAR_BASE_URL + crypto(s['mail'].toLowerCase().trim()) + '?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80');
                 }
             }
         }
