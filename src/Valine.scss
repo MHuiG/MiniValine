@@ -112,6 +112,7 @@
         border: none;
         resize: none;
         min-height: 6em;
+        margin: 0;
         &:focus {
           border-color: #c4c8cb;
           outline: 0
@@ -331,11 +332,12 @@
         background: #111 !important;
       }
       .vat {
-        margin: -2em 0 0;
+        margin: -2.1em 0 0;
+        float: right;
         background: transparent;
         color: #ffffff;
         padding: .2em 1em;
-        line-height: 1.6;
+        line-height: 1.2;
         cursor: pointer;
         word-break: keep-all;
         white-space: nowrap;
@@ -361,13 +363,12 @@
         }
       }
       .text-wrapper{
-        overflow: hidden;
+        overflow: visible;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 100%;
         .vhead {
-          overflow: visible;
           line-height: 1;
           margin-bottom: 1em;
           .vname {
