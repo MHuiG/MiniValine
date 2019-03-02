@@ -12,7 +12,7 @@ var defaultComment = {
     comment: '',
     rid: '',
     at: '',
-    nick: '访客',
+    nick: '',
     mail: '',
     link: '',
     ua: navigator.userAgent,
@@ -48,7 +48,7 @@ class Valine {
         let _root = this;
         let av = option.av || AV;
         // disable_av_init = option.disable_av_init || false;
-        defaultComment['url'] = option.url || location.pathname;
+        defaultComment['url'] = option.pathname || location.pathname;
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
             if (toString.call(el) != '[object HTMLDivElement]') {
@@ -386,7 +386,7 @@ class Valine {
                 }
             }
             defaultComment['rid'] = '';
-            defaultComment['nick'] = '访客';
+            defaultComment['nick'] = '';
             getCache();
             if (smile_icons.getAttribute('triggered')) {
                 smile_icons.setAttribute('style', 'display:none;');
@@ -414,7 +414,8 @@ class Valine {
                 return;
             }
             if (defaultComment.nick == '') {
-                defaultComment['nick'] = '访客';
+                inputs['nick'].focus();
+                return;
             }
             // render markdown
             defaultComment.comment = xss(md(defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, 
@@ -436,6 +437,7 @@ class Valine {
             let linkRet = check.link(defaultComment.link);
             defaultComment['mail'] = mailRet.k ? mailRet.v : '';
             defaultComment['link'] = linkRet.k ? linkRet.v : '';
+
             if (!mailRet.k && !linkRet.k) {
                 _root.alert.show({
                     type: 0,
