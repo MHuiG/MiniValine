@@ -20,7 +20,7 @@ var defaultComment = {
     pin: 0
 };
 
-var av_init = true;
+var disable_av_init = false;
 
 const toString = {}.toString;
 const store = localStorage;
@@ -47,7 +47,7 @@ class Valine {
     init(option) {
         let _root = this;
         let av = option.av || AV;
-        av_init = option.av_init || true;
+        // disable_av_init = option.disable_av_init || false;
         defaultComment['url'] = option.url || location.pathname;
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
@@ -109,23 +109,22 @@ class Valine {
 
             // load smiles image
             let _smile_wrapper = _root.el.querySelector('.vsmile-icons');            
-            let smile_names = option.emoticon_list || ["mrgreen", "neutral", "twisted", "arrow", "eek", "smile", "confused", "cool", "evil", "biggrin", "idea", "redface", "razz", "rolleyes", "wink", "cry", "surprised", "lol", "mad", "sad", "exclaim", "question"];
+            let smile_names = option.emoticon_list || [];
             for(let i in smile_names) {
                 let img = document.createElement('img');
                 img.setAttribute('src', `${option.emoticon_url}/${smile_names[i]}`);
                 _smile_wrapper.appendChild(img) ;
             }
-            if (av_init) {
+            if (!disable_av_init) {
                 av.init({
                     appId: option.app_id || option.appId,
                     appKey: option.app_key || option.appKey
                 });
-                av_init = false;
+                disable_av_init = true;
             }
             _root.v = av;
 
         } catch (ex) {
-            av_init = true;
             let issue = 'https://github.com/DesertsP/Valine/issues';
             if (_root.el) _root.nodata.show(`<pre style="color:red;text-align:left;">${ex}<br>Valine:<b>${_root.version}</b><br>反馈：${issue}</pre>`);
             else console && console.log(`%c${ex}\n%cValine%c${_root.version} ${issue}`, 'color:red;', 'background:#000;padding:5px;line-height:30px;color:#fff;', 'background:#456;line-height:30px;padding:5px;color:#fff;');
