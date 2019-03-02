@@ -1,6 +1,6 @@
 require('./Valine.scss');
 var md = require('marked');
-
+var xss = require('xss');
 var crypto = require('blueimp-md5');
 
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
@@ -413,10 +413,16 @@ class Valine {
             if (defaultComment.nick == '') {
                 defaultComment['nick'] = '访客';
             }
-            // replace smiles
-            defaultComment.comment = defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${option.emoticon_url}/$1" alt="$1" style="height: 32px;">`);
             // render markdown
-            defaultComment.comment = md(defaultComment.comment);
+            defaultComment.comment = xss(md(defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, 
+                                            `<img src="${option.emoticon_url}/$1" alt="$1" class="vemoticon-img">`)),
+                                            {
+                                                onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+                                                if (name === 'class') {
+                                                    return name + '="' + xss.escapeAttrValue(value) + '"';
+                                                }
+                                                }
+                                            });
             let idx = defaultComment.comment.indexOf(defaultComment.at);
             if (idx > -1 && defaultComment.at != '') {
                 let at = `<a class="at" href='#${defaultComment.rid}'>${defaultComment.at}</a>`;
@@ -484,7 +490,15 @@ class Valine {
                     return;
                 }
                 // render markdown
-                preview_text.innerHTML = md(defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${option.emoticon_url}/$1" alt="$1" style="height: 32px;">`));
+                preview_text.innerHTML = xss(md(defaultComment.comment.replace(/!\(:(.*?\.\w+):\)/g, 
+                                                `<img src="${option.emoticon_url}/$1" alt="$1" class="vemoticon-img">`)),
+                                                {
+                                                    onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+                                                      if (name === 'class') {
+                                                        return name + '="' + xss.escapeAttrValue(value) + '"';
+                                                      }
+                                                    }
+                                                  });
                 preview_text.removeAttribute('style');
                 preview_text.setAttribute('triggered', 1);
             }
