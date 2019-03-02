@@ -20,6 +20,8 @@ const defaultComment = {
     pin: 0
 };
 
+const av_init = true;
+
 const toString = {}.toString;
 const store = localStorage;
 
@@ -32,7 +34,7 @@ class Valine {
     constructor(option) {
         let _root = this;
         // version
-        _root.version = '1.1.7';
+        _root.version = '1.1.8';
         getIp();
         // Valine init
         !!option && _root.init(option);
@@ -45,7 +47,8 @@ class Valine {
     init(option) {
         let _root = this;
         let av = option.av || AV;
-        let av_init = option.av_init || true;
+        av_init = option.av_init || true;
+        defaultComment['url'] = option.url || location.pathname;
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
             if (toString.call(el) != '[object HTMLDivElement]') {
@@ -117,10 +120,12 @@ class Valine {
                     appId: option.app_id || option.appId,
                     appKey: option.app_key || option.appKey
                 });
+                av_init = false;
             }
             _root.v = av;
 
         } catch (ex) {
+            av_init = true;
             let issue = 'https://github.com/DesertsP/Valine/issues';
             if (_root.el) _root.nodata.show(`<pre style="color:red;text-align:left;">${ex}<br>Valine:<b>${_root.version}</b><br>反馈：${issue}</pre>`);
             else console && console.log(`%c${ex}\n%cValine%c${_root.version} ${issue}`, 'color:red;', 'background:#000;padding:5px;line-height:30px;color:#fff;', 'background:#456;line-height:30px;padding:5px;color:#fff;');
