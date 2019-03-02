@@ -7,7 +7,7 @@ var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
 var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e';
 
 
-const defaultComment = {
+var defaultComment = {
     ip: '',
     comment: '',
     rid: '',
@@ -20,7 +20,7 @@ const defaultComment = {
     pin: 0
 };
 
-const av_init = true;
+var av_init = true;
 
 const toString = {}.toString;
 const store = localStorage;
