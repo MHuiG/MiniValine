@@ -45,7 +45,8 @@ class Valine {
      */
     init(option) {
         let _root = this;
-        let av = option.av || _root.v;
+        let av = option.av || AV;
+        let av_init = option.av_init || true;
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
             if (toString.call(el) != '[object HTMLDivElement]') {
@@ -112,14 +113,16 @@ class Valine {
                 img.setAttribute('src', `${option.emoticon_url}/${smile_names[i]}`);
                 _smile_wrapper.appendChild(img) ;
             }
-            av.init({
-                appId: option.app_id || option.appId,
-                appKey: option.app_key || option.appKey
-            });
+            if (av_init) {
+                av.init({
+                    appId: option.app_id || option.appId,
+                    appKey: option.app_key || option.appKey
+                });
+            }
             _root.v = av;
 
         } catch (ex) {
-            let issue = 'https://github.com/panjunwen/Valine/issues';
+            let issue = 'https://github.com/DesertsP/Valine/issues';
             if (_root.el) _root.nodata.show(`<pre style="color:red;text-align:left;">${ex}<br>Valine:<b>${_root.version}</b><br>反馈：${issue}</pre>`);
             else console && console.log(`%c${ex}\n%cValine%c${_root.version} ${issue}`, 'color:red;', 'background:#000;padding:5px;line-height:30px;color:#fff;', 'background:#456;line-height:30px;padding:5px;color:#fff;');
             return;
@@ -306,15 +309,13 @@ class Valine {
             _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
                                         <section class="text-wrapper">
                                             <div class="vhead" >
-                                                <a href="${ret.get('link') || 'javascript:void(0);'}" target="_blank" rel="nofollow" > ${ret.get("nick")}</a>
+                                                ${ret.get('link') ? `<a class="vname" href="${ ret.get('link') }" target="_blank" rel="nofollow" > ${ret.get("nick")}</a>` : `<span class="vname">${ret.get("nick")}</span>`}
                                                 <span class="spacer">•</span>
                                                 <span class="vtime">${timeAgo(ret.get("createdAt"))}</span>
+                                                <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
                                             </div>
                                             <div class="vcomment">${ret.get('comment')}</div>
-                                            
-                                        </section>
-                                        <div class="vfooter">
-                                        <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>`;
+                                        </section>`;
             let _vlist = _root.el.querySelector('.vlist');
             let _vlis = _vlist.querySelectorAll('li');
             let _vat = _vcard.querySelector('.vat');
