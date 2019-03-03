@@ -48,7 +48,7 @@ class Valine {
         let _root = this;
         let av = option.av || AV;
         // disable_av_init = option.disable_av_init || false;
-        defaultComment['url'] = option.pathname || location.pathname;
+        defaultComment['url'] = option.pathname || location.pathname.replace(/\/$/, '');
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
             if (toString.call(el) != '[object HTMLDivElement]') {
@@ -197,8 +197,11 @@ class Valine {
         }
 
         _root.loading.show();
-        var query = new _root.v.Query('Comment');
-        query.equalTo('url', defaultComment['url']);
+        let query1 = new _root.v.Query('Comment');
+        query1.equalTo('url', defaultComment['url']);
+        let query2 = new _root.v.Query('Comment');
+        query2.equalTo('url', defaultComment['url'] + '/');
+        let query = AV.Query.or(query1, query2);
         query.count().then(function (count) {
             _root.el.querySelector('.count').innerHTML = `${count}`;
             _root.bind(option);
@@ -261,10 +264,13 @@ class Valine {
         };
 
         let commonQuery = () => {
-            let query = new _root.v.Query('Comment');
-            query.select(['nick', 'comment', 'link', 'rid', 'emailHash']);
+            let query1 = new _root.v.Query('Comment');
+            query1.equalTo('url', defaultComment['url']);
+            let query2 = new _root.v.Query('Comment');
+            query2.equalTo('url', defaultComment['url'] + '/');
+            let query = AV.Query.or(query1, query2);
             query.notEqualTo('isSpam', true);
-            query.equalTo('url', defaultComment['url']);
+            query.select(['nick', 'comment', 'link', 'rid', 'emailHash']);
             query.addDescending('createdAt');
             return query;
         };
