@@ -315,16 +315,18 @@ class Valine {
             let emailHash = ret.get('emailHash')
             let gravatar_url = GRAVATAR_BASE_URL + emailHash + '?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80';
             // language=HTML
-            _vcard.innerHTML = `<img class="vavatar" src="${gravatar_url}"/>
-                                        <section class="text-wrapper">
-                                            <div class="vhead" >
-                                                ${ret.get('link') ? `<a class="vname" href="${ ret.get('link') }" target="_blank" rel="nofollow" > ${ret.get("nick")}</a>` : `<span class="vname">${ret.get("nick")}</span>`}
-                                                <span class="spacer">•</span>
-                                                <span class="vtime">${timeAgo(ret.get("createdAt"))}</span>
-                                                <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
-                                            </div>
-                                            <div class="vcomment">${ret.get('comment')}</div>
-                                        </section>`;
+            _vcard.innerHTML = `<div class="vhead" >
+                                    <img class="vavatar" src="${gravatar_url}"/>
+                                    <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
+                                    <div class="vmeta-info"> <div>
+                                    ${ret.get('link') ? `<a class="vname" href="${ ret.get('link') }" target="_blank" rel="nofollow" > ${ret.get("nick")}</a>` : `<span class="vname">${ret.get("nick")}</span>`}
+                                    </div><div class="vtime">${timeAgo(ret.get("createdAt"))}</div>
+                                    </div>
+                                </div>
+                                <section class="text-wrapper">
+                                    <div class="vcomment">${ret.get('comment')}</div>
+                                </section>
+                                        `;
             let _vlist = _root.el.querySelector('.vlist');
             let _vlis = _vlist.querySelectorAll('li');
             let _vat = _vcard.querySelector('.vat');
