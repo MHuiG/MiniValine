@@ -21,6 +21,8 @@ var defaultComment = {
 };
 
 var disable_av_init = false;
+var MAX_NEST_LEVEL = 3;
+var PAGE_SIZE = 6;
 
 const toString = {}.toString;
 const store = localStorage;
@@ -48,6 +50,8 @@ class Valine {
         let _root = this;
         let av = option.av || AV;
         // disable_av_init = option.disable_av_init || false;
+        MAX_NEST_LEVEL = option.maxNest || MAX_NEST_LEVEL;
+        PAGE_SIZE = option.pageSize || PAGE_SIZE;
         defaultComment['url'] = option.pathname || location.pathname.replace(/\/$/, '');
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
@@ -57,39 +61,41 @@ class Valine {
             _root.el = el;
             _root.el.classList.add('valine');
             let placeholder = option.placeholder || '';
-            let eleHTML = `<div class="vwrap">
-                                <div class="textarea-wrapper">
-                                    <div class="comment_trigger">
-                                        <div class="avatar"><img class="visitor_avatar" src="${GRAVATAR_BASE_URL + DEFAULT_EMAIL_HASH + '?size=80'}"></div>
-                                        <div class="trigger_title">${placeholder}</div>
-                                    </div>
-                                    <div class="veditor-area">
-                                        <textarea placeholder="" class="veditor"></textarea>
-                                        <div class="btn-wrap">
-                                            <div class="vpreview-btn vfunction-btn" title="预览"><svg t="1551146416896" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2051" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5em" height="1.5em"><defs><style type="text/css"></style></defs><path d="M862.516 161.07l44.62 44.38-286.303 288.866-45.668-45.615L862.516 161.07z m1.233 1.233" p-id="2052"></path><path d="M832.162 959.558H128.025V191.784h512.099v64.169H192.037V895.64h576.112V512.127h64.012v447.431z m0.833 0.533" p-id="2053"></path><path d="M256.05 703.994h384.075v63.919H256.05v-63.919z m0-127.769l320.062-0.069v63.919H256.05v-63.85z m0-128.317h192.037v63.891l-192.037 0.028v-63.919z m0 0" p-id="2054"></path></svg></div>
-                                            <div class="vemoji-btn vfunction-btn" title="表情"><svg t="1551146424708" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2169" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5em" height="1.5em"><defs><style type="text/css"></style></defs><path d="M513.028 63.766c-247.628 0-448.369 200.319-448.369 447.426S265.4 958.617 513.028 958.617s448.369-200.319 448.369-447.426S760.655 63.766 513.028 63.766z m-0.203 823.563c-207.318 0-375.382-167.71-375.382-374.592s168.064-374.592 375.382-374.592 375.382 167.71 375.382 374.592-168.064 374.592-375.382 374.592z" p-id="2170"></path><path d="M514.029 767.816c-99.337 0-188.031-54.286-251.889-146.146-10.647-16.703-7.1-33.399 7.094-45.93 14.192-12.529 28.384-8.349 39.025 8.349 49.67 75.164 124.174 116.92 205.77 116.92s163.199-45.93 209.316-125.268c10.647-16.703 24.833-16.703 39.025-8.349 14.194 12.524 14.194 29.227 7.094 45.93-60.312 96.035-152.553 154.494-255.435 154.494zM464.292 402.959l-45.151-45.151-0.05 0.05-90.45-90.45-45.15 45.15 90.45 90.45-90.45 90.451 45.15 45.15 90.45-90.45 0.05 0.05 45.151-45.151-0.05-0.05zM556.611 402.959l45.151-45.151 0.05 0.05 90.45-90.45 45.15 45.15-90.45 90.45 90.45 90.451-45.15 45.15-90.45-90.45-0.05 0.05-45.151-45.151 0.05-0.05z" p-id="2171"></path></svg></div>
+            let eleHTML = `<div id="vinputs-placeholder">
+                            <div class="vinputs-wrap">
+                                <p class="vcancel-comment-reply" href="#" rel="nofollow" style="display:none">取消回复</p>
+                                <div class="vinputs-area">
+                                    <div class="textarea-wrapper">
+                                        <div class="comment_trigger">
+                                            <div class="avatar"><img class="visitor_avatar" src="${GRAVATAR_BASE_URL + DEFAULT_EMAIL_HASH + '?size=80'}"></div>
+                                            <div class="trigger_title">${placeholder}</div>
+                                        </div>
+                                        <div class="veditor-area">
+                                            <textarea placeholder="" class="veditor"></textarea>
+                                            <div class="btn-wrap">
+                                                <div class="vpreview-btn vfunction-btn" title="预览"><svg t="1551146416896" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2051" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5em" height="1.5em"><defs><style type="text/css"></style></defs><path d="M862.516 161.07l44.62 44.38-286.303 288.866-45.668-45.615L862.516 161.07z m1.233 1.233" p-id="2052"></path><path d="M832.162 959.558H128.025V191.784h512.099v64.169H192.037V895.64h576.112V512.127h64.012v447.431z m0.833 0.533" p-id="2053"></path><path d="M256.05 703.994h384.075v63.919H256.05v-63.919z m0-127.769l320.062-0.069v63.919H256.05v-63.85z m0-128.317h192.037v63.891l-192.037 0.028v-63.919z m0 0" p-id="2054"></path></svg></div>
+                                                <div class="vemoji-btn vfunction-btn" title="表情"><svg t="1551146424708" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2169" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5em" height="1.5em"><defs><style type="text/css"></style></defs><path d="M513.028 63.766c-247.628 0-448.369 200.319-448.369 447.426S265.4 958.617 513.028 958.617s448.369-200.319 448.369-447.426S760.655 63.766 513.028 63.766z m-0.203 823.563c-207.318 0-375.382-167.71-375.382-374.592s168.064-374.592 375.382-374.592 375.382 167.71 375.382 374.592-168.064 374.592-375.382 374.592z" p-id="2170"></path><path d="M514.029 767.816c-99.337 0-188.031-54.286-251.889-146.146-10.647-16.703-7.1-33.399 7.094-45.93 14.192-12.529 28.384-8.349 39.025 8.349 49.67 75.164 124.174 116.92 205.77 116.92s163.199-45.93 209.316-125.268c10.647-16.703 24.833-16.703 39.025-8.349 14.194 12.524 14.194 29.227 7.094 45.93-60.312 96.035-152.553 154.494-255.435 154.494zM464.292 402.959l-45.151-45.151-0.05 0.05-90.45-90.45-45.15 45.15 90.45 90.45-90.45 90.451 45.15 45.15 90.45-90.45 0.05 0.05 45.151-45.151-0.05-0.05zM556.611 402.959l45.151-45.151 0.05 0.05 90.45-90.45 45.15 45.15-90.45 90.45 90.45 90.451-45.15 45.15-90.45-90.45-0.05 0.05-45.151-45.151 0.05-0.05z" p-id="2171"></path></svg></div>
+                                            </div>
+                                        </div>
+                                        <div class="vextra-area">
+                                            <div class="vsmile-icons" style="display:none"></div>
+                                            <div class="vpreview-text" style="display:none"></div>
                                         </div>
                                     </div>
-                                    <div class="vextra-area">
-                                        <div class="vsmile-icons" style="display:none"></div>
-                                        <div class="vpreview-text" style="display:none"></div>
-                                    </div>
+                                    <section class="auth-section" style="display:none;">
+                                        <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="昵称" value=""></div>
+                                        <div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="邮箱" value=""></div>
+                                        <div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="网站 (可选)" value=""></div>
+                                        <div class="post-action"><button type="button" class="vsubmit">提交</button></div>
+                                    </section>
+                                    <div style="display:none;" class="vmark"></div>
                                 </div>
-                                <section class="auth-section" style="display:none;">
-                                    <div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="昵称" value=""></div>
-                                    <div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="邮箱" value=""></div>
-                                    <div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="网站 (可选)" value=""></div>
-                                    <div class="post-action"><button type="button" class="vsubmit">提交</button></div>
-                                </section>
-                                <div style="display:none;" class="vmark"></div>
+                                <div class="vsubmitting" style="display:none;"></div>
+                            </div>
                            </div>
                            <div class="info">
                                 <div class="col">已有 <span class="count">0</span> 条评论</div>
-                                <div class="col power float-right">
-                                    <a href="https://segmentfault.com/markdown" target="_blank"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a>
-                                </div>
                            </div>
-                           <div class="vsubmitting" style="display:none;"></div>
                            <ul class="vlist"><li class="vempty"></li></ul>
                            <div class="vloading"></div>
                            <div class="vpage txt-center"></div>`;
@@ -252,6 +258,11 @@ class Valine {
             _root.el.querySelector('.veditor').focus();
         })
 
+        // cancel reply
+        Event.on('click', _root.el.querySelector('.vcancel-comment-reply'), (e)=>{
+            _root.reset();
+        });
+
         // Query && show comment list
 
         let expandEvt = (el) => {
@@ -263,40 +274,45 @@ class Valine {
             }
         };
 
-        let commonQuery = () => {
+        let commonQuery = (rid='') => {
             let query1 = new _root.v.Query('Comment');
             query1.equalTo('url', defaultComment['url']);
             let query2 = new _root.v.Query('Comment');
             query2.equalTo('url', defaultComment['url'] + '/');
             let query = AV.Query.or(query1, query2);
             query.notEqualTo('isSpam', true);
+            query.equalTo('rid', rid);
             query.select(['nick', 'comment', 'link', 'rid', 'emailHash']);
             query.addDescending('createdAt');
             return query;
         };
 
         var num = 1;
-        let query = (n = 1) => {
+        var parent_count = 0;
+        
+        let parentQuery = (page_num = 1) => {
             _root.loading.show();
-            var size = 10;
-            var count = Number(_root.el.querySelector('.count').innerText);
+            var size = PAGE_SIZE;
+            // var count = Number(_root.el.querySelector('.count').innerText);
             let cq = commonQuery();
             cq.limit(size);
-            cq.skip((n - 1) * size);
+            cq.skip((page_num - 1) * size);
             cq.find().then(rets => {
                 let len = rets.length;
                 if (len) {
                     // _root.el.querySelector('.vlist').innerHTML = '';
                     for (let i = 0; i < len; i++) {
-                        insertComment(rets[i], false)
+                        let _parent_vcard = insertComment(rets[i], _root.el.querySelector('.vlist'), false);
+                        _parent_vcard.setAttribute('style', 'margin-bottom: .5em');
+                        nestQuery(_parent_vcard);
                     }
                     var _vpage = _root.el.querySelector('.vpage');
-                    _vpage.innerHTML = size * n < count ? `<div id="vmore" class="more">加载更多评论（剩余${count - size * n}/${count}条）</div>` : '';
+                    _vpage.innerHTML = size * page_num < parent_count ? `<div id="vmore" class="more">加载更多</div>` : '';
                     var _vmore = _vpage.querySelector('#vmore');
                     if (_vmore) {
                         Event.on('click', _vmore, (e) => {
                             _vpage.innerHTML = '';
-                            query(++num)
+                            parentQuery(++num);
                         })
                     }
                 }
@@ -305,31 +321,81 @@ class Valine {
                 console.log(ex);
                 _root.loading.hide();
             })
-        }
-        query();
+        };
+        commonQuery().count().then(count=>{
+            parent_count = count;
+            parentQuery(1);
+        });
 
-        let insertComment = (ret, top=true) => {
+        // 无限嵌套加载
+        let nestQuery = (vcard, level=1) => {
+            var _vchild = vcard.querySelector('.vcomment-children');
+            var _vlist = _vchild.querySelector('.vlist');
+            var _id = vcard.getAttribute('id');
+            let q = commonQuery(_id);
+            if (level <= 0) {
+                _vchild.setAttribute('style', 'margin-left: 0 !important');
+            }
+            if (level >= MAX_NEST_LEVEL) {
+                q.count().then(function (count) {
+                    if (count > 0) {
+                        var _show_children_wrapper = _vchild.querySelector('.vshow-children-wrapper');
+                        _show_children_wrapper.setAttribute('style', 'display: block !important;');
+                        _show_children_wrapper.innerHTML = `<span class="vshow-children" rid="${_id}">加载更多回复</span>`;
+                        var _show_children = _show_children_wrapper.querySelector('.vshow-children');
+                        Event.on('click', _show_children, (e) => {
+                            _show_children_wrapper.setAttribute('style', 'display: none !important;');
+                            nestQuery(vcard, -1000);    // 加载剩余全部回复
+                        })
+
+                    }
+                }, function (error) {
+                    console.log(error);
+                });
+                return;
+            }
+            q.limit(1000);
+            q.find().then(rets => {
+                let len = rets.length;
+                if (len) {
+                    for (let i = 0; i < len; i++) {
+                        nestQuery(insertComment(rets[i], _vlist, true), level+1);
+                    }
+                }
+            }).catch(ex => {
+                console.log(ex);
+                _root.loading.hide();
+            })
+        };
+
+        let insertComment = (comment, vlist=null, top=true) => {
             let _vcard = document.createElement('li');
             _vcard.setAttribute('class', 'vcard');
-            _vcard.setAttribute('id', ret.id);
-            let emailHash = ret.get('emailHash')
+            _vcard.setAttribute('id', comment.id);
+            let emailHash = comment.get('emailHash');
             let gravatar_url = GRAVATAR_BASE_URL + emailHash + '?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80';
             // language=HTML
-            _vcard.innerHTML = `<div class="vhead" >
-                                    <img class="vavatar" src="${gravatar_url}"/>
-                                    <a rid='${ret.id}' at='@${ret.get('nick')}' class="vat">回复</a>
-                                    <div class="vmeta-info"> <div>
-                                    ${ret.get('link') ? `<a class="vname" href="${ ret.get('link') }" target="_blank" rel="nofollow" > ${ret.get("nick")}</a>` : `<span class="vname">${ret.get("nick")}</span>`}
-                                    </div><div class="vtime">${timeAgo(ret.get("createdAt"))}</div>
+            _vcard.innerHTML = `<div class="vcomment-body">
+                                    <div class="vhead" >
+                                        <img class="vavatar" src="${gravatar_url}"/>
+                                        <a rid='${comment.id}' at='@${comment.get('nick')}' class="vat" id="at-${comment.id}">回复</a>
+                                        <div class="vmeta-info">
+                                            ${comment.get('link') ? `<a class="vname" href="${ comment.get('link') }" target="_blank" rel="nofollow" > ${comment.get("nick")}</a>` : `<span class="vname">${comment.get("nick")}</span>`}
+                                            <span class="spacer">|</span>
+                                            <span class="vtime">${timeAgo(comment.get("createdAt"))}</span>
+                                        </div>
                                     </div>
+                                    <section class="text-wrapper"  id="comment-${comment.id}">
+                                        <div class="vcomment">${comment.get('comment')}</div>
+                                    </section>
                                 </div>
-                                <section class="text-wrapper">
-                                    <div class="vcomment">${ret.get('comment')}</div>
-                                </section>
-                                        `;
-            let _vlist = _root.el.querySelector('.vlist');
+                                <div class="vcomment-children">
+                                    <div class="vshow-children-wrapper" style="display: none"></div>
+                                    <ul class="vlist" id="children-list-${comment.id}"></ul>
+                                </div>`;
+            let _vlist = vlist || _root.el.querySelector('.vlist');
             let _vlis = _vlist.querySelectorAll('li');
-            let _vat = _vcard.querySelector('.vat');
+            // let _vat = _vcard.querySelector('.vat');
             let _as = _vcard.querySelectorAll('a');
             for (let i = 0, len = _as.length; i < len; i++) {
                 let item = _as[i];
@@ -342,8 +408,9 @@ class Valine {
             else _vlist.insertBefore(_vcard, _vlis[0]);
             let _vcontent = _vcard.querySelector('.vcomment');
             expandEvt(_vcontent);
-            bindAtEvt(_vat);
-        }
+            bindAtEvt(_vcard);
+            return _vcard;
+        };
 
         let mapping = {
             veditor: "comment",
@@ -380,7 +447,7 @@ class Valine {
                     el.setAttribute('src', GRAVATAR_BASE_URL + crypto(s['mail'].toLowerCase().trim()) + '?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80');
                 }
             }
-        }
+        };
         getCache();
 
         // reset form
@@ -404,6 +471,8 @@ class Valine {
                 preview_text.setAttribute('style', 'display:none;');
                 preview_text.removeAttribute('triggered');
             }
+            _root.el.querySelector('.vcancel-comment-reply').setAttribute('style', 'display:none');
+            _root.el.querySelector('#vinputs-placeholder').appendChild(_root.el.querySelector('.vinputs-wrap'));
         }
 
         // submit
@@ -467,7 +536,7 @@ class Valine {
             } else {
                 commitEvt();
             }
-        }
+        };
 
         let smile_btn = _root.el.querySelector('.vemoji-btn');
         let smile_icons = _root.el.querySelector('.vsmile-icons');
@@ -523,7 +592,7 @@ class Valine {
             acl.setPublicReadAccess(true);
             acl.setPublicWriteAccess(false);
             return acl;
-        }
+        };
 
         let commitEvt = () => {
             submitBtn.setAttribute('disabled', true);
@@ -550,7 +619,14 @@ class Valine {
                 }));
                 let _count = _root.el.querySelector('.count');
                 _count.innerText = Number(_count.innerText) + 1;
-                insertComment(commentItem, true);
+                if (defaultComment['rid'] === '') {
+                    insertComment(commentItem, null, true);
+                } else {
+                    // get children vlist
+                    let _vlist = _root.el.querySelector('#children-list-' + defaultComment['rid']);
+                    insertComment(commentItem, _vlist, true);
+                }
+
                 submitBtn.removeAttribute('disabled');
                 _root.submitting.hide();
                 _root.nodata.hide();
@@ -558,23 +634,30 @@ class Valine {
             }).catch(ex => {
                 _root.submitting.hide();
             })
-        }
+        };
 
         // at event
-        let bindAtEvt = (el) => {
-            Event.on('click', el, (e) => {
-                let at = el.getAttribute('at');
-                let rid = el.getAttribute('rid');
+        let bindAtEvt = (vcard) => {
+            let _id = vcard.getAttribute('id');
+            let _vat = vcard.querySelector('#at-' + _id);
+            Event.on('click', _vat, (e) => {
+                let at = _vat.getAttribute('at');
+                let rid = _vat.getAttribute('rid');
                 defaultComment['rid'] = rid;
                 defaultComment['at'] = at;
                 inputs['comment'].value = `${at} ，` + inputs['comment'].value;
-                inputs['comment'].focus();
+                // move inputs
+                let _comment_el = vcard.querySelector('#comment-' + _id);
+                _comment_el.appendChild(_root.el.querySelector('.vinputs-wrap'));
+                _root.el.querySelector('.vcancel-comment-reply').removeAttribute('style');
                 // remove comment trigger
                 _root.el.querySelector('.comment_trigger').setAttribute('style', 'display:none');
                 _root.el.querySelector('.auth-section').removeAttribute('style');
                 _root.el.querySelector('.veditor').focus();
+                // focus
+                inputs['comment'].focus();
             })
-        }
+        };
 
         Event.off('click', submitBtn, submitEvt);
         Event.on('click', submitBtn, submitEvt);
