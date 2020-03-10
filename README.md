@@ -13,13 +13,6 @@
 - Support lazy loading picture emoji.
 - Support for code highlighting.
 
-**Table of content**
-- [Installation](#installation)
-- [Usage](#Usage)
-- [Contributors](#contributors)
-- [Features](#features)
-- [License](#license)
-
 ## Installation
 **1. Quick Installation**   
 
