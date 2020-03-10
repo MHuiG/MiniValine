@@ -9,9 +9,9 @@
 - Safe by default.
 - Easy to customize.
 - No server-side implementation.
-- Support part of the markdown syntax.
-- Support lazy loading picture emoji
-- Support for code highlighting
+- Support markdown.
+- Support lazy loading picture emoji.
+- Support for code highlighting.
 
 **Table of content**
 - [Installation](#installation)
@@ -59,8 +59,7 @@
 ```
 
 ## Features
-- Support for full markdown syntax
-- Syntax highlighting
+- Support for MathJax
 - And more...
 
 ## License
