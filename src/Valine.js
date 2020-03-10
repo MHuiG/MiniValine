@@ -1,11 +1,24 @@
+import 'lazysizes';
 require('./Valine.scss');
+require('highlight.js/styles/github.css');
+
 var md = require('marked');
 var xss = require('xss');
 var crypto = require('blueimp-md5');
-const format = require('string-format');
-
+var format = require('string-format');
+var getJSON = require('get-json');
+var Utils = require('./utils/domUtils');
+var AVSdkUri = 'https://cdn.jsdelivr.net/npm/leancloud-storage@4/dist/av-min.js';
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
 var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e';
+
+
+md.setOptions({
+    highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value
+    }
+})
+
 
 
 var i18n_set = {
@@ -93,10 +106,20 @@ class Valine {
     constructor(option) {
         let _root = this;
         // version
-        _root.version = '1.1.8';
+        _root.version = '1.2.2';
         getIp();
         // Valine init
-        !!option && _root.init(option);
+        //!!option && _root.init(option);
+		if(typeof AV === 'undefined') {
+        Utils.dynamicLoadSource('script', {'src':AVSdkUri}, () => {
+            if (typeof AV === 'undefined') {
+                setTimeout(() => {
+                    _root.constructor(option);
+                }, 300)
+                return;
+            } else !!option && _root.init(option);
+        })
+		} else !!option && _root.init(option);
     }
 
     /**
@@ -105,7 +128,6 @@ class Valine {
      */
     init(option) {
         let _root = this;
-        let av = option.av || AV;
         // disable_av_init = option.disable_av_init || false;
         MAX_NEST_LEVEL = option.maxNest || MAX_NEST_LEVEL;
         PAGE_SIZE = option.pageSize || PAGE_SIZE;
@@ -115,7 +137,7 @@ class Valine {
         try {
             let el = toString.call(option.el) === "[object HTMLDivElement]" ? option.el : document.querySelectorAll(option.el)[0];
             if (toString.call(el) != '[object HTMLDivElement]') {
-                throw `The target element was not found.`;
+                return;
             }
             _root.el = el;
             _root.el.classList.add('valine');
@@ -126,7 +148,7 @@ class Valine {
                                 <div class="vinputs-area">
                                     <div class="textarea-wrapper">
                                         <div class="comment_trigger">
-                                            <div class="avatar"><img class="visitor_avatar" src="${GRAVATAR_BASE_URL + DEFAULT_EMAIL_HASH + '?size=80'}"></div>
+                                            <div class="avatar"><img class="visitor_avatar lazyload" data-src="${GRAVATAR_BASE_URL + DEFAULT_EMAIL_HASH + '?size=80'}"></div>
                                             <div class="trigger_title">${placeholder}</div>
                                         </div>
                                         <div class="veditor-area">
@@ -177,23 +199,42 @@ class Valine {
             let smile_names = option.emoticon_list || [];
             for(let i in smile_names) {
                 let img = document.createElement('img');
-                img.setAttribute('src', `${option.emoticon_url}/${smile_names[i]}`);
+                img.setAttribute('data-src', `${option.emoticon_url}/${smile_names[i]}`);
+                img.setAttribute('class', 'lazyload');
                 _smile_wrapper.appendChild(img) ;
             }
+			
+            // set serverURLs
+            let prefix = 'https://';
+            let serverURLs = '';
+            if (!option['serverURLs']) {
+                switch (option.app_id.slice(-9)) {
+                    // TAB 
+                    case '-9Nh9j0Va':
+                        prefix += 'tab.';
+                        break;
+                    // US
+                    case '-MdYXbMMI':
+                        prefix += 'us.';
+                        break;
+                    default:
+                        break;
+                }
+            }
+            serverURLs = option['serverURLs'] || prefix + 'avoscloud.com';
+
             if (!disable_av_init) {
-                av.init({
+                AV.init({
                     appId: option.app_id || option.appId,
-                    appKey: option.app_key || option.appKey
+                    appKey: option.app_key || option.appKey,
+                    serverURLs: serverURLs
                 });
                 disable_av_init = true;
             }
-            _root.v = av;
+            _root.v = AV;
 
         } catch (ex) {
-            let issue = 'https://github.com/DesertsP/Valine/issues';
-            if (_root.el) _root.nodata.show(`<pre style="color:red;text-align:left;">${ex}<br>Valine:<b>${_root.version}</b><br>feedback：${issue}</pre>`);
-            else console && console.log(`%c${ex}\n%cValine%c${_root.version} ${issue}`, 'color:red;', 'background:#000;padding:5px;line-height:30px;color:#fff;', 'background:#456;line-height:30px;padding:5px;color:#fff;');
-            return;
+			return;
         }
 
         // loading
@@ -211,7 +252,9 @@ class Valine {
                 _root.el.querySelectorAll('.vcard').length === 0 && _root.nodata.show();
             }
         };
-
+		
+        _root.loading.hide();
+		
         let vsubmitting = _root.el.querySelector('.vsubmitting');
         vsubmitting.innerHTML = _spinner;
         _root.submitting = {
@@ -261,19 +304,23 @@ class Valine {
             }
         }
 
-        _root.loading.show();
+
         let query1 = new _root.v.Query('Comment');
         query1.equalTo('url', defaultComment['url']);
         let query2 = new _root.v.Query('Comment');
         query2.equalTo('url', defaultComment['url'] + '/');
         let query = AV.Query.or(query1, query2);
         query.notEqualTo('isSpam', true);
-        query.count().then(function (count) {
-            _root.el.querySelector('.count').innerHTML = `${count}`;
-            _root.bind(option);
-        }, function (error) {
-            console.log(error);
-        });
+        query.count()
+            .then(count => {
+                _root.el.querySelector('.count').innerHTML = count;
+            })
+            .catch(ex => {
+                console.log(ex)
+                _root.el.querySelector('.count').innerHTML=0
+            });
+        _root.bind(option);
+
     }
 
     /**
@@ -446,7 +493,7 @@ class Valine {
             // language=HTML
             _vcard.innerHTML = `<div class="vcomment-body">
                                     <div class="vhead" >
-                                        <img class="vavatar" src="${gravatar_url}"/>
+                                        <img class="vavatar lazyload" data-src="${gravatar_url}"/>
                                         <a rid='${comment.id}' at='@${comment.get('nick')}' class="vat" id="at-${comment.id}">${_root.i18n['reply']}</a>
                                         <div class="vmeta-info">
                                             ${comment.get('link') ? `<a class="vname" href="${ comment.get('link') }" target="_blank" rel="nofollow" > ${comment.get("nick")}</a>` : `<span class="vname">${comment.get("nick")}</span>`}
@@ -823,7 +870,7 @@ const loadJS = function (url, success) {
 };
 
 const getIp = function(){
-    $.getJSON("https://api.ipify.org/?format=json",
+    getJSON("https://api.ipify.org/?format=json",
         function(json) {
             defaultComment['ip'] = json.ip;
         }

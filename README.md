@@ -3,9 +3,7 @@
 [![version](https://img.shields.io/github/release/xCss/Valine.svg?style=flat-square)](https://github.com/xCss/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine) [![build](https://img.shields.io/circleci/project/github/xCss/Valine/master.svg?style=flat-square)](https://circleci.com/gh/xCss/Valine) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat-square)](#donate)  
 > A simple comment system based on Leancloud.  
 ------------------------------
-**[Live Demo](https://panjunwen.github.io/Valine/)**
 
-[中文教程](https://panjunwen.com/diy-a-comment-system/)
 
 - High speed.
 - Safe by default.
@@ -22,12 +20,7 @@
 
 ## Installation
 **1. Quick Installation**   
-> :warning: **You must first reference the package AV in the web page**  
-> `<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>`
-```html
-<script src="./dist/Valine.min.js"></script>
-```
-or
+
 ```html
 <script src="https://panjunwen.github.io/Valine/dist/Valine.min.js"></script>
 ```
@@ -35,13 +28,6 @@ or
 [Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
 [Click here](https://leancloud.cn/dashboard/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
 
-**3. Transfer Your Data**
-
-[Disqus2LeanCloud](http://disqus.panjunwen.com/)
-
-**4. Administration**
-
-[Valine Admin](https://github.com/panjunwen/Valine-Admin)
 
 ## Usage
 ```html
@@ -52,14 +38,12 @@ or
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Valine - A simple comment system based on Leancloud.</title>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <script src="./dist/Valine.min.js"></script>
 </head>
 <body>
     <div class="comment"></div>
     <script>
       new Valine({
-          av: AV,
           el: '#disqus_thread',
           smiles_url: '/smiles',
           app_id: 'Your App ID',
@@ -70,8 +54,6 @@ or
 </body>
 </html>
 ```
-## Contributors
-- [Contributors](https://github.com/panjunwen/Valine/graphs/contributors)
 
 ## Features
 - Support for full markdown syntax
