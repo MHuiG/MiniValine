@@ -22,7 +22,7 @@
 **1. Quick Installation**   
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine@1.2.0/dist/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine/dist/Valine.min.js"></script>
 ```
 **2. Get `App ID`/`App Key` from LeanCloud**  
 [Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Valine - A simple comment system based on Leancloud.</title>
-    <script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine@1.2.0/dist/Valine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine/dist/Valine.min.js"></script>
 </head>
 <body>
     <div class="comment"></div>
