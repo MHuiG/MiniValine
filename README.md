@@ -10,6 +10,8 @@
 - Easy to customize.
 - No server-side implementation.
 - Support part of the markdown syntax.
+- Support lazy loading picture emoji
+- Support for code highlighting
 
 **Table of content**
 - [Installation](#installation)
