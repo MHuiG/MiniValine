@@ -60,6 +60,7 @@
 
 ## Features
 - Support for MathJax
+- Fix bugs
 - And more...
 
 ## License
