@@ -1,6 +1,6 @@
 ![](./src/images/logo.opacity.png)
 # Valine  
-[![version](https://img.shields.io/github/release/xCss/Valine.svg?style=flat-square)](https://github.com/xCss/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine) [![build](https://img.shields.io/circleci/project/github/xCss/Valine/master.svg?style=flat-square)](https://circleci.com/gh/xCss/Valine) [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat-square)](#donate)  
+[![version](https://img.shields.io/github/release/MHuiG/Valine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine)[![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-2.0/)[![Build Status](https://travis-ci.com/MHuiG/Valine.svg?token=Q8kyApUGwG2rRKzWejEY&branch=master)](https://travis-ci.com/MHuiG/Valine)
 > A simple comment system based on Leancloud.  
 ------------------------------
 **[Live Demo](https://mhuig.github.io/Valine/index.html)**
@@ -58,4 +58,4 @@
 
 ## License
 
-[GPL-2.0](https://github.com/xCss/Valine/blob/master/LICENSE)
+[GPL-2.0](https://github.com/MHuiG/Valine/blob/master/LICENSE)
