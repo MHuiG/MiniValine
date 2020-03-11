@@ -1,9 +1,9 @@
-![](./src/images/logo.opacity.png)
+
 # Valine-DH
-[![version](https://img.shields.io/github/release/MHuiG/Valine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-2.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine.svg?branch=master)](https://travis-ci.com/MHuiG/Valine) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![version](https://img.shields.io/github/release/MHuiG/Valine-DH.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-2.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine-DH.svg?branch=master)](https://travis-ci.com/MHuiG/Valine-DH) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 > A simple comment system based on Leancloud.  
 ------------------------------
-**[Live Demo](https://mhuig.github.io/Valine/index.html)**
+**[Live Demo](https://mhuig.github.io/Valine-DH/index.html)**
 
 - High speed.
 - Safe by default.
@@ -18,7 +18,7 @@
 **1. Quick Installation**   
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine/dist/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine-DH/dist/Valine.min.js"></script>
 ```
 **2. Get `App ID`/`App Key` from LeanCloud**  
 [Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
@@ -34,7 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Valine - A simple comment system based on Leancloud.</title>
-    <script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine/dist/Valine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine-DH/dist/Valine.min.js"></script>
 </head>
 <body>
     <div class="comment"></div>
@@ -58,4 +58,4 @@
 
 ## License
 
-[GPL-2.0](https://github.com/MHuiG/Valine/blob/master/LICENSE)
+[GPL-2.0](https://github.com/MHuiG/Valine-DH/blob/master/LICENSE)
