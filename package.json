@@ -1,11 +1,11 @@
 {
     "name": "valine",
-    "version": "1.1.8",
+    "version": "1.2.3",
     "description": "A simple comment system based on Leancloud.",
     "main": "/src/Valine.js",
     "author": {
-        "name": "Deserts",
-        "url": "https://github.com/DesertsP",
+        "name": "MHuiG",
+        "url": "https://github.com/MHuiG",
         "email": "i@gmail.com"
     },
     "scripts": {
@@ -24,12 +24,12 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/DesertsP/Valine.git"
+        "url": "git+https://github.com/MHuiG/Valine.git"
     },
     "bugs": {
-        "url": "https://github.com/DesertsP/Valine/issues"
+        "url": "https://github.com/MHuiG/Valine/issues"
     },
-    "homepage": "https://github.com/DesertsP/Valine#readme",
+    "homepage": "https://github.com/MHuiG/Valine#readme",
     "devDependencies": {
         "autoprefixer": "^7.1.1",
         "babel-core": "^6.25.0",

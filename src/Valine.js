@@ -19,7 +19,20 @@ md.setOptions({
     }
 })
 
-
+function MathJaxSupport() {
+	var script = document.createElement('script');
+	script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+	script.async = true;
+	document.head.appendChild(script);
+	window.MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['\\(', '\\)'], ['\(', '\)']]
+		},
+		svg: {
+			fontCache: 'global'
+		}
+	};
+}
 
 var i18n_set = {
     'zh-cn': {
@@ -106,7 +119,7 @@ class Valine {
     constructor(option) {
         let _root = this;
         // version
-        _root.version = '1.2.2';
+        _root.version = '1.2.3';
         getIp();
         // Valine init
         //!!option && _root.init(option);
@@ -418,6 +431,7 @@ class Valine {
                     }
                 }
                 _root.loading.hide();
+				MathJaxSupport();
             }).catch(ex => {
                 console.log(ex);
                 _root.loading.hide();
@@ -688,6 +702,7 @@ class Valine {
                 preview_text.removeAttribute('style');
                 preview_text.setAttribute('triggered', 1);
             }
+			MathJaxSupport();
         });
 
         // setting access
@@ -735,6 +750,7 @@ class Valine {
                 _root.submitting.hide();
                 _root.nodata.hide();
                 _root.reset();
+				MathJaxSupport();
             }).catch(ex => {
                 _root.submitting.hide();
             })
