@@ -12,7 +12,7 @@
 - Support markdown.
 - Support lazy loading picture emoji.
 - Support for code highlighting.
-- Support for MathJax
+- Support for MathJax.
 
 ## Installation
 **1. Quick Installation**   

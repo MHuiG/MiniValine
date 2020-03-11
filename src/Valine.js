@@ -1,38 +1,16 @@
-import 'lazysizes';
+require('lazysizes');
 require('./Valine.scss');
 require('highlight.js/styles/github.css');
-
 var md = require('marked');
 var xss = require('xss');
 var crypto = require('blueimp-md5');
 var format = require('string-format');
-var getJSON = require('get-json');
 var Utils = require('./utils/domUtils');
-var AVSdkUri = 'https://cdn.jsdelivr.net/npm/leancloud-storage@4/dist/av-min.js';
+var AVSdkUrl = 'https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js';
+var JQueryUrl = 'https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js';
 var GRAVATAR_BASE_URL = 'https://gravatar.loli.net/avatar/';
 var DEFAULT_EMAIL_HASH = '9e63c80900d106cbbec5a9f4ea433a3e';
 
-
-md.setOptions({
-    highlight: function (code) {
-        return require('highlight.js').highlightAuto(code).value
-    }
-})
-
-function MathJaxSupport() {
-	var script = document.createElement('script');
-	script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
-	script.async = true;
-	document.head.appendChild(script);
-	window.MathJax = {
-		tex: {
-			inlineMath: [['$', '$'], ['\\(', '\\)'], ['\(', '\)']]
-		},
-		svg: {
-			fontCache: 'global'
-		}
-	};
-}
 
 var i18n_set = {
     'zh-cn': {
@@ -111,34 +89,88 @@ const toString = {}.toString;
 const store = localStorage;
 
 class Valine {
-    /**
-     * Valine constructor function
-     * @param {Object} option
-     * @constructor
-     */
+
     constructor(option) {
         let _root = this;
-        // version
-        _root.version = '1.2.3';
-        getIp();
+		// MathJax init
+		_root.InitMathJax();
+		// Get IP init
+		_root.InitGetIP();
         // Valine init
-        //!!option && _root.init(option);
-		if(typeof AV === 'undefined') {
-        Utils.dynamicLoadSource('script', {'src':AVSdkUri}, () => {
-            if (typeof AV === 'undefined') {
-                setTimeout(() => {
-                    _root.constructor(option);
-                }, 300)
-                return;
-            } else !!option && _root.init(option);
-        })
-		} else !!option && _root.init(option);
+		_root.InitValine(option);
     }
+	
+	InitMathJax(){
+		let _root = this;
+		if(typeof MathJax === 'undefined') {
+			_root.MathJaxInit();
+		}
+	}
+	
+	MathJaxInit() {
+		var script = document.createElement('script');
+		script.type="text/x-mathjax-config";
+		script.text =`
+			MathJax.Ajax.config.path['mhchem'] = 'https://cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+			MathJax.Hub.Config({
+				tex2jax: {
+				  inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+				  processEscapes: true,
+				  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+				},
+				TeX: {
+				  extensions: ['[mhchem]/mhchem.js'],
+				  equationNumbers: {
+					autoNumber: 'AMS'
+				  }
+				}
+			});
+			MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+				MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+				  if (data.display) {
+					var next = data.script.nextSibling;
+					while (next && next.nodeName.toLowerCase() === '#text') {
+					  next = next.nextSibling;
+					}
+					if (next && next.nodeName.toLowerCase() === 'br') {
+					  next.parentNode.removeChild(next);
+					}
+				  }
+				});
+			});
+					`;
+		document.body.appendChild(script);
+		getScript('https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function(){MathJax.Hub.Typeset();}, window.MathJax);
+	}
+	
+	InitGetIP(){
+		let _root = this;
+		if(typeof jQuery === 'undefined') {
+			Utils.dynamicLoadSource('script', {'src':JQueryUrl}, () => {
+				if (typeof jQuery === 'undefined') {
+					setTimeout(() => {
+						_root.InitGetIP();
+					}, 300)
+					return;
+				} else getIp();
+			})
+		} else getIp();
+	}
+	
+	InitValine(option){
+		let _root = this;
+		if(typeof AV === 'undefined') {
+			Utils.dynamicLoadSource('script', {'src':AVSdkUrl}, () => {
+				if (typeof AV === 'undefined') {
+					setTimeout(() => {
+						_root.InitValine(option);
+					}, 300)
+					return;
+				} else !!option && _root.init(option);
+			})
+		} else !!option && _root.init(option);
+	}
 
-    /**
-     * Valine Init
-     * @param {Object} option
-     */
     init(option) {
         let _root = this;
         // disable_av_init = option.disable_av_init || false;
@@ -317,7 +349,7 @@ class Valine {
             }
         }
 
-
+        _root.loading.show();
         let query1 = new _root.v.Query('Comment');
         query1.equalTo('url', defaultComment['url']);
         let query2 = new _root.v.Query('Comment');
@@ -336,9 +368,6 @@ class Valine {
 
     }
 
-    /**
-     * Bind Event
-     */
     bind(option) {
         let _root = this;
         // Smile pictures
@@ -886,12 +915,39 @@ const loadJS = function (url, success) {
 };
 
 const getIp = function(){
-    getJSON("https://api.ipify.org/?format=json",
+    $.getJSON("https://api.ipify.org/?format=json",
         function(json) {
             defaultComment['ip'] = json.ip;
         }
     );
 };
 
+
+md.setOptions({
+    highlight: function (code) {
+        return require('highlight.js').highlightAuto(code).value
+    }
+})
+
+function getScript(url, callback, condition) {
+	if (condition) {
+	  callback();
+	} else {
+	  var script = document.createElement('script');
+	  script.onload = script.onreadystatechange = function(_, isAbort) {
+		if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) {
+		  script.onload = script.onreadystatechange = null;
+		  script = undefined;
+		  if (!isAbort && callback) setTimeout(callback, 0);
+		}
+	  };
+	  script.src = url;
+	  document.head.appendChild(script);
+	}
+}
+
+function MathJaxSupport() {
+	MathJax.Hub.Typeset();
+}
 
 module.exports = Valine;
