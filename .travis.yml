@@ -4,13 +4,14 @@ node_js:
 os: linux
 
 install:
+  - npm install --global prettier
   - npm install
 
 script:
   - npm test
 
 after_script:
-  - echo "Finished"
+  - npm run check
 
 
 notifications:

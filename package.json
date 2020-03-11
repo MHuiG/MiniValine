@@ -12,7 +12,9 @@
         "test": "webpack",
         "build": "webpack",
         "dev": "node_modules/.bin/webpack-dev-server --colors --hot --inline",
-        "clear": "rm -rf dist/* "
+        "clear": "rm -rf dist/* ",
+		"check": "prettier --check --debug-check \"src/**/*.js\"",
+		"pre": "prettier --write \"src/**/*.js\""
     },
     "keywords": [
         "Valine",
@@ -42,6 +44,7 @@
         "file-loader": "^0.11.2",
         "node-sass": "^4.5.3",
         "postcss-loader": "^2.0.6",
+        "prettier": "1.19.1",
         "sass-loader": "^6.0.6",
         "style-loader": "^0.18.2",
         "url-loader": "^0.5.9",

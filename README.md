@@ -1,6 +1,6 @@
 ![](./src/images/logo.opacity.png)
 # Valine  
-[![version](https://img.shields.io/github/release/MHuiG/Valine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-2.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine.svg?branch=master)](https://travis-ci.com/MHuiG/Valine)
+[![version](https://img.shields.io/github/release/MHuiG/Valine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![npm downloads](https://img.shields.io/npm/dt/valine.svg?style=flat-square)](https://www.npmjs.com/package/valine) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-2.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine.svg?branch=master)](https://travis-ci.com/MHuiG/Valine) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 > A simple comment system based on Leancloud.  
 ------------------------------
 **[Live Demo](https://mhuig.github.io/Valine/index.html)**
