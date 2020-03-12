@@ -15,7 +15,7 @@
 
 ## Installation
 
-### **Quick Installation**
+### **1.Quick Installation**
 
 **jsDelivr CDN**
 ```html
@@ -29,7 +29,7 @@ or
 <script src="https://unpkg.com/valine-dh/dist/Valine.min.js"></script>
 ```
 
-### **Npm Installation**
+### **2.Npm Installation**
 **Npm Package**
 ```bash
 npm install valine-dh
