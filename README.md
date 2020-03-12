@@ -1,4 +1,3 @@
-
 # Valine-DH
 [![version](https://img.shields.io/github/release/MHuiG/Valine-DH.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine-DH.svg?branch=master)](https://travis-ci.com/MHuiG/Valine-DH) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 > A simple comment system based on Leancloud.  
@@ -15,15 +14,38 @@
 - Support for MathJax.
 
 ## Installation
-**1. Quick Installation**   
 
+### **Quick Installation**
+
+**jsDelivr CDN**
 ```html
 <script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine-DH/dist/Valine.min.js"></script>
 ```
-**2. Get `App ID`/`App Key` from LeanCloud**  
+
+or
+
+**unpkg CDN**
+```html
+<script src="https://unpkg.com/valine-dh/dist/Valine.min.js"></script>
+```
+
+### **Npm Installation**
+**Npm Package**
+```bash
+npm install valine-dh
+```
+
+or
+
+**Github Package**
+```bash
+npm install @mhuig/valine-dh
+```
+
+## Get `App ID`/`App Key`
+**Get `App ID`/`App Key` from LeanCloud**  
 [Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
 [Click here](https://leancloud.cn/dashboard/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
-
 
 ## Usage
 ```html
@@ -34,6 +56,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Valine - A simple comment system based on Leancloud.</title>
+    <!--Load js and insert it before </ body>-->
     <script src="https://cdn.jsdelivr.net/gh/MHuiG/Valine-DH/dist/Valine.min.js"></script>
 </head>
 <body>
@@ -51,6 +74,20 @@
 </body>
 </html>
 ```
+## Options
+
+- el: "[object HTMLDivElement]"
+- emoticon_url: "Expression Url"
+- emoticon_list: "Expression List"
+- app_id: "Your App ID"
+- app_key: "Your Key"
+- placeholder: "Input Placeholder"
+- admin_email_md5: "Admin Email MD5"
+- pathname: location.pathname.replace(/\/$/, "")
+- maxNest: 3
+- pageSize: 6
+- lang: "en" || "zh-cn"
+- i18n: "Other Languages JSON"
 
 ## Features
 - Fix bugs
