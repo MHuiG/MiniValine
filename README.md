@@ -1,6 +1,6 @@
 
 # Valine-DH
-[![version](https://img.shields.io/github/release/MHuiG/Valine-DH.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-2.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine-DH.svg?branch=master)](https://travis-ci.com/MHuiG/Valine-DH) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![version](https://img.shields.io/github/release/MHuiG/Valine-DH.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/) [![Build Status](https://travis-ci.com/MHuiG/Valine-DH.svg?branch=master)](https://travis-ci.com/MHuiG/Valine-DH) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 > A simple comment system based on Leancloud.  
 ------------------------------
 **[Live Demo](https://mhuig.github.io/Valine-DH/index.html)**
@@ -58,4 +58,4 @@
 
 ## License
 
-[GPL-2.0](https://github.com/MHuiG/Valine-DH/blob/master/LICENSE)
+[GPL-3.0](https://github.com/MHuiG/Valine-DH/blob/master/LICENSE)
