@@ -13,8 +13,8 @@
         "build": "webpack",
         "dev": "node_modules/.bin/webpack-dev-server --colors --hot --inline",
         "clear": "rm -rf dist/* ",
-		"check": "prettier --check --debug-check \"src/**/*.js\"",
-		"pre": "prettier --write \"src/**/*.js\""
+		"check": "prettier --check --debug-check \"src/**/*.*\"",
+		"pre": "prettier --write \"src/**/*.*\""
     },
     "keywords": [
 	    "Valine",
