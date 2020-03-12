@@ -1,6 +1,6 @@
 {
     "name": "valine-dh",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "description": "A simple comment system based on Leancloud.",
     "main": "/src/Valine.js",
     "author": {
