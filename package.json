@@ -1,12 +1,12 @@
 {
-    "name": "valine",
+    "name": "valine-DH",
     "version": "1.2.5",
     "description": "A simple comment system based on Leancloud.",
     "main": "/src/Valine.js",
     "author": {
         "name": "MHuiG",
         "url": "https://github.com/MHuiG",
-        "email": "i@gmail.com"
+        "email": "i@mail.com"
     },
     "scripts": {
         "test": "webpack",
@@ -17,7 +17,8 @@
 		"pre": "prettier --write \"src/**/*.js\""
     },
     "keywords": [
-        "Valine",
+	    "Valine",
+        "Valine-DH",
         "Simple Comment",
         "Comment System",
         "Based on Leancloud",
@@ -26,12 +27,12 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MHuiG/Valine.git"
+        "url": "git+https://github.com/MHuiG/Valine-DH.git"
     },
     "bugs": {
-        "url": "https://github.com/MHuiG/Valine/issues"
+        "url": "https://github.com/MHuiG/Valine-DH/issues"
     },
-    "homepage": "https://github.com/MHuiG/Valine#readme",
+    "homepage": "https://github.com/MHuiG/Valine-DH#readme",
     "devDependencies": {
         "autoprefixer": "^7.1.1",
         "babel-core": "^6.25.0",
