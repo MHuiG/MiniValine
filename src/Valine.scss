@@ -1,14 +1,25 @@
 .valine {
   * {
     box-sizing: border-box;
-    // font-family: PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,STHeitiSC-Light,simsun,WenQuanYi Zen Hei,WenQuanYi Micro Hei,"sans-serif";
-    font-size: 14px;
-    font-weight: normal;
+    font-family: Rubik, Helvetica, Arial, sans-serif, PingFang SC, Lantinghei SC,
+      Helvetica Neue, Helvetica, Arial, Microsoft YaHei, STHeitiSC-Light, simsun,
+      WenQuanYi Zen Hei, WenQuanYi Micro Hei, "sans-serif";
+    font-weight: bold;
     line-height: 1.42857143;
     color: #3c484e;
     transition: all 0.3s ease;
     margin: initial;
     padding: initial;
+  }
+  p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  pre {
+    font-size: 14px !important;
   }
   .vemoticon-img {
     display: inline-block;
