@@ -1,5 +1,5 @@
 {
-    "name": "valine-dh",
+    "name": "@mhuig/valine-dh",
     "version": "1.2.5",
     "description": "A simple comment system based on Leancloud.",
     "main": "/src/Valine.js",
@@ -63,6 +63,6 @@
         "xss": "^1.0.3"
     },
 	"publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+		"registry":"https://npm.pkg.github.com/"
     }
 }
