@@ -13,11 +13,11 @@
         "build": "webpack",
         "dev": "node_modules/.bin/webpack-dev-server --colors --hot --inline",
         "clear": "rm -rf dist/* ",
-		"check": "prettier --check --debug-check \"src/**/*.*\"",
-		"pre": "prettier --write \"src/**/*.*\""
+        "check": "prettier --check --debug-check \"src/**/*.*\"",
+        "pre": "prettier --write \"src/**/*.*\""
     },
     "keywords": [
-	    "Valine",
+        "Valine",
         "Valine-DH",
         "Simple Comment",
         "Comment System",

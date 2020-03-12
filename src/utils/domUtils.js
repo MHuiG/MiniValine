@@ -1,5 +1,5 @@
-const win = window,
-  doc = document;
+const win = window;
+const doc = document;
 
 const unescapeMap = {};
 const escapeMap = {
@@ -11,7 +11,7 @@ const escapeMap = {
   "`": "&#x60;",
   "\\": "&#x5c;"
 };
-for (let key in escapeMap) {
+for (const key in escapeMap) {
   unescapeMap[escapeMap[key]] = key;
 }
 
@@ -29,10 +29,10 @@ const utils = {
     if (
       doc.readyState === "complete" ||
       (doc.readyState !== "loading" && !doc.documentElement.doScroll)
-    )
+    ) {
       setTimeout(() => callback && callback(), 0);
-    else {
-      let handler = () => {
+    } else {
+      const handler = () => {
         doc.removeEventListener("DOMContentLoaded", handler, false);
         win.removeEventListener("load", handler, false);
         callback && callback();
@@ -48,18 +48,18 @@ const utils = {
    * @param {Function} callback 回调函数
    */
   dynamicLoadSource(sourceName, attrs, callback) {
-    let attrNameMap = { script: "src", link: "href" };
-    let attr = attrNameMap[sourceName];
+    const attrNameMap = { script: "src", link: "href" };
+    const attr = attrNameMap[sourceName];
     if (utils.find(doc, `${sourceName}[${attr}="${attrs[attr]}"]`)) {
       typeof callback === "function" && callback();
     } else {
-      let s = utils.create(sourceName, attrs);
-      let h = doc.getElementsByTagName("head")[0];
+      const s = utils.create(sourceName, attrs);
+      const h = doc.getElementsByTagName("head")[0];
       h.appendChild(s);
       s.onload = s.onreadystatechange = function() {
-        let vm = this;
+        const vm = this;
         if (
-          !(/*@cc_on!@*/ 0) ||
+          !(/* @cc_on!@ */ 0) ||
           vm.readyState === "loaded" ||
           vm.readyState === "complete"
         ) {
@@ -73,18 +73,18 @@ const utils = {
     type = type.split(" ");
     for (let i = 0, len = type.length; i < len; i++) {
       utils.off(type[i], el, handler, capture);
-      if (el.addEventListener)
+      if (el.addEventListener) {
         el.addEventListener(type[i], handler, capture || false);
-      else if (el.attachEvent) el.attachEvent(`on${type[i]}`, handler);
+      } else if (el.attachEvent) el.attachEvent(`on${type[i]}`, handler);
       else el[`on${type[i]}`] = handler;
     }
   },
   off(type, el, handler, capture) {
     type = type.split(" ");
     for (let i = 0, len = type.length; i < len; i++) {
-      if (el.removeEventListener)
+      if (el.removeEventListener) {
         el.removeEventListener(type, handler, capture || false);
-      else if (el.detachEvent) el.detachEvent(`on${type}`, handler);
+      } else if (el.detachEvent) el.detachEvent(`on${type}`, handler);
       else el[`on${type}`] = null;
     }
   },
@@ -107,7 +107,7 @@ const utils = {
    * @param {Object} attrVal
    */
   create(name, attrName, attrVal) {
-    let el = document.createElement(name);
+    const el = document.createElement(name);
     utils.attr(el, attrName, attrVal);
     return el;
   },
@@ -136,8 +136,9 @@ const utils = {
    * @param {String} value
    */
   attr(el, name, value) {
-    if (typeof el.getAttribute === "undefined")
+    if (typeof el.getAttribute === "undefined") {
       return utils.prop(el, name, value);
+    }
     if (value !== undefined) {
       if (value === null) utils.removeAttr(el, name);
       else el.setAttribute(name, value);
@@ -155,7 +156,7 @@ const utils = {
    */
   prop(el, name, value) {
     if (value !== undefined) return (el[name] = value);
-    else if ({}.toString.call(name) === "[object Object]") {
+    if ({}.toString.call(name) === "[object Object]") {
       utils.each(name, (k, v) => {
         el[k] = v;
       });
@@ -165,14 +166,14 @@ const utils = {
    * Remove el attribute
    * @param {HTMLElement} el
    * @param {String} names
-   * @returns {HTMLElement} el
+   * @return {HTMLElement} el
    */
   removeAttr(el, names) {
-    let name,
-      i = 0,
-      // Attribute names can contain non-HTML whitespace characters
-      // https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
-      attrNames = names && names.match(/[^\x20\t\r\n\f\*\/\\]+/g);
+    let name;
+    let i = 0;
+    // Attribute names can contain non-HTML whitespace characters
+    // https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
+    const attrNames = names && names.match(/[^\x20\t\r\n\f\*\/\\]+/g);
     if (attrNames && el.nodeType === 1) {
       while ((name = attrNames[i++])) {
         el.removeAttribute(name);
@@ -185,8 +186,8 @@ const utils = {
    * @param {HTMLElement} el
    */
   clearAttr(el) {
-    let attrs = el.attributes;
-    let ignoreAttrs = [
+    const attrs = el.attributes;
+    const ignoreAttrs = [
       "align",
       "alt",
       "checked",
@@ -201,10 +202,10 @@ const utils = {
       "style"
     ];
     utils.each(attrs, (idx, attr) => {
-      let name = attr.name;
+      const { name } = attr;
       switch (name.toLowerCase()) {
         case "style":
-          let style = attr.value;
+          const style = attr.value;
           utils.each(style.split(";"), (idx, item) => {
             if (item.indexOf("color") > -1) utils.attr(el, "style", item);
             else utils.removeAttr(el, "style");
@@ -212,15 +213,15 @@ const utils = {
           break;
         case "class":
           if (el.nodeName == "CODE") return false;
-          let clazz = attr.value;
+          const clazz = attr.value;
           if (clazz.indexOf("at") > -1) utils.attr(el, "class", "at");
-          else if (clazz.indexOf("vemoji") > -1)
+          else if (clazz.indexOf("vemoji") > -1) {
             utils.attr(el, "class", "vemoji");
-          else utils.removeAttr(el, "class");
+          } else utils.removeAttr(el, "class");
           break;
         default:
           if (ignoreAttrs.indexOf(name) > -1) return true;
-          else utils.removeAttr(el, name);
+          utils.removeAttr(el, name);
           break;
       }
     });
@@ -244,18 +245,19 @@ const utils = {
    * @return {Object} collection
    */
   each(collection, callback) {
-    let value,
-      i = 0,
-      length = collection.length,
-      likeArray = ["[object Array]", "[object NodeList]"],
-      type = {}.toString.call(collection);
+    let value;
+    let i = 0;
+    const { length } = collection;
+    const likeArray = ["[object Array]", "[object NodeList]"];
+    const type = {}.toString.call(collection);
     if (likeArray.indexOf(type) > -1) {
       for (; i < length; i++) {
         if (
           callback &&
           callback.call(collection[i], i, collection[i]) === false
-        )
+        ) {
           break;
+        }
       }
     } else {
       for (i in collection) {
@@ -263,8 +265,9 @@ const utils = {
           if (
             callback &&
             callback.call(collection[i], i, collection[i]) === false
-          )
+          ) {
             break;
+          }
         }
       }
     }
