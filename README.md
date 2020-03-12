@@ -83,7 +83,7 @@ npm install @mhuig/valine-dh
 - app_key: "Your Key"
 - placeholder: "Input Placeholder"
 - admin_email_md5: "Admin Email MD5"
-- pathname: location.pathname.replace(/\/$/, "")
+- pathname: location.pathname
 - maxNest: 3
 - pageSize: 6
 - lang: "en" || "zh-cn"
