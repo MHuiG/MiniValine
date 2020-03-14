@@ -4,14 +4,16 @@ node_js:
 os: linux
 
 install:
-  - npm install --global prettier
+  - npm install -g eslint
   - npm install
 
 script:
+  - npm run build
   - npm test
 
 after_script:
   - npm run check
+  - npm run coveralls
 
 
 notifications:

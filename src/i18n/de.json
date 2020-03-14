@@ -1,0 +1,22 @@
+{
+	"nick": "Name",
+	"mail": "Mail",
+	"link": "Website(optional)",
+	"noCommentYet": "Noch kein Kommentar.",
+	"submit": "einreichen",
+	"reply": "Antworten",
+	"cancelReply": "Antwort verwerfen",
+	"commentCount": "{} Kommentare hier",
+	"cancel": "Stornieren",
+	"confirm": "Bestätigen",
+	"continue": "Fortsetzen",
+	"more": "Mehr laden...",
+	"preview": "Vorschau",
+	"emoji": "Emo-Klasse",
+	"seconds": "Sekunden zuvor",
+	"minutes": "Vor ein paar Minuten",
+	"hours": "Vor Stunden",
+	"days": "Vor Tagen",
+	"now": "gerade jetzt",
+	"inputTips": "Bitte überprüfen Sie Ihre E-Mail-Adresse und Ihren Website-Link und versuchen Sie es erneut."
+}

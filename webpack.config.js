@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var autoprefixer = require('autoprefixer');
 
-var libraryName = 'Valine';
+var libraryName = 'MiniValine';
 var env = process.env.WEBPACK_ENV;
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
@@ -18,7 +18,7 @@ if (env !== 'dev') {
 }
 
 module.exports = {
-    entry: './src/' + libraryName + '.js',
+    entry: './src/index.js',
 
     output: {
         path: BUILD_PATH,
@@ -43,7 +43,7 @@ module.exports = {
                 loader: 'babel-loader',
                 include: APP_PATH,
                 options: {
-                    presets: ['es2015']
+                   presets: ['@babel/preset-env']
                 }
             },
             {

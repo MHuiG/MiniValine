@@ -1,4 +1,4 @@
-.valine {
+.MiniValine {
   * {
     box-sizing: border-box;
     font-family: Rubik, Helvetica, Arial, sans-serif, PingFang SC, Lantinghei SC,
@@ -99,7 +99,7 @@
       position: relative;
       border-radius: 0;
 
-      .comment_trigger {
+      .commentTrigger {
         position: absolute;
         z-index: 10;
         width: 100%;
