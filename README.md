@@ -1,5 +1,5 @@
 # MiniValine
-[![version](https://img.shields.io/github/release/MHuiG/MiniValine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/) [![Build Status](https://travis-ci.com/MHuiG/MiniValine.svg?branch=master)](https://travis-ci.com/MHuiG/MiniValine) [![Build Status](https://github.com/MHuiG/MiniValine/workflows/Node.js%20CI/badge.svg)](https://github.com/MHuiG/MiniValine/actions)
+[![version](https://img.shields.io/github/release/MHuiG/MiniValine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/) [![Build Status](https://travis-ci.com/MHuiG/MiniValine.svg?branch=master)](https://travis-ci.com/MHuiG/MiniValine) [![Build Status](https://github.com/MHuiG/MiniValine/workflows/Node.js%20CI/badge.svg)](https://github.com/MHuiG/MiniValine/actions)[![Coverage Status](https://coveralls.io/repos/github/MHuiG/MiniValine/badge.svg?branch=master)](https://coveralls.io/github/MHuiG/MiniValine?branch=master)
 > A simple comment system based on Leancloud.  
 ------------------------------
 **[Live Demo](https://mhuig.github.io/MiniValine/index.html)**
