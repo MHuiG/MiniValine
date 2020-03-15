@@ -26,7 +26,7 @@ or
 
 **unpkg CDN**
 ```html
-<script src="https://unpkg.com/MiniValine/dist/MiniValine.min.js"></script>
+<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
 ```
 
 ### **2.Npm Installation**
@@ -53,6 +53,7 @@ new MiniValine({
     // other config
 })
 ```
+
 
 ## Get `App ID`/`App Key`
 **Get `App ID`/`App Key` from LeanCloud**  
