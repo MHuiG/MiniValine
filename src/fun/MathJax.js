@@ -1,7 +1,8 @@
-const MathJaxSupport = () => {
-  if (typeof MathJax === 'undefined') {
+const MathJaxSupport = (opt) => {
+  if ((typeof MathJax === 'undefined') && opt) {
     initMathJax()
-  } else {
+  }
+  if (typeof MathJax !== 'undefined') {
     MathJax.Hub.Typeset()
   }
 }

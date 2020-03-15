@@ -41,11 +41,12 @@ MiniValineFactory.prototype.initMiniValine = function () {
   const root = this
   root.emoticonUrl = root.config.emoticonUrl || EmoticonUrl
   root.emoticonList = root.config.emoticonList || EmoticonList
-  root.i18n = i18n(root.config.lang)
+  root.i18n = i18n(root.config.lang || navigator.language || navigator.userLanguage)
   root.maxNestLevel = root.config.maxNest || MaxNestLevel
   root.pageSize = root.config.pageSize || PageSize
   root.adminEmailMd5 = root.config.adminEmailMd5 || ''
   root.disableAVInit = false
+  root.math = root.config.math || false
   defaultComment.url =
       root.config.pathname || location.pathname.replace(/\/$/, '')
   try {
@@ -357,7 +358,7 @@ MiniValineFactory.prototype.bind = function () {
         }
       }
       root.loading.hide()
-      MathJaxSupport()
+      MathJaxSupport(root.math)
     }).catch(ex => {
       console.log(ex)
       root.loading.hide()
@@ -653,7 +654,7 @@ MiniValineFactory.prototype.bind = function () {
       previewText.removeAttribute('style')
       previewText.setAttribute('triggered', 1)
     }
-    MathJaxSupport()
+    MathJaxSupport(root.math)
   })
 
   // setting access
@@ -711,7 +712,7 @@ MiniValineFactory.prototype.bind = function () {
         root.submitting.hide()
         root.nodata.hide()
         root.reset()
-        MathJaxSupport()
+        MathJaxSupport(root.math)
       })
       .catch(ex => {
         root.submitting.hide()
