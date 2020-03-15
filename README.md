@@ -12,6 +12,7 @@
 - Support lazy loading picture emoji.
 - Support for code highlighting.
 - Support for MathJax.
+- Support for 7 languages.
 
 ## Installation
 
