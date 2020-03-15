@@ -30,16 +30,28 @@ or
 ```
 
 ### **2.Npm Installation**
-**Npm Package**
-```bash
-npm install minivaline
+
+``` bash
+# Install leancloud's js-sdk
+npm install leancloud-storage --save
+
+# Install minivaline
+npm install minivaline --save
 ```
 
-or
+``` js
+// Register AV objects to the global
+window.AV = require('leancloud-storage');
 
-**Github Package**
-```bash
-npm install @mhuig/minivaline
+// Use import
+import MiniValine from 'minivaline';
+// or Use require
+const MiniValine = require('minivaline');
+
+new MiniValine({
+    el:'#vcomments',
+    // other config
+})
 ```
 
 ## Get `App ID`/`App Key`
