@@ -23,11 +23,11 @@ Two ways.
 - links
 
 ```html
-	<script src="https://cdn.jsdelivr.net/gh/MHuiG/MiniValine/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MHuiG/MiniValine/dist/MiniValine.min.js"></script>
 
-	<!-- or -->
+<!-- or -->
 
-	<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
+<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
 ```
 
 - npm install
@@ -130,7 +130,7 @@ new MiniValine({
 
 - **emoticonUrl** `String`
 
-  Default: `'https://cdn.jsdelivr.net/gh/MHuiG/mhuig.github.io/libs/valine/alu'`
+  Default: `'https://cdn.jsdelivr.net/gh/MHuiG/mhuig.github.io/libs/alu'`
   
   Expression Url.
 

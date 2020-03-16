@@ -3,7 +3,7 @@ const MathJaxSupport = (opt) => {
     initMathJax()
   }
   if (typeof MathJax !== 'undefined') {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub])
+    MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'));
   }
 }
 
@@ -13,6 +13,7 @@ const initMathJax = () => {
   script.text = `
 			MathJax.Ajax.config.path['mhchem'] = 'https://cdn.jsdelivr.net/npm/mathjax-mhchem@3';
 			MathJax.Hub.Config({
+				elements: [document.getElementsByClassName('MiniValine')],
 				tex2jax: {
 				  inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
 				  processEscapes: true,
