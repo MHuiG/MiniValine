@@ -163,7 +163,7 @@ MiniValineFactory.prototype.initMiniValine = function () {
         appKey: root.config.appKey || root.config.appKey,
         serverURLs
       })
-      window.disableAVInit = false
+      window.disableAVInit = true
     }
     root.v = AV
   } catch (ex) {
