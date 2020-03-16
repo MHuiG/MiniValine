@@ -3,7 +3,7 @@ const MathJaxSupport = (opt) => {
     initMathJax()
   }
   if (typeof MathJax !== 'undefined') {
-    MathJax.Hub.Typeset()
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub])
   }
 }
 
