@@ -3,7 +3,7 @@ const MathJaxSupport = (opt) => {
     initMathJax()
   }
   if (typeof MathJax !== 'undefined') {
-    MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'));
+    MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'))
   }
 }
 
