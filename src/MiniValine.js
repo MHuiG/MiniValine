@@ -45,7 +45,6 @@ MiniValineFactory.prototype.initMiniValine = function () {
   root.maxNestLevel = root.config.maxNest || MaxNestLevel
   root.pageSize = root.config.pageSize || PageSize
   root.adminEmailMd5 = root.config.adminEmailMd5 || ''
-  root.disableAVInit = false
   root.math = root.config.math || false
   defaultComment.url =
       root.config.pathname || location.pathname.replace(/\/$/, '')
@@ -158,13 +157,13 @@ MiniValineFactory.prototype.initMiniValine = function () {
     }
     serverURLs = root.config.serverURLs || `${prefix}avoscloud.com`
 
-    if (!root.disableAVInit) {
+    if (typeof window.disableAVInit === 'undefined') {
       AV.init({
         appId: root.config.appId || root.config.appId,
         appKey: root.config.appKey || root.config.appKey,
         serverURLs
       })
-      root.disableAVInit = true
+      window.disableAVInit = false
     }
     root.v = AV
   } catch (ex) {
