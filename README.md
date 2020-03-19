@@ -2,7 +2,7 @@
 [![version](https://img.shields.io/github/release/MHuiG/MiniValine.svg?style=flat-square)](https://github.com/MHuiG/Valine/releases) [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/) [![Build Status](https://travis-ci.com/MHuiG/MiniValine.svg?branch=master)](https://travis-ci.com/MHuiG/MiniValine) [![Build Status](https://github.com/MHuiG/MiniValine/workflows/Node.js%20CI/badge.svg)](https://github.com/MHuiG/MiniValine/actions) [![Coverage Status](https://coveralls.io/repos/github/MHuiG/MiniValine/badge.svg?branch=master)](https://coveralls.io/github/MHuiG/MiniValine?branch=master)
 > MiniValine is a simple and minimalist comment system based on Leancloud.  
 ------------------------------
-**[Live Demo](https://mhuig.github.io/MiniValine/index.html)**
+**[Live Demo](https://minivaline.github.io)**
 
 ## Features
 
@@ -23,7 +23,7 @@ Two ways.
 - links
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/MHuiG/MiniValine/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
@@ -72,7 +72,7 @@ new MiniValine({
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MiniValine - A simple comment system based on Leancloud.</title>
     <!--Load js and insert it before </ body>-->
-    <script src="https://cdn.jsdelivr.net/gh/MHuiG/MiniValine/dist/MiniValine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/dist/MiniValine.min.js"></script>
 </head>
 <body>
     <div class="comment"></div>
@@ -154,7 +154,7 @@ new MiniValine({
 
 ## Contributing
 
-1. [Fork the repository](https://github.com/MHuiG/MiniValine/fork) and create your branch from master
+1. [Fork the repository](https://github.com/MiniValine/MiniValine/fork) and create your branch from master
 2. If you've added code that should be tested, add tests!
 3. If you've changed APIs, update the documentation.
 4. Ensure the test suite passes (npm test).
@@ -164,4 +164,4 @@ new MiniValine({
 
 ## License
 
-[GPL-3.0](https://github.com/MHuiG/MiniValine/blob/master/LICENSE)
+[GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
