@@ -20,6 +20,13 @@ requestInfoLabelToAdd: Need More Info
 # keys must be GitHub usernames
 requestInfoUserstoExclude:
   - MHuiG
+# =============================================================================================== #
+lockThreads:
+  toxicityThreshold: .7
+  numComments: 2
+  setTimeInHours: 72
+  replyComment: >
+    This thread is being locked due to exceeding the toxicity minimums. cc/ @minivaline
 
 # =============================================================================================== #
 # Configuration for todo-bot - https://github.com/JasonEtco/todo
