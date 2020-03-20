@@ -13,7 +13,6 @@ script:
 
 after_script:
   - npm run check
-  - npm run coveralls
 
 
 notifications:
