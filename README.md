@@ -155,7 +155,6 @@ new MiniValine({
 
 ## Feedback
 
-* Add or improve translation in few seconds.
 * Report a bug in [GitHub Issues][issues-bug-url].
 * Request a new feature on [GitHub][issues-feat-url].
 
