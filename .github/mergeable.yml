@@ -21,3 +21,4 @@ mergeable:
       - do: milestone
         no_empty:
           enabled: true
+
