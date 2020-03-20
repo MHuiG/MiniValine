@@ -152,16 +152,30 @@ new MiniValine({
   
   Pagination size.
 
+
+## Feedback
+
+* Add or improve translation in few seconds.
+* Report a bug in [GitHub Issues][issues-bug-url].
+* Request a new feature on [GitHub][issues-feat-url].
+
 ## Contributing
 
-1. [Fork the repository](https://github.com/MiniValine/MiniValine/fork) and create your branch from master
-2. If you've added code that should be tested, add tests!
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes (npm test).
-5. Make sure your code lints (npm run check).
-6. Commit your changes (git commit) [Commit Message Format Reference](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines)
+We welcome you to join the development of MiniValine. Please see [contributing document][contributing-document-url]. 🤗
 
+Also, we welcome Issue or PR to MiniValine.
+
+
+## Contributors
+
+[![][contributors-image]][contributors-url]
 
 ## License
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
+
+
+[issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
+[issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
+[contributors-image]: https://opencollective.com/MiniValine/contributors.svg?width=890
+[contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors
