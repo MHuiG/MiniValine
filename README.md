@@ -168,7 +168,7 @@ Also, we welcome Issue or PR to MiniValine.
 
 ## Contributors
 
-[![][contributors-image]][contributors-url]
+[Contributors][contributors-url]
 
 ## License
 
@@ -177,5 +177,5 @@ Also, we welcome Issue or PR to MiniValine.
 
 [issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
-[contributors-image]: https://opencollective.com/MiniValine/contributors.svg?width=890
+[contributing-document-url]: https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md
 [contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors
