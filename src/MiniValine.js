@@ -84,10 +84,10 @@ MiniValineFactory.prototype.initMiniValine = function () {
   query.notEqualTo('isSpam', true)
   query
     .count()
-    .then(count => {
+    .then((count) => {
       root.el.querySelector('.count').innerHTML = count
     })
-    .catch(ex => {
+    .catch((ex) => {
       console.log(ex)
       root.el.querySelector('.count').innerHTML = 0
     })
@@ -98,7 +98,7 @@ MiniValineFactory.prototype.bind = function () {
   const root = this
   // Smile pictures
   const vsmiles = root.el.querySelector('.vsmile-icons')
-  utils.domUtils.on('click', vsmiles, e => {
+  utils.domUtils.on('click', vsmiles, (e) => {
     const textField = root.el.querySelector('.veditor')
     const imgSrc = e.target.src
     if (typeof imgSrc === 'undefined') return
@@ -131,7 +131,7 @@ MiniValineFactory.prototype.bind = function () {
     }
   })
   const commentTrigger = root.el.querySelector('.commentTrigger')
-  utils.domUtils.on('click', commentTrigger, e => {
+  utils.domUtils.on('click', commentTrigger, (e) => {
     commentTrigger.setAttribute('style', 'display:none')
     root.el.querySelector('.auth-section').removeAttribute('style')
     root.el.querySelector('.veditor').focus()
@@ -144,10 +144,10 @@ MiniValineFactory.prototype.bind = function () {
 
   // Query && show comment list
 
-  const expandEvt = el => {
+  const expandEvt = (el) => {
     if (el.offsetHeight > 180) {
       el.classList.add('expand')
-      utils.domUtils.on('click', el, e => {
+      utils.domUtils.on('click', el, (e) => {
         el.setAttribute('class', 'vcomment')
       })
     }
@@ -164,7 +164,7 @@ MiniValineFactory.prototype.bind = function () {
     root.loading.show()
     const cq = root.v.Query
       .doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where (rid='' or rid is not exists) and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
-    cq.then(rets => {
+    cq.then((rets) => {
       rets = (rets && rets.results) || []
       const len = rets.length
       if (len) {
@@ -186,7 +186,7 @@ MiniValineFactory.prototype.bind = function () {
               : ''
         const vmore = vpage.querySelector('#vmore')
         if (vmore) {
-          utils.domUtils.on('click', vmore, e => {
+          utils.domUtils.on('click', vmore, (e) => {
             vpage.innerHTML = ''
             parentQuery(++num)
           })
@@ -194,16 +194,18 @@ MiniValineFactory.prototype.bind = function () {
       }
       root.loading.hide()
       utils.MathJaxSupport(root.math)
-    }).catch(ex => {
+    }).catch((ex) => {
       console.log(ex)
       root.loading.hide()
     })
   }
   root.v.Query.doCloudQuery(
       `select count(*) from Comment where (rid='' or rid is not exists) and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt`
-  ).then(data => {
+  ).then((data) => {
     parentCount = data.count
     parentQuery(1)
+  }).catch((ex) => {
+      console.log(ex)
   })
 
   // 无限嵌套加载
@@ -373,7 +375,7 @@ MiniValineFactory.prototype.bind = function () {
       })
       return
     }
-    if (defaultComment.comment == '') {
+    if (defaultComment.comment === '') {
       inputs.comment.focus()
       return
     }
