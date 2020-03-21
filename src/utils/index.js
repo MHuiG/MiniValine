@@ -5,6 +5,7 @@ import initConfig from './initConfig'
 import md from './md'
 import check from './check'
 import domUtils from './domUtils'
+import setAV from './setAV'
 
 module.exports = {
   MathJaxSupport: MathJaxSupport,
@@ -13,5 +14,6 @@ module.exports = {
   initConfig: initConfig,
   md: md,
   check: check,
-  domUtils: domUtils
+  domUtils: domUtils,
+  setAV: setAV
 }

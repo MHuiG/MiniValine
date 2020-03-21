@@ -1,9 +1,11 @@
-import ele from './ele'
 import vcard from './vcard'
 import loading from './loading'
+import smiles from './smiles'
+import el from './el'
 
 module.exports = {
-  ele: ele,
   vcard: vcard,
-  loading: loading
+  loading: loading,
+  smiles: smiles,
+  el: el
 }

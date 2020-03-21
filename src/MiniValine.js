@@ -21,61 +21,16 @@ MiniValineFactory.prototype.initMiniValine = function () {
   const root = this
   try {
     utils.initConfig(root)
-    const el =
-        toString.call(root.config.el) === '[object HTMLDivElement]'
-          ? root.config.el
-          : document.querySelectorAll(root.config.el)[0]
-    if (toString.call(el) !== '[object HTMLDivElement]') {
-      return
-    }
-    root.el = el
-    root.el.classList.add('MiniValine')
-    root.el.innerHTML = html.ele(root)
+    html.el(root)
     // loading
     html.loading(root)
+
     root.nodata.show()
 
     // load smiles image
-    const smileWrapper = root.el.querySelector('.vsmile-icons')
-    const smileNames = root.emoticonList || []
-    for (const i in smileNames) {
-      const img = document.createElement('img')
-      img.setAttribute(
-        'data-src',
-          `${root.emoticonUrl}/${smileNames[i]}`
-      )
-      img.setAttribute('class', 'lazyload')
-      smileWrapper.appendChild(img)
-    }
+    html.smiles(root)
 
-    // set serverURLs
-    let prefix = 'https://'
-    let serverURLs = ''
-    if (!root.config.serverURLs) {
-      switch (root.config.appId.slice(-9)) {
-        // TAB
-        case '-9Nh9j0Va':
-          prefix += 'tab.'
-          break
-          // US
-        case '-MdYXbMMI':
-          prefix += 'us.'
-          break
-        default:
-          break
-      }
-    }
-    serverURLs = root.config.serverURLs || `${prefix}avoscloud.com`
-
-    if (typeof window.disableAVInit === 'undefined') {
-      AV.init({
-        appId: root.config.appId || root.config.appId,
-        appKey: root.config.appKey || root.config.appKey,
-        serverURLs
-      })
-      window.disableAVInit = true
-    }
-    root.v = AV
+    utils.setAV(root)
   } catch (ex) {
     console.log(ex)
     return
