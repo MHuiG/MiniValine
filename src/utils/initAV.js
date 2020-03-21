@@ -1,5 +1,5 @@
 import { AVSdkUrl } from '../const'
-import Utils from '../utils/domUtils'
+import Utils from './domUtils'
 
 const initAV = function (root) {
   if (typeof AV === 'undefined') {

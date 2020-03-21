@@ -1,4 +1,4 @@
-import Utils from '../utils/domUtils'
+import Utils from './domUtils'
 import { defaultComment } from '../const'
 const GetIP = () => {
   Utils.create('script', 'src', 'https://api.ip.sb/jsonip?callback=getIP')
