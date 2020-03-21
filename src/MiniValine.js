@@ -31,17 +31,8 @@ MiniValineFactory.prototype.initMiniValine = function () {
     root.el = el
     root.el.classList.add('MiniValine')
     root.el.innerHTML = html.ele(root)
-    // Empty Data
-    const vempty = root.el.querySelector('.vempty')
-    root.nodata = {
-      show (txt) {
-        vempty.innerHTML = txt || root.i18n.t('noCommentYet')
-        vempty.setAttribute('style', 'display:block;')
-      },
-      hide () {
-        vempty.setAttribute('style', 'display:none;')
-      }
-    }
+    // loading
+    html.loading(root)
     root.nodata.show()
 
     // load smiles image
@@ -90,36 +81,7 @@ MiniValineFactory.prototype.initMiniValine = function () {
     return
   }
 
-  // loading
-  const spinner =
-      '<div class="spinner"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div><div class="r5"></div></div>'
-  const vloading = root.el.querySelector('.vloading')
-  vloading.innerHTML = spinner
-  // loading control
-  root.loading = {
-    show () {
-      vloading.setAttribute('style', 'display:block;')
-      root.nodata.hide()
-    },
-    hide () {
-      vloading.setAttribute('style', 'display:none;')
-      root.el.querySelectorAll('.vcard').length === 0 && root.nodata.show()
-    }
-  }
-
   root.loading.hide()
-
-  const vsubmitting = root.el.querySelector('.vsubmitting')
-  vsubmitting.innerHTML = spinner
-  root.submitting = {
-    show () {
-      vsubmitting.setAttribute('style', 'display:block;')
-    },
-    hide () {
-      vsubmitting.setAttribute('style', 'display:none;')
-      root.nodata.hide()
-    }
-  }
 
   const mark = root.el.querySelector('.vmark')
   // alert
