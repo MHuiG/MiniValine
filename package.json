@@ -16,7 +16,7 @@
     "check": "eslint src",
     "format": "eslint src --fix",
     "cover": "jest --coverage",
-	"coveralls": "npm run cover --report && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "npm run cover --report && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "MiniValine",
@@ -56,8 +56,9 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^2.7.0",
-    "webpack-dev-server": "^3.1.11"
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "babel-jest": "^25.1.0",

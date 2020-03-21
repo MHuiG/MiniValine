@@ -8,17 +8,14 @@ var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
 
 var plugins = []
-if (env !== 'dev') {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
-    })
-  )
-}
 
 module.exports = {
+  mode: 'production',
+  performance: { hints: false },
   entry: './src/index.js',
-
+  optimization: {
+    minimize: true //Update this to true or false
+  },
   output: {
     path: BUILD_PATH,
     publicPath: '/dist/',
