@@ -205,7 +205,7 @@ MiniValineFactory.prototype.bind = function () {
     parentCount = data.count
     parentQuery(1)
   }).catch((ex) => {
-      console.log(ex)
+    console.log(ex)
   })
 
   // 无限嵌套加载
