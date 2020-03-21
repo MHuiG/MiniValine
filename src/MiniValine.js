@@ -220,7 +220,7 @@ MiniValineFactory.prototype.bind = function () {
       root.v.Query.doCloudQuery(
           `select count(*) from Comment where rid='${_id}' and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt`
       ).then(
-        data => {
+        (data) => {
           const { count } = data
           if (count > 0) {
             const showChildrenWrapper = vchild.querySelector(
@@ -234,7 +234,7 @@ MiniValineFactory.prototype.bind = function () {
             const showChildren = showChildrenWrapper.querySelector(
               '.vshow-children'
             )
-            utils.domUtils.on('click', showChildren, e => {
+            utils.domUtils.on('click', showChildren, (e) => {
               showChildrenWrapper.setAttribute(
                 'style',
                 'display: none !important;'
@@ -243,7 +243,7 @@ MiniValineFactory.prototype.bind = function () {
             })
           }
         },
-        error => {
+        (error) => {
           console.log(error)
         }
       )
@@ -251,7 +251,7 @@ MiniValineFactory.prototype.bind = function () {
     }
 
     root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where rid='${_id}' and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt`)
-      .then(rets => {
+      .then((rets) => {
         rets = (rets && rets.results) || []
         const len = rets.length
         if (len) {
@@ -263,7 +263,7 @@ MiniValineFactory.prototype.bind = function () {
           }
         }
       })
-      .catch(ex => {
+      .catch((ex) => {
         console.log(ex)
         root.loading.hide()
       })
@@ -306,7 +306,7 @@ MiniValineFactory.prototype.bind = function () {
       const _v = mapping[i]
       const _el = root.el.querySelector(`.${i}`)
       inputs[_v] = _el
-      utils.domUtils.on('input', _el, e => {
+      utils.domUtils.on('input', _el, (e) => {
         // defaultComment[_v] = HtmlUtil.encode(_el.value.replace(/(^\s*)|(\s*$)/g, ""));
         defaultComment[_v] = _el.value
       })
@@ -366,7 +366,7 @@ MiniValineFactory.prototype.bind = function () {
 
   // submit
   const submitBtn = root.el.querySelector('.vsubmit')
-  const submitEvt = e => {
+  const submitEvt = (e) => {
     if (submitBtn.getAttribute('disabled')) {
       root.alert.show({
         type: 0,
@@ -426,7 +426,7 @@ MiniValineFactory.prototype.bind = function () {
 
   const smileBtn = root.el.querySelector('.vemoji-btn')
   const smileicons = root.el.querySelector('.vsmile-icons')
-  utils.domUtils.on('click', smileBtn, e => {
+  utils.domUtils.on('click', smileBtn, (e) => {
     if (previewText.getAttribute('triggered')) {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
@@ -442,7 +442,7 @@ MiniValineFactory.prototype.bind = function () {
 
   const previewBtn = root.el.querySelector('.vpreview-btn')
   const previewText = root.el.querySelector('.vpreview-text')
-  utils.domUtils.on('click', previewBtn, e => {
+  utils.domUtils.on('click', previewBtn, (e) => {
     if (smileicons.getAttribute('triggered')) {
       smileicons.setAttribute('style', 'display:none;')
       smileicons.removeAttribute('triggered')
@@ -506,7 +506,7 @@ MiniValineFactory.prototype.bind = function () {
     comment.setACL(getAcl())
     comment
       .save()
-      .then(commentItem => {
+      .then((commentItem) => {
         store &&
             store.setItem(
               'MiniValineCache',
@@ -534,16 +534,16 @@ MiniValineFactory.prototype.bind = function () {
         root.reset()
         utils.MathJaxSupport(root.math)
       })
-      .catch(ex => {
+      .catch((ex) => {
         root.submitting.hide()
       })
   }
 
   // at event
-  const bindAtEvt = vcard => {
+  const bindAtEvt = (vcard) => {
     const _id = vcard.getAttribute('id')
     const _vat = vcard.querySelector(`#at-${_id}`)
-    utils.domUtils.on('click', _vat, e => {
+    utils.domUtils.on('click', _vat, (e) => {
       const at = _vat.getAttribute('at')
       const rid = _vat.getAttribute('rid')
       defaultComment.rid = rid
