@@ -1,6 +1,4 @@
-import 'highlight.js/styles/github.css'
 import 'lazysizes'
-import md from 'marked'
 import Utils from './utils/domUtils'
 import check from './utils/check'
 import xss from 'xss'
@@ -34,19 +32,6 @@ MiniValineFactory.prototype.initMiniValine = function () {
     }
     root.el = el
     root.el.classList.add('MiniValine')
-    md.setOptions({
-      gfm: true,
-      tables: true,
-      breaks: true,
-      pedantic: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: true,
-      highlight (code) {
-        return require('highlight.js').highlightAuto(code).value
-      }
-    })
-
     root.el.innerHTML = html.ele(root)
     // Empty Data
     const vempty = root.el.querySelector('.vempty')
@@ -483,7 +468,7 @@ MiniValineFactory.prototype.bind = function () {
     }
     // render markdown
     defaultComment.comment = xss(
-      md(
+      fun.md(
         defaultComment.comment.replace(
           /!\(:(.*?\.\w+):\)/g,
             `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`
@@ -555,7 +540,7 @@ MiniValineFactory.prototype.bind = function () {
       }
       // render markdown
       previewText.innerHTML = xss(
-        md(
+        fun.md(
           defaultComment.comment.replace(
             /!\(:(.*?\.\w+):\)/g,
               `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`
