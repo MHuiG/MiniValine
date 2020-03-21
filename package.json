@@ -52,7 +52,7 @@
     "file-loader": "6.0.0",
     "jest": "25.1.0",
     "node-sass": "4.13.1",
-    "postcss-loader": "2.1.6",
+    "postcss-loader": "3.0.0",
     "sass-loader": "6.0.7",
     "style-loader": "0.23.1",
     "url-loader": "0.6.2",
