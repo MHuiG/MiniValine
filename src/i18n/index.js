@@ -1,4 +1,4 @@
-import Polyglot from 'node-polyglot/build/polyglot'
+import Polyglot from 'node-polyglot'
 import ZHCN from './zh-CN.json'
 import ZHTW from './zh-TW.json'
 import EN from './en.json'
