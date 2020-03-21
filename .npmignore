@@ -13,3 +13,6 @@ test
 index.html
 webpack.config.js
 webpack.dev.config.js
+package-lock.json
+_config.yml
+.travis.yml
