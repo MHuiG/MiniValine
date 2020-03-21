@@ -58,13 +58,13 @@ MiniValineFactory.prototype.initMiniValine = function () {
       const cBtn = `<button class="vcancel vbtn">${(o && o.ctxt) || root.i18n.cancel}</button>`
       const oBtn = `<button class="vsure vbtn">${(o && o.otxt) || root.i18n.t('continue')}</button>`
       vbtns.innerHTML = `${cBtn}${o.type && oBtn}`
-      mark.querySelector('.vcancel').addEventListener('click', e => {
+      mark.querySelector('.vcancel').addEventListener('click', (e) => {
         root.alert.hide()
       })
       mark.setAttribute('style', 'display:block;')
       if (o && o.type) {
         const ok = mark.querySelector('.vsure')
-        utils.domUtils.on('click', ok, e => {
+        utils.domUtils.on('click', ok, (e) => {
           root.alert.hide()
           o.cb && o.cb()
         })

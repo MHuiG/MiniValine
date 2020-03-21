@@ -20,8 +20,8 @@ const setAV = function (root) {
 
   if (typeof window.disableAVInit === 'undefined') {
     AV.init({
-      appId: root.config.appId || root.config.appId,
-      appKey: root.config.appKey || root.config.appKey,
+      appId: root.config.appId,
+      appKey: root.config.appKey,
       serverURLs
     })
     window.disableAVInit = true

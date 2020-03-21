@@ -1,8 +1,5 @@
-var webpack = require('webpack')
 var path = require('path')
-
 var libraryName = 'MiniValine'
-var env = process.env.WEBPACK_ENV
 var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
