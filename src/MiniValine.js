@@ -7,7 +7,7 @@ import xss from 'xss'
 import crypto from 'blueimp-md5'
 import fun from './fun'
 import html from './html'
-import { store, defaultComment,GravatarBaseUrl } from './const'
+import { store, defaultComment, GravatarBaseUrl } from './const'
 
 const MiniValineFactory = function (option) {
   const root = this
@@ -24,7 +24,7 @@ MiniValineFactory.prototype.init = function () {
 MiniValineFactory.prototype.initMiniValine = function () {
   const root = this
   try {
-	fun.initConfig(root)
+    fun.initConfig(root)
     const el =
         toString.call(root.config.el) === '[object HTMLDivElement]'
           ? root.config.el
@@ -46,7 +46,7 @@ MiniValineFactory.prototype.initMiniValine = function () {
         return require('highlight.js').highlightAuto(code).value
       }
     })
-    
+
     root.el.innerHTML = html.ele(root)
     // Empty Data
     const vempty = root.el.querySelector('.vempty')
@@ -371,7 +371,7 @@ MiniValineFactory.prototype.bind = function () {
     const _vcard = document.createElement('li')
     _vcard.setAttribute('class', 'vcard')
     _vcard.setAttribute('id', comment.id)
-    _vcard.innerHTML = html.vcard(root,comment)
+    _vcard.innerHTML = html.vcard(root, comment)
 
     const _vlist = vlist || root.el.querySelector('.vlist')
     const _vlis = _vlist.querySelectorAll('li')

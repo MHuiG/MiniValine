@@ -1,9 +1,9 @@
 import { GravatarBaseUrl } from '../const'
 import timeAgo from '../utils/timeago'
-const vcard = function (root,comment) {
-	const emailHash = comment.get('emailHash')
-	const gravatarUrl = `${GravatarBaseUrl + emailHash}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
-    const HTML = '<div class="vcomment-body">' +
+const vcard = function (root, comment) {
+  const emailHash = comment.get('emailHash')
+  const gravatarUrl = `${GravatarBaseUrl + emailHash}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
+  const HTML = '<div class="vcomment-body">' +
                                     '<div class="vhead" >' +
                                         `<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
                                         `<a rid='${comment.id}' at='@${comment.get('nick')}' class="vat" id="at-${comment.id}">${root.i18n.t('reply')}</a>` +
@@ -19,6 +19,6 @@ const vcard = function (root,comment) {
                                     '<div class="vshow-children-wrapper" style="display: none"></div>' +
                                     `<ul class="vlist" id="children-list-${comment.id}"></ul>` +
                                 '</div>'
-	return HTML
+  return HTML
 }
 module.exports = vcard

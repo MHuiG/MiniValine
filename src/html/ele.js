@@ -1,7 +1,7 @@
 import { GravatarBaseUrl, DefaultEmailHash } from '../const'
 import format from 'string-format'
 const ele = function (root) {
-    const HTML = '<div id="vinputs-placeholder">' +
+  const HTML = '<div id="vinputs-placeholder">' +
                       '<div class="vinputs-wrap">' +
                        `<p class="vcancel-comment-reply" href="#" rel="nofollow" style="display:none">${root.i18n.t('cancelReply')}</p>` +
                                 '<div class="vinputs-area">' +
@@ -41,6 +41,6 @@ const ele = function (root) {
                            '<ul class="vlist"><li class="vempty"></li></ul>' +
                            '<div class="vloading"></div>' +
                            '<div class="vpage txt-center"></div>'
-	return HTML
+  return HTML
 }
 module.exports = ele

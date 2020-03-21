@@ -1,4 +1,4 @@
-import { MaxNestLevel, PageSize, EmoticonList, EmoticonUrl, store, defaultComment,GravatarBaseUrl } from '../const'
+import { MaxNestLevel, PageSize, EmoticonList, EmoticonUrl, defaultComment } from '../const'
 import i18n from '../i18n'
 const initConfig = function (root) {
   root.emoticonUrl = root.config.emoticonUrl || EmoticonUrl
