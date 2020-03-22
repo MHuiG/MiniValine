@@ -17,7 +17,7 @@ const timeAgo = (date, i18n) => {
           // 计算相差秒数
           const leave3 = leave2 % (60 * 1000) // 计算分钟数后剩余的毫秒数
           const seconds = Math.round(leave3 / 1000)
-          if (seconds == 0) return i18n.t('now')
+          if (seconds === 0) return i18n.t('now')
           return `${seconds} ${i18n.t('seconds')}`
         }
         return `${minutes} ${i18n.t('minutes')}`
@@ -35,7 +35,7 @@ const timeAgo = (date, i18n) => {
   }
 }
 
-const dateFormat = date => {
+const dateFormat = (date) => {
   const vDay = padWithZeros(date.getDate(), 2)
   const vMonth = padWithZeros(date.getMonth() + 1, 2)
   const vYear = padWithZeros(date.getFullYear(), 2)
