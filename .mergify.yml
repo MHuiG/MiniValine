@@ -1,5 +1,5 @@
 pull_request_rules:
-  - name: Automatic merge on approval
+  - name: Automatic merge
     conditions:
       - label!=🚧 Work in Progress
       - "#approved-reviews-by>=1"
@@ -19,7 +19,8 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-
+      label:
+        add: ["Auto merge"]
 
 pull_request_rules:
   - name: automatic merge if author is MHuiG
@@ -29,7 +30,8 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-
+      label:
+        add: ["Auto merge"]
 
 pull_request_rules:
   - name: automatic merge for Dependabot pull requests
@@ -39,7 +41,8 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-
+      label:
+        add: ["Auto merge","Build","🛠 Improvement"]
 
 pull_request_rules:
   - name: automatic merge for Renovate pull requests
@@ -49,6 +52,8 @@ pull_request_rules:
     actions:
       merge:
         method: merge
+      label:
+        add: ["Auto merge","Build","🛠 Improvement"]
 
 pull_request_rules:
   - name: delete head branch after merge
