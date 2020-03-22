@@ -15,3 +15,4 @@ webpack.config.js
 webpack.dev.config.js
 package-lock.json
 .travis.yml
+renovate.json
