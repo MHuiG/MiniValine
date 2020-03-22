@@ -19,8 +19,9 @@ const i18nMap = {
 }
 
 /**
- * i18n.
+ * i18n
  * @param {string} language
+ * @return {Object} Polyglot
  */
 export default function (language) {
   return new Polyglot({

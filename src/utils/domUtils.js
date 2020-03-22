@@ -12,7 +12,9 @@ const escapeMap = {
   '\\': '&#x5c;'
 }
 for (const key in escapeMap) {
-  unescapeMap[escapeMap[key]] = key
+  if (escapeMap.hasOwnProperty(key)) {
+    unescapeMap[escapeMap[key]] = key
+  }
 }
 
 const reUnescapedHtml = /[&<>"'`\\]/g
@@ -94,6 +96,7 @@ const utils = {
      * @param {String} name ElementTagName
      * @param {Object} attrName
      * @param {Object} attrVal
+	 * @return {Object} el
      */
   create (name, attrName, attrVal) {
     const el = document.createElement(name)
@@ -104,6 +107,7 @@ const utils = {
      * el.querySelector
      * @param {HTMLElement} el HTMLElement
      * @param {String} selector
+	 * @return {Object} el.querySelector(selector)
      */
   find (el, selector) {
     return el.querySelector(selector)
@@ -113,6 +117,7 @@ const utils = {
      * el.querySelectorAll
      * @param {HTMLElement} el HTMLElement
      * @param {String} selector
+	 * @return {Object} el.querySelectorAll(selector)
      */
   findAll (el, selector) {
     return el.querySelectorAll(selector)
@@ -123,6 +128,7 @@ const utils = {
      * @param {HTMLElement} el
      * @param {String | Object} name
      * @param {String} value
+	 * @return {Object} el.getAttribute(name)
      */
   attr (el, name, value) {
     if (typeof el.getAttribute === 'undefined') return utils.prop(el, name, value)
@@ -140,6 +146,7 @@ const utils = {
      * @param {HTMLElement} el
      * @param {String} name
      * @param {String} value
+	 * @return {Object} el[name]
      */
   prop (el, name, value) {
     if (value !== undefined) { el[name] = value; return el[name] } else if (({}).toString.call(name) === '[object Object]') {
@@ -152,7 +159,7 @@ const utils = {
      * Remove el attribute
      * @param {HTMLElement} el
      * @param {String} names
-     * @returns {HTMLElement} el
+     * @return {HTMLElement} el
      */
   removeAttr (el, names) {
     let name
@@ -170,6 +177,7 @@ const utils = {
   /**
      * Clear element attributes
      * @param {HTMLElement} el
+	 * @return {Object}
      */
   clearAttr (el) {
     const attrs = el.attributes
