@@ -4,10 +4,8 @@
 .npmignore
 .babelrc
 *.log
-
 node_modules
 coverage
-
 src
 test
 index.html
@@ -16,3 +14,4 @@ webpack.dev.config.js
 package-lock.json
 .travis.yml
 renovate.json
+.mergify.yml
