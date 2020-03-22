@@ -55,14 +55,14 @@ MiniValineFactory.prototype.initMiniValine = function () {
     show (o) {
       mark.innerHTML = `<div class="valert txt-center"><div class="vtext">${o.text}</div><div class="vbtns"></div></div>`
       const vbtns = mark.querySelector('.vbtns')
-      const cBtn = `<button class="vcancel vbtn">${(o && o.ctxt) || root.i18n.cancel}</button>`
-      const oBtn = `<button class="vsure vbtn">${(o && o.otxt) || root.i18n.t('continue')}</button>`
+      const cBtn = `<button class="vcancel vbtn">${(o.ctxt) || root.i18n.cancel}</button>`
+      const oBtn = `<button class="vsure vbtn">${(o.otxt) || root.i18n.t('continue')}</button>`
       vbtns.innerHTML = `${cBtn}${o.type && oBtn}`
       mark.querySelector('.vcancel').addEventListener('click', (e) => {
         root.alert.hide()
       })
       mark.setAttribute('style', 'display:block;')
-      if (o && o.type) {
+      if (o.type) {
         const ok = mark.querySelector('.vsure')
         utils.domUtils.on('click', ok, (e) => {
           root.alert.hide()
@@ -108,7 +108,8 @@ MiniValineFactory.prototype.bind = function () {
       var sel = document.selection.createRange()
       sel.text = tag
       textField.focus()
-    } else if (textField.selectionStart || textField.selectionStart === '0') {
+    // } else if (textField.selectionStart || textField.selectionStart === '0') {
+    } else if (textField.selectionStart) {
       const startPos = textField.selectionStart
       const endPos = textField.selectionEnd
       let cursorPos = endPos
