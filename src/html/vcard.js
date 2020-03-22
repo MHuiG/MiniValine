@@ -1,7 +1,6 @@
 import { GravatarBaseUrl } from '../const'
 import timeAgo from '../utils/timeago'
 const vcard = function (root, comment) {
-  console.log(comment)
   const emailHash = comment.get('emailHash')
   const gravatarUrl = `${GravatarBaseUrl + emailHash}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
   const HTML = '<div class="vcomment-body">' +
