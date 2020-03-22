@@ -320,12 +320,10 @@ MiniValineFactory.prototype.bind = function () {
     if (s) {
       s = JSON.parse(s)
       const m = ['nick', 'link', 'mail']
-      for (const i in m) {
-        if (m.hasOwnProperty(i)) {
-          const k = m[i]
-          root.el.querySelector(`.v${k}`).value = s[k]
-          defaultComment[k] = s[k]
-        }
+      for (let i = 0; i < m.length; i++) {
+        const k = m[i]
+        root.el.querySelector(`.v${k}`).value = s[k]
+        defaultComment[k] = s[k]
       }
       if (s.mail !== '') {
         const el = root.el.querySelector('.visitor_avatar')
