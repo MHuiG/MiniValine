@@ -18,6 +18,11 @@ const i18nMap = {
   de: DE
 }
 
+/**
+ * i18n.
+ * @param {string} language
+ */
+ 
 export default function (language) {
   return new Polyglot({
     phrases: i18nMap[language] || i18nMap.en,

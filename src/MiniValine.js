@@ -138,7 +138,7 @@ MiniValineFactory.prototype.bind = function () {
   })
 
   // cancel reply
-  utils.domUtils.on('click', root.el.querySelector('.vcancel-comment-reply'), e => {
+  utils.domUtils.on('click', root.el.querySelector('.vcancel-comment-reply'), (e) => {
     root.reset()
   })
 
@@ -379,7 +379,7 @@ MiniValineFactory.prototype.bind = function () {
       inputs.comment.focus()
       return
     }
-    if (defaultComment.nick == '') {
+    if (defaultComment.nick === '') {
       inputs.nick.focus()
       return
     }
@@ -400,7 +400,7 @@ MiniValineFactory.prototype.bind = function () {
       }
     )
     const idx = defaultComment.comment.indexOf(defaultComment.at)
-    if (idx > -1 && defaultComment.at != '') {
+    if (idx > -1 && defaultComment.at !== '') {
       const at = `<a class="at" href='#${defaultComment.rid}'>${defaultComment.at}</a>`
       defaultComment.comment = defaultComment.comment.replace(
         defaultComment.at,
@@ -451,7 +451,7 @@ MiniValineFactory.prototype.bind = function () {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
     } else {
-      if (defaultComment.comment == '') {
+      if (defaultComment.comment === '') {
         inputs.comment.focus()
         return
       }
