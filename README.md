@@ -1,6 +1,7 @@
 # MiniValine
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
+[![NPM][npm-version-image]][npm-version-url] 
 [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/)
 [![Build Status](https://travis-ci.com/MiniValine/MiniValine.svg?branch=master)](https://travis-ci.com/MiniValine/MiniValine)
 [![Build Status](https://github.com/MiniValine/MiniValine/workflows/Node.js%20CI/badge.svg)](https://github.com/MiniValine/MiniValine/actions)
@@ -31,6 +32,10 @@ Two ways.
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/dist/MiniValine.min.js"></script>
+
+<!-- or -->
+
+<script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
@@ -181,6 +186,9 @@ Also, we welcome Issue or PR to MiniValine.
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
 
+
+[npm-version-image]: https://img.shields.io/npm/v/minivaline.svg?style=flat-square
+[npm-version-url]: https://www.npmjs.com/package/minivaline
 [gitter-url]: https://gitter.im/thebestminivaline
 [issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
