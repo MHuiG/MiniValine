@@ -199,6 +199,7 @@ Also, we welcome Issue or PR to MiniValine.
 [issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
 [feat-req-vote-url]: https://github.com/MiniValine/MiniValine/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22
 [contributing-document-url]: https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md
-[contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors
 [mergify]: https://mergify.io
 [mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/MiniValine/MiniValine&style=flat
+[contributors-image]: https://opencollective.com/minivaline/contributors.svg?width=890
+[contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors

@@ -75,7 +75,7 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 
 You may get in touch with the maintainer team through any of the following methods:
 
-* Through Email
+* Through Email: thepie@foxmail.com
 
 ## Attribution
 
