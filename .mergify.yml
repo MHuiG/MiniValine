@@ -48,7 +48,7 @@ pull_request_rules:
       merge:
         method: merge
       label:
-        add: ["Auto merge","Dependabot[bot]","Build","🛠 Improvement"]
+        add: ["Auto merge","Build","🛠 Improvement"]
   - name: automatic merge for Renovate pull requests
     conditions:
       - author=renovate[bot]
@@ -57,7 +57,7 @@ pull_request_rules:
       merge:
         method: merge
       label:
-        add: ["Auto merge","renovate[bot]","Build","🛠 Improvement"]
+        add: ["Auto merge","Build","🛠 Improvement"]
   - name: automatic merge for ImgBot pull requests
     conditions:
       - author=imgbot[bot]
@@ -66,4 +66,4 @@ pull_request_rules:
       merge:
         method: merge
       label:
-        add: ["Auto merge","imgbot[bot]","🛠 Improvement"]
+        add: ["Auto merge","🛠 Improvement"]
