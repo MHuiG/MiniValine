@@ -27,12 +27,12 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MHuiG/MiniValine.git"
+    "url": "git+https://github.com/MiniValine/MiniValine.git"
   },
   "bugs": {
-    "url": "https://github.com/MHuiG/MiniValine/issues"
+    "url": "https://github.com/MiniValine/MiniValine/issues"
   },
-  "homepage": "https://github.com/MHuiG/MiniValine#readme",
+  "homepage": "https://github.com/MiniValine/MiniValine#readme",
   "devDependencies": {
     "@babel/cli": "7.8.4",
     "@babel/core": "7.9.0",

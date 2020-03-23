@@ -14,10 +14,6 @@
 [![codecov](https://codecov.io/gh/MiniValine/MiniValine/branch/master/graph/badge.svg)](https://codecov.io/gh/MiniValine/MiniValine)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c203d6a0703457081c8d563a0b3b810)](https://www.codacy.com/gh/MiniValine/MiniValine?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MiniValine/MiniValine&amp;utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/8202/projects/10351/branches/142143/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8202&pid=10351&bid=142143)
-<!--
-
-
--->
 
 
 > MiniValine is a simple and minimalist comment system based on Leancloud
@@ -96,7 +92,7 @@ new MiniValine({
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MiniValine - A simple comment system based on Leancloud.</title>
     <!--Load js and insert it before </ body>-->
-    <script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/dist/MiniValine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script>
 </head>
 <body>
     <div class="comment"></div>
@@ -154,7 +150,7 @@ new MiniValine({
 
 - **emoticonUrl** `String`
 
-  Default: `'https://cdn.jsdelivr.net/gh/MHuiG/mhuig.github.io/libs/alu'`
+  Default: `'https://cdn.jsdelivr.net/npm/minivaline/alu'`
   
   Expression Url.
 
