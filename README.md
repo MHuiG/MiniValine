@@ -1,8 +1,13 @@
-<img src='./.github/minivaline.png' width='200' align="right" />
+<img src='./.github/minivaline.png' width='150' align="right" />
 
 # MiniValine
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
+[![NPM][npm-version-image]][npm-version-url]
+[![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/)
+[![npm downloads](https://img.shields.io/npm/dm/minivaline.svg?style=flat-square)](https://www.npmjs.com/package/minivaline)
+[![gzip-size][gzip-size]][gzip-url]
+
 [![Build Status](https://travis-ci.com/MiniValine/MiniValine.svg?branch=master)](https://travis-ci.com/MiniValine/MiniValine)
 [![Build Status](https://github.com/MiniValine/MiniValine/workflows/Node.js%20CI/badge.svg)](https://github.com/MiniValine/MiniValine/actions)
 [![Mergify Status][mergify-status]][mergify]
@@ -10,8 +15,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c203d6a0703457081c8d563a0b3b810)](https://www.codacy.com/gh/MiniValine/MiniValine?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MiniValine/MiniValine&amp;utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/8202/projects/10351/branches/142143/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8202&pid=10351&bid=142143)
 <!--
-[![NPM][npm-version-image]][npm-version-url] 
-[![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/)
+
+
 -->
 
 
@@ -196,6 +201,8 @@ Also, we welcome Issue or PR to MiniValine.
 
 [npm-version-image]: https://img.shields.io/npm/v/minivaline.svg?style=flat-square
 [npm-version-url]: https://www.npmjs.com/package/minivaline
+[gzip-size]: https://img.badgesize.io/https://unpkg.com/minivaline/dist/MiniValine.min.js?compression=gzip&style=flat-square
+[gzip-url]: https://unpkg.com/minivaline/dist/MiniValine.min.js
 [gitter-url]: https://gitter.im/thebestminivaline
 [issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
