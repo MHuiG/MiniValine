@@ -1,6 +1,6 @@
 {
   "name": "minivaline",
-  "version": "1.2.13",
+  "version": "1.2.14",
   "description": "A simple and minimalist comment system based on Leancloud.",
   "main": "/dist/MiniValine.min.js",
   "author": {
@@ -86,17 +86,17 @@
       "js"
     ],
     "coveragePathIgnorePatterns": [
-	  "src/MiniValine.js",
-	  "src/html/vcard.js",
-	  "src/html/el.js",
-	  "src/html/loading.js",
-	  "src/utils/domUtils.js",
-	  "src/utils/MathJax.js",
-	  "src/utils/md.js",
-	  "src/utils/setAV.js",
+      "src/MiniValine.js",
+      "src/html/vcard.js",
+      "src/html/el.js",
+      "src/html/loading.js",
+      "src/utils/domUtils.js",
+      "src/utils/MathJax.js",
+      "src/utils/md.js",
+      "src/utils/setAV.js",
       "src/utils/initAV.js",
       "src/utils/timeago.js"
-	],
+    ],
     "globals": {
       "VERSION": "1.0.0-test"
     }
