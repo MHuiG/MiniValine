@@ -185,7 +185,7 @@ Also, we welcome Issue or PR to MiniValine.
 
 ## Contributors
 
-[Contributors][contributors-url]
+[![contributors-image]][contributors-url]
 
 ## License
 
