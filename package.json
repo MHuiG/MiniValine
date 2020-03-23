@@ -15,7 +15,7 @@
     "clear": "rm -rf dist/* ",
     "check": "eslint src",
     "format": "eslint src --fix",
-    "cover": "jest --coverage"
+    "cover": "jest --coverage --runInBand --detectOpenHandles"
   },
   "keywords": [
     "MiniValine",
@@ -87,15 +87,14 @@
     ],
     "coveragePathIgnorePatterns": [
       "src/MiniValine.js",
-      "src/html/vcard.js",
-      "src/html/el.js",
-      "src/html/loading.js",
+      "src/html/*",
       "src/utils/domUtils.js",
       "src/utils/MathJax.js",
       "src/utils/md.js",
       "src/utils/setAV.js",
       "src/utils/initAV.js",
-      "src/utils/timeago.js"
+      "src/utils/timeago.js",
+      "src/utils/initConfig.js"
     ],
     "globals": {
       "VERSION": "1.0.0-test"

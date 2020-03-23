@@ -30,6 +30,7 @@ test('MathJax', () => {
 })
 
 test('check', () => {
+  document.body.innerHTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"></head><body><div class="comment"></div></body></html>'
   utils.check.mail('110@qq.com')
   utils.check.link('https://www.baidu.com/')
 })
