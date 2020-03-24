@@ -16,9 +16,7 @@ pull_request_rules:
       - status-success=Travis CI - Pull Request
       - status-success=Travis CI - Branch
       - status-success=build (8.x)
-      - status-success=build (9.x)
       - status-success=build (10.x)
-      - status-success=build (11.x)
       - status-success=build (12.x)
       - status-success=codecov/project
       - status-success=codecov/patch
