@@ -27,6 +27,7 @@ jobs:
     - run: npm install --global prettier
     - run: npm install
     - run: npm test
+    - run: npm run build
     - run: npm run check
       env:
         CI: true
