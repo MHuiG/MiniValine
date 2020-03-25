@@ -10,7 +10,7 @@ jobs:
     name: Pull Request Milestone
     runs-on: ubuntu-latest
     steps:
-      - uses: MHuiG/actions-milestone@master
+      - uses: iyu/actions-milestone@v1
         with:
           repo-token: "${{ secrets.TOKEN }}"
           configuration-path: .github/milestone.yml
