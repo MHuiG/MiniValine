@@ -11,6 +11,7 @@ pull_request_rules:
       dismiss_reviews: {}
   - name: Automatic merge
     conditions:
+      - label!=has conflicts
       - label!=🚧 Work in Progress
       - "#approved-reviews-by>=1"
       - status-success=Travis CI - Pull Request
@@ -23,45 +24,39 @@ pull_request_rules:
       - status-success=DeepCode
       - status-success=Codacy/PR Quality Review
       - status-success=Mergeable
-      - status-success=license/cla
+      - status-success=CLA Assistant
     actions:
-      merge:
-        method: merge
       label:
         add: ["Auto merge"]
+      merge:
+        method: merge
   - name: automatic merge if author is MHuiG
     conditions:
       - author=MHuiG
-      - status-success=Travis CI - Pull Request
+      - status-success=build (12.x)
     actions:
-      merge:
-        method: merge
       label:
         add: ["Auto merge"]
+      merge:
+        method: merge
   - name: automatic merge for Dependabot pull requests
     conditions:
       - author~=^dependabot(|-preview)\[bot\]$
-      - status-success=Travis CI - Pull Request
+      - status-success=build (12.x)
     actions:
-      merge:
-        method: merge
       label:
-        add: ["Auto merge","Build","🛠 Improvement"]
+        add: ["Build","🛠 Improvement"]
   - name: automatic merge for Renovate pull requests
     conditions:
       - author=renovate[bot]
-      - status-success=Travis CI - Pull Request
+      - status-success=build (12.x)
     actions:
-      merge:
-        method: merge
       label:
-        add: ["Auto merge","Build","🛠 Improvement"]
+        add: ["Build","🛠 Improvement"]
   - name: automatic merge for ImgBot pull requests
     conditions:
       - author=imgbot[bot]
-      - status-success=Travis CI - Pull Request
+      - status-success=build (12.x)
     actions:
-      merge:
-        method: merge
       label:
-        add: ["Auto merge","🛠 Improvement"]
+        add: ["🛠 Improvement"]
