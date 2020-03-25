@@ -5,6 +5,7 @@ os: linux
 
 install:
   - npm install -g eslint
+  - npm install -g @bundle-analyzer/cli
   - npm install
 
 script:
@@ -15,6 +16,8 @@ after_script:
   - npm run check
   - npm run cover
   - bash <(curl -s https://codecov.io/bash)
+  - webpack --mode production --json | bundle-analyzer --token ${BUNDLE_ANALYZER_TOKEN}
+  - cat webpack-stats.json | bundle-analyzer --token ${BUNDLE_ANALYZER_TOKEN}
 
 
 notifications:
