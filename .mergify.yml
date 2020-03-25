@@ -26,19 +26,19 @@ pull_request_rules:
       - status-success=Mergeable
       - status-success=CLAssistant
     actions:
-      label:
-        add: ["Auto merge"]
       merge:
         method: merge
+      label:
+        add: ["Auto merge"]
   - name: automatic merge if author is MHuiG
     conditions:
       - author=MHuiG
       - status-success=build (12.x)
     actions:
-      label:
-        add: ["Auto merge"]
       merge:
         method: merge
+      label:
+        add: ["Auto merge"]
   - name: automatic merge for Dependabot pull requests
     conditions:
       - author~=^dependabot(|-preview)\[bot\]$
