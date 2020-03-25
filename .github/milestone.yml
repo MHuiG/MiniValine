@@ -1,3 +1,2 @@
 base-branch:
-  - "(master)"
   - "(v\\d+\\.\\d+\\.\\d+)"
