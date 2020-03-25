@@ -24,7 +24,7 @@ pull_request_rules:
       - status-success=DeepCode
       - status-success=Codacy/PR Quality Review
       - status-success=Mergeable
-      - status-success=CLA Assistant
+      - status-success=CLAssistant
     actions:
       label:
         add: ["Auto merge"]
