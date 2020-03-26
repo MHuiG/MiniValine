@@ -16,3 +16,4 @@ package-lock.json
 renovate.json
 .mergify.yml
 .github
+.typo-ci.yml
