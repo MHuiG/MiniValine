@@ -11,6 +11,6 @@ jobs:
         steps:
         - uses: actions/checkout@v1
         - name: update all prs
-            uses: maxkomarychev/pr-updater-action@v1.0.0
-            with:
-                token: ${{ secrets.TOKEN }}
+          uses: maxkomarychev/pr-updater-action@v1.0.0
+          with:
+            token: ${{ secrets.TOKEN }}
