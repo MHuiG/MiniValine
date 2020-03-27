@@ -151,7 +151,7 @@ new MiniValine({
 
 - **emoticonUrl** `String`
 
-  Default: `'https://cdn.jsdelivr.net/npm/minivaline/alu'`
+  Default: `'https://cdn.jsdelivr.net/npm/alus'`
   
   Expression Url.
 
