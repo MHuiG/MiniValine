@@ -175,6 +175,11 @@ new MiniValine({
   
   Pagination size.
 
+## TODO
+
+- Extraction from the core library to reduce volume.
+
+- And more.
 
 ## Feedback
 
