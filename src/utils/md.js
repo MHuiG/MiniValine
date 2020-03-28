@@ -1,6 +1,8 @@
 import 'highlight.js/styles/github.css'
 import md from 'marked'
 
+import highligher from './highlight'
+
 md.setOptions({
   gfm: true,
   tables: true,
@@ -10,7 +12,7 @@ md.setOptions({
   smartLists: true,
   smartypants: true,
   highlight (code) {
-    return require('highlight.js').highlightAuto(code).value
+    return highligher.highlightAuto(code).value
   }
 })
 
