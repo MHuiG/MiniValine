@@ -21,6 +21,8 @@
 ------------------------------
 **[Live Demo](https://minivaline.github.io)**
 
+**[Awesome MiniValine](https://github.com/MiniValine/AWESOME-MiniValine)**
+
 ## Features
 
 - High speed.
