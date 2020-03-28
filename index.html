@@ -147,6 +147,11 @@
         &copy; 2017 <a href="https://github.com/xCss" target="_blank">云淡风轻</a> &copy; 2018 Modified by <a href="https://github.com/DesertsP" target="_blank">Deserts</a> &copy; 2020 Modified by <a href="https://github.com/MHuiG" target="_blank">MHuiG</a>
     </div>
     <script>
+	    window.onload = function() {
+            var iframes = document.querySelectorAll('iframe');
+            iframes[0].setAttribute('src', 'https://ghbtns.com/github-btn.html?user=MiniValine&repo=MiniValine&type=watch&count=true');
+            iframes[1].setAttribute('src', 'https://ghbtns.com/github-btn.html?user=MiniValine&repo=MiniValine&type=fork&count=true');
+        }
 		new MiniValine({
 			el: '.comment',
 			appId: 'zhM0AOiqle17oPoE84CoYw1e-gzGzoHsz',
