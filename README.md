@@ -178,7 +178,9 @@ new MiniValine({
 
 ## Feedback
 
+* Visit the [AWESOME MiniValine](https://github.com/MiniValine/AWESOME-MiniValine) list to share plugins and tutorials with other users.
 * Report a bug in [GitHub Issues][issues-bug-url].
+* [Add or improve translation](https://crowdin.com/project/minivaline) in few seconds.
 * Request a new feature on [GitHub][issues-feat-url].
 * Join our [Gitter][gitter-url] chats.
 * Vote for [popular feature requests][feat-req-vote-url].
