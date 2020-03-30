@@ -3,15 +3,19 @@ var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
-
-var plugins = []
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+var plugins = [
+  // new CleanWebpackPlugin(),
+  new MiniCssExtractPlugin({ filename: 'MiniValine.min.css' })
+]
 
 module.exports = {
   mode: 'production',
   performance: { hints: false },
   entry: './src/index.js',
   optimization: {
-    minimize: true //Update this to true or false
+    minimize: true
   },
   output: {
     path: BUILD_PATH,
@@ -42,6 +46,7 @@ module.exports = {
     {
       test: /\.scss$/,
       use: [
+	    //MiniCssExtractPlugin.loader,
         'style-loader',
         'css-loader',
         'postcss-loader',
@@ -50,12 +55,17 @@ module.exports = {
       include: APP_PATH
     },
     {
-      test: /\.(png|jpg)$/,
-      loader: 'url-loader?limit=40000'
+      test: /\.css$/,
+      use: [
+	  //MiniCssExtractPlugin.loader,
+	  'style-loader',
+	  'css-loader',
+	  'postcss-loader'
+	  ]
     },
     {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      test: /\.(png|jpg)$/,
+      use: ['url-loader?limit=1024*10']
     }
     ]
   },
