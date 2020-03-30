@@ -33,7 +33,7 @@
 - Support lazy loading picture emoji.
 - Support code highlighting.
 - Support MathJax.
-- Support multiple languages [en, zh-CN, zh-TW, es-ES, fr, ru].
+- [Support multiple languages](https://crowdin.com/project/minivaline) [en, zh-CN, zh-TW, es-ES, fr, ru].
 
 ## Install
 
