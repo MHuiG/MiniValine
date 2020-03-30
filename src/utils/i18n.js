@@ -3,7 +3,7 @@ import ajax from './ajax'
 
 const i18n = (root) => {
   ajax({
-    url: i18nUrl + root.lang + '.json',
+    url: i18nUrl + root.lang + '/index.json',
     type: 'GET',
     success: function (data) {
       data = eval('(' + data + ')')

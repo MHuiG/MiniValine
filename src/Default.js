@@ -5,7 +5,7 @@ export const lazysizes = 'https://cdn.jsdelivr.net/npm/lazysizes/lazysizes.min.j
 export const ip = 'https://api.ip.sb/jsonip?callback=getIP'
 export const DefaultEmailHash = '9e63c80900d106cbbec5a9f4ea433a3e'
 export const EmoticonUrl = 'https://cdn.jsdelivr.net/npm/alus'
-export const i18nUrl = 'https://cdn.jsdelivr.net/gh/MiniValine/minivaline-i18n/'
+export const i18nUrl = 'https://cdn.jsdelivr.net/gh/MiniValine/minivaline-i18n@master/'
 export const MaxNestLevel = 3
 export const PageSize = 6
 export const Comment = {
