@@ -12,11 +12,15 @@ globals:
   "AV": true
   "MathJax": true
   "test": true
+  "ActiveXObject": true
+  "md5": true
 parserOptions:
   ecmaVersion: 2018
 rules: {
   "no-tabs":"off",
   "no-prototype-builtins":"off",
   "eqeqeq":"off",
-  "no-useless-escape":"off"
+  "no-useless-escape":"off",
+  "no-eval":"off"
+  
 }

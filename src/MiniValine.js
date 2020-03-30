@@ -1,36 +1,45 @@
-import 'lazysizes'
 import xss from 'xss'
-import crypto from 'blueimp-md5'
-import utils from './utils'
-import html from './html'
-import { store, defaultComment, GravatarBaseUrl } from './const'
+import body from './body'
+import util from './utils'
+import { GravatarBaseUrl } from './Default'
 
 const MiniValineFactory = function (option) {
   const root = this
   root.config = option
-  root.init()
+  util.Config(root)
+  util.i18n(root)
+  util.script(root)
+  util.smile(root)
+  util.GetIP(root)
+  root.initMiniValine()
 }
-
-MiniValineFactory.prototype.init = function () {
-  const root = this
-  utils.GetIP()
-  utils.initAV(root)
-}
-
 MiniValineFactory.prototype.initMiniValine = function () {
   const root = this
+  var checki18n = setInterval(function () {
+    if (typeof root.i18n == 'undefined') { return }
+    if (typeof md5 == 'undefined') { return }
+    if (typeof AV == 'undefined') { return }
+    clearInterval(checki18n)
+    root.initBody()
+  }, 5)
+}
+MiniValineFactory.prototype.initBody = function () {
+  const root = this
   try {
-    utils.initConfig(root)
-    html.el(root)
+    body.el(root)
     // loading
-    html.loading(root)
+    body.loading(root)
 
     root.nodata.show()
 
     // load smiles image
-    html.smiles(root)
+    var checksmiles = setInterval(function () {
+      if (typeof root.emoticonList == 'undefined') { return }
+      clearInterval(checksmiles)
+      body.smiles(root)
+    }, 10)
 
-    utils.setAV(root)
+    util.setAV(root)
   } catch (ex) {
     console.log(ex)
     return
@@ -56,7 +65,7 @@ MiniValineFactory.prototype.initMiniValine = function () {
       mark.innerHTML = `<div class="valert txt-center"><div class="vtext">${o.text}</div><div class="vbtns"></div></div>`
       const vbtns = mark.querySelector('.vbtns')
       const cBtn = `<button class="vcancel vbtn">${(o.ctxt) || root.i18n.cancel}</button>`
-      const oBtn = `<button class="vsure vbtn">${(o.otxt) || root.i18n.t('continue')}</button>`
+      const oBtn = `<button class="vsure vbtn">${(o.otxt) || root.i18n.continue}</button>`
       vbtns.innerHTML = `${cBtn}${o.type && oBtn}`
       mark.querySelector('.vcancel').addEventListener('click', (e) => {
         root.alert.hide()
@@ -64,7 +73,7 @@ MiniValineFactory.prototype.initMiniValine = function () {
       mark.setAttribute('style', 'display:block;')
       if (o.type) {
         const ok = mark.querySelector('.vsure')
-        utils.domUtils.on('click', ok, (e) => {
+        util.dom.on('click', ok, (e) => {
           root.alert.hide()
           o.cb && o.cb()
         })
@@ -77,9 +86,9 @@ MiniValineFactory.prototype.initMiniValine = function () {
 
   root.loading.show()
   const query1 = new root.v.Query('Comment')
-  query1.equalTo('url', defaultComment.url)
+  query1.equalTo('url', root.Comment.url)
   const query2 = new root.v.Query('Comment')
-  query2.equalTo('url', `${defaultComment.url}/`)
+  query2.equalTo('url', `${root.Comment.url}/`)
   const query = AV.Query.or(query1, query2)
   query.notEqualTo('isSpam', true)
   query
@@ -98,7 +107,7 @@ MiniValineFactory.prototype.bind = function () {
   const root = this
   // Smile pictures
   const vsmiles = root.el.querySelector('.vsmile-icons')
-  utils.domUtils.on('click', vsmiles, (e) => {
+  util.dom.on('click', vsmiles, (e) => {
     const textField = root.el.querySelector('.veditor')
     const imgSrc = e.target.src
     if (typeof imgSrc === 'undefined') return
@@ -125,21 +134,21 @@ MiniValineFactory.prototype.bind = function () {
       textField.value += tag
       textField.focus()
     }
-    defaultComment.comment = textField.value
+    root.Comment.comment = textField.value
     const submitBtn = root.el.querySelector('.vsubmit')
     if (submitBtn.getAttribute('disabled')) {
       submitBtn.removeAttribute('disabled')
     }
   })
   const commentTrigger = root.el.querySelector('.commentTrigger')
-  utils.domUtils.on('click', commentTrigger, (e) => {
+  util.dom.on('click', commentTrigger, (e) => {
     commentTrigger.setAttribute('style', 'display:none')
     root.el.querySelector('.auth-section').removeAttribute('style')
     root.el.querySelector('.veditor').focus()
   })
 
   // cancel reply
-  utils.domUtils.on('click', root.el.querySelector('.vcancel-comment-reply'), (e) => {
+  util.dom.on('click', root.el.querySelector('.vcancel-comment-reply'), (e) => {
     root.reset()
   })
 
@@ -148,7 +157,7 @@ MiniValineFactory.prototype.bind = function () {
   const expandEvt = (el) => {
     if (el.offsetHeight > 180) {
       el.classList.add('expand')
-      utils.domUtils.on('click', el, (e) => {
+      util.dom.on('click', el, (e) => {
         el.setAttribute('class', 'vcomment')
       })
     }
@@ -164,7 +173,7 @@ MiniValineFactory.prototype.bind = function () {
   const parentQuery = (pageNum = 1) => {
     root.loading.show()
     const cq = root.v.Query
-      .doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where (rid='' or rid is not exists) and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
+      .doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
     cq.then((rets) => {
       rets = (rets && rets.results) || []
       const len = rets.length
@@ -183,25 +192,25 @@ MiniValineFactory.prototype.bind = function () {
         const vpage = root.el.querySelector('.vpage')
         vpage.innerHTML =
             root.pageSize * pageNum < parentCount
-              ? `<div id="vmore" class="more">${root.i18n.t('more')}</div>`
+              ? `<div id="vmore" class="more">${root.i18n.more}</div>`
               : ''
         const vmore = vpage.querySelector('#vmore')
         if (vmore) {
-          utils.domUtils.on('click', vmore, (e) => {
+          util.dom.on('click', vmore, (e) => {
             vpage.innerHTML = ''
             parentQuery(++num)
           })
         }
       }
       root.loading.hide()
-      utils.MathJaxSupport(root.math)
+      util.MathJaxSupport(root.math)
     }).catch((ex) => {
       console.log(ex)
       root.loading.hide()
     })
   }
   root.v.Query.doCloudQuery(
-      `select count(*) from Comment where (rid='' or rid is not exists) and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt`
+      `select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
   ).then((data) => {
     parentCount = data.count
     parentQuery(1)
@@ -219,7 +228,7 @@ MiniValineFactory.prototype.bind = function () {
     }
     if (level >= root.maxNestLevel) {
       root.v.Query.doCloudQuery(
-          `select count(*) from Comment where rid='${_id}' and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt`
+          `select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
       ).then(
         (data) => {
           const { count } = data
@@ -231,11 +240,11 @@ MiniValineFactory.prototype.bind = function () {
               'style',
               'display: block !important;'
             )
-            showChildrenWrapper.innerHTML = `<span class="vshow-children" rid="${_id}">${root.i18n.t('more')}</span>`
+            showChildrenWrapper.innerHTML = `<span class="vshow-children" rid="${_id}">${root.i18n.more}</span>`
             const showChildren = showChildrenWrapper.querySelector(
               '.vshow-children'
             )
-            utils.domUtils.on('click', showChildren, (e) => {
+            util.dom.on('click', showChildren, (e) => {
               showChildrenWrapper.setAttribute(
                 'style',
                 'display: none !important;'
@@ -251,7 +260,7 @@ MiniValineFactory.prototype.bind = function () {
       return
     }
 
-    root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where rid='${_id}' and (url='${defaultComment.url}' or url='${`${defaultComment.url}/`}') order by -createdAt`)
+    root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`)
       .then((rets) => {
         rets = (rets && rets.results) || []
         const len = rets.length
@@ -274,7 +283,7 @@ MiniValineFactory.prototype.bind = function () {
     const _vcard = document.createElement('li')
     _vcard.setAttribute('class', 'vcard')
     _vcard.setAttribute('id', comment.id)
-    _vcard.innerHTML = html.vcard(root, comment)
+    _vcard.innerHTML = body.vcard(root, comment)
 
     const _vlist = vlist || root.el.querySelector('.vlist')
     const _vlis = _vlist.querySelectorAll('li')
@@ -307,29 +316,29 @@ MiniValineFactory.prototype.bind = function () {
       const _v = mapping[i]
       const _el = root.el.querySelector(`.${i}`)
       inputs[_v] = _el
-      utils.domUtils.on('input', _el, (e) => {
-        // defaultComment[_v] = HtmlUtil.encode(_el.value.replace(/(^\s*)|(\s*$)/g, ""));
-        defaultComment[_v] = _el.value
+      util.dom.on('input', _el, (e) => {
+        // root.Comment[_v] = HtmlUtil.encode(_el.value.replace(/(^\s*)|(\s*$)/g, ""));
+        root.Comment[_v] = _el.value
       })
     }
   }
 
   // cache
   const getCache = () => {
-    let s = store && store.getItem('MiniValineCache')
+    let s = localStorage && localStorage.getItem('MiniValineCache')
     if (s) {
       s = JSON.parse(s)
       const m = ['nick', 'link', 'mail']
       for (let i = 0; i < m.length; i++) {
         const k = m[i]
         root.el.querySelector(`.v${k}`).value = s[k]
-        defaultComment[k] = s[k]
+        root.Comment[k] = s[k]
       }
       if (s.mail !== '') {
         const el = root.el.querySelector('.visitor_avatar')
         el.setAttribute(
           'src',
-            `${GravatarBaseUrl + crypto(s.mail.toLowerCase().trim())}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
+            `${GravatarBaseUrl + md5(s.mail.toLowerCase().trim())}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
         )
       }
     }
@@ -343,11 +352,11 @@ MiniValineFactory.prototype.bind = function () {
         const _v = mapping[i]
         const _el = root.el.querySelector(`.${i}`)
         _el.value = ''
-        defaultComment[_v] = ''
+        root.Comment[_v] = ''
       }
     }
-    defaultComment.rid = ''
-    defaultComment.nick = ''
+    root.Comment.rid = ''
+    root.Comment.nick = ''
     getCache()
     if (smileicons.getAttribute('triggered')) {
       smileicons.setAttribute('style', 'display:none;')
@@ -376,18 +385,18 @@ MiniValineFactory.prototype.bind = function () {
       })
       return
     }
-    if (defaultComment.comment === '') {
+    if (root.Comment.comment === '') {
       inputs.comment.focus()
       return
     }
-    if (defaultComment.nick === '') {
+    if (root.Comment.nick === '') {
       inputs.nick.focus()
       return
     }
     // render markdown
-    defaultComment.comment = xss(
-      utils.md(
-        defaultComment.comment.replace(
+    root.Comment.comment = xss(
+      util.md(
+        root.Comment.comment.replace(
           /!\(:(.*?\.\w+):\)/g,
             `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`
         )
@@ -400,25 +409,25 @@ MiniValineFactory.prototype.bind = function () {
         }
       }
     )
-    const idx = defaultComment.comment.indexOf(defaultComment.at)
-    if (idx > -1 && defaultComment.at !== '') {
-      const at = `<a class="at" href='#${defaultComment.rid}'>${defaultComment.at}</a>`
-      defaultComment.comment = defaultComment.comment.replace(
-        defaultComment.at,
+    const idx = root.Comment.comment.indexOf(root.Comment.at)
+    if (idx > -1 && root.Comment.at !== '') {
+      const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
+      root.Comment.comment = root.Comment.comment.replace(
+        root.Comment.at,
         at
       )
     }
     // veirfy
-    const mailRet = utils.check.mail(defaultComment.mail)
-    const linkRet = utils.check.link(defaultComment.link)
-    defaultComment.mail = mailRet.k ? mailRet.v : ''
-    defaultComment.link = linkRet.k ? linkRet.v : ''
+    const mailRet = util.check.mail(root.Comment.mail)
+    const linkRet = util.check.link(root.Comment.link)
+    root.Comment.mail = mailRet.k ? mailRet.v : ''
+    root.Comment.link = linkRet.k ? linkRet.v : ''
 
     if (!mailRet.k || !linkRet.k) {
       root.alert.show({
         type: 0,
-        text: root.i18n.t('inputTips'),
-        ctxt: root.i18n.t('confirm')
+        text: root.i18n.inputTips,
+        ctxt: root.i18n.confirm
       })
     } else {
       commitEvt()
@@ -427,7 +436,7 @@ MiniValineFactory.prototype.bind = function () {
 
   const smileBtn = root.el.querySelector('.vemoji-btn')
   const smileicons = root.el.querySelector('.vsmile-icons')
-  utils.domUtils.on('click', smileBtn, (e) => {
+  util.dom.on('click', smileBtn, (e) => {
     if (previewText.getAttribute('triggered')) {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
@@ -443,7 +452,7 @@ MiniValineFactory.prototype.bind = function () {
 
   const previewBtn = root.el.querySelector('.vpreview-btn')
   const previewText = root.el.querySelector('.vpreview-text')
-  utils.domUtils.on('click', previewBtn, (e) => {
+  util.dom.on('click', previewBtn, (e) => {
     if (smileicons.getAttribute('triggered')) {
       smileicons.setAttribute('style', 'display:none;')
       smileicons.removeAttribute('triggered')
@@ -452,14 +461,14 @@ MiniValineFactory.prototype.bind = function () {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
     } else {
-      if (defaultComment.comment === '') {
+      if (root.Comment.comment === '') {
         inputs.comment.focus()
         return
       }
       // render markdown
       previewText.innerHTML = xss(
-        utils.md(
-          defaultComment.comment.replace(
+        util.md(
+          root.Comment.comment.replace(
             /!\(:(.*?\.\w+):\)/g,
               `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`
           )
@@ -475,7 +484,7 @@ MiniValineFactory.prototype.bind = function () {
       previewText.removeAttribute('style')
       previewText.setAttribute('triggered', 1)
     }
-    utils.MathJaxSupport(root.math)
+    util.MathJaxSupport(root.math)
   })
 
   // setting access
@@ -493,38 +502,38 @@ MiniValineFactory.prototype.bind = function () {
     const Ct = root.v.Object.extend('Comment')
     // 新建对象
     const comment = new Ct()
-    for (const i in defaultComment) {
-      if (defaultComment.hasOwnProperty(i)) {
+    for (const i in root.Comment) {
+      if (root.Comment.hasOwnProperty(i)) {
         if (i === 'at') continue
-        const _v = defaultComment[i]
+        const _v = root.Comment[i]
         comment.set(i, _v)
       }
     }
     comment.set(
       'emailHash',
-      crypto(defaultComment.mail.toLowerCase().trim())
+      md5(root.Comment.mail.toLowerCase().trim())
     )
     comment.setACL(getAcl())
     comment
       .save()
       .then((commentItem) => {
-        store &&
-            store.setItem(
+        localStorage &&
+            localStorage.setItem(
               'MiniValineCache',
               JSON.stringify({
-                nick: defaultComment.nick,
-                link: defaultComment.link,
-                mail: defaultComment.mail
+                nick: root.Comment.nick,
+                link: root.Comment.link,
+                mail: root.Comment.mail
               })
             )
         const _count = root.el.querySelector('.count')
         _count.innerText = Number(_count.innerText) + 1
-        if (defaultComment.rid === '') {
+        if (root.Comment.rid === '') {
           insertComment(commentItem, null, true)
         } else {
           // get children vlist
           const _vlist = root.el.querySelector(
-              `#children-list-${defaultComment.rid}`
+              `#children-list-${root.Comment.rid}`
           )
           insertComment(commentItem, _vlist, true)
         }
@@ -533,7 +542,7 @@ MiniValineFactory.prototype.bind = function () {
         root.submitting.hide()
         root.nodata.hide()
         root.reset()
-        utils.MathJaxSupport(root.math)
+        util.MathJaxSupport(root.math)
       })
       .catch((ex) => {
         root.submitting.hide()
@@ -544,11 +553,11 @@ MiniValineFactory.prototype.bind = function () {
   const bindAtEvt = (vcard) => {
     const _id = vcard.getAttribute('id')
     const _vat = vcard.querySelector(`#at-${_id}`)
-    utils.domUtils.on('click', _vat, (e) => {
+    util.dom.on('click', _vat, (e) => {
       const at = _vat.getAttribute('at')
       const rid = _vat.getAttribute('rid')
-      defaultComment.rid = rid
-      defaultComment.at = at
+      root.Comment.rid = rid
+      root.Comment.at = at
       inputs.comment.value = `${at} ，${inputs.comment.value}`
       // move inputs
       const commentEl = vcard.querySelector(`#comment-${_id}`)
@@ -566,9 +575,7 @@ MiniValineFactory.prototype.bind = function () {
       inputs.comment.focus()
     })
   }
-
-  utils.domUtils.off('click', submitBtn, submitEvt)
-  utils.domUtils.on('click', submitBtn, submitEvt)
+  util.dom.on('click', submitBtn, submitEvt)
 }
 
 module.exports = MiniValineFactory

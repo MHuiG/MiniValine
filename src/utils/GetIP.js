@@ -1,11 +1,6 @@
-import Utils from './domUtils'
-import { defaultComment } from '../const'
-const GetIP = () => {
-  Utils.create('script', 'src', 'https://api.ip.sb/jsonip?callback=getIP')
-  const s = document.getElementsByTagName('script')[0]
-  document.head.append(s)
+const GetIP = (root) => {
   window.getIP = (json) => {
-    defaultComment.ip = json.ip
+    root.Comment.ip = json.ip
   }
 }
 

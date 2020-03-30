@@ -1,19 +1,24 @@
-import MathJaxSupport from './MathJax'
+import Config from './Config'
+import i18n from './i18n'
+import ajax from './ajax'
 import GetIP from './GetIP'
-import initAV from './initAV'
-import initConfig from './initConfig'
+import setAV from './setAV'
+import dom from './dom'
+import MathJaxSupport from './MathJax'
 import md from './md'
 import check from './check'
-import domUtils from './domUtils'
-import setAV from './setAV'
-
+import smile from './smile'
+import script from './script'
 module.exports = {
-  MathJaxSupport: MathJaxSupport,
+  Config: Config,
+  i18n: i18n,
+  ajax: ajax,
   GetIP: GetIP,
-  initAV: initAV,
-  initConfig: initConfig,
+  setAV: setAV,
+  dom: dom,
+  MathJaxSupport: MathJaxSupport,
   md: md,
   check: check,
-  domUtils: domUtils,
-  setAV: setAV
+  smile: smile,
+  script: script
 }

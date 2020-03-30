@@ -3,7 +3,7 @@ const loading = function (root) {
   const vempty = root.el.querySelector('.vempty')
   root.nodata = {
     show (txt) {
-      vempty.innerHTML = txt || root.i18n.t('noCommentYet')
+      vempty.innerHTML = txt || root.i18n.noCommentYet
       vempty.setAttribute('style', 'display:block;')
     },
     hide () {
