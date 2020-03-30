@@ -11,15 +11,15 @@ const MiniValineFactory = function (option) {
   util.script(root)
   util.smile(root)
   util.GetIP(root)
-  root.initMiniValine()
+  root.initCheck()
 }
-MiniValineFactory.prototype.initMiniValine = function () {
+MiniValineFactory.prototype.initCheck = function () {
   const root = this
-  var checki18n = setInterval(function () {
+  var check = setInterval(function () {
     if (typeof root.i18n == 'undefined') { return }
     if (typeof md5 == 'undefined') { return }
     if (typeof AV == 'undefined') { return }
-    clearInterval(checki18n)
+    clearInterval(check)
     root.initBody()
   }, 5)
 }
@@ -395,11 +395,7 @@ MiniValineFactory.prototype.bind = function () {
     }
     // render markdown
     root.Comment.comment = xss(
-      util.md(
-        root.Comment.comment.replace(
-          /!\(:(.*?\.\w+):\)/g,
-            `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`
-        )
+      util.md(root.Comment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`)
       ),
       {
         onIgnoreTagAttr (tag, name, value, isWhiteAttr) {
@@ -467,12 +463,7 @@ MiniValineFactory.prototype.bind = function () {
       }
       // render markdown
       previewText.innerHTML = xss(
-        util.md(
-          root.Comment.comment.replace(
-            /!\(:(.*?\.\w+):\)/g,
-              `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`
-          )
-        ),
+        util.md(root.Comment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`)),
         {
           onIgnoreTagAttr (tag, name, value, isWhiteAttr) {
             if (name === 'class') {
