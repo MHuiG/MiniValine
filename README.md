@@ -149,7 +149,9 @@ new MiniValine({
 
   Default: `navigator.language || navigator.userLanguage`.
 
-  Localization language key.
+  Localization language key, en and zh-CN are currently available.
+  
+  More i18n info: [minivaline-i18n](https://github.com/MiniValine/minivaline-i18n)
 
 - **emoticonUrl** `String`
 
