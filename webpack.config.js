@@ -3,24 +3,27 @@ var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+//const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 var plugins = [
-  // new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin({ filename: 'MiniValine.min.css' })
+  //new CleanWebpackPlugin(),
+  //new MiniCssExtractPlugin({ filename: '[name].min.css' })
 ]
 
 module.exports = {
   mode: 'production',
   performance: { hints: false },
-  entry: './src/index.js',
+  entry: {
+	  //MiniValine: ['./src/index.js','./src/style/index.scss']
+	  'MiniValine': './src/index.js'
+  },
   optimization: {
     minimize: true
   },
   output: {
     path: BUILD_PATH,
     publicPath: '/dist/',
-    filename: libraryName + '.min.js',
+    filename: '[name].min.js',
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true

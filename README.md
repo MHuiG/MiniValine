@@ -33,7 +33,7 @@
 - Support lazy loading picture emoji.
 - Support code highlighting.
 - Support MathJax.
-- [Support multiple languages](https://crowdin.com/project/minivaline) [en, zh-CN, zh-TW, es-ES, fr, ru].
+- [Support multiple languages](https://crowdin.com/project/minivaline).
 
 ## Install
 
@@ -149,7 +149,7 @@ new MiniValine({
 
   Default: `navigator.language || navigator.userLanguage`.
 
-  Localization language key, `en` and `zh-CN`  are currently available.
+  Localization language key.
 
 - **emoticonUrl** `String`
 
