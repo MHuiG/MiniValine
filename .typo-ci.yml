@@ -1,6 +1,0 @@
-dictionaries:
-  - en
-  - en_GB
-
-excluded_files:
-  - ".github/**/*"
