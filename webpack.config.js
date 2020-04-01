@@ -2,9 +2,9 @@ var path = require('path')
 var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
-//var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
+var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
 //const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+//const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 var plugins = [
   //new CleanWebpackPlugin(),
   //new MiniCssExtractPlugin({ filename: '[name].min.css' })
