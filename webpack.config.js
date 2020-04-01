@@ -4,7 +4,7 @@ var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
 //const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-//const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 var plugins = [
   //new CleanWebpackPlugin(),
   //new MiniCssExtractPlugin({ filename: '[name].min.css' })
@@ -18,7 +18,29 @@ module.exports = {
 	  'MiniValine': './src/index.js'
   },
   optimization: {
-    minimize: true
+    minimize: true,
+	/*splitChunks: {
+      chunks: 'all',
+    },*/
+    /*runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },*/
   },
   output: {
     path: BUILD_PATH,
@@ -71,7 +93,12 @@ module.exports = {
       use: ['url-loader?limit=1024*10']
     }
     ]
-  },
+  },  
+  parserOptions: {
+    parser: "babel-eslint",
+    sourceType: 'module',
+    allowImportExportEverywhere: true
+  }
 
   plugins: plugins
 }

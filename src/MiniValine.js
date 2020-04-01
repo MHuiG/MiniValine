@@ -1,4 +1,3 @@
-import xss from 'xss'
 import body from './body'
 import util from './utils'
 import { GravatarBaseUrl } from './Default'
@@ -394,17 +393,10 @@ MiniValineFactory.prototype.bind = function () {
       return
     }
     // render markdown
-    root.Comment.comment = xss(
-      util.md(root.Comment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`)
-      ),
-      {
-        onIgnoreTagAttr (tag, name, value, isWhiteAttr) {
-          if (name === 'class') {
-            return `${name}="${xss.escapeAttrValue(value)}"`
-          }
-        }
-      }
-    )
+    import('./utils/md.js').then(({ markdown }) => {
+      root.Comment.comment = markdown(util.MakeComment(root))
+    })
+
     const idx = root.Comment.comment.indexOf(root.Comment.at)
     if (idx > -1 && root.Comment.at !== '') {
       const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
@@ -462,16 +454,9 @@ MiniValineFactory.prototype.bind = function () {
         return
       }
       // render markdown
-      previewText.innerHTML = xss(
-        util.md(root.Comment.comment.replace(/!\(:(.*?\.\w+):\)/g, `<img src="${root.emoticonUrl}/$1" alt="$1" class="vemoticon-img">`)),
-        {
-          onIgnoreTagAttr (tag, name, value, isWhiteAttr) {
-            if (name === 'class') {
-              return `${name}="${xss.escapeAttrValue(value)}"`
-            }
-          }
-        }
-      )
+      import('./utils/md.js').then(({ markdown }) => {
+        previewText.innerHTML = markdown(util.MakeComment(root))
+      })
       previewText.removeAttribute('style')
       previewText.setAttribute('triggered', 1)
     }

@@ -16,4 +16,7 @@ md.setOptions({
   }
 })
 
-module.exports = md
+export function markdown (o) {
+  var m = md(o)
+  return m
+}
