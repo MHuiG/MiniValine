@@ -202,7 +202,7 @@ MiniValineFactory.prototype.bind = function () {
         }
       }
       root.loading.hide()
-      util.MathJaxSupport(root.math)
+      util.MathJaxSupport(root)
     }).catch((ex) => {
       console.log(ex)
       root.loading.hide()
@@ -393,32 +393,40 @@ MiniValineFactory.prototype.bind = function () {
       return
     }
     // render markdown
-    import('./utils/md.js').then(({ markdown }) => {
-      root.Comment.comment = markdown(util.MakeComment(root))
-    })
 
-    const idx = root.Comment.comment.indexOf(root.Comment.at)
-    if (idx > -1 && root.Comment.at !== '') {
-      const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
-      root.Comment.comment = root.Comment.comment.replace(
-        root.Comment.at,
-        at
-      )
+    const render = () => {
+      const idx = root.Comment.comment.indexOf(root.Comment.at)
+      if (idx > -1 && root.Comment.at !== '') {
+        const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
+        root.Comment.comment = root.Comment.comment.replace(
+          root.Comment.at,
+          at
+        )
+      }
+      // veirfy
+      const mailRet = util.check.mail(root.Comment.mail)
+      const linkRet = util.check.link(root.Comment.link)
+      root.Comment.mail = mailRet.k ? mailRet.v : ''
+      root.Comment.link = linkRet.k ? linkRet.v : ''
+
+      if (!mailRet.k || !linkRet.k) {
+        root.alert.show({
+          type: 0,
+          text: root.i18n.inputTips,
+          ctxt: root.i18n.confirm
+        })
+      } else {
+        commitEvt()
+      }
     }
-    // veirfy
-    const mailRet = util.check.mail(root.Comment.mail)
-    const linkRet = util.check.link(root.Comment.link)
-    root.Comment.mail = mailRet.k ? mailRet.v : ''
-    root.Comment.link = linkRet.k ? linkRet.v : ''
-
-    if (!mailRet.k || !linkRet.k) {
-      root.alert.show({
-        type: 0,
-        text: root.i18n.inputTips,
-        ctxt: root.i18n.confirm
+    if (root.md || typeof root.config.md == 'undefined') {
+      import('./utils/md.js').then(({ markdown }) => {
+        root.Comment.comment = markdown(util.MakeComment(root))
+        render()
       })
     } else {
-      commitEvt()
+      root.Comment.comment = util.MakeComment(root)
+      render()
     }
   }
 
@@ -454,13 +462,21 @@ MiniValineFactory.prototype.bind = function () {
         return
       }
       // render markdown
-      import('./utils/md.js').then(({ markdown }) => {
-        previewText.innerHTML = markdown(util.MakeComment(root))
-      })
-      previewText.removeAttribute('style')
-      previewText.setAttribute('triggered', 1)
+      const render = () => {
+        previewText.removeAttribute('style')
+        previewText.setAttribute('triggered', 1)
+        util.MathJaxSupport(root)
+      }
+      if (root.md || typeof root.config.md == 'undefined') {
+        import('./utils/md.js').then(({ markdown }) => {
+          previewText.innerHTML = markdown(util.MakeComment(root))
+          render()
+        })
+      } else {
+        previewText.innerHTML = util.MakeComment(root)
+        render()
+      }
     }
-    util.MathJaxSupport(root.math)
   })
 
   // setting access
@@ -518,7 +534,7 @@ MiniValineFactory.prototype.bind = function () {
         root.submitting.hide()
         root.nodata.hide()
         root.reset()
-        util.MathJaxSupport(root.math)
+        util.MathJaxSupport(root)
       })
       .catch((ex) => {
         root.submitting.hide()
