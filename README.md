@@ -16,7 +16,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c203d6a0703457081c8d563a0b3b810)](https://www.codacy.com/gh/MiniValine/MiniValine?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MiniValine/MiniValine&amp;utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/8202/projects/10351/branches/142143/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8202&pid=10351&bid=142143)
 
-
 > MiniValine is a simple and minimalist comment system based on Leancloud
 ------------------------------
 **[Live Demo](https://minivaline.github.io)**
@@ -29,12 +28,12 @@
 - Safe by default.
 - Easy to customize.
 - No server-side implementation.
-- Simple and lightweight (15.84 KB gzipped).
-- Support markdown.
-- Support lazy loading picture emoji.
-- Support code highlighting.
-- Support MathJax.
-- [Support multiple languages](https://crowdin.com/project/minivaline).
+- [Simple and lightweight (15.84 KB gzipped)](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
+- Support [lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
+- Support [code highlighting](https://highlightjs.org/static/demo/).
+- Support [Markdown](https://guides.github.com/features/mastering-markdown/).
+- Support [MathJax](https://www.mathjax.org/).
+- Support [multiple languages](https://crowdin.com/project/minivaline).
 
 ## Install
 
