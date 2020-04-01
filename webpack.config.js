@@ -3,9 +3,11 @@ var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
+//const webpack = require('webpack')
 //const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 //const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 var plugins = [
+  //new webpack.optimize.ModuleConcatenationPlugin(),
   //new CleanWebpackPlugin(),
   //new MiniCssExtractPlugin({ filename: '[name].min.css' })
 ]
@@ -18,9 +20,9 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-	splitChunks: {
+	/*splitChunks: {
       chunks: 'async',
-    },
+    },*/
     /*runtimeChunk: 'single',
     splitChunks: {
       chunks: 'async',
