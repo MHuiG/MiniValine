@@ -1,5 +1,5 @@
 import MiniValineFactory from './MiniValine'
-import('./style/index.scss')
+import(/* webpackChunkName: "style" */'./style/index.scss')
 
 const MiniValine = (option) => {
   return new MiniValineFactory(option)

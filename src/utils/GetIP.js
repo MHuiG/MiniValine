@@ -3,5 +3,4 @@ const GetIP = (root) => {
     root.Comment.ip = json.ip
   }
 }
-
 module.exports = GetIP

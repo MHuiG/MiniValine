@@ -116,7 +116,6 @@ MiniValineFactory.prototype.bind = function () {
       var sel = document.selection.createRange()
       sel.text = tag
       textField.focus()
-    // } else if (textField.selectionStart || textField.selectionStart === '0') {
     } else if (textField.selectionStart) {
       const startPos = textField.selectionStart
       const endPos = textField.selectionEnd
@@ -177,7 +176,6 @@ MiniValineFactory.prototype.bind = function () {
       rets = (rets && rets.results) || []
       const len = rets.length
       if (len) {
-        // root.el.querySelector('.vlist').innerHTML = '';
         for (let i = 0; i < len; i++) {
           if (rets[i].get('isSpam')) continue
           const parentVcard = insertComment(
@@ -286,7 +284,6 @@ MiniValineFactory.prototype.bind = function () {
 
     const _vlist = vlist || root.el.querySelector('.vlist')
     const _vlis = _vlist.querySelectorAll('li')
-    // let _vat = _vcard.querySelector('.vat');
     const _as = _vcard.querySelectorAll('a')
     for (let i = 0, len = _as.length; i < len; i++) {
       const item = _as[i]
@@ -316,7 +313,6 @@ MiniValineFactory.prototype.bind = function () {
       const _el = root.el.querySelector(`.${i}`)
       inputs[_v] = _el
       util.dom.on('input', _el, (e) => {
-        // root.Comment[_v] = HtmlUtil.encode(_el.value.replace(/(^\s*)|(\s*$)/g, ""));
         root.Comment[_v] = _el.value
       })
     }
@@ -393,7 +389,6 @@ MiniValineFactory.prototype.bind = function () {
       return
     }
     // render markdown
-
     const render = () => {
       const idx = root.Comment.comment.indexOf(root.Comment.at)
       if (idx > -1 && root.Comment.at !== '') {
@@ -420,7 +415,7 @@ MiniValineFactory.prototype.bind = function () {
       }
     }
     if (root.md || typeof root.config.md == 'undefined') {
-      import('./utils/md.js').then(({ markdown }) => {
+      import(/* webpackChunkName: "md" */'./utils/md.js').then(({ markdown }) => {
         root.Comment.comment = markdown(util.MakeComment(root))
         render()
       })
@@ -468,7 +463,7 @@ MiniValineFactory.prototype.bind = function () {
         util.MathJaxSupport(root)
       }
       if (root.md || typeof root.config.md == 'undefined') {
-        import('./utils/md.js').then(({ markdown }) => {
+        import(/* webpackChunkName: "md" */'./utils/md.js').then(({ markdown }) => {
           previewText.innerHTML = markdown(util.MakeComment(root))
           render()
         })

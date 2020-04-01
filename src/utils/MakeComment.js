@@ -12,5 +12,4 @@ const MakeComment = (root) => {
   )
   return tmp
 }
-
 module.exports = MakeComment

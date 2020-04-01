@@ -1,6 +1,6 @@
 import md from 'marked'
 import highligher from './highlight'
-import('highlight.js/styles/github.css')
+import(/* webpackChunkName: "md-style" */ 'highlight.js/styles/github.css')
 
 md.setOptions({
   gfm: true,

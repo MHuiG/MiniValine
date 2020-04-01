@@ -45,6 +45,7 @@ module.exports = {
     path: BUILD_PATH,
     publicPath: '/dist/',
     filename: '[name].min.js',
+	chunkFilename: libraryName+'.[name].min.js',
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
