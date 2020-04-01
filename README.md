@@ -214,7 +214,7 @@ Also, we welcome Issue or PR to MiniValine.
 
 [npm-version-image]: https://img.shields.io/npm/v/minivaline.svg?style=flat-square
 [npm-version-url]: https://www.npmjs.com/package/minivaline
-[gzip-size]: https://img.badgesize.io/https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js?compression=gzip&style=flat-square
+[gzip-size]: https://img.badgesize.io/https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js?compression=gzip&style=flat-square
 [gzip-url]: https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js
 [gitter-url]: https://gitter.im/thebestminivaline
 [issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
