@@ -141,9 +141,15 @@ new MiniValine({
 
 - **math** `Boolean`
 
-  Default: `false`
+  Default: `true`
   
   Support MathJax.
+  
+- **md** `Boolean`
+
+  Default: `true`
+  
+  Support Markdown.
 
 - **lang** `String`
 

@@ -1,5 +1,5 @@
-import './style/index.scss'
 import MiniValineFactory from './MiniValine'
+import('./style/index.scss')
 
 const MiniValine = (option) => {
   return new MiniValineFactory(option)
