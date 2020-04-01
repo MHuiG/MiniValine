@@ -18,12 +18,12 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-	/*splitChunks: {
-      chunks: 'all',
-    },*/
+	splitChunks: {
+      chunks: 'async',
+    },
     /*runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async',
       maxInitialRequests: Infinity,
       minSize: 0,
       cacheGroups: {
