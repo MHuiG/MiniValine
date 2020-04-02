@@ -1,9 +1,6 @@
 import { MaxNestLevel, PageSize, EmoticonUrl, Comment } from '../Default'
 
 const Config = function (root) {
-  if (!!window.ActiveXObject || 'ActiveXObject' in window) {
-    root.config.md = false
-  }
   root.emoticonUrl = root.config.emoticonUrl || EmoticonUrl
   root.lang = root.config.lang || navigator.language || navigator.userLanguage
   root.maxNestLevel = root.config.maxNest || MaxNestLevel

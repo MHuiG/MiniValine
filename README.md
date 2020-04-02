@@ -178,12 +178,6 @@ new MiniValine({
   
   Pagination size.
 
-## IE compatible
-
-```html
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6"></script>
-```
-
 ## TODO
 
 - Extraction from the core library to reduce volume.

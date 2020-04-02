@@ -4,6 +4,10 @@ const script = (root) => {
   getScript(MD5)
   getScript(lazysizes)
   getScript(ip)
+  if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+    root.config.md = false
+    getScript('https://cdn.polyfill.io/v2/polyfill.min.js?features=es6')
+  }
 }
 const getScript = (src) => {
   var script = document.createElement('script')

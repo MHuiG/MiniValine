@@ -6,8 +6,8 @@ const MiniValineFactory = function (option) {
   const root = this
   root.config = option
   util.Config(root)
-  util.i18n(root)
   util.script(root)
+  util.i18n(root)
   util.smile(root)
   util.GetIP(root)
   root.initCheck()
@@ -25,27 +25,23 @@ MiniValineFactory.prototype.initCheck = function () {
 MiniValineFactory.prototype.initBody = function () {
   const root = this
   try {
+    import(/* webpackChunkName: "style" */'./style/index.scss')
     body.el(root)
     // loading
     body.loading(root)
-
     root.nodata.show()
-
     // load smiles image
     var checksmiles = setInterval(function () {
       if (typeof root.emoticonList == 'undefined') { return }
       clearInterval(checksmiles)
       body.smiles(root)
     }, 10)
-
     util.setAV(root)
   } catch (ex) {
     console.log(ex)
     return
   }
-
   root.loading.hide()
-
   const mark = root.el.querySelector('.vmark')
   // alert
   root.alert = {
@@ -82,7 +78,6 @@ MiniValineFactory.prototype.initBody = function () {
       mark.setAttribute('style', 'display:none;')
     }
   }
-
   root.loading.show()
   const query1 = new root.v.Query('Comment')
   query1.equalTo('url', root.Comment.url)
@@ -101,7 +96,6 @@ MiniValineFactory.prototype.initBody = function () {
     })
   root.bind()
 }
-
 MiniValineFactory.prototype.bind = function () {
   const root = this
   // Smile pictures
@@ -144,14 +138,11 @@ MiniValineFactory.prototype.bind = function () {
     root.el.querySelector('.auth-section').removeAttribute('style')
     root.el.querySelector('.veditor').focus()
   })
-
   // cancel reply
   util.dom.on('click', root.el.querySelector('.vcancel-comment-reply'), (e) => {
     root.reset()
   })
-
   // Query && show comment list
-
   const expandEvt = (el) => {
     if (el.offsetHeight > 180) {
       el.classList.add('expand')
@@ -160,14 +151,11 @@ MiniValineFactory.prototype.bind = function () {
       })
     }
   }
-
   /*
-     * 需要权衡: 网络请求数，查询效率，分页问题，Leancloud限制等
-     * */
-
+   * 需要权衡: 网络请求数，查询效率，分页问题，Leancloud限制等
+   * */
   let num = 1
   let parentCount = 0
-
   const parentQuery = (pageNum = 1) => {
     root.loading.show()
     const cq = root.v.Query
@@ -214,7 +202,6 @@ MiniValineFactory.prototype.bind = function () {
   }).catch((ex) => {
     console.log(ex)
   })
-
   // 无限嵌套加载
   const nestQuery = (vcard, level = 1) => {
     const vchild = vcard.querySelector('.vcomment-children')
@@ -256,7 +243,6 @@ MiniValineFactory.prototype.bind = function () {
       )
       return
     }
-
     root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`)
       .then((rets) => {
         rets = (rets && rets.results) || []
@@ -275,13 +261,11 @@ MiniValineFactory.prototype.bind = function () {
         root.loading.hide()
       })
   }
-
   const insertComment = (comment, vlist = null, top = true) => {
     const _vcard = document.createElement('li')
     _vcard.setAttribute('class', 'vcard')
     _vcard.setAttribute('id', comment.id)
     _vcard.innerHTML = body.vcard(root, comment)
-
     const _vlist = vlist || root.el.querySelector('.vlist')
     const _vlis = _vlist.querySelectorAll('li')
     const _as = _vcard.querySelectorAll('a')
@@ -299,7 +283,6 @@ MiniValineFactory.prototype.bind = function () {
     bindAtEvt(_vcard)
     return _vcard
   }
-
   const mapping = {
     veditor: 'comment',
     vnick: 'nick',
@@ -317,7 +300,6 @@ MiniValineFactory.prototype.bind = function () {
       })
     }
   }
-
   // cache
   const getCache = () => {
     let s = localStorage && localStorage.getItem('MiniValineCache')
@@ -339,7 +321,6 @@ MiniValineFactory.prototype.bind = function () {
     }
   }
   getCache()
-
   // reset form
   root.reset = () => {
     for (const i in mapping) {
@@ -368,7 +349,6 @@ MiniValineFactory.prototype.bind = function () {
       .querySelector('#vinputs-placeholder')
       .appendChild(root.el.querySelector('.vinputs-wrap'))
   }
-
   // submit
   const submitBtn = root.el.querySelector('.vsubmit')
   const submitEvt = (e) => {
@@ -403,7 +383,6 @@ MiniValineFactory.prototype.bind = function () {
       const linkRet = util.check.link(root.Comment.link)
       root.Comment.mail = mailRet.k ? mailRet.v : ''
       root.Comment.link = linkRet.k ? linkRet.v : ''
-
       if (!mailRet.k || !linkRet.k) {
         root.alert.show({
           type: 0,
@@ -424,7 +403,6 @@ MiniValineFactory.prototype.bind = function () {
       render()
     }
   }
-
   const smileBtn = root.el.querySelector('.vemoji-btn')
   const smileicons = root.el.querySelector('.vsmile-icons')
   util.dom.on('click', smileBtn, (e) => {
@@ -440,7 +418,6 @@ MiniValineFactory.prototype.bind = function () {
       smileicons.setAttribute('triggered', 1)
     }
   })
-
   const previewBtn = root.el.querySelector('.vpreview-btn')
   const previewText = root.el.querySelector('.vpreview-text')
   util.dom.on('click', previewBtn, (e) => {
@@ -473,7 +450,6 @@ MiniValineFactory.prototype.bind = function () {
       }
     }
   })
-
   // setting access
   const getAcl = () => {
     const acl = new root.v.ACL()
@@ -481,7 +457,6 @@ MiniValineFactory.prototype.bind = function () {
     acl.setPublicWriteAccess(false)
     return acl
   }
-
   const commitEvt = () => {
     submitBtn.setAttribute('disabled', true)
     root.submitting.show()
@@ -524,7 +499,6 @@ MiniValineFactory.prototype.bind = function () {
           )
           insertComment(commentItem, _vlist, true)
         }
-
         submitBtn.removeAttribute('disabled')
         root.submitting.hide()
         root.nodata.hide()
@@ -535,7 +509,6 @@ MiniValineFactory.prototype.bind = function () {
         root.submitting.hide()
       })
   }
-
   // at event
   const bindAtEvt = (vcard) => {
     const _id = vcard.getAttribute('id')
@@ -564,5 +537,4 @@ MiniValineFactory.prototype.bind = function () {
   }
   util.dom.on('click', submitBtn, submitEvt)
 }
-
 module.exports = MiniValineFactory
