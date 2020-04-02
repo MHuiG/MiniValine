@@ -19,8 +19,6 @@ pull_request_rules:
       - status-success=build (8.x)
       - status-success=build (10.x)
       - status-success=build (12.x)
-      - status-success=DeepCode
-      - status-success=Codacy/PR Quality Review
       - status-success=Mergeable
       - status-success=CLAssistant
     actions:
