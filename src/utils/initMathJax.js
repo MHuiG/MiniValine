@@ -31,7 +31,7 @@ const init = () => {
 				});
 			});
 					`
-  document.body.append(script)
+  document.getElementsByTagName('body')[0].appendChild(script)
   getScript(
     'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
     () => {
@@ -58,7 +58,8 @@ const getScript = (url, callback, condition) => {
       }
     }
     script.src = url
-    document.head.append(script)
+    // document.head.append(script)
+    document.getElementsByTagName('head')[0].appendChild(script)
   }
 }
 

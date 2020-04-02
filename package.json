@@ -63,6 +63,7 @@
     "webpack-dev-server": "3.10.3"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "babel-jest": "^25.1.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "css-loader": "^3.4.2",

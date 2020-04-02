@@ -9,6 +9,6 @@ const getScript = (src) => {
   var script = document.createElement('script')
   script.type = 'text/javascript'
   script.src = src
-  document.head.append(script)
+  document.getElementsByTagName('head')[0].appendChild(script)
 }
 module.exports = script
