@@ -10,8 +10,8 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "webpack",
-    "dev": "node_modules/.bin/webpack-dev-server --colors --hot --inline",
+    "build": "cross-env env_config=build  webpack",
+    "dev": "cross-env env_config=web node_modules/.bin/webpack-dev-server --colors --hot --inline",
     "clear": "rm -rf dist/* ",
     "check": "eslint src",
     "format": "eslint src --fix",
@@ -42,6 +42,7 @@
     "babel-eslint": "10.1.0",
     "babel-loader": "8.1.0",
     "clean-webpack-plugin": "3.0.0",
+    "cross-env": "^7.0.2",
     "eslint": "6.8.0",
     "eslint-config-standard": "14.1.1",
     "eslint-plugin-import": "2.20.2",

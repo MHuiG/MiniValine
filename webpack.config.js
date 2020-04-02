@@ -45,9 +45,7 @@ module.exports = {
   },
   output: {
     path: BUILD_PATH,
-    //publicPath: '/dist/',
-	//publicPath:isProduction ? 'https://cdn.jsdelivr.net/npm/minivaline/dist/':'./dist/',
-	publicPath: 'https://cdn.jsdelivr.net/npm/minivaline/dist/',
+	publicPath: (process.env.env_config == 'build') ? 'https://cdn.jsdelivr.net/npm/minivaline/dist/':'./dist/',
     filename: '[name].min.js',
 	chunkFilename: libraryName+'.[name].min.js',
     library: libraryName,
