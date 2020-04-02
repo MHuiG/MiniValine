@@ -4,16 +4,10 @@ var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
 const version = require('./package.json').version
-var CDN_PATH = 'https://cdn.jsdelivr.net/npm/minivaline@'+version+'/dist/'
+var CDN_PATH = 'https://unpkg.com/minivaline@'+version+'/dist/'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-//const webpack = require('webpack')
-//const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-var plugins = [
-  //new webpack.optimize.ModuleConcatenationPlugin(),
-  //new CleanWebpackPlugin(),
-  //new MiniCssExtractPlugin({ filename: '[name].min.css' })
-]
+var plugins = []
 if(process.env.env_config == 'build'){
 	plugins.push(new CleanWebpackPlugin())
 }
@@ -25,28 +19,6 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-	/*splitChunks: {
-      chunks: 'async',
-    },*/
-    /*runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'async',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get the name. E.g. node_modules/packageName/not/this/part.js
-            // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-
-            // npm package names are URL-safe, but some servers don't like @ symbols
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    },*/
   },
   output: {
     path: BUILD_PATH,
@@ -78,7 +50,6 @@ module.exports = {
     {
       test: /\.scss$/,
       use: [
-	    //MiniCssExtractPlugin.loader,
         'style-loader',
         'css-loader',
         'postcss-loader',
@@ -89,7 +60,6 @@ module.exports = {
     {
       test: /\.css$/,
       use: [
-	  //MiniCssExtractPlugin.loader,
 	  'style-loader',
 	  'css-loader',
 	  'postcss-loader'
