@@ -3,15 +3,19 @@ var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
 var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
+var CDN_PATH = 'https://cdn.jsdelivr.net/npm/minivaline/dist/'
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 //const webpack = require('webpack')
 //const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-//const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 var plugins = [
   //new webpack.optimize.ModuleConcatenationPlugin(),
   //new CleanWebpackPlugin(),
   //new MiniCssExtractPlugin({ filename: '[name].min.css' })
 ]
-
+if(process.env.env_config == 'build'){
+	plugins.push(new CleanWebpackPlugin())
+}
 module.exports = {
   mode: 'production',
   performance: { hints: false },
@@ -45,7 +49,7 @@ module.exports = {
   },
   output: {
     path: BUILD_PATH,
-	publicPath: (process.env.env_config == 'build') ? 'https://cdn.jsdelivr.net/npm/minivaline/dist/':'./dist/',
+	publicPath: (process.env.env_config == 'build') ? CDN_PATH :'./dist/',
     filename: '[name].min.js',
 	chunkFilename: libraryName+'.[name].min.js',
     library: libraryName,
