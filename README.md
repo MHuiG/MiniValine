@@ -42,7 +42,7 @@ Two ways.
 - links
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/dist/MiniValine.min.js"></script>
+<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
@@ -50,7 +50,7 @@ Two ways.
 
 <!-- or -->
 
-<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/dist/MiniValine.min.js"></script>
 ```
 
 - npm install
@@ -95,7 +95,7 @@ new MiniValine({
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MiniValine - A simple comment system based on Leancloud.</title>
     <!--Load js and insert it before </ body>-->
-    <script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script>
+    <script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
 </head>
 <body>
     <div class="comment"></div>
@@ -214,8 +214,8 @@ Also, we welcome Issue or PR to MiniValine.
 
 [npm-version-image]: https://img.shields.io/npm/v/minivaline.svg?style=flat-square
 [npm-version-url]: https://www.npmjs.com/package/minivaline
-[gzip-size]: https://img.badgesize.io/https://unpkg.com/minivaline/dist/MiniValine.min.js?compression=gzip&style=flat-square
-[gzip-url]: https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js
+[gzip-size]: https://img.badgesize.io/https://unpkg.com/minivaline@latest/dist/MiniValine.min.js?compression=gzip&style=flat-square
+[gzip-url]: https://unpkg.com/minivaline@latest/dist/MiniValine.min.js
 [gitter-url]: https://gitter.im/thebestminivaline
 [issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
