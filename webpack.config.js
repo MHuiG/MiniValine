@@ -8,10 +8,8 @@ var CDN_PATH = 'https://unpkg.com/minivaline@'+version+'/dist/'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 var plugins = []
-if(process.env.env_config == 'build'){
-	plugins.push(new CleanWebpackPlugin())
-}
-module.exports = {
+
+var WEBPACK_CONFIG = {
   mode: 'production',
   performance: { hints: false },
   entry: {
@@ -30,7 +28,7 @@ module.exports = {
     umdNamedDefine: true
   },
 
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
 
   devServer: {
     publicPath: '/dist/',
@@ -73,3 +71,9 @@ module.exports = {
   },  
   plugins: plugins
 }
+
+if(process.env.env_config == 'build'){
+	plugins.push(new CleanWebpackPlugin())
+	WEBPACK_CONFIG.devtool=false
+}
+module.exports = WEBPACK_CONFIG
