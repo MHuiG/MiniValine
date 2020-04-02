@@ -1,4 +1,4 @@
-export const VERSION = '1.2.26'
+export const VERSION = '1.2.27'
 export const AVSdkUrl = 'https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js'
 export const GravatarBaseUrl = 'https://gravatar.loli.net/avatar/'
 export const MD5 = 'https://cdn.jsdelivr.net/gh/MHuiG/mhuig.github.io/libs/md5/md5.min.js'
