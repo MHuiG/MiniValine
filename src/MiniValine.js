@@ -1,7 +1,6 @@
 import body from './body'
 import util from './utils'
 import { GravatarBaseUrl } from './Default'
-
 const MiniValineFactory = function (option) {
   const root = this
   root.config = option
@@ -13,7 +12,6 @@ const MiniValineFactory = function (option) {
   util.GetIP(root)
   root.initCheck()
 }
-
 MiniValineFactory.prototype.initCheck = function () {
   const root = this
   var check = setInterval(function () {
@@ -42,21 +40,10 @@ MiniValineFactory.prototype.initBody = function () {
     console.log(ex)
     return
   }
-  root.loading.hide()
+  root.loading.hide(root.parentCount)
   const mark = root.el.querySelector('.vmark')
   // alert
   root.alert = {
-    /**
-       * {
-       *  type:0/1,
-       *  text:'',
-       *  ctxt:'',
-       *  otxt:'',
-       *  cb:fn
-       * }
-       *
-       * @param {Object} o
-       */
     show (o) {
       mark.innerHTML = `<div class="valert txt-center"><div class="vtext">${o.text}</div><div class="vbtns"></div></div>`
       const vbtns = mark.querySelector('.vbtns')
@@ -156,7 +143,7 @@ MiniValineFactory.prototype.bind = function () {
    * 需要权衡: 网络请求数，查询效率，分页问题，Leancloud限制等
    * */
   let num = 1
-  let parentCount = 0
+  root.parentCount = 0
   const parentQuery = (pageNum = 1) => {
     root.loading.show()
     const cq = root.v.Query
@@ -167,17 +154,22 @@ MiniValineFactory.prototype.bind = function () {
       if (len) {
         for (let i = 0; i < len; i++) {
           if (rets[i].get('isSpam')) continue
-          const parentVcard = insertComment(
-            rets[i],
-            root.el.querySelector('.vlist'),
-            false
-          )
-          parentVcard.setAttribute('style', 'margin-bottom: .5em')
-          nestQuery(parentVcard)
+          const render = (o) => {
+            rets[i].set('comment', o.TEXT)
+            const parentVcard = insertComment(
+              rets[i],
+              root.el.querySelector('.vlist'),
+              false
+            )
+            parentVcard.setAttribute('style', 'margin-bottom: .5em')
+            nestQuery(parentVcard)
+          }
+          rets[i].TEXT = rets[i].get('comment')
+          util.killXSS(rets[i], render)
         }
         const vpage = root.el.querySelector('.vpage')
         vpage.innerHTML =
-            root.pageSize * pageNum < parentCount
+            root.pageSize * pageNum < root.parentCount
               ? `<div id="vmore" class="more">${root.i18n.more}</div>`
               : ''
         const vmore = vpage.querySelector('#vmore')
@@ -188,17 +180,17 @@ MiniValineFactory.prototype.bind = function () {
           })
         }
       }
-      root.loading.hide()
+      root.loading.hide(root.parentCount)
       util.MathJaxSupport(root)
     }).catch((ex) => {
       console.log(ex)
-      root.loading.hide()
+      root.loading.hide(root.parentCount)
     })
   }
   root.v.Query.doCloudQuery(
       `select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
   ).then((data) => {
-    parentCount = data.count
+    root.parentCount = data.count
     parentQuery(1)
   }).catch((ex) => {
     console.log(ex)
@@ -251,17 +243,23 @@ MiniValineFactory.prototype.bind = function () {
         if (len) {
           for (let i = 0; i < len; i++) {
             if (!rets[i].get('isSpam')) {
-              const vl = insertComment(rets[i], _vlist, true)
-              nestQuery(vl, level + 1)
+              const render = (o) => {
+                rets[i].set('comment', o.TEXT)
+                const vl = insertComment(rets[i], _vlist, true)
+                nestQuery(vl, level + 1)
+              }
+              rets[i].TEXT = rets[i].get('comment')
+              util.killXSS(rets[i], render)
             }
           }
         }
       })
       .catch((ex) => {
         console.log(ex)
-        root.loading.hide()
+        root.loading.hide(root.parentCount)
       })
   }
+
   const insertComment = (comment, vlist = null, top = true) => {
     const _vcard = document.createElement('li')
     _vcard.setAttribute('class', 'vcard')
@@ -370,7 +368,8 @@ MiniValineFactory.prototype.bind = function () {
       return
     }
     // render markdown
-    const render = () => {
+    const render = (root) => {
+      root.Comment.comment = root.TEXT
       const idx = root.Comment.comment.indexOf(root.Comment.at)
       if (idx > -1 && root.Comment.at !== '') {
         const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
@@ -394,16 +393,8 @@ MiniValineFactory.prototype.bind = function () {
         commitEvt()
       }
     }
-    import(/* webpackChunkName: "xss" */'./utils/XSS.js').then(({ XSS }) => {
-      root.Comment.comment = XSS(util.MakeComment(root))
-      render()
-    })
-    if (root.md || typeof root.config.md == 'undefined') {
-      import(/* webpackChunkName: "md" */'./utils/md.js').then(({ markdown }) => {
-        root.Comment.comment = markdown(root.Comment.comment)
-        render()
-      })
-    }
+    root.TEXT = util.MakeComment(root)
+    util.MarkDown(root, root, render)
   }
   const smileBtn = root.el.querySelector('.vemoji-btn')
   const smileicons = root.el.querySelector('.vsmile-icons')
@@ -436,21 +427,14 @@ MiniValineFactory.prototype.bind = function () {
         return
       }
       // render markdown
-      const render = () => {
+      const render = (previewText) => {
+        previewText.innerHTML = previewText.TEXT
         previewText.removeAttribute('style')
         previewText.setAttribute('triggered', 1)
         util.MathJaxSupport(root)
       }
-      import(/* webpackChunkName: "xss" */'./utils/XSS.js').then(({ XSS }) => {
-        previewText.innerHTML = XSS(util.MakeComment(root))
-        render()
-      })
-      if (root.md || typeof root.config.md == 'undefined') {
-        import(/* webpackChunkName: "md" */'./utils/md.js').then(({ markdown }) => {
-          previewText.innerHTML = markdown(previewText.innerHTML)
-          render()
-        })
-      }
+      previewText.TEXT = util.MakeComment(root)
+      util.MarkDown(root, previewText, render)
     }
   })
   // setting access

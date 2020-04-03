@@ -9,6 +9,8 @@ import smile from './smile'
 import script from './script'
 import MakeComment from './MakeComment'
 import initStyle from './initStyle'
+import killXSS from './killXSS'
+import MarkDown from './MarkDown'
 
 module.exports = {
   Config: Config,
@@ -21,5 +23,7 @@ module.exports = {
   smile: smile,
   script: script,
   initStyle: initStyle,
-  MakeComment: MakeComment
+  MakeComment: MakeComment,
+  killXSS: killXSS,
+  MarkDown: MarkDown
 }

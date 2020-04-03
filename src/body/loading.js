@@ -19,9 +19,9 @@ const loading = function (root) {
       vloading.setAttribute('style', 'display:block;')
       root.nodata.hide()
     },
-    hide () {
+    hide (parentCount) {
       vloading.setAttribute('style', 'display:none;')
-      root.el.querySelectorAll('.vcard').length === 0 && root.nodata.show()
+      parentCount === 0 && root.nodata.show()
     }
   }
   // submitting

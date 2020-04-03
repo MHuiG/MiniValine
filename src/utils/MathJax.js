@@ -5,7 +5,9 @@ const MathJaxSupport = (root) => {
     })
   }
   if (typeof MathJax !== 'undefined') {
-    MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'))
+    setTimeout(function () {
+      MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'))
+    }, 200)
   }
 }
 module.exports = MathJaxSupport
