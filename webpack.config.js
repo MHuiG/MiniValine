@@ -79,4 +79,5 @@ if (process.env.env_config == 'build') {
   plugins.push(new webpack.NamedModulesPlugin())
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
+
 module.exports = WEBPACK_CONFIG
