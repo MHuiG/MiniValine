@@ -394,13 +394,16 @@ MiniValineFactory.prototype.bind = function () {
         commitEvt()
       }
     }
+    import(/* webpackChunkName: "xss" */'./utils/XSS.js').then(({ XSS }) => {
+      root.Comment.comment = XSS(util.MakeComment(root))
+      render()
+    })
     if (root.md || typeof root.config.md == 'undefined') {
       import(/* webpackChunkName: "md" */'./utils/md.js').then(({ markdown }) => {
-        root.Comment.comment = markdown(util.MakeComment(root))
+        root.Comment.comment = markdown(root.Comment.comment)
         render()
       })
     } else {
-      root.Comment.comment = util.MakeComment(root)
       render()
     }
   }
@@ -440,13 +443,16 @@ MiniValineFactory.prototype.bind = function () {
         previewText.setAttribute('triggered', 1)
         util.MathJaxSupport(root)
       }
+      import(/* webpackChunkName: "xss" */'./utils/XSS.js').then(({ XSS }) => {
+        previewText.innerHTML = XSS(util.MakeComment(root))
+        render()
+      })
       if (root.md || typeof root.config.md == 'undefined') {
         import(/* webpackChunkName: "md" */'./utils/md.js').then(({ markdown }) => {
-          previewText.innerHTML = markdown(util.MakeComment(root))
+          previewText.innerHTML = markdown(previewText.innerHTML)
           render()
         })
       } else {
-        previewText.innerHTML = util.MakeComment(root)
         render()
       }
     }
