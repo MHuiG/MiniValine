@@ -6,7 +6,7 @@ const init = () => {
 			MathJax.Hub.Config({
 				elements: [document.getElementsByClassName('MiniValine')],
 				tex2jax: {
-				  inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+				  inlineMath: [ ['$', '$'] ],
 				  processEscapes: true,
 				  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
 				},
@@ -58,7 +58,6 @@ const getScript = (url, callback, condition) => {
       }
     }
     script.src = url
-    // document.head.append(script)
     document.getElementsByTagName('head')[0].appendChild(script)
   }
 }
