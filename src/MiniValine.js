@@ -403,8 +403,6 @@ MiniValineFactory.prototype.bind = function () {
         root.Comment.comment = markdown(root.Comment.comment)
         render()
       })
-    } else {
-      render()
     }
   }
   const smileBtn = root.el.querySelector('.vemoji-btn')
@@ -452,8 +450,6 @@ MiniValineFactory.prototype.bind = function () {
           previewText.innerHTML = markdown(previewText.innerHTML)
           render()
         })
-      } else {
-        render()
       }
     }
   })
