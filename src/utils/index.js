@@ -8,6 +8,7 @@ import check from './check'
 import smile from './smile'
 import script from './script'
 import MakeComment from './MakeComment'
+import initStyle from './initStyle'
 
 module.exports = {
   Config: Config,
@@ -19,5 +20,6 @@ module.exports = {
   check: check,
   smile: smile,
   script: script,
+  initStyle: initStyle,
   MakeComment: MakeComment
 }

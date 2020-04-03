@@ -5,6 +5,7 @@ import { GravatarBaseUrl } from './Default'
 const MiniValineFactory = function (option) {
   const root = this
   root.config = option
+  util.initStyle()
   util.Config(root)
   util.script(root)
   util.i18n(root)
@@ -12,6 +13,7 @@ const MiniValineFactory = function (option) {
   util.GetIP(root)
   root.initCheck()
 }
+
 MiniValineFactory.prototype.initCheck = function () {
   const root = this
   var check = setInterval(function () {
@@ -25,7 +27,6 @@ MiniValineFactory.prototype.initCheck = function () {
 MiniValineFactory.prototype.initBody = function () {
   const root = this
   try {
-    import(/* webpackChunkName: "style" */'./style/index.scss')
     body.el(root)
     // loading
     body.loading(root)
@@ -518,7 +519,7 @@ MiniValineFactory.prototype.bind = function () {
       const rid = _vat.getAttribute('rid')
       root.Comment.rid = rid
       root.Comment.at = at
-      inputs.comment.value = `${at} ，${inputs.comment.value}`
+      inputs.comment.value = `${at} , ${inputs.comment.value}`
       // move inputs
       const commentEl = vcard.querySelector(`#comment-${_id}`)
       commentEl.appendChild(root.el.querySelector('.vinputs-wrap'))
