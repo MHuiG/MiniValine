@@ -11,6 +11,9 @@ import MakeComment from './MakeComment'
 import initStyle from './initStyle'
 import killXSS from './killXSS'
 import MarkDown from './MarkDown'
+import uploadImage from './uploadImage'
+import insertAtCaret from './insertAtCaret'
+import alert from './alert'
 
 module.exports = {
   Config: Config,
@@ -25,5 +28,8 @@ module.exports = {
   initStyle: initStyle,
   MakeComment: MakeComment,
   killXSS: killXSS,
-  MarkDown: MarkDown
+  MarkDown: MarkDown,
+  uploadImage: uploadImage,
+  insertAtCaret: insertAtCaret,
+  alert: alert
 }

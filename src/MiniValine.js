@@ -41,31 +41,8 @@ MiniValineFactory.prototype.initBody = function () {
     return
   }
   root.loading.hide(root.parentCount)
-  const mark = root.el.querySelector('.vmark')
   // alert
-  root.alert = {
-    show (o) {
-      mark.innerHTML = `<div class="valert txt-center"><div class="vtext">${o.text}</div><div class="vbtns"></div></div>`
-      const vbtns = mark.querySelector('.vbtns')
-      const cBtn = `<button class="vcancel vbtn">${(o.ctxt) || root.i18n.cancel}</button>`
-      const oBtn = `<button class="vsure vbtn">${(o.otxt) || root.i18n.continue}</button>`
-      vbtns.innerHTML = `${cBtn}${o.type && oBtn}`
-      mark.querySelector('.vcancel').addEventListener('click', (e) => {
-        root.alert.hide()
-      })
-      mark.setAttribute('style', 'display:block;')
-      if (o.type) {
-        const ok = mark.querySelector('.vsure')
-        util.dom.on('click', ok, (e) => {
-          root.alert.hide()
-          o.cb && o.cb()
-        })
-      }
-    },
-    hide () {
-      mark.setAttribute('style', 'display:none;')
-    }
-  }
+  util.alert(root)
   root.loading.show()
   const query1 = new root.v.Query('Comment')
   query1.equalTo('url', root.Comment.url)
@@ -93,27 +70,7 @@ MiniValineFactory.prototype.bind = function () {
     const imgSrc = e.target.src
     if (typeof imgSrc === 'undefined') return
     const tag = `!(:${decodeURI(imgSrc).replace(/^.*\/(.*)$/, '$1')}:)`
-    if (document.selection) {
-      textField.focus()
-      var sel = document.selection.createRange()
-      sel.text = tag
-      textField.focus()
-    } else if (textField.selectionStart) {
-      const startPos = textField.selectionStart
-      const endPos = textField.selectionEnd
-      let cursorPos = endPos
-      textField.value =
-          textField.value.substring(0, startPos) +
-          tag +
-          textField.value.substring(endPos, textField.value.length)
-      cursorPos += tag.length
-      textField.focus()
-      textField.selectionStart = cursorPos
-      textField.selectionEnd = cursorPos
-    } else {
-      textField.value += tag
-      textField.focus()
-    }
+    util.insertAtCaret(textField, tag)
     root.Comment.comment = textField.value
     const submitBtn = root.el.querySelector('.vsubmit')
     if (submitBtn.getAttribute('disabled')) {
@@ -259,7 +216,6 @@ MiniValineFactory.prototype.bind = function () {
         root.loading.hide(root.parentCount)
       })
   }
-
   const insertComment = (comment, vlist = null, top = true) => {
     const _vcard = document.createElement('li')
     _vcard.setAttribute('class', 'vcard')
@@ -523,5 +479,6 @@ MiniValineFactory.prototype.bind = function () {
     })
   }
   util.dom.on('click', submitBtn, submitEvt)
+  util.uploadImage(root)
 }
 module.exports = MiniValineFactory
