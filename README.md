@@ -28,7 +28,7 @@
 - Safe by default.
 - Easy to customize.
 - No server-side implementation.
-- [Simple and lightweight (15.95 KB gzipped)](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
+- [Simple and lightweight (10.79 KB gzipped)](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
 - Support [lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
 - Support [code highlighting](https://highlightjs.org/static/demo/).
 - Support [Markdown](https://guides.github.com/features/mastering-markdown/).
