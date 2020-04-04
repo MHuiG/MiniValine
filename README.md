@@ -25,9 +25,9 @@
 ## Features
 
 - High speed.
-- ~~~[Safe by default](https://jsxss.com/).~~~ Front-end verification is all floating clouds.
+- ~[Safe by default](https://jsxss.com/).~ Front-end verification is all floating clouds.
 - Easy to customize.
-- ~~~[No server-side implementation](https://www.leancloud.cn/).~~~
+- ~[No server-side implementation](https://www.leancloud.cn/).~
 - Always compatible with IE.
 - [Simple and lightweight (11.5 KB gzipped)](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
 - Support [lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
