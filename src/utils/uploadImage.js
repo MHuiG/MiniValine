@@ -34,7 +34,7 @@ const uploadImage = (root) => {
           const file = files[idx]
           const uploadText = `![Uploading ${file.name}]()`
           insertAtCaret(_veditor, uploadText)
-          file && loadImage(file, function (err, ret) {
+          loadImage(file, function (err, ret) {
             if (!err && ret) {
               _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data})`)
               root.Comment.comment = _veditor.value
