@@ -30,7 +30,7 @@ const uploadImage = (root) => {
         }
       }
       if (files.length) {
-        for (const idx in files) {
+        for (var idx = 0; idx < files.length; idx++) {
           const file = files[idx]
           const uploadText = `![Uploading ${file.name}]()`
           insertAtCaret(_veditor, uploadText)
