@@ -79,7 +79,6 @@ new MiniValine({
 })
 ```
 
-
 ## Get `App ID`/`App Key`
 **Get `App ID`/`App Key` from LeanCloud**  
 [Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
