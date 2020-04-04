@@ -28,6 +28,7 @@
 - [Safe by default](https://jsxss.com/).
 - Easy to customize.
 - [No server-side implementation](https://www.leancloud.cn/).
+- Always compatible with IE.
 - [Simple and lightweight (11.5 KB gzipped)](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
 - Support [lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
 - Support [code highlighting](https://highlightjs.org/static/demo/).
