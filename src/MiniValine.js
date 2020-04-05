@@ -30,11 +30,7 @@ MiniValineFactory.prototype.initBody = function () {
     body.loading(root)
     root.nodata.show()
     // load smiles image
-    var checksmiles = setInterval(function () {
-      if (typeof root.emoticonList == 'undefined') { return }
-      clearInterval(checksmiles)
-      body.smiles(root)
-    }, 10)
+    body.smiles(root)
     util.setAV(root)
   } catch (ex) {
     console.log(ex)
