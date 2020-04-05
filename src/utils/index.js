@@ -18,7 +18,14 @@ import smileEvt from './smileEvt'
 import startEvt from './startEvt'
 import resetForm from './resetForm'
 import cancelReply from './cancelReply'
-import expandEvt from './expandEvt'
+import smileBtnEvt from './smileBtnEvt'
+import previewBtnEvt from './previewBtnEvt'
+import inputs from './inputs'
+import atEvt from './atEvt'
+import submitBtnEvt from './submitBtnEvt'
+import insertComment from './insertComment'
+import nestQuery from './nestQuery'
+import parentQuery from './parentQuery'
 
 module.exports = {
   Config: Config,
@@ -40,6 +47,13 @@ module.exports = {
   startEvt: startEvt,
   resetForm: resetForm,
   cancelReply: cancelReply,
-  expandEvt: expandEvt,
+  smileBtnEvt: smileBtnEvt,
+  previewBtnEvt: previewBtnEvt,
+  inputs: inputs,
+  atEvt: atEvt,
+  submitBtnEvt: submitBtnEvt,
+  insertComment: insertComment,
+  nestQuery: nestQuery,
+  parentQuery: parentQuery,
   getCache: getCache
 }
