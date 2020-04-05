@@ -215,8 +215,8 @@ MiniValineFactory.prototype.bind = function () {
     if (submitBtn.getAttribute('disabled')) {
       root.alert.show({
         type: 0,
-        text: '再等等，评论正在提交中ヾ(๑╹◡╹)ﾉ"',
-        ctxt: '好的'
+        text: root.i18n.wait+'ヾ(๑╹◡╹)ﾉ"',
+        ctxt: root.i18n.ok
       })
       return
     }
