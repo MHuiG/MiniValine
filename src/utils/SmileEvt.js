@@ -1,6 +1,6 @@
 import dom from './dom'
 import insertAtCaret from './insertAtCaret'
-const SmileEvt = (root) => {
+const smileEvt = (root) => {
   const vsmiles = root.el.querySelector('.vsmile-icons')
   dom.on('click', vsmiles, (e) => {
     const textField = root.el.querySelector('.veditor')
@@ -16,4 +16,4 @@ const SmileEvt = (root) => {
   })
 }
 
-module.exports = SmileEvt
+module.exports = smileEvt

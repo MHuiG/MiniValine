@@ -41,27 +41,20 @@ MiniValineFactory.prototype.initBody = function () {
 }
 MiniValineFactory.prototype.bind = function () {
   const root = this
-  // Smile pictures
-  util.SmileEvt(root)
-  const commentTrigger = root.el.querySelector('.commentTrigger')
-  util.dom.on('click', commentTrigger, (e) => {
-    commentTrigger.setAttribute('style', 'display:none')
-    root.el.querySelector('.auth-section').removeAttribute('style')
-    root.el.querySelector('.veditor').focus()
-  })
-  // cancel reply
-  util.dom.on('click', root.el.querySelector('.vcancel-comment-reply'), (e) => {
-    root.reset()
-  })
-  // Query && show comment list
-  const expandEvt = (el) => {
-    if (el.offsetHeight > 180) {
-      el.classList.add('expand')
-      util.dom.on('click', el, (e) => {
-        el.setAttribute('class', 'vcomment')
-      })
-    }
+  const inputs = {}
+  root.mapping = {
+    veditor: 'comment',
+    vnick: 'nick',
+    vlink: 'link',
+    vmail: 'mail'
   }
+  util.smileEvt(root)
+  util.startEvt(root)
+  util.getCache(root)
+  util.resetForm(root)
+  util.uploadImage(root)
+  util.cancelReply(root)
+
   /*
    * 需要权衡: 网络请求数，查询效率，分页问题，Leancloud限制等
    * */
@@ -200,20 +193,14 @@ MiniValineFactory.prototype.bind = function () {
     if (!top) _vlist.appendChild(_vcard)
     else _vlist.insertBefore(_vcard, _vlis[0])
     const _vcontent = _vcard.querySelector('.vcomment')
-    expandEvt(_vcontent)
+    util.expandEvt(_vcontent)
     bindAtEvt(_vcard)
     return _vcard
   }
-  const mapping = {
-    veditor: 'comment',
-    vnick: 'nick',
-    vlink: 'link',
-    vmail: 'mail'
-  }
-  const inputs = {}
-  for (const i in mapping) {
-    if (mapping.hasOwnProperty(i)) {
-      const _v = mapping[i]
+
+  for (const i in root.mapping) {
+    if (root.mapping.hasOwnProperty(i)) {
+      const _v = root.mapping[i]
       const _el = root.el.querySelector(`.${i}`)
       inputs[_v] = _el
       util.dom.on('input', _el, (e) => {
@@ -221,36 +208,7 @@ MiniValineFactory.prototype.bind = function () {
       })
     }
   }
-  // cache
-  util.getCache(root)
-  // reset form
-  root.reset = () => {
-    for (const i in mapping) {
-      if (mapping.hasOwnProperty(i)) {
-        const _v = mapping[i]
-        const _el = root.el.querySelector(`.${i}`)
-        _el.value = ''
-        root.Comment[_v] = ''
-      }
-    }
-    root.Comment.rid = ''
-    root.Comment.nick = ''
-    util.getCache(root)
-    if (smileicons.getAttribute('triggered')) {
-      smileicons.setAttribute('style', 'display:none;')
-      smileicons.removeAttribute('triggered')
-    }
-    if (previewText.getAttribute('triggered')) {
-      previewText.setAttribute('style', 'display:none;')
-      previewText.removeAttribute('triggered')
-    }
-    root.el
-      .querySelector('.vcancel-comment-reply')
-      .setAttribute('style', 'display:none')
-    root.el
-      .querySelector('#vinputs-placeholder')
-      .appendChild(root.el.querySelector('.vinputs-wrap'))
-  }
+
   // submit
   const submitBtn = root.el.querySelector('.vsubmit')
   const submitEvt = (e) => {
@@ -421,6 +379,5 @@ MiniValineFactory.prototype.bind = function () {
     })
   }
   util.dom.on('click', submitBtn, submitEvt)
-  util.uploadImage(root)
 }
 module.exports = MiniValineFactory

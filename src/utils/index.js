@@ -14,7 +14,11 @@ import uploadImage from './uploadImage'
 import alert from './alert'
 import getCache from './getCache'
 import initCount from './initCount'
-import SmileEvt from './SmileEvt'
+import smileEvt from './smileEvt'
+import startEvt from './startEvt'
+import resetForm from './resetForm'
+import cancelReply from './cancelReply'
+import expandEvt from './expandEvt'
 
 module.exports = {
   Config: Config,
@@ -32,6 +36,10 @@ module.exports = {
   uploadImage: uploadImage,
   alert: alert,
   initCount: initCount,
-  SmileEvt: SmileEvt,
+  smileEvt: smileEvt,
+  startEvt: startEvt,
+  resetForm: resetForm,
+  cancelReply: cancelReply,
+  expandEvt: expandEvt,
   getCache: getCache
 }
