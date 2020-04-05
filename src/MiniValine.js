@@ -1,6 +1,5 @@
 import body from './body'
 import util from './utils'
-
 const MiniValineFactory = function (option) {
   const root = this
   root.config = option
@@ -26,10 +25,8 @@ MiniValineFactory.prototype.initBody = function () {
   const root = this
   try {
     body.el(root)
-    // loading
     body.loading(root)
     root.nodata.show()
-    // load smiles image
     body.smiles(root)
     util.setAV(root)
   } catch (ex) {
@@ -37,7 +34,6 @@ MiniValineFactory.prototype.initBody = function () {
     return
   }
   root.loading.hide(root.parentCount)
-  // alert
   util.alert(root)
   root.loading.show()
   util.initCount(root)
@@ -348,7 +344,7 @@ MiniValineFactory.prototype.bind = function () {
         previewText.setAttribute('triggered', 1)
         util.MathJaxSupport(root)
       }
-      util.MakeComment(root)
+      util.MakeComment(root, previewText, render)
     }
   })
   // setting access
