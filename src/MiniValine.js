@@ -327,8 +327,7 @@ MiniValineFactory.prototype.bind = function () {
         commitEvt()
       }
     }
-    root.TEXT = util.MakeComment(root)
-    util.MarkDown(root, root, render)
+    util.MakeComment(root, root, render)
   }
   const smileBtn = root.el.querySelector('.vemoji-btn')
   const smileicons = root.el.querySelector('.vsmile-icons')
@@ -367,8 +366,7 @@ MiniValineFactory.prototype.bind = function () {
         previewText.setAttribute('triggered', 1)
         util.MathJaxSupport(root)
       }
-      previewText.TEXT = util.MakeComment(root)
-      util.MarkDown(root, previewText, render)
+      util.MakeComment(root)
     }
   })
   // setting access
