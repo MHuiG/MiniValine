@@ -14,6 +14,7 @@ import MarkDown from './MarkDown'
 import uploadImage from './uploadImage'
 import insertAtCaret from './insertAtCaret'
 import alert from './alert'
+import getCache from './getCache'
 
 module.exports = {
   Config: Config,
@@ -31,5 +32,6 @@ module.exports = {
   MarkDown: MarkDown,
   uploadImage: uploadImage,
   insertAtCaret: insertAtCaret,
-  alert: alert
+  alert: alert,
+  getCache: getCache
 }
