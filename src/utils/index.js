@@ -14,6 +14,7 @@ import uploadImage from './uploadImage'
 import insertAtCaret from './insertAtCaret'
 import alert from './alert'
 import getCache from './getCache'
+import initCount from './initCount'
 
 module.exports = {
   Config: Config,
@@ -31,5 +32,6 @@ module.exports = {
   uploadImage: uploadImage,
   insertAtCaret: insertAtCaret,
   alert: alert,
+  initCount: initCount,
   getCache: getCache
 }
