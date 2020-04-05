@@ -310,10 +310,7 @@ MiniValineFactory.prototype.bind = function () {
       const idx = root.Comment.comment.indexOf(root.Comment.at)
       if (idx > -1 && root.Comment.at !== '') {
         const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
-        root.Comment.comment = root.Comment.comment.replace(
-          root.Comment.at,
-          at
-        )
+        root.Comment.comment = root.Comment.comment.replace(root.Comment.at, at)
       }
       // veirfy
       const mailRet = util.check.mail(root.Comment.mail)
