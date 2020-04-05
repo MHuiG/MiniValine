@@ -10,7 +10,6 @@ import script from './script'
 import MakeComment from './MakeComment'
 import initStyle from './initStyle'
 import killXSS from './killXSS'
-import MarkDown from './MarkDown'
 import uploadImage from './uploadImage'
 import insertAtCaret from './insertAtCaret'
 import alert from './alert'
@@ -29,7 +28,6 @@ module.exports = {
   initStyle: initStyle,
   MakeComment: MakeComment,
   killXSS: killXSS,
-  MarkDown: MarkDown,
   uploadImage: uploadImage,
   insertAtCaret: insertAtCaret,
   alert: alert,

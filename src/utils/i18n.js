@@ -1,5 +1,5 @@
 import { i18nUrl } from '../Default'
-import ajax from './ajax'
+import ajax from './plugins/ajax'
 
 const i18n = (root) => {
   ajax({

@@ -1,5 +1,5 @@
 import { EmoticonUrl } from '../Default'
-import ajax from './ajax'
+import ajax from './plugins/ajax'
 
 const smile = (root) => {
   ajax({

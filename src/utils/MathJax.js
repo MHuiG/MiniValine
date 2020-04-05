@@ -1,6 +1,6 @@
 const MathJaxSupport = (root) => {
   if ((typeof MathJax === 'undefined') && (root.math || typeof root.config.math == 'undefined')) {
-    import(/* webpackChunkName: "math" */'./initMathJax.js').then(({ initMathJax }) => {
+    import(/* webpackChunkName: "math" */'./plugins/initMathJax.js').then(({ initMathJax }) => {
       initMathJax()
     })
   }

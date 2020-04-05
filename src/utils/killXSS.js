@@ -1,5 +1,5 @@
 const killXSS = (o, render) => {
-  import(/* webpackChunkName: "xss" */'./XSS.js').then(({ XSS }) => {
+  import(/* webpackChunkName: "xss" */'./plugins/XSS.js').then(({ XSS }) => {
     o.TEXT = XSS(o.TEXT)
     render(o)
   })
