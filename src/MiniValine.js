@@ -42,19 +42,7 @@ MiniValineFactory.prototype.initBody = function () {
 MiniValineFactory.prototype.bind = function () {
   const root = this
   // Smile pictures
-  const vsmiles = root.el.querySelector('.vsmile-icons')
-  util.dom.on('click', vsmiles, (e) => {
-    const textField = root.el.querySelector('.veditor')
-    const imgSrc = e.target.src
-    if (typeof imgSrc === 'undefined') return
-    const tag = `!(:${decodeURI(imgSrc).replace(/^.*\/(.*)$/, '$1')}:)`
-    util.insertAtCaret(textField, tag)
-    root.Comment.comment = textField.value
-    const submitBtn = root.el.querySelector('.vsubmit')
-    if (submitBtn.getAttribute('disabled')) {
-      submitBtn.removeAttribute('disabled')
-    }
-  })
+  util.SmileEvt(root)
   const commentTrigger = root.el.querySelector('.commentTrigger')
   util.dom.on('click', commentTrigger, (e) => {
     commentTrigger.setAttribute('style', 'display:none')

@@ -11,10 +11,10 @@ import MakeComment from './MakeComment'
 import initStyle from './initStyle'
 import killXSS from './killXSS'
 import uploadImage from './uploadImage'
-import insertAtCaret from './insertAtCaret'
 import alert from './alert'
 import getCache from './getCache'
 import initCount from './initCount'
+import SmileEvt from './SmileEvt'
 
 module.exports = {
   Config: Config,
@@ -30,8 +30,8 @@ module.exports = {
   MakeComment: MakeComment,
   killXSS: killXSS,
   uploadImage: uploadImage,
-  insertAtCaret: insertAtCaret,
   alert: alert,
   initCount: initCount,
+  SmileEvt: SmileEvt,
   getCache: getCache
 }
