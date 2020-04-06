@@ -140,8 +140,8 @@ new MiniValine({
   
   Options: 
 
-  * `false` Close MathJax.
-  * `true` Support MathJax@2 initialization.
+  * `false` or `0` Close MathJax.
+  * `true` or `1`  Support MathJax@2 initialization.
   * `2` Support MathJax@2 initialization.
   * `3` Support MathJax@3 initialization.
   
