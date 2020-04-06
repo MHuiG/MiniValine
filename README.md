@@ -146,7 +146,7 @@ new MiniValine({
   * `3` Support MathJax@3 initialization.
   
   The above is the initialization operation of integrating MathJax in MiniValine.
-  If MathJax is loaded on your page, MiniValine will use MathJax with the page loaded.
+  If MathJax is loaded on the page, MiniValine will use the MathJax version on the page.
 
 - **md** `Boolean`
 
