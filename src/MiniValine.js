@@ -5,6 +5,7 @@ const MiniValineFactory = function (option) {
   root.config = option
   util.initStyle()
   util.Config(root)
+  util.ActivateCode(root)
   util.script(root)
   util.i18n(root)
   util.smile(root)

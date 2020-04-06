@@ -1,6 +1,5 @@
 import dom from './plugins/dom'
 import killXSS from './plugins/killXSS'
-import MathJaxSupport from './plugins/MathJax'
 const parentQuery = (root) => {
   let num = 1
   root.parentCount = 0
@@ -29,9 +28,9 @@ const parentQuery = (root) => {
         }
         const vpage = root.el.querySelector('.vpage')
         vpage.innerHTML =
-            root.pageSize * pageNum < root.parentCount
-              ? `<div id="vmore" class="more">${root.i18n.more}</div>`
-              : ''
+root.pageSize * pageNum < root.parentCount
+  ? `<div id="vmore" class="more">${root.i18n.more}</div>`
+  : ''
         const vmore = vpage.querySelector('#vmore')
         if (vmore) {
           dom.on('click', vmore, (e) => {
@@ -41,14 +40,13 @@ const parentQuery = (root) => {
         }
       }
       root.loading.hide(root.parentCount)
-      MathJaxSupport(root)
     }).catch((ex) => {
       console.log(ex)
       root.loading.hide(root.parentCount)
     })
   }
   root.v.Query.doCloudQuery(
-      `select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
+`select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
   ).then((data) => {
     root.parentCount = data.count
     root.parentQuery(1)

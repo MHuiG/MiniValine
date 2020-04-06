@@ -1,5 +1,5 @@
 const loading = function (root) {
-  // Empty Data
+// Empty Data
   const vempty = root.el.querySelector('.vempty')
   root.nodata = {
     show (txt) {
@@ -22,6 +22,7 @@ const loading = function (root) {
     hide (parentCount) {
       vloading.setAttribute('style', 'display:none;')
       parentCount === 0 && root.nodata.show()
+      root.ActivateCode(root)
     }
   }
   // submitting
@@ -34,6 +35,7 @@ const loading = function (root) {
     hide () {
       vsubmitting.setAttribute('style', 'display:none;')
       root.nodata.hide()
+      root.ActivateCode(root)
     }
   }
 }

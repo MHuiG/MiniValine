@@ -1,7 +1,5 @@
 import md from 'marked'
 import highligher from './highlight'
-import(/* webpackChunkName: "md-style" */ 'highlight.js/styles/github.css')
-
 md.setOptions({
   gfm: true,
   tables: true,
@@ -14,7 +12,6 @@ md.setOptions({
     return highligher.highlightAuto(code).value
   }
 })
-
 export function markdown (o) {
   var m = md(o)
   return m

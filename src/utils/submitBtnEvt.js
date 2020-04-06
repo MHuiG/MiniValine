@@ -1,10 +1,9 @@
 import dom from './plugins/dom'
 import MakeComment from './plugins/MakeComment'
-import MathJaxSupport from './plugins/MathJax'
 import check from './plugins/check'
 const submitBtnEvt = (root) => {
   const submitBtn = root.el.querySelector('.vsubmit')
-  const submitEvt = (e) => {
+  root.submitEvt = (e) => {
     if (submitBtn.getAttribute('disabled')) {
       root.alert.show({
         type: 0,
@@ -94,12 +93,11 @@ const submitBtnEvt = (root) => {
         root.submitting.hide()
         root.nodata.hide()
         root.reset()
-        MathJaxSupport(root)
       })
       .catch((ex) => {
         root.submitting.hide()
       })
   }
-  dom.on('click', submitBtn, submitEvt)
+  dom.on('click', submitBtn, root.submitEvt)
 }
 module.exports = submitBtnEvt

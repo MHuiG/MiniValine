@@ -7,7 +7,7 @@ const uploadImage = (root) => {
     const keyCode = e.keyCode || e.which || e.charCode
     const ctrlKey = e.ctrlKey || e.metaKey
     // Shortcut key
-    ctrlKey && keyCode === 13 && root.bind.submitEvt()
+    ctrlKey && keyCode === 13 && root.submitEvt()
     // tab key
     if (keyCode === 9) {
       const focus = document.activeElement.className || ''

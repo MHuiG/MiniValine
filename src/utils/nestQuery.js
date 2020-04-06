@@ -10,28 +10,21 @@ const nestQuery = (root) => {
     }
     if (level >= root.maxNestLevel) {
       root.v.Query.doCloudQuery(
-          `select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
+`select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
       ).then(
         (data) => {
           const { count } = data
           if (count > 0) {
-            const showChildrenWrapper = vchild.querySelector(
-              '.vshow-children-wrapper'
-            )
-            showChildrenWrapper.setAttribute(
-              'style',
-              'display: block !important;'
-            )
+            const showChildrenWrapper = vchild.querySelector('.vshow-children-wrapper')
+            showChildrenWrapper.setAttribute('style', 'display: block !important;')
             showChildrenWrapper.innerHTML = `<span class="vshow-children" rid="${_id}">${root.i18n.more}</span>`
-            const showChildren = showChildrenWrapper.querySelector(
-              '.vshow-children'
-            )
+            const showChildren = showChildrenWrapper.querySelector('.vshow-children')
             dom.on('click', showChildren, (e) => {
-              showChildrenWrapper.setAttribute(
-                'style',
-                'display: none !important;'
-              )
+              showChildrenWrapper.setAttribute('style', 'display: none !important;')
               root.nestQuery(vcard, -1000)
+              setTimeout(function () {
+                root.ActivateCode(root)
+              }, 500)
             })
           }
         },

@@ -22,6 +22,7 @@ import submitBtnEvt from './submitBtnEvt'
 import insertComment from './insertComment'
 import nestQuery from './nestQuery'
 import parentQuery from './parentQuery'
+import ActivateCode from './ActivateCode'
 
 module.exports = {
   Config: Config,
@@ -47,5 +48,6 @@ module.exports = {
   insertComment: insertComment,
   nestQuery: nestQuery,
   parentQuery: parentQuery,
+  ActivateCode: ActivateCode,
   getCache: getCache
 }
