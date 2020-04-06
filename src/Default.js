@@ -1,5 +1,4 @@
 export const VERSION = '1.2.31'
-export const AVSdkUrl = 'https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js'
 export const GravatarBaseUrl = 'https://gravatar.loli.net/avatar/'
 export const ip = 'https://api.ip.sb/jsonip?callback=getIP'
 export const EmoticonUrl = 'https://cdn.jsdelivr.net/npm/alus'

@@ -15,7 +15,6 @@ MiniValineFactory.prototype.initCheck = function () {
   const root = this
   var check = setInterval(function () {
     if (typeof root.i18n == 'undefined') { return }
-    if (typeof AV == 'undefined') { return }
     clearInterval(check)
     root.initBody()
   }, 5)

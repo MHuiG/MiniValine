@@ -1,6 +1,5 @@
-import { AVSdkUrl, ip } from '../Default'
+import { ip } from '../Default'
 const script = (root) => {
-  getScript(AVSdkUrl)
   getScript(ip)
   if (!!window.ActiveXObject || 'ActiveXObject' in window) {
     root.config.md = false

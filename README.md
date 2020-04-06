@@ -58,17 +58,11 @@ Two ways.
 - npm install
 
 ``` bash
-# Install leancloud's js-sdk
-npm install leancloud-storage --save
-
 # Install minivaline
 npm install minivaline --save
 ```
 
 ``` js
-// Register AV objects to the global
-window.AV = require('leancloud-storage');
-
 // Use import
 import MiniValine from 'minivaline';
 // or Use require
@@ -178,6 +172,12 @@ new MiniValine({
   Default: `6`
   
   Pagination size.
+
+- **serverURLs** `String`
+
+  Default: `http[s]://[tab/us].avoscloud.com`
+  
+  This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
 
 ## TODO
 
