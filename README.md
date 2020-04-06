@@ -134,12 +134,17 @@ new MiniValine({
 
   The MD5 of Admin Email to show Admin Flag.
 
-- **math** `Boolean`
+- **math** `Boolean` and `Number`
 
   Default: `true`
   
-  Support MathJax.
-  
+  Options: 
+
+  * `false` Close MathJax. 
+  * `true` Support MathJax@2.
+  * `2` Support MathJax@2.
+  * `3` Support MathJax@3.
+
 - **md** `Boolean`
 
   Default: `true`
