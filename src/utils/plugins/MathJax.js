@@ -12,10 +12,9 @@ const MathJaxSupport = (root) => {
   }
   if (typeof MathJax !== 'undefined') {
     setTimeout(function () {
-      if ((root.math == 2) || (root.math == true) || (root.math == undefined)) {
+      if (MathJax.version.substr(0, 1) == 2) {
         MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'))
-      }
-      if (root.math == 3) {
+      } else if (MathJax.version.substr(0, 1) == 3) {
         MathJax.typeset()
       }
     }, 200)

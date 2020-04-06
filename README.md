@@ -144,6 +144,9 @@ new MiniValine({
   * `true` Support MathJax@2.
   * `2` Support MathJax@2.
   * `3` Support MathJax@3.
+  
+  The above is the initialization operation of integrating MathJax in MiniValine.
+  If MathJax is loaded on your page, please select `false`.
 
 - **md** `Boolean`
 
