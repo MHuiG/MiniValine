@@ -1,6 +1,6 @@
 {
   "name": "minivaline",
-  "version": "1.2.31",
+  "version": "1.2.32",
   "description": "A simple and minimalist comment system based on Leancloud.",
   "main": "/dist/MiniValine.min.js",
   "author": {
