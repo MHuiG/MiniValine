@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 import insertAtCaret from './insertAtCaret'
 const smileEvt = (root) => {
   const vsmiles = root.el.querySelector('.vsmile-icons')

@@ -1,6 +1,6 @@
-import dom from './dom'
-import MakeComment from './MakeComment'
-import MathJaxSupport from './MathJax'
+import dom from './plugins/dom'
+import MakeComment from './plugins/MakeComment'
+import MathJaxSupport from './plugins/MathJax'
 import check from './check'
 const submitBtnEvt = (root) => {
   const submitBtn = root.el.querySelector('.vsubmit')

@@ -1,5 +1,5 @@
-import dom from './dom'
-import killXSS from './killXSS'
+import dom from './plugins/dom'
+import killXSS from './plugins/killXSS'
 const nestQuery = (root) => {
   root.nestQuery = (vcard, level = 1) => {
     const vchild = vcard.querySelector('.vcomment-children')

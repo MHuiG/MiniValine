@@ -1,6 +1,6 @@
-import dom from './dom'
-import killXSS from './killXSS'
-import MathJaxSupport from './MathJax'
+import dom from './plugins/dom'
+import killXSS from './plugins/killXSS'
+import MathJaxSupport from './plugins/MathJax'
 const parentQuery = (root) => {
   let num = 1
   root.parentCount = 0

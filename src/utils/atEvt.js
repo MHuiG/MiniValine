@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 const atEvt = (root) => {
   root.AtEvt = (vcard) => {
     const _id = vcard.getAttribute('id')

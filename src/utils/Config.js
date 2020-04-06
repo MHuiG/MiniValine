@@ -1,5 +1,4 @@
 import { MaxNestLevel, PageSize, EmoticonUrl, Comment } from '../Default'
-
 const Config = function (root) {
   root.emoticonUrl = root.config.emoticonUrl || EmoticonUrl
   root.lang = root.config.lang || navigator.language || navigator.userLanguage

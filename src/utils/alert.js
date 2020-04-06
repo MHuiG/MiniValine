@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 const alert = (root) => {
   const mark = root.el.querySelector('.vmark')
   root.alert = {

@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 const startEvt = (root) => {
   const commentTrigger = root.el.querySelector('.commentTrigger')
   dom.on('click', commentTrigger, (e) => {

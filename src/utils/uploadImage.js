@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 import insertAtCaret from './insertAtCaret'
 const uploadImage = (root) => {
   const _veditor = root.el.querySelector('.veditor')

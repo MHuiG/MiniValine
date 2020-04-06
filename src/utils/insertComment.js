@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 const insertComment = (root, body) => {
   root.insertComment = (comment, vlist = null, top = true) => {
     const _vcard = document.createElement('li')

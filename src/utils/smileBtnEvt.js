@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 const smileBtnEvt = (root) => {
   const smileBtn = root.el.querySelector('.vemoji-btn')
   const previewText = root.el.querySelector('.vpreview-text')

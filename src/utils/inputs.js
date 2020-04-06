@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from './plugins/dom'
 const inputs = (root) => {
   root.inputs = {}
   root.mapping = {
