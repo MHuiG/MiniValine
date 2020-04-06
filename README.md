@@ -134,7 +134,7 @@ new MiniValine({
 
   The MD5 of Admin Email to show Admin Flag.
 
-- **math** `Boolean` and `Number`
+- **math** `Boolean` or `Number`
 
   Default: `true`
   
