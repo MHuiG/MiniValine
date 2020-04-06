@@ -1,7 +1,7 @@
 import dom from './plugins/dom'
 import MakeComment from './plugins/MakeComment'
 import MathJaxSupport from './plugins/MathJax'
-import check from './check'
+import check from './plugins/check'
 const submitBtnEvt = (root) => {
   const submitBtn = root.el.querySelector('.vsubmit')
   const submitEvt = (e) => {
@@ -67,10 +67,7 @@ const submitBtnEvt = (root) => {
         comment.set(i, _v)
       }
     }
-    comment.set(
-      'emailHash',
-      md5(root.Comment.mail.toLowerCase().trim())
-    )
+    comment.set('emailHash', md5(root.Comment.mail.toLowerCase().trim()))
     comment.setACL(getAcl())
     comment
       .save()
@@ -90,9 +87,7 @@ const submitBtnEvt = (root) => {
           root.insertComment(commentItem, null, true)
         } else {
           // get children vlist
-          const _vlist = root.el.querySelector(
-              `#children-list-${root.Comment.rid}`
-          )
+          const _vlist = root.el.querySelector(`#children-list-${root.Comment.rid}`)
           root.insertComment(commentItem, _vlist, true)
         }
         submitBtn.removeAttribute('disabled')

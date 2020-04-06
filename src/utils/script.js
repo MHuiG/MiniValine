@@ -1,8 +1,6 @@
-import { AVSdkUrl, MD5, lazysizes, ip } from '../Default'
+import { AVSdkUrl, ip } from '../Default'
 const script = (root) => {
   getScript(AVSdkUrl)
-  getScript(MD5)
-  getScript(lazysizes)
   getScript(ip)
   if (!!window.ActiveXObject || 'ActiveXObject' in window) {
     root.config.md = false

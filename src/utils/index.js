@@ -2,10 +2,10 @@ import Config from './Config'
 import i18n from './i18n'
 import GetIP from './GetIP'
 import setAV from './setAV'
-import check from './check'
 import smile from './smile'
 import script from './script'
 import initStyle from './initStyle'
+import initLibs from './initLibs'
 import uploadImage from './uploadImage'
 import alert from './alert'
 import getCache from './getCache'
@@ -28,10 +28,10 @@ module.exports = {
   i18n: i18n,
   GetIP: GetIP,
   setAV: setAV,
-  check: check,
   smile: smile,
   script: script,
   initStyle: initStyle,
+  initLibs: initLibs,
   uploadImage: uploadImage,
   alert: alert,
   initCount: initCount,
