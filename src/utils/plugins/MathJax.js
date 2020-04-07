@@ -1,4 +1,4 @@
-const MathJaxSupport = (root) => {
+export const MathJaxSupport = (root) => {
   if ((typeof MathJax === 'undefined') && (root.math || typeof root.config.math == 'undefined')) {
     if ((root.math == 2) || (root.math == true) || (root.math == undefined)) {
       import(/* webpackChunkName: "math2" */'./initMathJax2.js').then(({ initMathJax }) => {
@@ -17,7 +17,6 @@ const MathJaxSupport = (root) => {
       } else if (MathJax.version.substr(0, 1) == 3) {
         MathJax.typeset()
       }
-    }, 200)
+    }, 100)
   }
 }
-module.exports = MathJaxSupport
