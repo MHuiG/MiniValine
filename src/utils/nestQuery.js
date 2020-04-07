@@ -10,7 +10,7 @@ const nestQuery = (root) => {
     }
     if (level >= root.maxNestLevel) {
       root.v.Query.doCloudQuery(
-`select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
+      `select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
       ).then(
         (data) => {
           const { count } = data
