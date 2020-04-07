@@ -187,7 +187,7 @@ new MiniValine({
   
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
 
-## TODO
+## ToDo
 
 - Extraction from the core library to reduce volume.
 
