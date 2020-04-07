@@ -223,8 +223,10 @@ Also, we welcome Issue or PR to MiniValine.
 <a href="https://crowdin.com"><img align="center" width="180" src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png" title="Powered by Crowdin" /></a>
 <a href="https://codacy.com"><img align="center" width="155" src="https://user-images.githubusercontent.com/16944225/55026017-623f8f00-5002-11e9-88bf-0d6a5884c6c2.png" title="Powered by Codacy" /></a>
 <a href="https://www.leancloud.cn"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/cdb8f605-9759-48f5-882d-1dd9db1eddae.png" title="Powered by LeanCloud" /></a>
-<a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0" alt="Powered by MathJax" /></a>
-<a href="https://polyfill.io"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/7843ef58-ad2c-4e57-9779-7e467ba0a7dd.png" title="Powered by Polyfill.io" /></a>
+<a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0" alt="Powered by MathJax" height="48px"/></a>
+<a href="https://polyfill.io"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/7843ef58-ad2c-4e57-9779-7e467ba0a7dd.png" title="Powered by Polyfill.io" height="48px"/></a>
+<a href="https://app.bundle-analyzer.com"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/0c8dcfad-194c-4caa-bc5a-905d3a91366a.png" title="Powered by Bundle Analyzer" height="48px"/></a>
+<a href="https://imgkr.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/d3d0c549-cddc-4d5b-8154-ecb689a46eae.png" title="Powered by 图壳" height="48px"/></a>
 
 ## License
 
