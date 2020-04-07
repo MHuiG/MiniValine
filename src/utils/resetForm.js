@@ -14,6 +14,7 @@ const resetForm = (root) => {
     root.Comment.rid = ''
     root.Comment.nick = ''
     getCache(root)
+    root.previewEvt(root)
     if (smileicons.getAttribute('triggered')) {
       smileicons.setAttribute('style', 'display:none;')
       smileicons.removeAttribute('triggered')

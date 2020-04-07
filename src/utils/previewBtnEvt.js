@@ -1,5 +1,4 @@
 import dom from './plugins/dom'
-import MakeComment from './plugins/MakeComment'
 const previewBtnEvt = (root) => {
   const previewBtn = root.el.querySelector('.vpreview-btn')
   const previewText = root.el.querySelector('.vpreview-text')
@@ -17,14 +16,7 @@ const previewBtnEvt = (root) => {
         root.inputs.comment.focus()
         return
       }
-      // render markdown
-      const render = (previewText) => {
-        previewText.innerHTML = previewText.TEXT
-        previewText.removeAttribute('style')
-        previewText.setAttribute('triggered', 1)
-        root.ActivateCode(root)
-      }
-      MakeComment(root, previewText, render)
+      root.previewEvt(root)
     }
   })
 }

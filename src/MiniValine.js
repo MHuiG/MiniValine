@@ -41,6 +41,7 @@ MiniValineFactory.prototype.initBody = function () {
 MiniValineFactory.prototype.bind = function () {
   const root = this
   util.inputs(root)
+  util.previewEvt(root)
   util.smileEvt(root)
   util.startEvt(root)
   util.getCache(root)

@@ -61,6 +61,7 @@
     "webpack-dev-server": "3.10.3"
   },
   "dependencies": {
+    "autosize": "^4.0.2",
     "babel-jest": "^25.1.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "blueimp-md5": "^2.13.0",
