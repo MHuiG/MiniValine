@@ -25,7 +25,7 @@
 ## Features
 
 - High speed.
-- ~[Safe by default](https://jsxss.com/).~ Front-end verification is all floating clouds.
+- ~[Safe by default](https://jsxss.com/en/try.html).~ Front-end verification is all floating clouds.
 - Easy to customize.
 - ~[No server-side implementation](https://www.leancloud.cn/).~
 - [Always compatible with IE](https://polyfill.io/).
