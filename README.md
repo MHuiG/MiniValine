@@ -218,13 +218,11 @@ Also, we welcome Issue or PR to MiniValine.
 
 ## Thanks
 
-<a href="https://github.com"><img align="center" width="100" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png"></a>
-<a href="https://travis-ci.com"><img align="center" width="140" src="https://raw.githubusercontent.com/travis-ci/travis-web/master/public/images/logos/TravisCI-Full-Color.png"></a>
-<a href="https://crowdin.com"><img align="center" width="180" src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png">
-<a href="https://codacy.com"><img align="center" width="155" src="https://user-images.githubusercontent.com/16944225/55026017-623f8f00-5002-11e9-88bf-0d6a5884c6c2.png"></a>
+<a href="https://github.com"><img align="center" width="100" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" title="Powered by GitHub" /></a>
+<a href="https://travis-ci.com"><img align="center" width="140" src="https://raw.githubusercontent.com/travis-ci/travis-web/master/public/images/logos/TravisCI-Full-Color.png" title="Powered by TravisCI" /></a>
+<a href="https://crowdin.com"><img align="center" width="180" src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png" title="Powered by Crowdin" /></a>
+<a href="https://codacy.com"><img align="center" width="155" src="https://user-images.githubusercontent.com/16944225/55026017-623f8f00-5002-11e9-88bf-0d6a5884c6c2.png" title="Powered by Codacy" /></a>
 <a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0" alt="Powered by MathJax" /></a>
-
-
 
 ## License
 
