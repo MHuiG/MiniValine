@@ -7,3 +7,5 @@ coverage
 package-lock.json
 .mergify.yml
 src
+postcss.config.js
+webpack.config.js
