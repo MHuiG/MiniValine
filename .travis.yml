@@ -9,16 +9,14 @@ install:
   - npm install
 
 script:
-  - echo 1
-  #- npm run build
+  - npm run build
   #- npm test
 
 after_script:
-  - echo 1
-  #- npm run check
+  - npm run check
   #- npm run cover
   #- bash <(curl -s https://codecov.io/bash)
-  #- cross-env env_config=build webpack --mode production --json | bundle-analyzer --token ${BUNDLE_ANALYZER_TOKEN}
+  - cross-env env_config=build webpack --mode production --json | bundle-analyzer --token ${BUNDLE_ANALYZER_TOKEN}
 
 notifications:
   email: false
