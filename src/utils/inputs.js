@@ -14,7 +14,7 @@ const inputs = (root) => {
       root.inputs[_v] = _el
       dom.on('input', _el, (e) => {
         root.Comment[_v] = _el.value
-        root.previewEvt(root)
+        root.previewEvt(root, 1)
       })
     }
   }

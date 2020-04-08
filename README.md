@@ -34,6 +34,7 @@
 - Support [code highlighting](https://highlightjs.org/static/demo/).
 - Support [Markdown](https://guides.github.com/features/mastering-markdown/).
 - Support [MathJax](https://www.mathjax.org/).
+- Enter live preview.
 - Support [paste and upload pictures](https://imgkr.com/).
 - Support [multiple languages](https://crowdin.com/project/minivaline).
 
