@@ -236,6 +236,13 @@ Also, we welcome Issue or PR to MiniValine.
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
 
+[3rd-Party Software for MiniValine License](https://app.fossa.com/attribution/502c54d3-490d-4f98-9177-5adaf5867202)
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine?ref=badge_large)
+
+
+
+
 
 [npm-version-image]: https://img.shields.io/npm/v/minivaline.svg?style=flat-square
 [npm-version-url]: https://www.npmjs.com/package/minivaline
@@ -250,6 +257,3 @@ Also, we welcome Issue or PR to MiniValine.
 [mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/MiniValine/MiniValine&style=flat
 [contributors-image]: https://opencollective.com/minivaline/contributors.svg?width=890
 [contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors
-
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine?ref=badge_large)
