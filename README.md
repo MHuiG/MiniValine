@@ -8,6 +8,7 @@
 [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/)
 [![npm downloads](https://img.shields.io/npm/dm/minivaline.svg?style=flat-square)](https://www.npmjs.com/package/minivaline)
 [![gzip-size][gzip-size]][gzip-url]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine?ref=badge_shield)
 
 [![Build Status](https://travis-ci.com/MiniValine/MiniValine.svg?branch=master)](https://travis-ci.com/MiniValine/MiniValine)
 [![Build Status](https://github.com/MiniValine/MiniValine/workflows/Node.js%20CI/badge.svg)](https://github.com/MiniValine/MiniValine/actions)
@@ -249,3 +250,6 @@ Also, we welcome Issue or PR to MiniValine.
 [mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/MiniValine/MiniValine&style=flat
 [contributors-image]: https://opencollective.com/minivaline/contributors.svg?width=890
 [contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine?ref=badge_large)
