@@ -238,8 +238,6 @@ Tribute to excellent open source! Tribute to excellent sharers!
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
 
-[3rd-Party Software for MiniValine License](https://app.fossa.com/attribution/502c54d3-490d-4f98-9177-5adaf5867202)
-
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine?ref=badge_large)
 
 
