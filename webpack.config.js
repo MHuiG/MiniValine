@@ -1,12 +1,12 @@
 var path = require('path')
 var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
-var APP_PATH = path.resolve(ROOT_PATH, 'src')
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
 const version = require('./package.json').version
 var CDN_PATH = 'https://unpkg.com/minivaline@' + version + '/dist/'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var plugins = [
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
@@ -38,7 +38,6 @@ var WEBPACK_CONFIG = {
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      include: APP_PATH,
       options: {
         presets: ['@babel/preset-env']
       }
@@ -50,8 +49,7 @@ var WEBPACK_CONFIG = {
         'css-loader',
         'postcss-loader',
         'sass-loader'
-      ],
-      include: APP_PATH
+      ]
     },
     {
       test: /\.css$/,
@@ -71,6 +69,23 @@ var WEBPACK_CONFIG = {
 }
 if (process.env.env_config == 'build') {
   plugins.push(new CleanWebpackPlugin())
+  plugins.push(new UglifyJsPlugin({
+    sourceMap: false,
+    parallel: true,
+    uglifyOptions: {
+      ie8: true,
+      safari10: true,
+      output: {
+        comments: false,
+        beautify: false,
+        ascii_only: true
+      },
+      compress: {
+        collapse_vars: true,
+        reduce_vars: true
+      }
+    }
+  }))
   WEBPACK_CONFIG.devtool = false
   WEBPACK_CONFIG.optimization.minimize = true
   WEBPACK_CONFIG.output.publicPath = CDN_PATH
