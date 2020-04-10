@@ -6,5 +6,5 @@ node_modules/
 coverage
 package-lock.json
 .mergify.yml
-src/
 src
+*.js
