@@ -4,7 +4,7 @@ on:
     types: [created]
   pull_request:
     types: [opened,closed,synchronize]
-    
+
 jobs:
   CLAssistant:
     runs-on: ubuntu-latest
