@@ -9,10 +9,12 @@ install:
   - npm install
 
 script:
+  - npm install
   #- npm run build
   #- npm test
 
 after_script:
+  - npm install
   #- npm run check
   #- npm run cover
   #- bash <(curl -s https://codecov.io/bash)
