@@ -1,3 +1,8 @@
+/*
+I strongly protest that @xCss does not comply with the GPL agreement to publish the wrong source code. 
+Because MiniValine was modified from Valine, I am posting @xCss' wrong source code here.
+*/
+
 const VERSION = require('../package.json').version
 const md5 = require('blueimp-md5')
 const marked = require('marked')
