@@ -136,17 +136,15 @@ new MiniValine({
 
   The MD5 of Admin Email to show Admin Flag.
 
-- **math** `Boolean` or `Number`
+- **math** `Boolean`
 
   Default: `true`
   
   Options: 
 
-  * `false` or `0` Close MathJax.
-  * `true` or `1`  Support MathJax@2 initialization.
-  * `2` Support MathJax@2 initialization.
-  * `3` Support MathJax@3 initialization.
-  
+  * `false` Close MathJax.
+  * `true`  Support MathJax@3 initialization.
+
   The above is the initialization operation of integrating MathJax in MiniValine.
   If MathJax is loaded on the page, MiniValine will use the MathJax version on the page.
 
@@ -173,7 +171,7 @@ new MiniValine({
 
 - **maxNest** `Number`
 
-  Default: `3`
+  Default: `6`
 
   Nest size.
 
