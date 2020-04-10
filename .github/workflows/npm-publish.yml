@@ -2,7 +2,7 @@ name: npm-publish
 on:
   push:
     branches:
-      - master # Change this to your default branch
+      - master
 jobs:
   npm-publish:
     name: npm-publish
@@ -16,10 +16,10 @@ jobs:
         node-version: 10.0.0
     - name: Publish if version has been updated
       uses: MHuiG/npm-publish-action@master
-      with: # All of theses inputs are optional
+      with:
         tag_name: "v%s"
         tag_message: "v%s"
         commit_pattern: "^Release\\:(.*)"
-      env: # More info about the environment variables in the README
-        GITHUB_TOKEN: ${{ secrets.TOKEN }} # Leave this as is, it's automatically generated
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
