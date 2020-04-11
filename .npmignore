@@ -19,3 +19,4 @@ renovate.json
 .typo-ci.yml
 postcss.config.js
 .eslintrc.yml
+.eslintignore
