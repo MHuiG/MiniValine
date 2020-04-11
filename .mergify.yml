@@ -51,4 +51,4 @@ pull_request_rules:
       - status-success=build (12.x)
     actions:
       label:
-        add: ["🛠 Improvement"]
+        add: ["img","🛠 Improvement"]
