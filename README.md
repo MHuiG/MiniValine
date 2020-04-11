@@ -232,6 +232,12 @@ Tribute to excellent open source! Tribute to excellent sharers!
 <a href="https://jsxss.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/76bb3636-9a8b-4c6b-b0dd-fed3da99b7a8.png" title="Powered by JsXSS" height="48px"/></a>
 <a href="https://highlightjs.org/"><img align="center" src="https://imgkr.cn-bj.ufileos.com/84668cd8-5d5a-444a-b8de-fd05f64241b1.png" title="Powered by highlightjs" height="48px"/></a>
 
+## Criticism
+
+I strongly protest that @xCss does not comply with the GPL agreement to publish the wrong source code. 
+
+I strongly protest that @xCss does not comply with the GPL agreement. [The behavior of that the source code of the src directory does not match the dist directory.](https://github.com/xCss/Valine/tree/252bf6915afb0f582e41f7a646c2891adf2a9853)
+
 ## License
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
