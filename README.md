@@ -239,9 +239,11 @@ Tribute to excellent open source! Tribute to excellent sharers!
 
 ## Criticism
 
-I strongly protest that @xCss does not comply with the GPL agreement to publish the wrong source code. 
+I strongly protest that @xCss does not comply with the GPL LICENSE to publish the wrong source code. 
 
-I strongly protest that @xCss does not comply with the GPL agreement. [The behavior of that the source code of the src directory does not match the dist directory.](https://github.com/xCss/Valine/tree/252bf6915afb0f582e41f7a646c2891adf2a9853)
+I strongly protest that @xCss does not comply with the GPL LICENSE. [The behavior of that the source code of the src directory does not match the dist directory.](https://github.com/xCss/Valine/tree/252bf6915afb0f582e41f7a646c2891adf2a9853)
+
+**Because the original author violated the relevant provisions of the GPL-2.0 LICENSE, this warehouse will abandon GPL-2.0 or its later version agreement to use GPL-3.0 LICENSE, and will continue to open source.**
 
 ## License
 
