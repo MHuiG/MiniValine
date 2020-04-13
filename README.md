@@ -219,6 +219,8 @@ Also, we welcome Issue or PR to MiniValine.
 
 Tribute to excellent open source! Tribute to excellent sharers!
 
+Tribute to [@xCss](https://github.com/xCss)!
+
 <a href="https://github.com"><img align="center" width="100" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" title="Powered by GitHub" /></a>
 <a href="https://travis-ci.com"><img align="center" width="140" src="https://raw.githubusercontent.com/travis-ci/travis-web/master/public/images/logos/TravisCI-Full-Color.png" title="Powered by TravisCI" /></a>
 <a href="https://crowdin.com"><img align="center" width="180" src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png" title="Powered by Crowdin" /></a>
