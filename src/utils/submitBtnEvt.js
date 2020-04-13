@@ -23,10 +23,9 @@ const submitBtnEvt = (root) => {
     // render markdown
     const render = (root) => {
       root.Comment.comment = root.TEXT
-      const idx = root.Comment.comment.indexOf(root.Comment.at)
-      if (idx > -1 && root.Comment.at !== '') {
+      if (root.Comment.at !== '') {
         const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
-        root.Comment.comment = root.Comment.comment.replace(root.Comment.at, at)
+        root.Comment.comment = at + ' , ' + root.Comment.comment
       }
       // veirfy
       const mailRet = check.mail(root.Comment.mail)

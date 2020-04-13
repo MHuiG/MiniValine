@@ -8,7 +8,8 @@ const atEvt = (root) => {
       const rid = _vat.getAttribute('rid')
       root.Comment.rid = rid
       root.Comment.at = at
-      root.inputs.comment.value = `${at} , ${root.inputs.comment.value}`
+      root.el.querySelector('.vinputs-area  textarea').placeholder = at
+      root.inputs.comment.value = `${root.inputs.comment.value}`
       // move inputs
       const commentEl = vcard.querySelector(`#comment-${_id}`)
       commentEl.appendChild(root.el.querySelector('.vinputs-wrap'))
