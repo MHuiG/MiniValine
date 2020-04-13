@@ -38,12 +38,6 @@
 - Support [paste and upload pictures](https://imgkr.com/).
 - Support [multiple languages](https://crowdin.com/project/minivaline).
 
-## What is the biggest difference between MiniValine and Valine ?
-
-![image](https://user-images.githubusercontent.com/38281581/79043115-c47c2980-7c2f-11ea-85f7-0c09e26f0df7.png)
-
-![image](https://user-images.githubusercontent.com/38281581/79043090-84b54200-7c2f-11ea-8bca-255ecc3d5415.png)
-
 ## Install
 
 Two ways.
