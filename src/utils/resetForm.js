@@ -13,6 +13,7 @@ const resetForm = (root) => {
     }
     root.Comment.rid = ''
     root.Comment.nick = ''
+    root.Comment.at = ''
     root.el.querySelector('.vinputs-area  textarea').placeholder = ''
     getCache(root)
     root.previewEvt(root)
