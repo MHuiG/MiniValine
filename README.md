@@ -166,6 +166,11 @@ new MiniValine({
   
   Expression Url.
 
+- **NoRecordIP** `Boolean`
+
+  Default: `false`
+  
+  Do not record commenter IP.
 
 - **maxNest** `Number`
 

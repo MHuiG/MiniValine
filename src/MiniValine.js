@@ -9,7 +9,6 @@ const MiniValineFactory = function (option) {
   util.script(root)
   util.i18n(root)
   util.smile(root)
-  util.GetIP(root)
   util.initLibs(root)
 }
 MiniValineFactory.prototype.initCheck = function () {

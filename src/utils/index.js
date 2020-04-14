@@ -1,6 +1,5 @@
 import Config from './Config'
 import i18n from './i18n'
-import GetIP from './GetIP'
 import setAV from './setAV'
 import smile from './smile'
 import script from './script'
@@ -28,7 +27,6 @@ import previewEvt from './previewEvt'
 module.exports = {
   Config: Config,
   i18n: i18n,
-  GetIP: GetIP,
   setAV: setAV,
   smile: smile,
   script: script,
