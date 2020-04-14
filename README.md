@@ -2,7 +2,7 @@
 
 # MiniValine
 
-[![Financial Contributors on Open Collective](https://opencollective.com/MiniValine/all/badge.svg?label=financial+contributors)](https://opencollective.com/MiniValine) [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
+[![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
 [![NPM][npm-version-image]][npm-version-url]
 [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/)
 [![npm downloads](https://img.shields.io/npm/dm/minivaline.svg?style=flat-square)](https://www.npmjs.com/package/minivaline)
@@ -231,37 +231,6 @@ Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/D
 <a href="https://imgkr.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/d3d0c549-cddc-4d5b-8154-ecb689a46eae.png" title="Powered by 图壳" height="48px"/></a>
 <a href="https://jsxss.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/76bb3636-9a8b-4c6b-b0dd-fed3da99b7a8.png" title="Powered by JsXSS" height="48px"/></a>
 <a href="https://highlightjs.org/"><img align="center" src="https://imgkr.cn-bj.ufileos.com/84668cd8-5d5a-444a-b8de-fd05f64241b1.png" title="Powered by highlightjs" height="48px"/></a>
-
-
-## Contributors
-
-### Code Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/MiniValine/MiniValine/graphs/contributors"><img src="https://opencollective.com/MiniValine/contributors.svg?width=890&button=false" /></a>
-
-### Financial Contributors
-
-Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/MiniValine/contribute)]
-
-#### Individuals
-
-<a href="https://opencollective.com/MiniValine"><img src="https://opencollective.com/MiniValine/individuals.svg?width=890"></a>
-
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/MiniValine/contribute)]
-
-<a href="https://opencollective.com/MiniValine/organization/0/website"><img src="https://opencollective.com/MiniValine/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/1/website"><img src="https://opencollective.com/MiniValine/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/2/website"><img src="https://opencollective.com/MiniValine/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/3/website"><img src="https://opencollective.com/MiniValine/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/4/website"><img src="https://opencollective.com/MiniValine/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/5/website"><img src="https://opencollective.com/MiniValine/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/6/website"><img src="https://opencollective.com/MiniValine/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/7/website"><img src="https://opencollective.com/MiniValine/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/8/website"><img src="https://opencollective.com/MiniValine/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/MiniValine/organization/9/website"><img src="https://opencollective.com/MiniValine/organization/9/avatar.svg"></a>
 
 ## License
 
