@@ -9,29 +9,25 @@ const nestQuery = (root) => {
       vchild.setAttribute('style', 'margin-left: 0 !important')
     }
     if (level >= root.maxNestLevel) {
-      root.v.Query.doCloudQuery(
-      `select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`
-      ).then(
-        (data) => {
-          const { count } = data
-          if (count > 0) {
-            const showChildrenWrapper = vchild.querySelector('.vshow-children-wrapper')
-            showChildrenWrapper.setAttribute('style', 'display: block !important;')
-            showChildrenWrapper.innerHTML = `<span class="vshow-children" rid="${_id}">${root.i18n.more}</span>`
-            const showChildren = showChildrenWrapper.querySelector('.vshow-children')
-            dom.on('click', showChildren, (e) => {
-              showChildrenWrapper.setAttribute('style', 'display: none !important;')
-              root.nestQuery(vcard, -1000)
-              setTimeout(function () {
-                root.ActivateCode(root)
-              }, 500)
-            })
+      root.v.Query.doCloudQuery(`select count(*) from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`)
+        .then(
+          (data) => {
+            const { count } = data
+            if (count > 0) {
+              const showChildrenWrapper = vchild.querySelector('.vshow-children-wrapper')
+              showChildrenWrapper.setAttribute('style', 'display: block !important;')
+              showChildrenWrapper.innerHTML = `<span class="vshow-children" rid="${_id}">${root.i18n.more}</span>`
+              const showChildren = showChildrenWrapper.querySelector('.vshow-children')
+              dom.on('click', showChildren, (e) => {
+                showChildrenWrapper.setAttribute('style', 'display: none !important;')
+                root.nestQuery(vcard, -1000)
+              })
+            }
+          },
+          (error) => {
+            console.log(error)
           }
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+        )
       return
     }
     root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where rid='${_id}' and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt`)
