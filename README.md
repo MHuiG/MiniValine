@@ -212,6 +212,10 @@ Also, we welcome Issue or PR to MiniValine.
 
 ## Contributors
 
+### Code Contributors
+
+This project exists thanks to all the people who contribute. 
+
 [![contributors-image]][contributors-url]
 
 ## Thanks
