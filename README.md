@@ -28,7 +28,7 @@
 - Easy to customize.
 - [Safe by default](https://jsxss.com/en/try.html).
 - [Always compatible with IE](https://polyfill.io/).
-- [Simple and lightweight (11.67 KB gzipped)](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
+- [Simple and lightweight](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
 - Support [lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
 - Support [code highlighting](https://highlightjs.org/static/demo/).
 - Support [Markdown](https://guides.github.com/features/mastering-markdown/).
