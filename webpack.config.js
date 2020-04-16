@@ -3,7 +3,7 @@ var libraryName = 'MiniValine'
 var ROOT_PATH = path.resolve(__dirname)
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist')
 const version = require('./package.json').version
-var CDN_PATH = 'https://unpkg.com/minivaline@' + version + '/dist/'
+var CDN_PATH = 'https://cdn.jsdelivr.net/npm/minivaline@' + version + '/dist/'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -70,7 +70,7 @@ var WEBPACK_CONFIG = {
 if (process.env.env_config == 'build') {
   plugins.push(new CleanWebpackPlugin())
   plugins.push(new UglifyJsPlugin({
-	parallel: 4,
+    parallel: 4,
     sourceMap: false,
     parallel: true,
     uglifyOptions: {
