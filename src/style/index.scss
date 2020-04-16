@@ -96,6 +96,10 @@
         padding: 0.5em 0.5em;
         margin: 0.3em 0;
         overflow: auto;
+		img{
+		  max-width: 100%;
+          border: none;
+		}
       }
     }
     .textarea-wrapper {
@@ -368,7 +372,10 @@
     .vcard {
       list-style: none;
       word-break: break-all;
-
+      img{
+        max-width: 100%;
+        border: none;
+	  }
       .vcomment-body {
         padding: 2em 0.5em 2em;
         border-top: 1px solid rgba(150, 150, 150, 0.08);
