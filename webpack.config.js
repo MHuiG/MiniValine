@@ -70,9 +70,11 @@ var WEBPACK_CONFIG = {
 if (process.env.env_config == 'build') {
   plugins.push(new CleanWebpackPlugin())
   plugins.push(new UglifyJsPlugin({
+	parallel: 4,
     sourceMap: false,
     parallel: true,
     uglifyOptions: {
+      warnings: false,
       ie8: true,
       safari10: true,
       output: {
