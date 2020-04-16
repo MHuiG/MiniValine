@@ -1,7 +1,7 @@
 # Configuration for Release Drafter - https://github.com/toolmantim/release-drafter
 
-name-template: 'v$NEXT_MINOR_VERSION'
-tag-template: 'v$NEXT_MINOR_VERSION'
+name-template: 'v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
 categories:
   - title: '💥 Breaking Changes'
     label: '💥 Breaking Change'
@@ -34,7 +34,7 @@ template: |
 
   ***
 
-  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/MiniValine/MiniValine/compare/$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
+  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_PATCH_VERSION](https://github.com/MiniValine/MiniValine/compare/$PREVIOUS_TAG...v$NEXT_PATCH_VERSION)
 
 exclude-labels:
   - 'Skip Release'
