@@ -1,7 +1,24 @@
 import getScript from './getScript'
 const init = () => {
   const script = document.createElement('script')
-  script.text = 'window.MathJax={tex:{inlineMath:[[\'$\',\'$\']]}}'
+  script.text = `
+      window.MathJax = {
+          tex: {
+            inlineMath: [['$','$']],
+            autoload: {
+                verb: ['verb'],
+				color: [],
+                colorV2: ['color'],
+                require:['require']
+            },
+            packages: {'[+]': ['braket']}
+          },
+          loader: {load: ['[tex]/braket']},
+          svg: {
+            fontCache: 'global'
+          }
+      }
+  `
   document.getElementsByTagName('body')[0].appendChild(script)
   getScript('https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js')
 }
