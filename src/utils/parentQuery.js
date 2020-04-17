@@ -6,7 +6,7 @@ const parentQuery = (root) => {
   root.parentQuery = (pageNum = 1) => {
     root.loading.show()
     const cq = root.v.Query
-      .doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
+      .doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam,mail from Comment where (rid='' or rid is not exists) and (url='${root.Comment.url}' or url='${`${root.Comment.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
     cq.then((rets) => {
       rets = (rets && rets.results) || []
       const len = rets.length

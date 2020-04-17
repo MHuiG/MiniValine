@@ -1,10 +1,10 @@
 import dom from './plugins/dom'
 const insertComment = (root, body) => {
-  root.insertComment = (comment, vlist = null, top = true) => {
+  root.insertComment = (m, vlist = null, top = true) => {
     const _vcard = document.createElement('li')
     _vcard.setAttribute('class', 'vcard')
-    _vcard.setAttribute('id', comment.id)
-    _vcard.innerHTML = body.vcard(root, comment)
+    _vcard.setAttribute('id', m.id)
+    _vcard.innerHTML = body.vcard(root, m)
     root.ActivateCode(root)
     const _vlist = vlist || root.el.querySelector('.vlist')
     const _vlis = _vlist.querySelectorAll('li')

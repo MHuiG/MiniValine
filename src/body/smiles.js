@@ -1,6 +1,6 @@
 const smiles = function (root) {
   var checksmiles = setInterval(function () {
-    if (typeof root.emoticonList == 'undefined') { return }
+    if (typeof root.emoticonList == 'undefined') return
     clearInterval(checksmiles)
     const smileWrapper = root.el.querySelector('.vsmile-icons')
     const smileNames = root.emoticonList || []
