@@ -6,8 +6,8 @@ const atEvt = (root) => {
     dom.on('click', _vat, (e) => {
       const at = _vat.getAttribute('at')
       const rid = _vat.getAttribute('rid')
-      root.Comment.rid = rid
-      root.Comment.at = at
+      root.C.rid = rid
+      root.C.at = at
       root.el.querySelector('.vinputs-area  textarea').placeholder = at
       root.inputs.comment.value = `${root.inputs.comment.value}`
       // move inputs

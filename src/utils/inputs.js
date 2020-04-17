@@ -13,7 +13,7 @@ const inputs = (root) => {
       const _el = root.el.querySelector(`.${i}`)
       root.inputs[_v] = _el
       dom.on('input', _el, (e) => {
-        root.Comment[_v] = _el.value
+        root.C[_v] = _el.value
         root.previewEvt(root)
       })
     }

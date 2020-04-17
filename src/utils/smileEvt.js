@@ -8,7 +8,7 @@ const smileEvt = (root) => {
     if (typeof imgSrc === 'undefined') return
     const tag = `!(:${decodeURI(imgSrc).replace(/^.*\/(.*)$/, '$1')}:)`
     insertAtCaret(textField, tag)
-    root.Comment.comment = textField.value
+    root.C.comment = textField.value
     const submitBtn = root.el.querySelector('.vsubmit')
     if (submitBtn.getAttribute('disabled')) {
       submitBtn.removeAttribute('disabled')

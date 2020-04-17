@@ -1,9 +1,9 @@
-import { EmoticonUrl } from '../Default'
+import { EUrl } from '../Default'
 import ajax from './plugins/ajax'
 
 const smile = (root) => {
   ajax({
-    url: EmoticonUrl + '/index.json',
+    url: EUrl + '/index.json',
     type: 'GET',
     success: function (data) {
       data = eval('(' + data + ')')

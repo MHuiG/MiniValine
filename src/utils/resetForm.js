@@ -8,12 +8,12 @@ const resetForm = (root) => {
         const _v = root.mapping[i]
         const _el = root.el.querySelector(`.${i}`)
         _el.value = ''
-        root.Comment[_v] = ''
+        root.C[_v] = ''
       }
     }
-    root.Comment.rid = ''
-    root.Comment.nick = ''
-    root.Comment.at = ''
+    root.C.rid = ''
+    root.C.nick = ''
+    root.C.at = ''
     root.el.querySelector('.vinputs-area  textarea').placeholder = ''
     getCache(root)
     root.previewEvt(root)

@@ -12,26 +12,26 @@ const submitBtnEvt = (root) => {
       })
       return
     }
-    if (root.Comment.comment === '') {
+    if (root.C.comment === '') {
       root.inputs.comment.focus()
       return
     }
-    if (root.Comment.nick === '') {
+    if (root.C.nick === '') {
       root.inputs.nick.focus()
       return
     }
     // render markdown
     const render = (root) => {
-      root.Comment.comment = root.TEXT
-      if (root.Comment.at !== '') {
-        const at = `<a class="at" href='#${root.Comment.rid}'>${root.Comment.at}</a>`
-        root.Comment.comment = at + ' , ' + root.Comment.comment
+      root.C.comment = root.TEXT
+      if (root.C.at !== '') {
+        const at = `<a class="at" href='#${root.C.rid}'>${root.C.at}</a>`
+        root.C.comment = at + ' , ' + root.C.comment
       }
       // veirfy
-      const mailRet = check.mail(root.Comment.mail)
-      const linkRet = check.link(root.Comment.link)
-      root.Comment.mail = mailRet.k ? mailRet.v : ''
-      root.Comment.link = linkRet.k ? linkRet.v : ''
+      const mailRet = check.mail(root.C.mail)
+      const linkRet = check.link(root.C.link)
+      root.C.mail = mailRet.k ? mailRet.v : ''
+      root.C.link = linkRet.k ? linkRet.v : ''
       if (!mailRet.k || !linkRet.k) {
         root.alert.show({
           type: 0,
@@ -58,14 +58,14 @@ const submitBtnEvt = (root) => {
     const Ct = root.v.Object.extend('Comment')
     // 新建对象
     const comment = new Ct()
-    for (const i in root.Comment) {
-      if (root.Comment.hasOwnProperty(i)) {
+    for (const i in root.C) {
+      if (root.C.hasOwnProperty(i)) {
         if (i === 'at') continue
-        const _v = root.Comment[i]
+        const _v = root.C[i]
         comment.set(i, _v)
       }
     }
-    comment.set('emailHash', md5(root.Comment.mail.toLowerCase().trim()))
+    comment.set('emailHash', md5(root.C.mail.toLowerCase().trim()))
     comment.setACL(getAcl())
     comment
       .save()
@@ -74,18 +74,18 @@ const submitBtnEvt = (root) => {
             localStorage.setItem(
               'MiniValineCache',
               JSON.stringify({
-                nick: root.Comment.nick,
-                link: root.Comment.link,
-                mail: root.Comment.mail
+                nick: root.C.nick,
+                link: root.C.link,
+                mail: root.C.mail
               })
             )
         const _count = root.el.querySelector('.count')
         _count.innerText = Number(_count.innerText) + 1
-        if (root.Comment.rid === '') {
+        if (root.C.rid === '') {
           root.insertComment(commentItem, null, true)
         } else {
           // get children vlist
-          const _vlist = root.el.querySelector(`#children-list-${root.Comment.rid}`)
+          const _vlist = root.el.querySelector(`#children-list-${root.C.rid}`)
           root.insertComment(commentItem, _vlist, true)
         }
         submitBtn.removeAttribute('disabled')

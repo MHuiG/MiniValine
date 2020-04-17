@@ -1,13 +1,13 @@
 export const VERSION = '1.2.56'
-export const GravatarBaseUrl = 'https://gravatar.loli.net/avatar/'
+export const GBUrl = 'https://gravatar.loli.net/avatar/'
 export const ip = 'https://api.ip.sb/jsonip?callback=getIP'
-export const EmoticonUrl = 'https://cdn.jsdelivr.net/npm/alus@latest'
-export const polyfill = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=es6'
+export const EUrl = 'https://cdn.jsdelivr.net/npm/alus@latest'
+export const pf = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=es6'
 export const i18nUrl = 'https://cdn.jsdelivr.net/gh/MiniValine/minivaline-i18n@master/'
-export const DefaultEmailHash = '9e63c80900d106cbbec5a9f4ea433a3e'
-export const MaxNestLevel = 6
-export const PageSize = 6
-export const Comment = {
+export const DEHash = '9e63c80900d106cbbec5a9f4ea433a3e'
+export const MaxNL = 6
+export const PS = 6
+export const C = {
   ip: '',
   comment: '',
   rid: '',

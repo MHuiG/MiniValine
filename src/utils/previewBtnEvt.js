@@ -12,7 +12,7 @@ const previewBtnEvt = (root) => {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
     } else {
-      if (root.Comment.comment === '') {
+      if (root.C.comment === '') {
         root.inputs.comment.focus()
         return
       }

@@ -1,4 +1,4 @@
-import { ip, polyfill } from '../Default'
+import { ip, pf } from '../Default'
 import getScript from './plugins/getScript'
 import GetIP from './plugins/GetIP'
 const script = (root) => {
@@ -6,6 +6,6 @@ const script = (root) => {
     getScript(ip)
     GetIP(root)
   }
-  getScript(polyfill)
+  getScript(pf)
 }
 module.exports = script

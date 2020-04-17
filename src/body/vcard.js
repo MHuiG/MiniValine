@@ -1,4 +1,4 @@
-import { GravatarBaseUrl } from '../Default'
+import { GBUrl } from '../Default'
 import timeAgo from './timeago'
 const vcard = function (root, m) {
   const Hash = m.get('emailHash')
@@ -23,7 +23,7 @@ const vcard = function (root, m) {
 }
 const GravatarUrl = (m) => {
   const Hash = m.get('emailHash')
-  var gravatarUrl = `${GravatarBaseUrl + Hash}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
+  var gravatarUrl = `${GBUrl + Hash}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`
   if (m.get('mail').indexOf('@qq.com') >= 0) {
     var prefix = m.get('mail').replace(/@.*/, '')
     var pattern = /^\d+$/g

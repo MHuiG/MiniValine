@@ -37,7 +37,7 @@ const uploadImage = (root) => {
           loadImage(file, function (err, ret) {
             if (!err && ret) {
               _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data})`)
-              root.Comment.comment = _veditor.value
+              root.C.comment = _veditor.value
             }
           })
         }

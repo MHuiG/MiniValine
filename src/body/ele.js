@@ -1,4 +1,4 @@
-import { GravatarBaseUrl, DefaultEmailHash } from '../Default'
+import { GBUrl, DEHash } from '../Default'
 import format from 'string-format'
 const ele = function (root) {
   const HTML = '<div id="vinputs-placeholder">' +
@@ -9,7 +9,7 @@ const ele = function (root) {
                                     '</div>' +
 									'<div class="textarea-wrapper">' +
                                         '<div class="commentTrigger">' +
-                                            `<div class="avatar"><img class="visitor_avatar lazyload" data-src="${`${GravatarBaseUrl + DefaultEmailHash}?size=80`}"></div>` +
+                                            `<div class="avatar"><img class="visitor_avatar lazyload" data-src="${`${GBUrl + DEHash}?size=80`}"></div>` +
                                             `<div class="trigger_title">${root.placeholder}</div>` +
                                         '</div>' +
                                         '<div class="veditor-area">' +
