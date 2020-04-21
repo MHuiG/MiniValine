@@ -1,4 +1,4 @@
-export const VERSION = '1.2.57'
+export const VERSION = '1.2.58'
 export const GBUrl = 'https://gravatar.loli.net/avatar/'
 export const ip = 'https://api.ip.sb/jsonip?callback=getIP'
 export const EUrl = 'https://cdn.jsdelivr.net/npm/alus@latest'
