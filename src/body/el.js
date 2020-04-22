@@ -8,6 +8,7 @@ const el = function (root) {
   }
   root.el = el
   root.el.classList.add('MiniValine')
+  root.el.classList.add('markdown-body')
   root.el.innerHTML = ele(root)
 }
 module.exports = el
