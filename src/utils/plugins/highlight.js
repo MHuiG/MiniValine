@@ -1,4 +1,4 @@
-const highligher = require('highlight.js/lib/highlight')
+const highligher = require('highlight.js/lib/core')
 
 highligher.registerLanguage('css', require('highlight.js/lib/languages/css'))
 highligher.registerLanguage('xml', require('highlight.js/lib/languages/xml'))
