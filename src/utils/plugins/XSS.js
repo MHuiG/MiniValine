@@ -5,6 +5,11 @@ export function XSS (o) {
       if (name === 'class') {
         return `${name}="${xss.escapeAttrValue(value)}"`
       }
+    },
+    onTag (tag, html, options) {
+      if (tag === 'input') {
+        return html
+      }
     }
   })
 }
