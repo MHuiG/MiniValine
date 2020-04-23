@@ -35,11 +35,11 @@ For example:
 ``` json
 {"0":['A','B','C']}
 ```
-* Only Replace A,B,C with your emoji picture file name. Note the file extension.
+* Only Replace `A`,`B`,`C` with your emoji picture file name. Note the file extension.
 
 * Please note that commas, colons, brackets, braces, quotes use English half-width.
 
-* Please note that the file name of index.json must be index.json.
+* Please note that the file name of index.json must be `index.json`.
 
 * For example:
 
@@ -73,9 +73,9 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
 
 ```
 
-### 6.Try it.
+### 6.Try to be faster.
 
-The author uses a `Python` script to generate index.json here. The friends who have the ability to try it.
+The author uses a `Python` script to generate `index.json` here. The friends who have the ability to try it.
 
 Modify `FilePath` please.
 
