@@ -75,7 +75,7 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
 
 ### 6.Try to be faster.
 
-The author uses a `Python` script to generate `index.json` here. The friends who have the ability to try it.
+The author uses a `Python` script to generate `index.json` here. The friends who have the ability can try it.
 
 Modify `FilePath` please.
 
