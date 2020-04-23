@@ -55,7 +55,6 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
 
 ### 5.Modify MiniValine configuration item `emoticonUrl`
 
-For example:
 
 ```
   new MiniValine({
