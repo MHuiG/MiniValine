@@ -63,7 +63,7 @@ For example:
       appId: 'Your App ID',
       appKey: 'Your Key',
       placeholder: 'Write a Comment',
-      emoticonUrl: 'https://cdn.jsdelivr.net/npm/alus'
+      emoticonUrl: 'https://cdn.jsdelivr.net/gh/MiniValine/alus'
   });
 
 ```
