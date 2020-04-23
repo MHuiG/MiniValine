@@ -29,7 +29,7 @@ First of all, thanks for taking your time to contribute and help make our projec
 
 #### Read the docs
 
-If you just have a question, you'll get faster results by checking the FAQs for a list of common questions and problems
+If you just have a question, you'll get faster results by checking the [FAQs](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md) for a list of common questions and problems
 
 Also, you can perform a [cursory search](https://github.com/MiniValine/MiniValine/search?q=&type=Issues&utf8=%E2%9C%93) to see if the problem has already been reported or solved. You don't want to duplicate effort. You might be able to find the cause of the problem and fix things yourself, or add comments to the existed issue.
 
