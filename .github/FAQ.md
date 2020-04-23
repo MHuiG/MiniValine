@@ -45,6 +45,8 @@ For example:
 
 jsdelivr CDN link : https://cdn.jsdelivr.net/gh/[YourGitHubUsername]/[GitHubRepositoryName]
 
+Be careful not to have `/` at the end of the URL
+
 For example:
 
 ```
