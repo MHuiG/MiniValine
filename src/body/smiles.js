@@ -9,7 +9,7 @@ const smiles = function (root) {
         const img = document.createElement('img')
         img.setAttribute(
           'data-src',
-          `${root.emoticonUrl}/${smileNames[i]}`
+          `${smileNames[i]}`
         )
         img.setAttribute('class', 'lazyload')
         smileWrapper.appendChild(img)
