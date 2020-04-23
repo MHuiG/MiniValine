@@ -29,7 +29,7 @@ For example:
 ``` json
 {"0":['A','B','C']}
 ```
-* Replace A,B,C with your emoji picture file name,Note the file extension.
+* Replace A,B,C with your emoji picture file name. Note the file extension.
 
 * Please note that commas, colons, brackets, braces, quotes use English half-width.
 
