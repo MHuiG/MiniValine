@@ -161,6 +161,8 @@ new MiniValine({
   Localization language key, en and zh-CN are currently available.
   
   More i18n info: [minivaline-i18n](https://github.com/MiniValine/minivaline-i18n)
+  
+  [How to Add or Improve translation?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-add-or-improve-translation)
 
 - **emoticonUrl** `String`
 
