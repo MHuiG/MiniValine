@@ -1,5 +1,11 @@
 # <div align="center">MiniValine FAQs</div>
 
+## How to join the development of MiniValine?
+
+We welcome you to join the development of MiniValine. Please see [contributing document](https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md). 🤗
+
+Also, we welcome Issue or PR to MiniValine.
+
 ## How to Add or Improve translation?
 
 -  Go to https://crowdin.com/project/minivaline
@@ -69,7 +75,7 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
 
 ### 6.Try it.
 
-The author uses a `Python` script to generate index.json here. Friends who have the ability to try it.
+The author uses a `Python` script to generate index.json here. The friends who have the ability to try it.
 
 Modify `FilePath` please.
 
