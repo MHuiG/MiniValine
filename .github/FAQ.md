@@ -68,5 +68,29 @@ For example:
 
 ```
 
-### 6.Got it.
+### 6.Try it.
 
+The author uses a Python script to generate index.json here. A capable friend can try it.
+
+Modify FilePath please.
+
+``` python
+#-*- coding: utf-8 -*-
+import os
+
+def walkFile(FilePath):
+    S='''{"0":['''
+    for root, dirs, files in os.walk(FilePath):
+        for f in files:
+            Path=os.path.join(root, f)
+            S+="'"+f+"',"
+    S+="]}"
+    print(S)
+    with open("./index.json","wb") as ff:
+        ff.write(S.encode("utf-8"))
+
+if __name__=="__main__":
+    
+    FilePath="./alus"
+    walkFile(FilePath)
+```
