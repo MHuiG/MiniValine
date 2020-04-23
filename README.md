@@ -22,6 +22,8 @@
 
 **[Awesome MiniValine](https://github.com/MiniValine/AWESOME-MiniValine)**
 
+**[MiniValine FAQs](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md)**
+
 ## Features
 
 - High speed.
