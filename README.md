@@ -164,11 +164,13 @@ new MiniValine({
   
   [How to Add or Improve translation?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-add-or-improve-translation)
 
-- **emoticonUrl** `String`
+- **emoticonUrl** `String` or `String Array`
 
   Default: `'https://cdn.jsdelivr.net/npm/alus'`
   
   Expression Url.
+  
+  You can also set it like this: `['https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master','https://cdn.jsdelivr.net/npm/alus']`
   
   [How to customize emoticons?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons)
 

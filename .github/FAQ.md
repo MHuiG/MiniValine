@@ -73,6 +73,19 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
 
 ```
 
+or
+
+```
+  new MiniValine({
+      el: '.comment',
+      appId: 'Your App ID',
+      appKey: 'Your Key',
+      placeholder: 'Write a Comment',
+      emoticonUrl: ['https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master','https://cdn.jsdelivr.net/npm/alus']
+  });
+
+```
+
 ### 6.Try to be faster.
 
 The author uses a `Python` script to generate `index.json` here. The friends who have the ability can try it.
