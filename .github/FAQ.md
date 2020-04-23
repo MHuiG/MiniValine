@@ -71,7 +71,7 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
 
 The author uses a `Python` script to generate index.json here. Friends who have the ability to try it.
 
-Modify FilePath please.
+Modify `FilePath` please.
 
 ``` python
 #-*- coding: utf-8 -*-
