@@ -167,6 +167,8 @@ new MiniValine({
   Default: `'https://cdn.jsdelivr.net/npm/alus'`
   
   Expression Url.
+  
+  [How to customize emoticons?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons)
 
 - **NoRecordIP** `Boolean`
 
