@@ -43,7 +43,7 @@ For example:
 
 ### 4.Get CDN link
 
-jsdelivr CDN link : https://cdn.jsdelivr.net/gh/[Your GitHub Username]/[GitHub repository name]
+jsdelivr CDN link : https://cdn.jsdelivr.net/gh/[YourGitHubUsername]/[GitHubRepositoryName]
 
 For example:
 
