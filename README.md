@@ -184,7 +184,7 @@ new MiniValine({
 
   Default: `6`
 
-  Nest size.
+  Sub-comment maximum nesting depth.
 
 - **pageSize** `Number`
 
