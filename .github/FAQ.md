@@ -68,7 +68,7 @@ https://cdn.jsdelivr.net/gh/MiniValine/alus
       appId: 'Your App ID',
       appKey: 'Your Key',
       placeholder: 'Write a Comment',
-      emoticonUrl: 'https://cdn.jsdelivr.net/gh/MiniValine/alus'
+      emoticonUrl: ['https://cdn.jsdelivr.net/gh/MiniValine/alus']
   });
 
 ```

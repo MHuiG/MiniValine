@@ -164,9 +164,9 @@ new MiniValine({
   
   [How to Add or Improve translation?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-add-or-improve-translation)
 
-- **emoticonUrl** `String` or `String Array`
+- **emoticonUrl** `String Array`
 
-  Default: `'https://cdn.jsdelivr.net/npm/alus'`
+  Default: `['https://cdn.jsdelivr.net/npm/alus']`
   
   Expression Url.
   
