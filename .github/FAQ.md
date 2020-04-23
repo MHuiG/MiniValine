@@ -70,7 +70,7 @@ For example:
 
 ### 6.Try it.
 
-The author uses a Python script to generate index.json here. A capable friend can try it.
+The author uses a `Python` script to generate index.json here. Friends who have the ability to try it.
 
 Modify FilePath please.
 
