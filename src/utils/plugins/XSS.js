@@ -7,7 +7,7 @@ export function XSS (o) {
       }
     },
     onTag (tag, html, options) {
-      if (tag === 'input') {
+      if (tag === 'input' && (html.match(/<input disabled="" type="checkbox">/) || html.match(/<input checked="" disabled="" type="checkbox">/))) {
         return html
       }
     }
