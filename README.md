@@ -1,6 +1,9 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
-# MiniValine
+# This is MiniValine version 1.3.6
+
+This is the stable version of MiniValine.Unless there is a major bug, the Repository will be temporarily suspended
+------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
 [![NPM][npm-version-image]][npm-version-url]
