@@ -1,6 +1,6 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 1.3.6
+# This is MiniValine version 1.3.6-stable
 
 This is the stable version of MiniValine.Unless there is a major bug, the Repository will be temporarily suspended
 ------------------------------
