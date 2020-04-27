@@ -1,8 +1,8 @@
 ---
 name: Question
-about: I have a question for NexT (e.g. Customize)
+about: I have a question for MiniValine
 title: ''
-labels: Custom
+labels: Question
 assignees: ''
 
 ---
