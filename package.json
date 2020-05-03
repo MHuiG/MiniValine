@@ -80,7 +80,7 @@
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
     "xss": "^1.0.3",
-    "snyk": "^1.316.1"
+    "snyk": "^1.316.2"
   },
   "jest": {
     "transform": {
