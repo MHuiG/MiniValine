@@ -52,3 +52,10 @@ pull_request_rules:
     actions:
       label:
         add: ["img","🛠 Improvement"]
+  - name: automatic merge for SnykBot pull requests
+    conditions:
+      - author=snyk-bot
+      - status-success=build (12.x)
+    actions:
+      label:
+        add: ["🛠 Improvement"]
