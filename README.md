@@ -2,7 +2,8 @@
 
 # This is MiniValine version 1.3.7-stable
 
-This is the stable version of MiniValine.Unless there is a major bug, the Repository will be temporarily suspended
+This is the stable version of MiniValine.
+Unless there is a major bug, this Branch will be temporarily suspended.
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
