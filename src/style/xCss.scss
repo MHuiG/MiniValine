@@ -38,13 +38,21 @@
     text-decoration: underline;
   }
   .vinputs-wrap{
-    border: 1px solid #f0f0f0;
-    border-radius: 4px;
+	border-style: dashed;
+    border-radius: 8px;
     margin-bottom: 10px;
     overflow: hidden;
     position: relative;
     padding: 10px;
-  }
+	border: 1px dashed rgba(85,85,85,0.3);
+    transition: all 0.28s ease;
+    -moz-transition: all 0.28s ease;
+    -webkit-transition: all 0.28s ease;
+    -o-transition: all 0.28s ease;
+   }
+   .vinputs-wrap:hover{
+	    border: 1px dashed #2196f3;
+   }
 	.cancel-reply-btn{
 	  position: absolute !important;
 	  right: 0.0001em;
@@ -161,7 +169,8 @@
         -ms-flex: 1 1 27%;
         flex: 1 1 27%;
         width: 27%;
-
+        border-radius: 0;
+        border-bottom: 1px dashed rgba(85,85,85,0.3);
         input {
           color: #4b5b62;
           border: none;
@@ -176,7 +185,9 @@
           }
         }
       }
-
+      .input-wrapper:hover{
+	    border-bottom: 1px dashed #2196f3;
+	  }
       input {
         width: 100%;
       }
@@ -365,21 +376,22 @@
           padding: 1em 1em 1em;
           border-top: 0 !important;
         }
-        &:hover .vat {
-          background: #111 !important;
+        .vat:hover {
+          color: #ff5722 !important;
         }
         .vat {
 		  border-radius: 10px;
           -moz-border-radius: 10px;
           float: right;
           background: transparent;
-          color: #ffffff;
+          color: #2196f3;
           padding: 0.2em 1em;
           line-height: 1.2;
           cursor: pointer;
           word-break: keep-all;
           white-space: nowrap;
           text-transform: uppercase;
+		  font-weight: bold;
         }
 
         .vavatar {
