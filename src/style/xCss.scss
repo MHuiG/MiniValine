@@ -108,7 +108,21 @@
 	}
     .vextra-area {
       margin: 0.4em 0 0.4em 0.5em;
-
+      ::-webkit-scrollbar{
+        height: 10px;
+        width: 6px;
+		background-color:#F5F5F5;
+	  }
+	  ::-webkit-scrollbar-track{
+		-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+		border-radius:10px;
+		background-color:#F5F5F5;
+	  }
+	  ::-webkit-scrollbar-thumb{
+      border-radius:10px;
+      -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+      background-color:#555;
+     }
       .vsmile-icons {
         padding: 0.2em 0;
         border-top: 1px solid #ededed;
@@ -351,10 +365,14 @@
       line-height: 2.5em;
       text-align: center;
       cursor: pointer;
-      color: #666;
+      color: #555;
       background: #fafafa;
       border-radius: 1.25em;
     }
+	.more:hover{
+	  color: #ff5722;
+	  background: #ffeee8;
+	}
   }
   .vlist {
     width: 100%;
