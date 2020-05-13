@@ -52,7 +52,9 @@ MiniValineFactory.prototype.bind = function () {
   util.inputs(root)
   util.previewEvt(root)
   util.smileEvt(root)
-  util.startEvt(root)
+  if (root.mode === 'DesertsP') {
+    util.startEvt(root)
+  }
   util.getCache(root)
   util.resetForm(root)
   util.uploadImage(root)
