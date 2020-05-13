@@ -49,7 +49,7 @@ const uploadImage = (root) => {
     formData.append('file', file)
     const xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
     xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
+      if (xhr.readyState === 4 && xhr.status === 200) {
         try {
           const json = JSON.parse(xhr.responseText)
           callback && callback(null, json)

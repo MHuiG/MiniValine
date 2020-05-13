@@ -9,7 +9,7 @@ const ajax = (options) => {
     xhr = new ActiveXObject('Microsoft.XMLHTTP')
   }
   xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4) {
+    if (xhr.readyState === 4) {
       var status = xhr.status
       if (status >= 200 && status < 300) {
         options.success && options.success(xhr.responseText, xhr.responseXML)
