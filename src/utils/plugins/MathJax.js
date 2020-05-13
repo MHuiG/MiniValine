@@ -12,9 +12,9 @@ export const MathJaxSupport = (root) => {
 }
 const makeMath = () => {
   try {
-    if (MathJax.version.substr(0, 1) === 2) {
+    if (MathJax.version.substr(0, 1) === '2') {
       MathJax.Hub.Typeset(document.getElementsByClassName('MiniValine'))
-    } else if (MathJax.version.substr(0, 1) === 3) {
+    } else if (MathJax.version.substr(0, 1) === '3') {
       MathJax.typeset()
     }
   } catch (e) {}
