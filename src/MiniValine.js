@@ -3,8 +3,8 @@ import util from './utils'
 const MiniValineFactory = function (option) {
   const root = this
   root.config = option
-  util.initStyle()
   util.Config(root)
+  util.initStyle(root)
   util.ActivateCode(root)
   util.script(root)
   util.i18n(root)
