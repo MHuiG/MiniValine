@@ -16,7 +16,17 @@ MiniValineFactory.prototype.initCheck = function () {
   var check = setInterval(function () {
     if (typeof root.i18n == 'undefined') { return }
     clearInterval(check)
-    root.initBody()
+    if (root.mode === 'DesertsP') {
+      import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
+        root.ele = getEle(root)
+        root.initBody()
+      })
+    } else if (root.mode === 'xCss') {
+      import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
+        root.ele = getEle(root)
+        root.initBody()
+      })
+    }
   }, 5)
 }
 MiniValineFactory.prototype.initBody = function () {

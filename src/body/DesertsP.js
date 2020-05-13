@@ -1,6 +1,6 @@
 import { GBUrl, DEHash } from '../Default'
 import format from 'string-format'
-const ele = function (root) {
+export function getEle (root) {
   const HTML = '<div id="vinputs-placeholder">' +
                       '<div class="vinputs-wrap">' +
                                 '<div class="vinputs-area">' +
@@ -45,4 +45,3 @@ const ele = function (root) {
                            '<div class="vpage txt-center"></div>'
   return HTML
 }
-module.exports = ele

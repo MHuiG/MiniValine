@@ -1,4 +1,3 @@
-import ele from './ele'
 const el = function (root) {
   const el = Object.prototype.toString.call(root.config.el) === '[object HTMLDivElement]'
     ? root.config.el
@@ -9,6 +8,6 @@ const el = function (root) {
   root.el = el
   root.el.classList.add('MiniValine')
   root.el.classList.add('markdown-body')
-  root.el.innerHTML = ele(root)
+  root.el.innerHTML = root.ele
 }
 module.exports = el
