@@ -15,9 +15,11 @@ const atEvt = (root) => {
       commentEl.appendChild(root.el.querySelector('.vinputs-wrap'))
       root.el.querySelector('.vcancel-comment-reply').removeAttribute('style')
       // remove comment trigger
-      root.el.querySelector('.commentTrigger').setAttribute('style', 'display:none')
-      root.el.querySelector('.auth-section').removeAttribute('style')
-      root.el.querySelector('.veditor').focus()
+      if (root.mode === 'DesertsP') {
+	    root.el.querySelector('.commentTrigger').setAttribute('style', 'display:none')
+        root.el.querySelector('.auth-section').removeAttribute('style')
+        root.el.querySelector('.veditor').focus()
+	  }
       // focus
       root.inputs.comment.focus()
     })
