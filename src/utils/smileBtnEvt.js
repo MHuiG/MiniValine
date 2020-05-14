@@ -8,12 +8,12 @@ const smileBtnEvt = (root) => {
     if (previewText.getAttribute('triggered')) {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
-	  previewBtn.classList.remove('actived')
+      previewBtn.classList.remove('actived')
     }
     if (smileicons.getAttribute('triggered')) {
       smileicons.setAttribute('style', 'display:none;')
       smileicons.removeAttribute('triggered')
-	  smileBtn.classList.remove('actived')
+      smileBtn.classList.remove('actived')
     } else {
       smileicons.removeAttribute('style')
       smileicons.setAttribute('triggered', 1)

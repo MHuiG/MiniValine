@@ -8,14 +8,14 @@ const previewBtnEvt = (root) => {
     if (smileicons.getAttribute('triggered')) {
       smileicons.setAttribute('style', 'display:none;')
       smileicons.removeAttribute('triggered')
-	  smileBtn.classList.remove('actived')
+      smileBtn.classList.remove('actived')
     }
     if (previewText.getAttribute('triggered')) {
       previewText.setAttribute('style', 'display:none;')
       previewText.removeAttribute('triggered')
-	  previewBtn.classList.remove('actived')
+      previewBtn.classList.remove('actived')
     } else {
-	  previewBtn.classList.add('actived')
+      previewBtn.classList.add('actived')
       if (root.C.comment === '') {
         root.inputs.comment.focus()
         return
