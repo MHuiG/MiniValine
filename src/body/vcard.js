@@ -46,11 +46,27 @@ const vcard = function (root, m) {
                     ua.osVersion +
 					'</span>')
     }
+    root.master = root.master.map(i => i.toLowerCase())
+    root.friends = root.friends.map(i => i.toLowerCase())
+    var ism = root.master.includes(md5(m.get('mail').toLowerCase()))
+    var isf = root.friends.includes(md5(m.get('mail').toLowerCase()))
+    var gat = ism
+      ? '<span class="vtag vmaster">' +
+        root.tagMeta[0] +
+        '</span>'
+      : isf
+        ? '<span class="vtag vfriend">' +
+			root.tagMeta[1] +
+			'</span>'
+        : '<span class="vtag vvisitor">' +
+			root.tagMeta[2] +
+			'</span>'
+    gat = root.tagMeta.length ? gat : ''
     const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
 				`<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
 				`<a rid='${m.id}' at='@${m.get('nick')}' class="vat" id="at-${m.id}">${root.i18n.reply}</a>` +
-				`<div class="vmeta-info">${m.get('link') ? `<a class="vname" href="${m.get('link')}" target="_blank" rel="nofollow" > ${m.get('nick')}</a><span class="vsysinfo">${uaMeta}</span>` : `<span class="vname">${m.get('nick')}</span> ${uaMeta}`}` +
+				`<div class="vmeta-info">${m.get('link') ? `<a class="vname" href="${m.get('link')}" target="_blank" rel="nofollow" > ${m.get('nick')}</a>${gat}<span class="vsysinfo">${uaMeta}</span>` : `<span class="vname">${m.get('nick')}</span> ${gat} ${uaMeta}`}` +
 				`<br/><span class="vtime">${timeAgo(m.get('createdAt'), root.i18n)}</span>` +
 				'</div>' +
 			'</div>' +

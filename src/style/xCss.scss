@@ -455,6 +455,24 @@
 		  .vname:hover {
 			color: #ff5722;
 		  }
+		  .vtag{
+			font-size: 12px;
+			display: inline-block;
+			line-height: 20px;
+			border-radius: 2px;
+			color: #fff;
+			padding: 0 5px;
+			position: inherit;
+		  }
+           .vmaster {
+				background: #ffa51e;
+			}
+			.vfriend {
+				background: #6cf;
+			}
+			.vvisitor {
+				background: #828282;
+			}
 		  .vsys{
 		    display: inline-block;
 			padding: .2em .5em;
