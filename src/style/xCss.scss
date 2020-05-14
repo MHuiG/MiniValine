@@ -36,6 +36,14 @@
     cursor: pointer;
     color: #4b5b62;
     text-decoration: underline;
+	svg{
+	  fill: #bbb;
+	  margin-right: 5px;
+      margin-top: 5px;
+	}
+	svg:hover{
+	  fill: #66b1ff;
+	}
   }
   .vinputs-wrap{
 	border-style: dashed;
@@ -88,6 +96,9 @@
         }
       }
     }
+	.actived svg{
+	  fill: #66b1ff !important;
+	}
     .vrow{
 	  font-size: 0;
       padding: 10px 0;

@@ -30,7 +30,7 @@ export function getEle (root) {
                                         `<div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="${root.i18n.nick}" value=""></div>` +
                                         `<div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="${root.i18n.mail}" value=""></div>` +
                                         `<div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="${root.i18n.link}" value=""></div>` +
-                                        `<div class="post-action"><button type="button" class="vsubmit">${root.i18n.reply}</button></div>` +
+                                        `<div class="post-action"><button type="button" class="vsubmit">${root.i18n.submit}</button></div>` +
                                     '</section>' +
                                     '<div style="display:none;" class="vmark"></div>' +
                                 '</div>' +
