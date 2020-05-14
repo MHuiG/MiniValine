@@ -26,25 +26,25 @@ const vcard = function (root, m) {
     let uaMeta = ''
     if (ua) {
       ua = detect(ua)
-      uaMeta =  '<span class="vsys"><i class="fab fa-' +
-                  (["xiaomi"].includes(ua.browser.toLowerCase())
-                    ? "mobile-alt fas"
+      uaMeta = '<span class="vsys"><i class="fab fa-' +
+                  (['xiaomi'].includes(ua.browser.toLowerCase())
+                    ? 'mobile-alt fas'
                     : ua.browser.toLowerCase()) +
                   '"></i>' +
                   ua.browser +
-                  " " +
+                  ' ' +
                   ua.version +
-                  "</span>" +
-                  " " +
+                  '</span>' +
+                  ' ' +
                   ('<span class="vsys"><i class="fab fa-' +
-                    (["mac os", "ios"].includes(ua.os.toLowerCase())
-                      ? "apple"
+                    (['mac os', 'ios'].includes(ua.os.toLowerCase())
+                      ? 'apple'
                       : ua.os.toLowerCase()) +
                     '"></i>' +
                     ua.os +
-                    " " +
+                    ' ' +
                     ua.osVersion +
-					"</span>")
+					'</span>')
     }
     const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
