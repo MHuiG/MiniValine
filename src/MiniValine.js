@@ -22,6 +22,9 @@ MiniValineFactory.prototype.initCheck = function () {
         root.initBody()
       })
     } else if (root.mode === 'xCss') {
+      import(/* webpackChunkName: "detect" */'./utils/plugins/detect.js').then(({ detect }) => {
+        window.detect = detect
+      })
       import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
         root.ele = getEle(root)
         root.initBody()

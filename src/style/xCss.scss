@@ -414,6 +414,7 @@
           float: right;
           background: transparent;
           color: #2196f3;
+		  font-size: .8125em;
           padding: 0.2em 1em;
           line-height: 1.2;
           cursor: pointer;
@@ -442,10 +443,28 @@
             margin: 0 0 0 48px;
           }
           .vname {
-            font-weight: bolder;
-            font-size: 1em;
-            color: rgba(0, 0, 0, 0.7);
+            position: relative;
+			font-size: .875em;
+			color: #ff9800;
+			font-weight: 700;
+			margin-right: .4em;
+			cursor: pointer;
+			text-decoration: none;
+			display: inline-block;
           }
+		  .vname:hover {
+			color: #ff5722;
+		  }
+		  .vsys{
+		    display: inline-block;
+			padding: .2em .5em;
+			font-size: .75em;
+			border-radius: .2em;
+			margin-right: .3em;
+			color: #7889c3;
+			box-sizing: border-box;
+			line-height: 1.75;
+		  }
           .spacer {
             color: #ccc;
             margin-left: 0.3em;

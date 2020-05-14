@@ -3,7 +3,8 @@ import timeAgo from './timeago'
 const vcard = function (root, m) {
   const Hash = m.get('emailHash')
   var gravatarUrl = GravatarUrl(m)
-  const HTML = '<div class="vcomment-body">' +
+  if (root.mode === 'DesertsP') {
+    const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
 				`<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
 				`<a rid='${m.id}' at='@${m.get('nick')}' class="vat" id="at-${m.id}">${root.i18n.reply}</a>` +
@@ -19,7 +20,35 @@ const vcard = function (root, m) {
 			'<div class="vshow-children-wrapper" style="display: none"></div>' +
 			`<ul class="vlist" id="children-list-${m.id}"></ul>` +
 		'</div>'
-  return HTML
+    return HTML
+  } else if (root.mode === 'xCss') {
+    let ua = m.get('ua') || ''
+    let uaMeta = ''
+    if (ua) {
+      ua = detect(ua)
+      const browser = `<span class="vsys">${ua.browser} ${ua.version}</span>`
+      const os = `<span class="vsys">${ua.os} ${ua.osVersion}</span>`
+      uaMeta = `${browser} ${os}`
+      console.log(uaMeta)
+    }
+    const HTML = '<div class="vcomment-body">' +
+			'<div class="vhead" >' +
+				`<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
+				`<a rid='${m.id}' at='@${m.get('nick')}' class="vat" id="at-${m.id}">${root.i18n.reply}</a>` +
+				`<div class="vmeta-info">${m.get('link') ? `<a class="vname" href="${m.get('link')}" target="_blank" rel="nofollow" > ${m.get('nick')}</a><span class="vsysinfo">${uaMeta}</span>` : `<span class="vname">${m.get('nick')}</span> ${uaMeta}`}` +
+				`<br/><span class="vtime">${timeAgo(m.get('createdAt'), root.i18n)}</span>` +
+				'</div>' +
+			'</div>' +
+			`<section class="text-wrapper"  id="comment-${m.id}">` +
+				`<div class="vcomment">${m.get('comment')}</div>` +
+			'</section>' +
+		'</div>' +
+		'<div class="vcomment-children">' +
+			'<div class="vshow-children-wrapper" style="display: none"></div>' +
+			`<ul class="vlist" id="children-list-${m.id}"></ul>` +
+		'</div>'
+    return HTML
+  }
 }
 const GravatarUrl = (m) => {
   const Hash = m.get('emailHash')

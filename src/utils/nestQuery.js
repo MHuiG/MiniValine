@@ -30,7 +30,7 @@ const nestQuery = (root) => {
         )
       return
     }
-    root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam,mail from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+    root.v.Query.doCloudQuery(`select nick, comment, link, rid, emailHash, isSpam, mail, ua from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
       .then((rets) => {
         rets = (rets && rets.results) || []
         const len = rets.length

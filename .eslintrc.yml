@@ -15,6 +15,7 @@ globals:
   "ActiveXObject": true
   "md5": true
   "autosize": true
+  "detect": true
 parser: babel-eslint
 parserOptions:
   ecmaVersion: 2018
