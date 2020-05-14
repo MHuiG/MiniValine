@@ -65,7 +65,6 @@ const submitBtnEvt = (root) => {
         comment.set(i, _v)
       }
     }
-    comment.set('emailHash', md5(root.C.mail.toLowerCase().trim()))
     comment.setACL(getAcl())
     comment
       .save()

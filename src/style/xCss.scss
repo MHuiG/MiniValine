@@ -23,9 +23,9 @@
   }
   .vemoticon-img {
     display: inline-block;
-	max-height: 100% !important;
-	max-width: 100% !important;
-    margin: 0 2px;
+    max-height: 24px;
+    border-radius: 0;
+    max-width: 100px;
   }
 
   .vsubmitting {
@@ -487,6 +487,22 @@
           .vcomment {
             position: relative;
             overflow: auto;
+			a{
+			    color: #2196f3;
+				line-height: inherit;
+				position: relative;
+				cursor: pointer;
+				text-decoration: none;
+				display: inline-block;
+				transition: all .28s ease;
+				-moz-transition: all .28s ease;
+				-webkit-transition: all .28s ease;
+				-o-transition: all .28s ease;
+			}
+			a:hover {
+				color: #ff5722;
+				text-decoration: underline;
+			}
             blockquote {
               p {
                 padding-left: 12px;
