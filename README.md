@@ -6,7 +6,7 @@ This is the stable version of MiniValine.
 
 Unless there is a major bug, this Branch will be temporarily suspended.
 
-The date of EOF: 2020-5-15
+The date of EOL: 2020-5-15
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
