@@ -29,7 +29,6 @@ const vcard = function (root, m) {
       const browser = `<span class="vsys">${ua.browser} ${ua.version}</span>`
       const os = `<span class="vsys">${ua.os} ${ua.osVersion}</span>`
       uaMeta = `${browser} ${os}`
-      console.log(uaMeta)
     }
     const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
