@@ -48,6 +48,7 @@ MiniValineFactory.prototype.initBody = function () {
   util.alert(root)
   root.loading.show()
   util.initCount(root)
+  util.visitor(root)
   root.bind()
 }
 MiniValineFactory.prototype.bind = function () {

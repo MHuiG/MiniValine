@@ -7,6 +7,7 @@ const Config = function (root) {
   root.adminEmailMd5 = root.config.adminEmailMd5 || ''
   root.math = root.config.math
   root.md = root.config.md
+  root.visitor = root.config.visitor
   root.mode = root.config.mode || 'DesertsP'
   root.placeholder = root.config.placeholder || ''
   root.C = C

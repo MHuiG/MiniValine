@@ -23,6 +23,7 @@ import nestQuery from './nestQuery'
 import parentQuery from './parentQuery'
 import ActivateCode from './ActivateCode'
 import previewEvt from './previewEvt'
+import visitor from './visitor'
 
 module.exports = {
   Config: Config,
@@ -49,5 +50,6 @@ module.exports = {
   parentQuery: parentQuery,
   ActivateCode: ActivateCode,
   previewEvt: previewEvt,
+  visitor: visitor,
   getCache: getCache
 }
