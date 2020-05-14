@@ -464,6 +464,16 @@
 			color: #7889c3;
 			box-sizing: border-box;
 			line-height: 1.75;
+			i{
+			    box-sizing: border-box;
+				line-height: 1.75;
+				margin-right: 5px;
+			}
+		  }
+		  .fab{
+		    font-family: "Font Awesome 5 Brands";
+            font-weight: 400;
+			color: #7889c3;
 		  }
           .spacer {
             color: #ccc;
