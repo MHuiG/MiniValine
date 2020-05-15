@@ -21,7 +21,7 @@ var WEBPACK_CONFIG = {
   },
   output: {
     path: BUILD_PATH,
-    publicPath: './dist/',
+    publicPath: 'http://localhost:8088/dist/',
     filename: '[name].min.js',
     chunkFilename: libraryName + '.[name].min.js',
     library: libraryName,

@@ -30,7 +30,8 @@ const nestQuery = (root) => {
         )
       return
     }
-    root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mail, ua from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+	setTimeout(function(){
+	root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mail, ua from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
       .then((rets) => {
         rets = (rets && rets.results) || []
         const len = rets.length
@@ -49,9 +50,10 @@ const nestQuery = (root) => {
         }
       })
       .catch((ex) => {
-        console.log(ex)
+        //console.log(ex)
         root.loading.hide(root.parentCount)
       })
+	  },Math.random()*200+60)
   }
 }
 module.exports = nestQuery
