@@ -167,12 +167,10 @@ new MiniValine({
 
 - **emoticonUrl** `String Array`
 
-  Default: `['https://cdn.jsdelivr.net/npm/alus']`
+  Default: `['https://cdn.jsdelivr.net/npm/alus@latest','https://cdn.jsdelivr.net/gh/MiniValine/qq@latest','https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest','https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest','https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest','https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest']`
   
   Expression Url.
-  
-  You can also set it like this: `['https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master','https://cdn.jsdelivr.net/npm/alus']`
-  
+    
   [How to customize emoticons?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons)
 
 - **NoRecordIP** `Boolean`
