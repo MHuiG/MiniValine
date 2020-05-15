@@ -17,7 +17,7 @@ const smiles = function (root) {
         img.setAttribute('class', 'lazyload')
         li.appendChild(img)
         if (j === 0) {
-		  var img = document.createElement('img')
+          img = document.createElement('img')
           img.setAttribute('src', `${smileList[i][0]}`)
           img.removeAttribute('class', 'lazyload')
           barli.appendChild(img)
