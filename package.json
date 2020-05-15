@@ -17,7 +17,7 @@
     "format": "eslint src --fix",
     "cover": "jest --coverage --runInBand --detectOpenHandles",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish0": "npm run snyk-protect"
   },
   "keywords": [
     "MiniValine",
