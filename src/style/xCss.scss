@@ -25,6 +25,11 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
   }
+  img{
+    display: inline;
+	background-color: transparent !important;
+	margin: 0 !important;
+  }
   pre {
     font-size: 14px !important;
   }
