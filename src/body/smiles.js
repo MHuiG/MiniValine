@@ -9,7 +9,7 @@ const smiles = function (root) {
       var li = document.createElement('li')
       var barli = document.createElement('li')
       for (var j = 0; j < smileList[i].length; j++) {
-        const img = document.createElement('img')
+        var img = document.createElement('img')
         img.setAttribute(
           'data-src',
           `${smileList[i][j]}`
@@ -17,7 +17,8 @@ const smiles = function (root) {
         img.setAttribute('class', 'lazyload')
         li.appendChild(img)
         if (j === 0) {
-          img.setAttribute('src', `${smileList[i][j]}`)
+		  var img = document.createElement('img')
+          img.setAttribute('src', `${smileList[i][0]}`)
           img.removeAttribute('class', 'lazyload')
           barli.appendChild(img)
         }
