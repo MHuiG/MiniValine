@@ -30,30 +30,30 @@ const nestQuery = (root) => {
         )
       return
     }
-	setTimeout(function(){
-	root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mail, ua from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
-      .then((rets) => {
-        rets = (rets && rets.results) || []
-        const len = rets.length
-        if (len) {
-          for (let i = 0; i < len; i++) {
-            if (!rets[i].get('isSpam')) {
-              const render = (o) => {
-                rets[i].set('comment', o.TEXT)
-                const vl = root.insertComment(rets[i], _vlist, true)
-                root.nestQuery(vl, level + 1)
+    setTimeout(function () {
+      root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mail, ua from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+        .then((rets) => {
+          rets = (rets && rets.results) || []
+          const len = rets.length
+          if (len) {
+            for (let i = 0; i < len; i++) {
+              if (!rets[i].get('isSpam')) {
+                const render = (o) => {
+                  rets[i].set('comment', o.TEXT)
+                  const vl = root.insertComment(rets[i], _vlist, true)
+                  root.nestQuery(vl, level + 1)
+                }
+                rets[i].TEXT = rets[i].get('comment')
+                killXSS(rets[i], render)
               }
-              rets[i].TEXT = rets[i].get('comment')
-              killXSS(rets[i], render)
             }
           }
-        }
-      })
-      .catch((ex) => {
-        //console.log(ex)
-        root.loading.hide(root.parentCount)
-      })
-	  },Math.random()*200+60)
+        })
+        .catch((ex) => {
+        // console.log(ex)
+          root.loading.hide(root.parentCount)
+        })
+    }, Math.random() * 200 + 60)
   }
 }
 module.exports = nestQuery

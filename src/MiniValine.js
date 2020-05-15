@@ -41,7 +41,7 @@ MiniValineFactory.prototype.initBody = function () {
     body.smiles(root)
     util.setAV(root)
   } catch (ex) {
-    console.log(ex)
+    // console.log(ex)
     return
   }
   root.loading.hide(root.parentCount)

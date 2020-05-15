@@ -1,7 +1,14 @@
 .MiniValine {
   * {
     box-sizing: border-box;
-    font-family: Rubik, Helvetica, Arial, sans-serif, PingFang SC, Lantinghei SC,
+	@font-face{
+		font-family: "Varela Round";
+		src: "https://cdn.jsdelivr.net/gh/MHuiG/blog-cdn@latest/fonts/VarelaRound/VarelaRound-Regular.ttf";
+		font-weight: normal;
+		font-style: normal;
+		font-display: 'swap'
+    }
+	font-family: Varela Round, Rubik, Helvetica, Arial, sans-serif, PingFang SC, Lantinghei SC,
       Helvetica Neue, Helvetica, Arial, Microsoft YaHei, STHeitiSC-Light, simsun,
       WenQuanYi Zen Hei, WenQuanYi Micro Hei, "sans-serif";
     font-weight: normal;
@@ -26,6 +33,16 @@
     max-height: 24px;
     border-radius: 0;
     max-width: 100px;
+	background-color: transparent !important;
+  }
+  .vemoji{
+    background-color: transparent !important;
+	max-height: 24px;
+    border-radius: 0;
+    margin-top: -10px;
+    max-width: 100px;
+	display: inline;
+	border: none;
   }
 
   .vsubmitting {
@@ -76,6 +93,9 @@
       position: inherit;
 	  padding: 10px 5px;
 	  font-size: 0.875em;
+	  .veditor{
+	    background: transparent;
+	  }
     }
     .btn-wrap {
       position: absolute !important;
@@ -212,13 +232,13 @@
       color: #4b5b62;
       width: 100%;
       height: 100%;
-      background: #fff;
+      background: transparent;
       position: relative;
       border-radius: 0;
       textarea {
         color: #4b5b62;
         width: 100%;
-        background: #fff;
+        background: transparent;
         border: none;
         resize: none;
         min-height: 8em;
@@ -262,6 +282,7 @@
 	  }
       input {
         width: 100%;
+		background: transparent;
       }
 
       .post-action {
@@ -353,7 +374,7 @@
       border-top: 1px solid rgba(150, 150, 150, 0.08);
       margin: 0 25%;
       position: relative;
-      top: 10px;
+      top: 20px;
       z-index: 1;
     }
     svg {
@@ -366,8 +387,13 @@
       display: inline-block;
       padding: 0 20px;
       position: relative;
-      background: #ffffff;
+      background: transparent;
       z-index: 2;
+	  .count{
+	    font-size: 1.375rem;
+		color: #555;
+		font-weight: inherit;
+	  }
     }
   }
   .power {
@@ -461,7 +487,7 @@
           float: right;
           background: transparent;
           color: #2196f3;
-		  font-size: .8125em;
+		  font-size: .9225em;
           padding: 0.2em 1em;
           line-height: 1.2;
           cursor: pointer;
@@ -475,10 +501,11 @@
           margin-right: 1em;
           margin-top: 0.1em;
           display: inline-block;
-          height: 36px;
-          width: 36px;
+          height: 48px;
+          width: 48px;
           position: absolute;
           top: 0;
+		  left: -10px;
           border-radius: 50%;
         }
         .vhead {
@@ -491,7 +518,7 @@
           }
           .vname {
             position: relative;
-			font-size: .875em;
+			font-size: .975em;
 			color: #ff9800;
 			font-weight: 700;
 			margin-right: .4em;
@@ -521,9 +548,10 @@
 				background: #828282;
 			}
 		  .vsys{
+		    margin: 2px;
+            padding: 1px 8px;
 		    display: inline-block;
-			padding: .2em .5em;
-			font-size: .75em;
+			font-size: .85em;
 			border-radius: .2em;
 			margin-right: .3em;
 			color: #7889c3;
@@ -546,10 +574,11 @@
             margin-right: 0.3em;
           }
           .vtime {
-            color: #a9a4a4;
+            color: #b3b3b3;
             display: inline-block;
             font-weight: normal;
-            font-size: 90%;
+            font-size: .75em;
+			margin-right: .875em;
           }
         }
         .text-wrapper {
@@ -615,8 +644,8 @@
                 pointer-events: none;
                 background: linear-gradient(
                   180deg,
-                  rgba(255, 255, 255, 0),
-                  rgba(255, 255, 255, 0.8)
+                  rgba(246,246,246,0),
+                  rgba(246,246,246,.9)
                 );
               }
               &:after {
@@ -631,7 +660,7 @@
                 left: 0;
                 bottom: 0;
                 pointer-events: none;
-                background: rgba(255, 255, 255, 0.9);
+                background: rgba(246,246,246,.9);
               }
             }
           }
