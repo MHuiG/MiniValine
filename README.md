@@ -123,6 +123,15 @@ new MiniValine({
 
   **Required**. Your App Key
 
+- **mode** `String`
+
+  Default: `DesertsP`
+
+  Options: 
+
+  * `DesertsP` DesertsP Style mode.
+  * `xCss`  xCss Style mode.
+
 - **placeholder** `String`
 
   Input Placeholder
@@ -133,9 +142,30 @@ new MiniValine({
   
   The pathname of the page.
 
-- **adminEmailMd5** `String`
+- **adminEmailMd5** `String` [ Just Only DesertsP Style mode]
 
   The MD5 of Admin Email to show Admin Flag.
+
+- **master** `String Array` [ Just Only xCss Style mode]
+
+   Default: `[]`
+  
+  The MD5 String Array of master Email to show master Flag.
+
+- **friends** `String Array` [ Just Only xCss Style mode]
+
+   Default: `[]`
+  
+  The MD5 String Array of friends Email to show friends Flag.
+
+- **tagMeta** `String Array` [ Just Only xCss Style mode]
+
+   Default: `[]`
+  
+  The String Array of Words to show Flag.
+  
+  For Example:
+  `tagMeta: ["管理员", "小伙伴", "访客"]`
 
 - **math** `Boolean`
 
@@ -190,6 +220,25 @@ new MiniValine({
   Default: `6`
   
   Pagination size.
+
+- **enableQQ** `Boolean`
+
+  Default: `false`
+  
+  Enable QQ avatar API.
+
+- **visitor** `Boolean`
+
+  Default: `false`
+  
+  Article reading statistics.
+	```
+	<!-- id as the query condition -->
+	<span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="Your Article Title">
+		<em class="post-meta-item-text">article reading statistics  </em>
+		<i class="leancloud-visitors-count">1000000</i>
+	</span>
+	```
 
 - **serverURLs** `String`
 

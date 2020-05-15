@@ -8,6 +8,7 @@ const Config = function (root) {
   root.math = root.config.math
   root.md = root.config.md
   root.visitor = root.config.visitor
+  root.enableQQ = root.config.enableQQ
   root.tagMeta = root.config.tagMeta || []
   root.master = root.config.master || []
   root.friends = root.config.friends || []
