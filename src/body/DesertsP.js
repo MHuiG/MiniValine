@@ -22,16 +22,19 @@ export function getEle (root) {
                                             '</div>' +
                                         '</div>' +
                                         '<div class="vextra-area">' +
-                                            '<div class="vsmile-icons" style="display:none"></div>' +
+                                            '<div class="vsmile-body" style="display:none">' +
+												'<div class="vsmile-icons"><ul></ul></div>' +
+												'<div class="vsmile-bar"><ul></ul></div></div>' +
+                                            '</div>' +
                                             '<div class="vpreview-text" style="display:none"></div>' +
                                         '</div>' +
-                                    '</div>' +
-                                    '<section class="auth-section" style="display:none;">' +
+                                    '<div class="auth-section" style="display:none;">' +
                                         `<div class="input-wrapper"><input type="text" name="author" class="vnick" placeholder="${root.i18n.nick}" value=""></div>` +
                                         `<div class="input-wrapper"><input type="email" name="email" class="vmail" placeholder="${root.i18n.mail}" value=""></div>` +
                                         `<div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="${root.i18n.link}" value=""></div>` +
                                         `<div class="post-action"><button type="button" class="vsubmit">${root.i18n.submit}</button></div>` +
-                                    '</section>' +
+                                    '</div>' +
+									'</div>' +
                                     '<div style="display:none;" class="vmark"></div>' +
                                 '</div>' +
                                 '<div class="vsubmitting" style="display:none;"></div>' +

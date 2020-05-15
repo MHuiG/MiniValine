@@ -13,10 +13,12 @@ const getSmile = (root, Url) => {
     type: 'GET',
     success: function (data) {
       data = eval('(' + data + ')')
+      var tmp = []
       for (var i = 0; i < data[0].length; i++) {
-        root.emoticonList.push(Url + '/' + data[0][i])
+        tmp.push(Url + '/' + data[0][i])
         root.emoticon[data[0][i]] = Url + '/' + data[0][i]
       }
+      root.emoticonList.push(tmp)
     }
   })
 }
