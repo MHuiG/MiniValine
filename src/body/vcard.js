@@ -26,7 +26,8 @@ const vcard = function (root, m) {
     let uaMeta = ''
     if (ua) {
       ua = detect(ua)
-      uaMeta = '<span class="vsys"><i class="fab fa-' +
+      if (ua.browser && ua.os) {
+        uaMeta = '<span class="vsys"><i class="fab fa-' +
                   (['xiaomi'].includes(ua.browser.toLowerCase())
                     ? 'mobile-alt fas'
                     : ua.browser.toLowerCase()) +
@@ -45,6 +46,9 @@ const vcard = function (root, m) {
                     ' ' +
                     ua.osVersion +
 					'</span>')
+      } else {
+        uaMeta = '<span class="vsys"><i class="fad fa-stars"></i>Magical APP</span><span class="vsys"><i class="fap fa-magic"></i>Magical OS</span>'
+      }
     }
     root.master = root.master.map(i => i.toLowerCase())
     root.friends = root.friends.map(i => i.toLowerCase())
