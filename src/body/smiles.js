@@ -26,25 +26,27 @@ const smiles = function (root) {
       smileWrapper.appendChild(li)
       smileBar.appendChild(barli)
     }
-    root.el.querySelector('.vsmile-icons > ul > li:nth-child(1)').style.display = 'block'
-    var btn = document.querySelectorAll('.vsmile-bar > ul > li')
-    var show = document.querySelectorAll('.vsmile-icons > ul > li')
-    for (var k = 0; k < btn.length; k++) {
+    try {
+      root.el.querySelector('.vsmile-icons > ul > li:nth-child(1)').style.display = 'block'
+      var btn = document.querySelectorAll('.vsmile-bar > ul > li')
+      var show = document.querySelectorAll('.vsmile-icons > ul > li')
+      for (var k = 0; k < btn.length; k++) {
       // 把当前按钮的下标保存，按下按钮对应显示下标一致的盒子，其它盒子隐藏
-      btn[k].index = k
-      btn[k].onclick = function () {
+        btn[k].index = k
+        btn[k].onclick = function () {
         // 遍历每个按钮样式清空
         // 遍历每个盒子隐藏
-        for (var j = 0; j < btn.length; j++) {
-          btn[j].className = ''
-          show[j].style.display = 'none'
+          for (var j = 0; j < btn.length; j++) {
+            btn[j].className = ''
+            show[j].style.display = 'none'
+          }
+          // this表示当前按钮
+          this.className = 'active'
+          // 盒子显示按钮下标的那个盒子，this。index是开始时保存的按钮下标
+          show[this.index].style.display = 'block'
         }
-        // this表示当前按钮
-        this.className = 'active'
-        // 盒子显示按钮下标的那个盒子，this。index是开始时保存的按钮下标
-        show[this.index].style.display = 'block'
       }
-    }
+    } catch (e) {}
   }, 10)
 }
 module.exports = smiles
