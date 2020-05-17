@@ -8,5 +8,7 @@ highligher.registerLanguage('shell', require('highlight.js/lib/languages/shell')
 highligher.registerLanguage('nginx', require('highlight.js/lib/languages/nginx'))
 highligher.registerLanguage('python', require('highlight.js/lib/languages/python'))
 highligher.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
+highligher.registerLanguage('cpp', require('highlight.js/lib/languages/cpp'))
+highligher.registerLanguage('java', require('highlight.js/lib/languages/java'))
 
 module.exports = highligher

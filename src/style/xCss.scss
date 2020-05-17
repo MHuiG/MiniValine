@@ -103,12 +103,12 @@
 	  }
     }
     .btn-wrap {
-      position: absolute !important;
       right: 1.5em;
       bottom: 0;
+	  text-align: right;
       .vfunction-btn {
         display: inline-block;
-		margin-left: 10px;
+		margin: 10px;
         svg {
           fill: #bbb;
           cursor: pointer;
@@ -431,7 +431,8 @@
     border: 1px solid #e9eff3;
     border-radius: 0.1em;
     color: #555;
-    padding: 0.5em 1.5em;
+    padding: 0.5em 2.3em;
+	margin:0 .5em;
     cursor: pointer;
     white-space: nowrap;
     -webkit-user-select: none;
@@ -475,10 +476,14 @@
         max-width: 100%  !important;
         border: none;
 	  }
+	  .vcomment-body:hover{
+	    -webkit-box-shadow: 0 0.625em 3.75em 0 rgba(150,150,150,0.08);
+		box-shadow: 0 0.625em 3.75em 0 rgba(150,150,150,0.08);
+	  }
       .vcomment-body {
         padding: 2em 0.5em 2em;
         border-top: 1px solid rgba(150, 150, 150, 0.08);
-
+		border-radius: 8px;
         @media screen and (max-width: 600px) {
           padding: 1em 1em 1em;
           border-top: 0 !important;
@@ -503,14 +508,11 @@
         }
 
         .vavatar {
-          margin-right: 1em;
-          margin-top: 0.1em;
           display: inline-block;
           height: 48px;
           width: 48px;
           position: absolute;
           top: 0;
-		  left: -10px;
           border-radius: 50%;
         }
         .vhead {
@@ -519,7 +521,7 @@
           margin-bottom: 0.3em;
           position: relative;
           .vmeta-info {
-            margin: 0 0 0 48px;
+            margin: 0 0 0 58px;
           }
           .vname {
             position: relative;
