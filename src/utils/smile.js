@@ -1,10 +1,17 @@
 import ajax from './plugins/ajax'
 
 const smile = (root) => {
-  root.emoticonList = []
-  root.emoticon = []
-  for (var i = 0; i < root.emoticonUrl.length; i++) {
-    getSmile(root, root.emoticonUrl[i])
+  if (!window.MV.emoticonList) {
+    root.emoticonList = []
+    root.emoticon = []
+    for (var i = 0; i < root.emoticonUrl.length; i++) {
+      getSmile(root, root.emoticonUrl[i])
+    }
+    window.MV.emoticonList = root.emoticonList
+    window.MV.emoticon = root.emoticon
+  } else {
+    root.emoticonList = window.MV.emoticonList
+    root.emoticon = window.MV.emoticon
   }
 }
 const getSmile = (root, Url) => {
