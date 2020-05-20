@@ -1,8 +1,10 @@
 const visitor = (root) => {
   if (root.visitor) {
-    import(/* webpackChunkName: "counter" */'./plugins/Counter').then(({ Counter }) => {
-      Counter()
-      CounterFactory.add(AV.Object.extend('Counter'), root.config.pathname)
+    var vispath = root.config.vispath ? root.config.vispath : root.config.pathname
+    new MCounter({
+      appId: root.config.appId,
+      appKey: root.config.appKey,
+      vispath: vispath || location.pathname.replace(/\/$/, '')
     })
   }
 }

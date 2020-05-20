@@ -236,14 +236,21 @@ new MiniValine({
 
   Default: `false`
   
-  Article reading statistics.
-	```
+  Enable Article reading statistics.
+
+- **vispath** `String`
+
+  Default: Same as **pathname**
+
+  The Path For Article reading statistics.
+  	```
 	<!-- id as the query condition -->
-	<span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="Your Article Title">
+	<span id="<vispath>" class="leancloud-visitors" data-flag-title="Your Article Title">
 		<em class="post-meta-item-text">article reading statistics  </em>
 		<i class="leancloud-visitors-count">1000000</i>
 	</span>
 	```
+  **[MiniValine Counter](https://github.com/MiniValine/minivaline-counter)**
 
 - **serverURLs** `String`
 

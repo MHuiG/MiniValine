@@ -1,6 +1,6 @@
 {
   "name": "minivaline",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "A simple and minimalist comment system based on Leancloud.",
   "main": "/dist/MiniValine.min.js",
   "author": {
@@ -77,10 +77,10 @@
     "leancloud-storage": "^4.5.3",
     "marked": "^1.0.0",
     "sass": "^1.26.3",
+    "snyk": "^1.316.2",
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
-    "xss": "^1.0.3",
-    "snyk": "^1.316.2"
+    "xss": "^1.0.3"
   },
   "jest": {
     "transform": {

@@ -17,6 +17,7 @@ globals:
   "autosize": true
   "detect": true
   "CounterFactory": true
+  "MCounter": true
 parser: babel-eslint
 parserOptions:
   ecmaVersion: 2018
@@ -28,5 +29,6 @@ rules: {
   "eqeqeq":"off",
   "no-useless-escape":"off",
   "no-eval":"off",
+  "no-new":"off",
   "no-unused-expressions":"off"
 }
