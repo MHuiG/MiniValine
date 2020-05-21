@@ -236,7 +236,7 @@ new MiniValine({
 
   Default: `false`
   
-  Enable Article reading statistics.
+  仅提供`文章阅读量访问统计`和`全站访问统计`,如需其他功能,请设置为`false`,并自行配置`MiniValine Counter`.
 
   **[MiniValine Counter](https://github.com/MiniValine/minivaline-counter)**
 
