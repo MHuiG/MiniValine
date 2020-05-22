@@ -27,10 +27,10 @@ const vcard = function (root, m) {
     if (ua) {
       ua = uaparser(ua)
       try {
-        if (ua.browser && ua.browser.name && ua.browser.version) {
+        if (ua.browser && ua.browser.name) {
           uaMeta += '<span class="vsys"><i class="fab fa-'
           if (['xiaomi'].includes(ua.browser.name.toLowerCase())) {
-            uaMeta += 'mobile-alt fas'
+            uaMeta += 'mobile-alt fap'
           } else if (['android browser'].includes(ua.browser.name.toLowerCase())) {
             uaMeta += 'android'
           } else if (['mobile safari'].includes(ua.browser.name.toLowerCase())) {
@@ -41,19 +41,21 @@ const vcard = function (root, m) {
             uaMeta += 'weixin'
           } else if (['qqbrowser', 'qqbrowserlite'].includes(ua.browser.name.toLowerCase())) {
             uaMeta += 'qq'
+          } else if (['baiduboxapp'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'paw fap'
           } else {
             uaMeta += ua.browser.name.toLowerCase()
           }
           uaMeta += '"></i>' +
 			ua.browser.name +
 			' ' +
-			ua.browser.version +
+			(ua.browser.version ? ua.browser.version : '') +
 			'</span>' +
 			' '
         } else {
           uaMeta += '<span class="vsys"><i class="fad fa-stars"></i>Magical APP</span>'
         }
-        if (ua.os && ua.os.name && ua.os.version) {
+        if (ua.os && ua.os.name) {
           uaMeta += '<span class="vsys"><i class="fab fa-'
           if (['mac os', 'ios'].includes(ua.os.name.toLowerCase())) {
             uaMeta += 'apple'
@@ -65,7 +67,7 @@ const vcard = function (root, m) {
           uaMeta += '"></i>' +
 			ua.os.name +
 			' ' +
-			ua.os.version +
+			(ua.os.version ? ua.os.version : '') +
 			'</span>'
         } else {
           uaMeta += '<span class="vsys"><i class="fap fa-magic"></i>Magical OS</span>'
