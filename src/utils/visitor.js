@@ -1,5 +1,5 @@
 const visitor = (root) => {
-  if (root.visitor) {
+  if ((typeof root.visitor == 'undefined') || (root.visitor)) {
     new MCounter({
       appId: root.config.appId,
       appKey: root.config.appKey
