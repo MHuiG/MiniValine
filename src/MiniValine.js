@@ -14,7 +14,7 @@ const MiniValineFactory = function (option) {
 MiniValineFactory.prototype.initCheck = function () {
   const root = this
   var check = setInterval(function () {
-    if (typeof root.i18n == 'undefined') { return }
+    if (typeof root.i18n == 'undefined') return
     clearInterval(check)
     if (root.mode === 'DesertsP') {
       import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
@@ -22,8 +22,8 @@ MiniValineFactory.prototype.initCheck = function () {
         root.initBody()
       })
     } else if (root.mode === 'xCss') {
-      import(/* webpackChunkName: "detect" */'./utils/plugins/detect.js').then(({ detect }) => {
-        window.detect = detect
+      import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
+        init()
       })
       import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
         root.ele = getEle(root)
@@ -40,6 +40,7 @@ MiniValineFactory.prototype.initBody = function () {
     root.nodata.show()
     body.smiles(root)
     util.setAV(root)
+    util.visitor(root)
   } catch (ex) {
     // console.log(ex)
     return
@@ -48,7 +49,6 @@ MiniValineFactory.prototype.initBody = function () {
   util.alert(root)
   root.loading.show()
   util.initCount(root)
-  util.visitor(root)
   root.bind()
 }
 MiniValineFactory.prototype.bind = function () {

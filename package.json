@@ -80,6 +80,7 @@
     "snyk": "^1.316.2",
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
+    "ua-parser-js": "^0.7.21",
     "xss": "^1.0.3"
   },
   "jest": {

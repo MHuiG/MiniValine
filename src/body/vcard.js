@@ -25,30 +25,52 @@ const vcard = function (root, m) {
     let ua = m.get('ua') || ''
     let uaMeta = ''
     if (ua) {
-      ua = detect(ua)
-      if (ua.browser && ua.os) {
-        uaMeta = '<span class="vsys"><i class="fab fa-' +
-                  (['xiaomi'].includes(ua.browser.toLowerCase())
-                    ? 'mobile-alt fas'
-                    : ua.browser.toLowerCase()) +
-                  '"></i>' +
-                  ua.browser +
-                  ' ' +
-                  ua.version +
-                  '</span>' +
-                  ' ' +
-                  ('<span class="vsys"><i class="fab fa-' +
-                    (['mac os', 'ios'].includes(ua.os.toLowerCase())
-                      ? 'apple'
-                      : ua.os.toLowerCase()) +
-                    '"></i>' +
-                    ua.os +
-                    ' ' +
-                    ua.osVersion +
-					'</span>')
-      } else {
-        uaMeta = '<span class="vsys"><i class="fad fa-stars"></i>Magical APP</span><span class="vsys"><i class="fap fa-magic"></i>Magical OS</span>'
-      }
+      ua = uaparser(ua)
+      try {
+        if (ua.browser && ua.browser.name && ua.browser.version) {
+          uaMeta += '<span class="vsys"><i class="fab fa-'
+          if (['xiaomi'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'mobile-alt fas'
+          } else if (['android browser'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'android'
+          } else if (['mobile safari'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'safari'
+          } else if (['ie'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'internet-explorer'
+          } else if (['wechat'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'weixin'
+          } else if (['qqbrowser', 'qqbrowserlite'].includes(ua.browser.name.toLowerCase())) {
+            uaMeta += 'qq'
+          } else {
+            uaMeta += ua.browser.name.toLowerCase()
+          }
+          uaMeta += '"></i>' +
+			ua.browser.name +
+			' ' +
+			ua.browser.version +
+			'</span>' +
+			' '
+        } else {
+          uaMeta += '<span class="vsys"><i class="fad fa-stars"></i>Magical APP</span>'
+        }
+        if (ua.os && ua.os.name && ua.os.version) {
+          uaMeta += '<span class="vsys"><i class="fab fa-'
+          if (['mac os', 'ios'].includes(ua.os.name.toLowerCase())) {
+            uaMeta += 'apple'
+          } else if (['chromium os'].includes(ua.os.name.toLowerCase())) {
+            uaMeta += 'chrome'
+          } else {
+            uaMeta += 	ua.os.name.toLowerCase()
+          }
+          uaMeta += '"></i>' +
+			ua.os.name +
+			' ' +
+			ua.os.version +
+			'</span>'
+        } else {
+          uaMeta += '<span class="vsys"><i class="fap fa-magic"></i>Magical OS</span>'
+        }
+      } catch (e) { console.log(e) }
     }
     root.master = root.master.map(i => i.toLowerCase())
     root.friends = root.friends.map(i => i.toLowerCase())

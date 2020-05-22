@@ -15,7 +15,7 @@ globals:
   "ActiveXObject": true
   "md5": true
   "autosize": true
-  "detect": true
+  "uaparser": true
   "CounterFactory": true
   "MCounter": true
 parser: babel-eslint
