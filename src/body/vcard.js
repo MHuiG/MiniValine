@@ -26,11 +26,10 @@ const vcard = function (root, m) {
     let uaMeta = ''
     if (ua) {
       ua = uaparser(ua)
-      const bn = ua.browser.name.toLowerCase()
-      const on = ua.os.name.toLowerCase()
       try {
         if (ua.browser && ua.browser.name) {
           uaMeta += '<span class="vsys"><i class="fab fa-'
+          const bn = ua.browser.name.toLowerCase()
           if (['samsung browser'].includes(bn)) {
             uaMeta += 'mobile-alt fap'
           } else if (['android browser'].includes(bn)) {
@@ -63,6 +62,7 @@ const vcard = function (root, m) {
         }
         if (ua.os && ua.os.name) {
           uaMeta += '<span class="vsys"><i class="fab fa-'
+          const on = ua.os.name.toLowerCase()
           if (['mac os', 'ios'].includes(on)) {
             uaMeta += 'apple'
           } else if (['chromium os'].includes(on)) {
