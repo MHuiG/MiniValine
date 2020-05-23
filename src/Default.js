@@ -1,4 +1,4 @@
-export const VERSION = '2.5.10'
+export const VERSION = '2.5.11'
 export const GBUrl = 'https://gravatar.loli.net/avatar/'
 export const ip = 'https://api.ip.sb/jsonip?callback=getIP'
 export const vis = 'https://cdn.jsdelivr.net/npm/minivaline-counter@1.3.5/dist/MCounter.min.js'

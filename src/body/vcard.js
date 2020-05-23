@@ -26,25 +26,31 @@ const vcard = function (root, m) {
     let uaMeta = ''
     if (ua) {
       ua = uaparser(ua)
+      const bn = ua.browser.name.toLowerCase()
+      const on = ua.os.name.toLowerCase()
       try {
         if (ua.browser && ua.browser.name) {
           uaMeta += '<span class="vsys"><i class="fab fa-'
-          if (['xiaomi'].includes(ua.browser.name.toLowerCase())) {
+          if (['samsung browser'].includes(bn)) {
             uaMeta += 'mobile-alt fap'
-          } else if (['android browser'].includes(ua.browser.name.toLowerCase())) {
+          } else if (['android browser'].includes(bn)) {
             uaMeta += 'android'
-          } else if (['mobile safari'].includes(ua.browser.name.toLowerCase())) {
+          } else if (['mobile safari', 'safari'].includes(bn)) {
             uaMeta += 'safari'
-          } else if (['ie'].includes(ua.browser.name.toLowerCase())) {
+          } else if (['ie', 'iemobile'].includes(bn)) {
             uaMeta += 'internet-explorer'
-          } else if (['wechat'].includes(ua.browser.name.toLowerCase())) {
+          } else if (['wechat'].includes(bn)) {
             uaMeta += 'weixin'
-          } else if (['qqbrowser', 'qqbrowserlite'].includes(ua.browser.name.toLowerCase())) {
+          } else if (['qqbrowser', 'qqbrowserlite', 'qq'].includes(bn)) {
             uaMeta += 'qq'
-          } else if (['baiduboxapp'].includes(ua.browser.name.toLowerCase())) {
+          } else if (['baiduboxapp', 'baidu'].includes(bn)) {
             uaMeta += 'paw fap'
+          } else if (['chrome', 'chromium', 'chrome headless', 'chrome webview'].includes(bn)) {
+            uaMeta += 'chrome'
+          } else if (['firefox', 'opera mobi', 'edge', 'opera', 'opera coast', 'opera mini', 'opera tablet'].includes(bn)) {
+            uaMeta += bn
           } else {
-            uaMeta += ua.browser.name.toLowerCase()
+            uaMeta += 'snapchat-ghost'
           }
           uaMeta += '"></i>' +
 			ua.browser.name +
@@ -57,12 +63,14 @@ const vcard = function (root, m) {
         }
         if (ua.os && ua.os.name) {
           uaMeta += '<span class="vsys"><i class="fab fa-'
-          if (['mac os', 'ios'].includes(ua.os.name.toLowerCase())) {
+          if (['mac os', 'ios'].includes(on)) {
             uaMeta += 'apple'
-          } else if (['chromium os'].includes(ua.os.name.toLowerCase())) {
+          } else if (['chromium os'].includes(on)) {
             uaMeta += 'chrome'
+          } else if (['firefox os', 'android', 'linux', 'windows', 'ubuntu', 'suse', 'redhat', 'fedora', 'centos', 'blackberry'].includes(on)) {
+            uaMeta += on
           } else {
-            uaMeta += 	ua.os.name.toLowerCase()
+            uaMeta += 'snapchat-ghost'
           }
           uaMeta += '"></i>' +
 			ua.os.name +
