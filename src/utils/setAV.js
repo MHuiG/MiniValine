@@ -16,7 +16,7 @@ const setAV = function (root) {
         break
     }
   }
-  serverURLs = root.config.serverURLs || `${prefix}avoscloud.com`
+  serverURLs = root.config.serverURLs || `${prefix}leancloud.cn`
   if (typeof window.disableAVInit === 'undefined') {
     AV.init({
       appId: root.config.appId,
