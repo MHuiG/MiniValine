@@ -6,17 +6,17 @@ const setAV = function (root) {
     switch (root.config.appId.slice(-9)) {
       // TAB
       case '-9Nh9j0Va':
-        prefix += 'tab.'
+        prefix += 'tab.leancloud.cn'
         break
         // US
       case '-MdYXbMMI':
-        prefix += 'us.'
+        prefix += 'us.avoscloud.com'
         break
       default:
         break
     }
   }
-  serverURLs = root.config.serverURLs || `${prefix}leancloud.cn`
+  serverURLs = root.config.serverURLs || `${prefix}`
   if (typeof window.disableAVInit === 'undefined') {
     AV.init({
       appId: root.config.appId,
