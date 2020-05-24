@@ -13,10 +13,11 @@ const setAV = function (root) {
         prefix += 'us.avoscloud.com'
         break
       default:
+        prefix += 'avoscloud.com'
         break
     }
   }
-  serverURLs = root.config.serverURLs || `${prefix}`
+  serverURLs = root.config.serverURLs || prefix
   if (typeof window.disableAVInit === 'undefined') {
     AV.init({
       appId: root.config.appId,
