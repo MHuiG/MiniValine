@@ -2,7 +2,7 @@ import ajax from './ajax'
 const GetIP = (root) => {
   try {
     ajax({
-      url: 'https://ip.zxinc.org/info.php',
+      url: 'https://ip.zxinc.org/api.php',
       type: 'GET',
       data: {
         type: 'json'
