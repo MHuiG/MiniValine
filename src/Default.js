@@ -20,4 +20,3 @@ export const C = {
   url: location.pathname,
   pin: 0
 }
-
