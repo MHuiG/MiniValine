@@ -1,9 +1,9 @@
-import ajax from './ajax'
+// import ajax from './ajax'
 const GetIP = (root) => {
   window.getIP = (json) => {
     root.C.ip = json.ip
     window.MV.ip = root.C.ip
-    ajax({
+    /* ajax({
       url: 'http://smallsite.online:8085/lookUp',
       type: 'GET',
       data: {
@@ -13,7 +13,7 @@ const GetIP = (root) => {
         data = eval('(' + data + ')')
         window.MV.region = data
       }
-    })
+    }) */
   }
 }
 module.exports = GetIP
