@@ -11,7 +11,7 @@ const getCache = (root) => {
     }
     if ((s.mail !== '') && (root.mode === 'DesertsP')) {
       const el = root.el.querySelector('.visitor_avatar')
-      el.setAttribute('data-src', `${GBUrl + md5(s.mail.toLowerCase().trim())}?size=80&d=https%3a%2f%2fgravatar.loli.net%2favatar%2f9e63c80900d106cbbec5a9f4ea433a3e.jpg%3fsize%3d80`)
+      el.setAttribute('data-src', `${GBUrl + md5(s.mail.toLowerCase().trim())}?size=80&d=robohash`)
     }
   }
 }
