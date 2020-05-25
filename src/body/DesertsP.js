@@ -34,8 +34,8 @@ export function getEle (root) {
                                         `<div class="input-wrapper"><input type="text" name="website" class="vlink" placeholder="${root.i18n.link}" value=""></div>` +
                                         `<div class="post-action"><button type="button" class="vsubmit">${root.i18n.submit}</button></div>` +
                                     '</div>' +
+									'<div style="display:none;" class="vmark"></div>' +
 									'</div>' +
-                                    '<div style="display:none;" class="vmark"></div>' +
                                 '</div>' +
                                 '<div class="vsubmitting" style="display:none;"></div>' +
                             '</div>' +
