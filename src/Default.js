@@ -1,6 +1,6 @@
-export const VERSION = '2.6.7'
+export const VERSION = '2.6.8'
 export const GBUrl = 'https://gravatar.loli.net/avatar/'
-export const vis = 'https://cdn.jsdelivr.net/npm/minivaline-counter@1.3.15/dist/MCounter.min.js'
+export const vis = 'https://cdn.jsdelivr.net/npm/minivaline-counter@1.3.16/dist/MCounter.min.js?v=' + Date.parse(new Date())
 export const EUrl = ['https://cdn.jsdelivr.net/npm/alus@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/qq@master', 'https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master', 'https://cdn.jsdelivr.net/gh/MiniValine/tieba@master', 'https://cdn.jsdelivr.net/gh/MiniValine/twemoji@master', 'https://cdn.jsdelivr.net/gh/MiniValine/weibo@master']
 export const pf = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=es6'
 export const i18nUrl = 'https://cdn.jsdelivr.net/gh/MiniValine/minivaline-i18n@latest/'
