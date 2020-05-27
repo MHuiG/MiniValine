@@ -1,4 +1,4 @@
-import { vis, pf } from '../Default'
+import { pf } from '../Default'
 import getScript from './plugins/getScript'
 import GetIP from './plugins/GetIP'
 const script = (root) => {
@@ -12,10 +12,6 @@ const script = (root) => {
   if (!window.MV.pf) {
     getScript(pf)
     window.MV.pf = true
-  }
-  if (!window.MV.vis) {
-    getScript(vis)
-    window.MV.vis = true
   }
 }
 module.exports = script

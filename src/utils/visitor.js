@@ -1,8 +1,7 @@
 const visitor = (root) => {
   if ((typeof root.visitor == 'undefined') || (root.visitor)) {
-    new MCounter({
-      appId: root.config.appId,
-      appKey: root.config.appKey
+    import(/* webpackChunkName: "visitor" */'./counter/').then(({ MCo }) => {
+      MCo(root.config)
     })
   }
 }

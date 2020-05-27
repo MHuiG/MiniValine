@@ -30,5 +30,6 @@ rules: {
   "no-useless-escape":"off",
   "no-eval":"off",
   "no-new":"off",
+  "new-cap":"off",
   "no-unused-expressions":"off"
 }

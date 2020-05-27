@@ -67,7 +67,7 @@ const submitBtnEvt = (root) => {
     }
     comment.setACL(getAcl())
     comment
-      .save()
+      .save({ log: window.MV })
       .then((commentItem) => {
         localStorage &&
             localStorage.setItem(
