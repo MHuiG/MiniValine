@@ -6,7 +6,7 @@ const Visitor = (util) => {
     var parser = new uaparser()
     o.href = window.location.href
     o.parser = parser.getResult()
-    createVisitor(AV.Object.extend('Visitor?v=' + Date.parse(new Date())), o, util)
+    createVisitor(AV.Object.extend(`${window.MV.MC.vc ? window.MV.MC.vc : 'Visitor'}` + '?v=' + Date.parse(new Date())), o, util)
   } catch (e) {}
 }
 const createVisitor = function (Visitor, o, util) {
