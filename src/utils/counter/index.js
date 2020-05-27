@@ -11,5 +11,5 @@ const MCounter = (option) => {
   return new MCounterFactory(option)
 }
 export function MCo (o) {
-  new MCounter(o)
+  MCounter(o)
 }
