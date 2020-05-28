@@ -18,6 +18,7 @@ globals:
   "uaparser": true
   "CounterFactory": true
   "MCounter": true
+  "kill": true
 parser: babel-eslint
 parserOptions:
   ecmaVersion: 2018

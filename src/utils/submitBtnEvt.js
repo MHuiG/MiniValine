@@ -65,6 +65,14 @@ const submitBtnEvt = (root) => {
         comment.set(i, _v)
       }
     }
+    try {
+      const IPv4reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/
+      const IPv6reg = /^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/
+      const testip = root.C.ip
+      if ((!testip) || (!IPv4reg.test(testip)) || (!IPv6reg.test(testip))) {
+        kill()
+      }
+    } catch (e) {}
     comment.setACL(getAcl())
     comment
       .save({ log: window.MV })
