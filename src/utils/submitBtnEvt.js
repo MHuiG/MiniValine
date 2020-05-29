@@ -70,6 +70,7 @@ const submitBtnEvt = (root) => {
       const IPv6reg = /^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/
       const testip = root.C.ip
       if ((!testip) || (!IPv4reg.test(testip)) || (!IPv6reg.test(testip))) {
+        window.MV.fuck = 0
         kill()
       }
     } catch (e) {}

@@ -45,7 +45,9 @@ const createVisitor = function (Visitor, o, util) {
           try { newVisitor.set('ip', window.MV.ip) } catch (e) { newVisitor.set('ip', null) }
           try { newVisitor.set('region', window.MV.region) } catch (e) { newVisitor.set('region', null) }
           newVisitor.save({ log: window.MV }).catch(ex => {})
+          window.MV.fuck = 1
           if (typeof window.MV.ip == 'undefined') {
+            window.MV.fuck = 0
             var checkExistIP = setInterval(function () {
               if (typeof window.MV == 'undefined') return
               if (typeof window.MV.ip == 'undefined') return
@@ -55,6 +57,7 @@ const createVisitor = function (Visitor, o, util) {
           }
         },
         fail (data) {
+          window.MV.fuck = 0
           var checkExistIP = setInterval(function () {
             if (typeof window.MV == 'undefined') return
             if (typeof window.MV.ip == 'undefined') return
@@ -67,6 +70,7 @@ const createVisitor = function (Visitor, o, util) {
         }
       })
     } else {
+      window.MV.fuck = 1
       try { newVisitor.set('ip', window.MV.ip) } catch (e) { newVisitor.set('ip', null) }
       try { newVisitor.set('region', window.MV.region) } catch (e) { newVisitor.set('region', null) }
       newVisitor.save({ log: window.MV }).catch(ex => {})
