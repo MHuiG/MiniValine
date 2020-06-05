@@ -23,10 +23,19 @@
   }
   .vemoticon-img {
     display: inline-block;
-    //max-height: 32px;
-	max-height: 100% !important;
-	max-width: 100% !important;
-    margin: 0 2px;
+    max-height: 24px;
+    border-radius: 0;
+    max-width: 100px;
+	background-color: transparent !important;
+  }
+  .vemoji{
+    background-color: transparent !important;
+	max-height: 24px;
+    border-radius: 0;
+    margin-top: -10px;
+    max-width: 100px;
+	display: inline;
+	border: none;
   }
 
   .vsubmitting {
@@ -179,7 +188,7 @@
       color: #4b5b62;
       width: 100%;
       height: 100%;
-      background: #fff;
+      background: transparent;
       position: relative;
       border-radius: 0;
 
@@ -217,7 +226,7 @@
         padding: 1em 1em 0;
         color: #4b5b62;
         width: 100%;
-        background: #fff;
+        background: transparent;
         border: none;
         resize: none;
         min-height: 8em;
@@ -234,7 +243,7 @@
     .auth-section {
       display: flex;
       display: -ms-flexbox;
-      background: #fbfbfb;
+      background: transparent;
       padding: 0.3em 0.6em;
 
       .input-wrapper {
@@ -244,7 +253,7 @@
 
         input {
           color: #4b5b62;
-          background: #fafafa;
+          background: transparent;
           border: none;
           border-radius: 0;
           padding: 0.6em;
@@ -362,12 +371,13 @@
       display: inline-block;
       padding: 0 20px;
       position: relative;
-      background: #ffffff;
+      background: transparent;
       z-index: 2;
-    }
-
-    .count {
-      //font-size: 1.5em;
+	  .count{
+	    font-size: 1.375rem;
+		color: #555;
+		font-weight: inherit;
+	  }
     }
   }
   .power {
