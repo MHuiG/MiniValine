@@ -1,6 +1,6 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 2.7.x Alpha
+# This is MiniValine version 2.7.x Stable
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
