@@ -32,6 +32,9 @@ Just add the following style：
 	background: #282c34
 	border: 1px solid #282c34
 }
+.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+	background: transparent;
+}
 ```
 
 ## How to Add or Improve translation?
