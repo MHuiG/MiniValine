@@ -6,6 +6,34 @@ We welcome you to join the development of MiniValine. Please see [contributing d
 
 Also, we welcome Issue or PR to MiniValine.
 
+## How to Add Dark Mode?
+
+Assume that the trigger class of Dark Mode is `.darkmode`
+
+Just add the following style：
+
+```
+.darkmode .commentTrigger{
+	background-color: #403e3e !important;
+  }
+.darkmode .MiniValine .vpage .more{
+	background: #21232F
+}
+.darkmode img{
+      filter: brightness(30%)
+}
+.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+	background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+}
+.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+	background: rgba(0,0,0,0.9)
+}
+.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+	background: #282c34
+	border: 1px solid #282c34
+}
+```
+
 ## How to Add or Improve translation?
 
 -  Go to https://crowdin.com/project/minivaline
