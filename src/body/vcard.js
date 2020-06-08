@@ -27,12 +27,13 @@ const vcard = function (root, m) {
     let uaMeta = ''
     if (ua) {
       ua = uaparser(ua)
+      const svgstr = 'https://cdn.jsdelivr.net/gh/MiniValine/svg@master/'
       try {
         if (ua.browser && ua.browser.name) {
-          uaMeta += '<span class="vsys"><i class="fab fa-'
+          uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr
           const bn = ua.browser.name.toLowerCase()
           if (['samsung browser'].includes(bn)) {
-            uaMeta += 'mobile-alt fap'
+            uaMeta += 'mobile-alt'
           } else if (['android browser'].includes(bn)) {
             uaMeta += 'android'
           } else if (['mobile safari', 'safari'].includes(bn)) {
@@ -44,7 +45,7 @@ const vcard = function (root, m) {
           } else if (['qqbrowser', 'qqbrowserlite', 'qq'].includes(bn)) {
             uaMeta += 'qq'
           } else if (['baiduboxapp', 'baidu'].includes(bn)) {
-            uaMeta += 'paw fap'
+            uaMeta += 'paw'
           } else if (['chrome', 'chromium', 'chrome headless', 'chrome webview'].includes(bn)) {
             uaMeta += 'chrome'
           } else if (['firefox', 'opera mobi', 'edge', 'opera', 'opera coast', 'opera mini', 'opera tablet'].includes(bn)) {
@@ -52,17 +53,17 @@ const vcard = function (root, m) {
           } else {
             uaMeta += 'snapchat-ghost'
           }
-          uaMeta += '"></i>' +
+          uaMeta += '.svg"/></i>' +
 			ua.browser.name +
 			' ' +
 			(ua.browser.version ? ua.browser.version : '') +
 			'</span>' +
 			' '
         } else {
-          uaMeta += '<span class="vsys"><i class="fad fa-stars"></i>Magical APP</span>'
+          uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'stars.svg"/></i>Magical APP</span>'
         }
         if (ua.os && ua.os.name) {
-          uaMeta += '<span class="vsys"><i class="fab fa-'
+          uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr
           const on = ua.os.name.toLowerCase()
           if (['mac os', 'ios'].includes(on)) {
             uaMeta += 'apple'
@@ -73,13 +74,13 @@ const vcard = function (root, m) {
           } else {
             uaMeta += 'snapchat-ghost'
           }
-          uaMeta += '"></i>' +
+          uaMeta += '.svg"/></i>' +
 			ua.os.name +
 			' ' +
 			(ua.os.version ? ua.os.version : '') +
 			'</span>'
         } else {
-          uaMeta += '<span class="vsys"><i class="fap fa-magic"></i>Magical OS</span>'
+          uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'magic.svg"/></i>Magical OS</span>'
         }
       } catch (e) { console.log(e) }
     }

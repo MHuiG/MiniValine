@@ -565,20 +565,17 @@
 				margin-right: 5px;
 			}
 		  }
-		  .fab{
-		    font-family: "Font Awesome 5 Brands";
-            font-weight: 400;
-			color: #7889c3;
-		  }
-		  .fap{
-		    font-family: "Font Awesome 5 Pro";
-            font-weight: 400;
-			color: #7889c3;
-		  }
-		  .fad{
-		    font-family: "Font Awesome 5 Duotone";
-            font-weight: 400;
-			color: #7889c3;
+		  .msvg{
+			-webkit-font-smoothing: antialiased;
+			display: inline-block;
+			font-style: normal;
+			font-weight: 400;
+			font-variant: normal;
+			text-rendering: auto;
+			line-height: 1.75;
+			text-align: center;
+			width: .9em;
+			height: .9em;
 		  }
           .spacer {
             color: #ccc;

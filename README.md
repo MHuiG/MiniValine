@@ -131,11 +131,6 @@ new MiniValine({
 
   * `DesertsP` DesertsP Style mode.
   * `xCss`  xCss Style mode.
-  
-  Note: xCss Style mode needs to import fontawesome@5
-  ```
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
-  ```
 
 - **placeholder** `String`
 
