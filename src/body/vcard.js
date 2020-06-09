@@ -48,7 +48,9 @@ const vcard = function (root, m) {
             uaMeta += 'paw'
           } else if (['chrome', 'chromium', 'chrome headless', 'chrome webview'].includes(bn)) {
             uaMeta += 'chrome'
-          } else if (['firefox', 'opera mobi', 'edge', 'opera', 'opera coast', 'opera mini', 'opera tablet'].includes(bn)) {
+          } else if (['opera mobi', 'opera', 'opera coast', 'opera mini', 'opera tablet'].includes(bn)) {
+            uaMeta += 'opera'
+          } else if (['firefox', 'edge'].includes(bn)) {
             uaMeta += bn
           } else {
             uaMeta += 'snapchat-ghost'
@@ -69,7 +71,9 @@ const vcard = function (root, m) {
             uaMeta += 'apple'
           } else if (['chromium os'].includes(on)) {
             uaMeta += 'chrome'
-          } else if (['firefox os', 'android', 'linux', 'windows', 'ubuntu', 'suse', 'redhat', 'fedora', 'centos', 'blackberry'].includes(on)) {
+          } else if (['firefox os'].includes(on)) {
+            uaMeta += 'firefox'
+          } else if (['android', 'linux', 'windows', 'ubuntu', 'suse', 'redhat', 'fedora', 'centos', 'blackberry'].includes(on)) {
             uaMeta += on
           } else {
             uaMeta += 'snapchat-ghost'

@@ -558,10 +558,10 @@
 			margin-right: .3em;
 			color: #7889c3;
 			box-sizing: border-box;
-			line-height: 1.75;
+			line-height: 1.75em;
 			i{
 			    box-sizing: border-box;
-				line-height: 1.75;
+				line-height: 1.75em;
 				margin-right: 5px;
 			}
 		  }
@@ -572,10 +572,10 @@
 			font-weight: 400;
 			font-variant: normal;
 			text-rendering: auto;
-			line-height: 1.75;
-			text-align: center;
-			width: .9em;
-			height: .9em;
+			line-height: 1.75em;
+			vertical-align:middle;
+			width: 1.2em;
+			height: 1.2em;
 		  }
           .spacer {
             color: #ccc;
