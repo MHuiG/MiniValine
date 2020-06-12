@@ -73,7 +73,9 @@ const vcard = function (root, m) {
             uaMeta += 'chrome'
           } else if (['firefox os'].includes(on)) {
             uaMeta += 'firefox'
-          } else if (['android', 'linux', 'windows', 'ubuntu', 'suse', 'redhat', 'fedora', 'centos', 'blackberry'].includes(on)) {
+          } else if (['windows phone', 'windows'].includes(on)) {
+            uaMeta += 'windows'
+          } else if (['android', 'linux', 'ubuntu', 'suse', 'redhat', 'fedora', 'centos', 'blackberry'].includes(on)) {
             uaMeta += on
           } else {
             uaMeta += 'snapchat-ghost'
