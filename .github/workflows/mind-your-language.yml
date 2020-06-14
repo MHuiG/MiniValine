@@ -22,4 +22,4 @@ jobs:
       - name: Profanity check step
         uses: tailaiw/mind-your-language-action@v1.0.3
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

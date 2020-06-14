@@ -12,4 +12,4 @@ jobs:
         - name: update all prs
           uses: maxkomarychev/pr-updater-action@v1.0.0
           with:
-            token: ${{ secrets.TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
