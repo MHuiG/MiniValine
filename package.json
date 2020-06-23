@@ -17,7 +17,8 @@
     "format": "eslint src --fix",
     "cover": "jest --coverage --runInBand --detectOpenHandles",
     "snyk-protect": "snyk protect",
-    "prepublish0": "npm run snyk-protect"
+    "prepublish0": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "MiniValine",
@@ -77,7 +78,7 @@
     "leancloud-storage": "^4.5.3",
     "marked": "^1.0.0",
     "sass": "^1.26.3",
-    "snyk": "^1.316.2",
+    "snyk": "^1.348.1",
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
     "ua-parser-js": "^0.7.21",
