@@ -1,6 +1,6 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 2.7.x Stable
+# This is MiniValine version 3.0 Alpha 0
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
@@ -32,13 +32,17 @@
 - [Safe by default](https://jsxss.com/en/try.html).
 - [Always compatible with IE](https://polyfill.io/).
 - [Simple and lightweight](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
-- Support [lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
-- Support [code highlighting](https://highlightjs.org/static/demo/).
-- Support [Markdown](https://guides.github.com/features/mastering-markdown/).
-- Support [MathJax](https://www.mathjax.org/).
+- [Lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
+- Emoticon category.
+- [Code highlighting](https://highlightjs.org/static/demo/).
+- [Markdown](https://guides.github.com/features/mastering-markdown/).
+- [MathJax](https://www.mathjax.org/).
 - Enter live preview.
-- Support [paste and upload pictures](https://imgkr.com/).
-- Support [multiple languages](https://crowdin.com/project/minivaline).
+- [Upload pictures](https://imgkr.com/) pasting or dragging.
+- [Multiple languages](https://crowdin.com/project/minivaline).
+- Integrated xCss and DesertsP Style mode.
+- Admin Flag.
+- [Browser and Operating System icon](https://github.com/MiniValine/svg).
 
 ## Install
 
