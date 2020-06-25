@@ -17,6 +17,21 @@ const uploadImage = (root) => {
       }
     }
   })
+  const walkfile = (files) => {
+    if (files.length) {
+      for (var idx = 0; idx < files.length; idx++) {
+        const file = files[idx]
+        const uploadText = `![Uploading ${file.name}]()`
+        insertAtCaret(_veditor, uploadText)
+        loadImage(file, function (err, ret) {
+          if (!err && ret) {
+            _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data})`)
+            root.C.comment = _veditor.value
+          }
+        })
+      }
+    }
+  }
   dom.on('paste', document, (e) => {
     const clipboardData = 'clipboardData' in e ? e.clipboardData : ((e.originalEvent && e.originalEvent.clipboardData) || window.clipboardData)
     const items = clipboardData && clipboardData.items
@@ -29,19 +44,7 @@ const uploadImage = (root) => {
           break
         }
       }
-      if (files.length) {
-        for (var idx = 0; idx < files.length; idx++) {
-          const file = files[idx]
-          const uploadText = `![Uploading ${file.name}]()`
-          insertAtCaret(_veditor, uploadText)
-          loadImage(file, function (err, ret) {
-            if (!err && ret) {
-              _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data})`)
-              root.C.comment = _veditor.value
-            }
-          })
-        }
-      }
+      walkfile(files)
     }
   })
   const loadImage = (file, callback) => {
@@ -66,5 +69,20 @@ const uploadImage = (root) => {
     xhr.open('POST', 'https://imgkr.com/api/files/upload', true)
     xhr.send(formData)
   }
+  var dashboard = document.getElementsByClassName('veditor')[0]
+  dashboard.addEventListener('dragover', function (e) {
+    e.preventDefault()
+    e.stopPropagation()
+  })
+  dashboard.addEventListener('dragenter', function (e) {
+    e.preventDefault()
+    e.stopPropagation()
+  })
+  dashboard.addEventListener('drop', function (e) {
+    e.preventDefault()
+    e.stopPropagation()
+    var files = this.files || e.dataTransfer.files
+    walkfile(files)
+  })
 }
 module.exports = uploadImage

@@ -1,6 +1,6 @@
 {
   "name": "minivaline",
-  "version": "2.7.3",
+  "version": "2.7.5",
   "description": "A simple and minimalist comment system based on Leancloud.",
   "main": "/dist/MiniValine.min.js",
   "author": {
@@ -17,8 +17,7 @@
     "format": "eslint src --fix",
     "cover": "jest --coverage --runInBand --detectOpenHandles",
     "snyk-protect": "snyk protect",
-    "prepublish0": "npm run snyk-protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish0": "npm run snyk-protect"
   },
   "keywords": [
     "MiniValine",

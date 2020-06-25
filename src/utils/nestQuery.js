@@ -53,7 +53,7 @@ const nestQuery = (root) => {
         // console.log(ex)
           root.loading.hide(root.parentCount)
         })
-    }, Math.random() * 200 + 60)
+    }, level * 60)
   }
 }
 module.exports = nestQuery

@@ -4,7 +4,6 @@ const MCounterFactory = function (option) {
   root.config = option
   window.MV.MC.util = util
   window.MV.MC.vc = option.vc
-  window.MV.MC.lS = option.localStorage
   util.Visitor(util)
   util.Counter()
 }
