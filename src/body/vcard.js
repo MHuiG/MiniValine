@@ -4,6 +4,19 @@ const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   const Hash = md5(m.get('mail'))
   var gravatarUrl = GravatarUrl(m, root)
+  if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
+    try {
+      var item = {
+        img: gravatarUrl,
+        info: m.get('comment').replace(/<[^>]+>/g, '').replace(/\n/g, '').replace(/\r\n/g, '').slice(0, 25).trim(),
+        close: true,
+        speed: 12,
+        color: '#ffffff',
+        old_ie_color: '#ffffff'
+      }
+      $('body').barrager(item)
+    } catch (e) {}
+  }
   if (root.mode === 'DesertsP') {
     const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +

@@ -1,6 +1,6 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 3.0 Alpha 0
+# This is MiniValine version 3.0 Alpha
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
@@ -43,6 +43,7 @@
 - Integrated xCss and DesertsP Style mode.
 - Admin Flag.
 - [Browser and Operating System icon](https://github.com/MiniValine/svg).
+- Comment barrage.
 
 ## Install
 
@@ -244,6 +245,15 @@ new MiniValine({
   Default: `http[s]://[tab/us].avoscloud.com`
   
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
+
+### Experimental
+
+- **danmu** `Boolean`
+
+  Default: `true`
+  
+  Enable comment barrage.
+
 
 ## ToDo
 
