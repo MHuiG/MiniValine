@@ -9,8 +9,9 @@ const vcard = function (root, m) {
       var item = {
         img: gravatarUrl,
         info: m.get('comment').replace(/<[^>]+>/g, '').replace(/\n/g, '').replace(/\r\n/g, '').slice(0, 25).trim(),
+        href: '/#' + m.id,
         close: true,
-        speed: 12,
+        speed: 20,
         color: '#ffffff',
         old_ie_color: '#ffffff'
       }

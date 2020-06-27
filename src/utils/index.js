@@ -24,6 +24,7 @@ import parentQuery from './parentQuery'
 import ActivateCode from './ActivateCode'
 import previewEvt from './previewEvt'
 import visitor from './visitor'
+import danmu from './danmu'
 
 module.exports = {
   Config: Config,
@@ -51,5 +52,6 @@ module.exports = {
   ActivateCode: ActivateCode,
   previewEvt: previewEvt,
   visitor: visitor,
+  danmu: danmu,
   getCache: getCache
 }
