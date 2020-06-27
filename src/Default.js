@@ -1,4 +1,4 @@
-export const VERSION = '3.0.0-alpha.1'
+export const VERSION = '3.0.0-alpha.2'
 export const GBUrl = 'https://gravatar.loli.net/avatar/'
 export const EUrl = ['https://cdn.jsdelivr.net/npm/alus@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/qq@master', 'https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master', 'https://cdn.jsdelivr.net/gh/MiniValine/tieba@master', 'https://cdn.jsdelivr.net/gh/MiniValine/twemoji@master', 'https://cdn.jsdelivr.net/gh/MiniValine/weibo@master']
 export const pf = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=es6'

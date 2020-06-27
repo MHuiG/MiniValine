@@ -6,12 +6,24 @@ const vcard = function (root, m) {
   var gravatarUrl = GravatarUrl(m, root)
   if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
     try {
+      if (typeof window.MV.danmu == 'undefined') {
+        window.MV.danmu = {}
+      }
+      if (typeof window.MV.danmu.bottom == 'undefined') {
+        window.MV.danmu.bottom = $(window).height()
+      }
+      if (window.MV.danmu.bottom < 60) {
+        window.MV.danmu.bottom = $(window).height() - 60
+      } else {
+        window.MV.danmu.bottom = window.MV.danmu.bottom - 60
+      }
       var item = {
         img: gravatarUrl,
         info: m.get('comment').replace(/<[^>]+>/g, '').replace(/\n/g, '').replace(/\r\n/g, '').slice(0, 25).trim(),
         href: '/#' + m.id,
+        bottom: window.MV.danmu.bottom,
         close: true,
-        speed: 20,
+        speed: Math.random() * Math.random() * 30 + 10,
         color: '#ffffff',
         old_ie_color: '#ffffff'
       }
