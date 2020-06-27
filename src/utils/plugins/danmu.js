@@ -20,7 +20,7 @@ export function danmu () {
         var thisHeight = (windowHeight > this.height()) ? this.height() : windowHeight
         var windowWidth = $(window).width() + 500
         var thisWidth = (windowWidth > this.width()) ? this.width() : windowWidth
-        var bottom = (barrage.bottom == 0) ? Math.floor(Math.random() * thisHeight + 40) : barrage.bottom
+        var bottom = (barrage.bottom === 0) ? Math.floor(Math.random() * thisHeight + 40) : barrage.bottom
         divBarrager.css('bottom', bottom + 'px')
         var divBarragerBox = $("<div class='barrage_box cl'></div>").appendTo(divBarrager)
         if (barrage.img) {
