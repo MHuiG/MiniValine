@@ -6,10 +6,6 @@ const vcard = function (root, m) {
   var gravatarUrl = GravatarUrl(m, root)
   if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
     try {
-      if (typeof window.MV.barrager == 'undefined') {
-        window.MV.barrager = {}
-        window.MV.barrager.enable = 1
-      }
       if (window.MV.barrager.enable) {
         if (typeof window.MV.barrager.bottom == 'undefined') {
           window.MV.barrager.bottom = $(window).height()

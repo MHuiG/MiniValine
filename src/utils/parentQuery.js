@@ -39,11 +39,13 @@ const parentQuery = (root) => {
         }
       }
       root.loading.hide(root.parentCount)
-      if ((typeof root.config.barrager == 'undefined') || (root.config.barrager == 1)) {
-        window.MV.barrager.enable = 0
-      }
+      try {
+        if ((typeof window.MV.barrager.bottom != 'undefined') && ((typeof root.config.barrager == 'undefined') || (root.config.barrager == 1))) {
+          window.MV.barrager.enable = 0
+        }
+      } catch (e) {}
     }).catch((ex) => {
-      // console.log(ex)
+      console.log(ex)
       root.loading.hide(root.parentCount)
     })
   }
