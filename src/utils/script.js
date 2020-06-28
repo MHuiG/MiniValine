@@ -13,13 +13,16 @@ const script = (root) => {
     getScript(pf)
     window.MV.pf = true
   }
-  if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
+  if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
     if (typeof window.MV.jq == 'undefined') {
       if (typeof jQuery == 'undefined') {
         getScript('https://cdn.jsdelivr.net/npm/jquery')
       }
       window.MV.jq = true
     }
+  }
+  if ((typeof root.visitor == 'undefined') || (root.visitor)) {
+    getScript('https://cdn.jsdelivr.net/npm/fingerprintjs2')
   }
 }
 module.exports = script

@@ -25,6 +25,53 @@ const Visitor = (util) => {
     o.sessionStorage = window.sessionStorage
     o.colorDepth = window.screen.colorDepth
     o.scrollTop = (window.pageYOffset || document.documentElement.scrollTop || (document.body && document.body.scrollTop) || 0)
+    var Options = {
+      preprocessor: null,
+      audio: {
+        timeout: 1000,
+        excludeIOS11: true
+      },
+      fonts: {
+        swfContainerId: 'fingerprintjs2',
+        swfPath: 'flash/compiled/FontList.swf',
+        userDefinedFonts: [],
+        extendedJsFonts: false
+      },
+      screen: {
+        detectScreenOrientation: true
+      },
+      plugins: {
+        sortPluginsFor: [/palemoon/i],
+        excludeIE: false
+      },
+      extraComponents: [],
+      excludes: {
+        enumerateDevices: true,
+        pixelRatio: true,
+        doNotTrack: true,
+        fontsFlash: true
+      },
+      NOT_AVAILABLE: 'not available',
+      ERROR: 'error',
+      EXCLUDED: 'excluded'
+    }
+    if (window.requestIdleCallback) {
+      requestIdleCallback(function () {
+        Fingerprint2.getV18(Options, function (result, components) {
+          window.MV.finger = {}
+          window.MV.finger.hash = result
+          window.MV.finger.components = components
+        })
+      })
+    } else {
+      setTimeout(function () {
+        Fingerprint2.getV18(Options, function (result, components) {
+          window.MV.finger = {}
+          window.MV.finger.hash = result
+          window.MV.finger.components = components
+        })
+      }, 500)
+    }
     window.MV.log = o
     createVisitor(AV.Object.extend(`${window.MV.MC.vc ? window.MV.MC.vc : 'Visitor'}` + '?v=' + o.time), o, util)
   } catch (e) {}

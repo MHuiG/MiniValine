@@ -39,8 +39,11 @@ const parentQuery = (root) => {
         }
       }
       root.loading.hide(root.parentCount)
+      if ((typeof root.config.barrager == 'undefined') || (root.config.barrager == 1)) {
+        window.MV.barrager.enable = 0
+      }
     }).catch((ex) => {
-      console.log(ex)
+      // console.log(ex)
       root.loading.hide(root.parentCount)
     })
   }

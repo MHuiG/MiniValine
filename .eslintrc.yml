@@ -19,6 +19,7 @@ globals:
   "CounterFactory": true
   "MCounter": true
   "kill": true
+  "Fingerprint2": true
 parser: babel-eslint
 parserOptions:
   ecmaVersion: 2018

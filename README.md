@@ -248,11 +248,17 @@ new MiniValine({
 
 ### Experimental
 
-- **danmu** `Boolean`
+- **barrager** `Number`
 
-  Default: `true`
+  Default: `1`
   
-  Enable comment barrage.
+  Options: 
+
+  * `0`  Close Comment barrage.
+  * `1`  Load a round of Comment barrage.
+  * `2`  Load all round of Comment barrage
+
+  Comment barrage.
 
 
 ## ToDo

@@ -59,8 +59,8 @@ MiniValineFactory.prototype.bind = function () {
   if (root.mode === 'DesertsP') {
     util.startEvt(root)
   }
-  if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
-    util.danmu(root)
+  if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
+    util.barrager(root)
   }
   util.getCache(root)
   util.resetForm(root)

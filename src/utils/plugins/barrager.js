@@ -1,4 +1,4 @@
-export function danmu () {
+export function barrager () {
   var checkjq = setInterval(function () {
     if (typeof jQuery == 'undefined') return
     clearInterval(checkjq);

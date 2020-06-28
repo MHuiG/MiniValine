@@ -4,30 +4,33 @@ const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   const Hash = md5(m.get('mail'))
   var gravatarUrl = GravatarUrl(m, root)
-  if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
+  if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
     try {
-      if (typeof window.MV.danmu == 'undefined') {
-        window.MV.danmu = {}
+      if (typeof window.MV.barrager == 'undefined') {
+        window.MV.barrager = {}
+        window.MV.barrager.enable = 1
       }
-      if (typeof window.MV.danmu.bottom == 'undefined') {
-        window.MV.danmu.bottom = $(window).height()
+      if (window.MV.barrager.enable) {
+        if (typeof window.MV.barrager.bottom == 'undefined') {
+          window.MV.barrager.bottom = $(window).height()
+        }
+        if (window.MV.barrager.bottom < 60) {
+          window.MV.barrager.bottom = $(window).height() - 60
+        } else {
+          window.MV.barrager.bottom = window.MV.barrager.bottom - 60
+        }
+        var item = {
+          img: gravatarUrl,
+          info: m.get('comment').replace(/<[^>]+>/g, '').replace(/\n/g, '').replace(/\r\n/g, '').slice(0, 25).trim(),
+          href: '#' + m.id,
+          bottom: window.MV.barrager.bottom,
+          close: true,
+          speed: Math.random() * Math.random() * 30 + 10,
+          color: '#ffffff',
+          old_ie_color: '#ffffff'
+        }
+        $('body').barrager(item)
       }
-      if (window.MV.danmu.bottom < 60) {
-        window.MV.danmu.bottom = $(window).height() - 60
-      } else {
-        window.MV.danmu.bottom = window.MV.danmu.bottom - 60
-      }
-      var item = {
-        img: gravatarUrl,
-        info: m.get('comment').replace(/<[^>]+>/g, '').replace(/\n/g, '').replace(/\r\n/g, '').slice(0, 25).trim(),
-        href: '#' + m.id,
-        bottom: window.MV.danmu.bottom,
-        close: true,
-        speed: Math.random() * Math.random() * 30 + 10,
-        color: '#ffffff',
-        old_ie_color: '#ffffff'
-      }
-      $('body').barrager(item)
     } catch (e) {}
   }
   if (root.mode === 'DesertsP') {
