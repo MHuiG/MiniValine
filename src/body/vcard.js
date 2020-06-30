@@ -21,7 +21,7 @@ const vcard = function (root, m) {
           href: '#' + m.id,
           bottom: window.MV.barrager.bottom,
           close: true,
-          speed: Math.random() * Math.random() * 30 + 10,
+          speed: Math.random() * Math.random() * 60 + 20,
           color: '#ffffff',
           old_ie_color: '#ffffff'
         }
