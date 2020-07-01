@@ -24,14 +24,13 @@ const i18n = (root) => {
           data = eval('(' + data + ')')
           root.i18n = data
           window.MV.i18n = root.i18n
-          localStorage &&
-localStorage.setItem(
-  'MiniValineI18n',
-  JSON.stringify({
-    lang: root.lang,
-    i18n: root.i18n
-  })
-)
+          localStorage && localStorage.setItem(
+            'MiniValineI18n',
+            JSON.stringify({
+              lang: root.lang,
+              i18n: root.i18n
+            })
+          )
         }
       })
     }

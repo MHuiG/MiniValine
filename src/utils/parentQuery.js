@@ -45,7 +45,7 @@ const parentQuery = (root) => {
         }
       } catch (e) {}
     }).catch((ex) => {
-      console.log(ex)
+      // console.log(ex)
       root.loading.hide(root.parentCount)
     })
   }

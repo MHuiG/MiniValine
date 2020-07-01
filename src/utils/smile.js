@@ -1,17 +1,49 @@
 import ajax from './plugins/ajax'
 
 const smile = (root) => {
+  window.MV.emoticonUrl = root.emoticonUrl
   if (!window.MV.emoticonList) {
-    root.emoticonList = []
-    root.emoticon = []
-    for (var i = 0; i < root.emoticonUrl.length; i++) {
-      getSmile(root, root.emoticonUrl[i])
+    let s = localStorage && localStorage.getItem('MiniValineSmile')
+    if (s) {
+      s = JSON.parse(s)
+      if (s.emoticonUrl.length == root.emoticonUrl.length) {
+        root.emoticonList = s.emoticonList
+        root.emoticon = []
+        for (var i = 0; i < root.emoticonList.length; i++) {
+          for (var j = 0; j < root.emoticonList[i].length; j++) {
+            root.emoticon[root.emoticonList[i][j].split('/')[root.emoticonList[i][j].split('/').length - 1]] = root.emoticonList[i][j]
+          }
+        }
+        window.MV.emoticonList = root.emoticonList
+        window.MV.emoticon = root.emoticon
+        window.MV.getSmile = 0
+      } else {
+        window.MV.getSmile = 1
+      }
+    } else {
+      window.MV.getSmile = 1
     }
-    window.MV.emoticonList = root.emoticonList
-    window.MV.emoticon = root.emoticon
-  } else {
-    root.emoticonList = window.MV.emoticonList
-    root.emoticon = window.MV.emoticon
+    if (window.MV.getSmile) {
+      root.emoticonList = []
+      root.emoticon = []
+      for (var k = 0; k < root.emoticonUrl.length; k++) {
+        getSmile(root, root.emoticonUrl[k])
+      }
+      window.MV.emoticonList = root.emoticonList
+      window.MV.emoticon = root.emoticon
+    } else {
+      root.emoticonList = window.MV.emoticonList
+      root.emoticon = window.MV.emoticon
+    }
+    setTimeout(function () {
+      localStorage && localStorage.setItem(
+        'MiniValineSmile',
+        JSON.stringify({
+          emoticonUrl: window.MV.emoticonUrl,
+          emoticonList: window.MV.emoticonList
+        })
+      )
+    }, 5000)
   }
 }
 const getSmile = (root, Url) => {
