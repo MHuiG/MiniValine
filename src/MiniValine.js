@@ -8,7 +8,6 @@ const MiniValineFactory = function (option) {
   util.ActivateCode(root)
   util.script(root)
   util.i18n(root)
-  util.smile(root)
   util.initLibs(root)
 }
 MiniValineFactory.prototype.initCheck = function () {
@@ -40,19 +39,21 @@ MiniValineFactory.prototype.initBody = function () {
     root.nodata.show()
     body.smiles(root)
     util.setAV(root)
-    util.visitor(root)
   } catch (ex) {
     // console.log(ex)
     return
   }
   root.loading.hide(root.parentCount)
-  util.alert(root)
   root.loading.show()
   util.initCount(root)
   root.bind()
 }
 MiniValineFactory.prototype.bind = function () {
   const root = this
+  util.insertComment(root, body)
+  util.parentQuery(root)
+  util.nestQuery(root)
+  util.alert(root)
   util.inputs(root)
   util.previewEvt(root)
   util.smileEvt(root)
@@ -70,8 +71,7 @@ MiniValineFactory.prototype.bind = function () {
   util.previewBtnEvt(root)
   util.atEvt(root)
   util.submitBtnEvt(root)
-  util.insertComment(root, body)
-  util.parentQuery(root)
-  util.nestQuery(root)
+  util.smile(root)
+  util.visitor(root)
 }
 module.exports = MiniValineFactory

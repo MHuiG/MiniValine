@@ -205,7 +205,7 @@ new MiniValine({
   Default: `['https://cdn.jsdelivr.net/npm/alus@latest','https://cdn.jsdelivr.net/gh/MiniValine/qq@latest','https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest','https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest','https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest','https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest']`
   
   Expression Url.
-    
+  
   [How to customize emoticons?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons)
 
 - **NoRecordIP** `Boolean`
@@ -236,7 +236,7 @@ new MiniValine({
 
   Default: `true`
   
-  仅提供`文章阅读量访问统计`和`全站访问统计`,如需其他功能,请设置为`false`,并自行配置`MiniValine Counter`.
+  Only `article reading access statistics`and `whole site access statistics` are provided. For other functions, please set it to "false" and configure `MiniValine Counter`by yourself.
 
   **[MiniValine Counter](https://github.com/MiniValine/minivaline-counter)**
 
@@ -258,7 +258,7 @@ new MiniValine({
   * `1`  Load a round of Comment barrage.
   * `2`  Load all round of Comment barrage
 
-  Comment barrage.
+  Comment barrage. [Load only when the page is ***first*** loaded]
 
 
 ## ToDo
