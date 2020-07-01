@@ -12,6 +12,9 @@ const parentQuery = (root) => {
       const len = rets.length
       if (len) {
         for (let i = 0; i < len; i++) {
+          if (i == 0) {
+            root.loading.hide(root.parentCount)
+          }
           if (rets[i].get('isSpam')) continue
           const render = (o) => {
             rets[i].set('comment', o.TEXT)
@@ -38,7 +41,6 @@ const parentQuery = (root) => {
           })
         }
       }
-      root.loading.hide(root.parentCount)
       try {
         if ((typeof window.MV.barrager.bottom != 'undefined') && ((typeof root.config.barrager == 'undefined') || (root.config.barrager == 1))) {
           window.MV.barrager.enable = 0
