@@ -6,7 +6,7 @@ const smile = (root) => {
     let s = localStorage && localStorage.getItem('MiniValineSmile')
     if (s) {
       s = JSON.parse(s)
-      if (s.emoticonUrl.length == root.emoticonUrl.length) {
+      if (equar(s.emoticonUrl, root.emoticonUrl)) {
         root.emoticonList = s.emoticonList
         root.emoticon = []
         for (var i = 0; i < root.emoticonList.length; i++) {
@@ -60,5 +60,17 @@ const getSmile = (root, Url) => {
       root.emoticonList.push(tmp)
     }
   })
+}
+function equar (a, b) {
+  if (a.length !== b.length) {
+    return false
+  } else {
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) {
+        return false
+      }
+    }
+    return true
+  }
 }
 module.exports = smile
