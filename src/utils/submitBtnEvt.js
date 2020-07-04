@@ -47,6 +47,9 @@ const submitBtnEvt = (root) => {
   // setting access
   const getAcl = () => {
     const acl = new root.v.ACL()
+    if (root.config.role) {
+      acl.setWriteAccess('role:' + root.config.role, true)
+    }
     acl.setPublicReadAccess(true)
     acl.setPublicWriteAccess(false)
     return acl
