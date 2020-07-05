@@ -245,7 +245,7 @@ new MiniValine({
   Default: `http[s]://[tab/us].avoscloud.com`
   
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
-
+<!--
 ### Experimental
 
 - **barrager** `Number`
@@ -273,7 +273,7 @@ new MiniValine({
   According to IP output area.
   
   Note: Currently only Chinese API is available.
-
+-->
 
 ## ToDo
 
