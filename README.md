@@ -143,7 +143,7 @@ new MiniValine({
 
 - **pathname** `String`
 
-  Default: `location.pathname.replace(/\/$/, '')`
+  Default: `location.pathname`
   
   The pathname of the page.
 
@@ -170,7 +170,7 @@ new MiniValine({
   The String Array of Words to show Flag.
   
   For Example:
-  `tagMeta: ["管理员", "小伙伴", "访客"]`
+  `tagMeta: ["Master", "Friend", "Visitor"]`
 
 - **math** `Boolean`
 
@@ -259,6 +259,20 @@ new MiniValine({
   * `2`  Load all round of Comment barrage
 
   Comment barrage. [Load only when the page is ***first*** loaded]
+
+- **role** `String`
+
+  Default: `admin`
+  
+  Write permissions for the administrator role.
+
+- **region** `Boolean`
+
+  Default: `false`
+  
+  According to IP output area.
+  
+  Note: Currently only Chinese API is available.
 
 
 ## ToDo

@@ -15,6 +15,7 @@ const Config = function (root) {
   root.mode = root.config.mode || 'DesertsP'
   root.placeholder = root.config.placeholder || ''
   root.C = C
-  root.C.url = root.config.pathname || location.pathname.replace(/\/$/, '')
+  root.C.url = root.config.pathname || location.pathname
+  root.role = root.config.role ? root.config.role : 'admin'
 }
 module.exports = Config

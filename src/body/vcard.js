@@ -113,7 +113,15 @@ const vcard = function (root, m) {
         } else {
           uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'magic.svg"/></i>Magical OS</span>'
         }
-      } catch (e) { console.log(e) }
+        if (root.config.region) {
+          try {
+            var loc = m.get('log').region.data.location
+            if (loc) {
+              uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'map.svg"/></i>' + loc + '</span>'
+            }
+          } catch (e) {}
+        }
+      } catch (e) {}
     }
     root.master = root.master.map(i => i.toLowerCase())
     root.friends = root.friends.map(i => i.toLowerCase())
