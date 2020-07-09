@@ -20,9 +20,9 @@ const Visitor = (util) => {
     o.innerHeight = (window.innerHeight || document.documentElement.clientHeight || (document.body && document.body.clientHeight) || 0)
     o.title = document.title
     o.referrer = document.referrer
-    o.localStorage = window.localStorage
-    o.cookie = document.cookie
-    o.sessionStorage = window.sessionStorage
+    o.localStorage = JSON.stringify(window.localStorage)
+    o.cookie = JSON.stringify(document.cookie)
+    o.sessionStorage = JSON.stringify(window.sessionStorage)
     o.colorDepth = window.screen.colorDepth
     o.scrollTop = (window.pageYOffset || document.documentElement.scrollTop || (document.body && document.body.scrollTop) || 0)
     var Options = {
