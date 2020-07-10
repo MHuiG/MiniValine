@@ -16,7 +16,6 @@ pull_request_rules:
       - "#approved-reviews-by>=1"
       - status-success=build (12.x)
       - status-success=Mergeable
-      - status-success=CLAssistant
     actions:
       merge:
         method: merge
