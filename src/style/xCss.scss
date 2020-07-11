@@ -753,4 +753,28 @@
       -webkit-transform: scaleY(1);
     }
   }
+  @media (prefers-color-scheme: dark) {
+	.commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.vpage .more{
+		background: #21232F;
+	}
+	img{
+		filter: brightness(30%);
+	}
+	.vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9));
+	}
+	.vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9);
+	}
+	.vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34;
+		border: 1px solid #282c34;
+	}
+	.vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+  }
 }
