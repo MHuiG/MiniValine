@@ -753,6 +753,7 @@
         -webkit-transform: scaleY(1);
       }
     }
+	/***************Dark Mode **************************/
     @media (prefers-color-scheme: dark) {
       .commentTrigger{
           background-color: #403e3e !important;
@@ -776,15 +777,15 @@
       .vinputs-area .vextra-area .vsmile-icons{
           background: transparent;
       }
-      .MiniValine * {
+      * {
         color: #CCCCCC;
       }
-      .MiniValine .vinputs-area .auth-section .input-wrapper input {
+      .vinputs-area .auth-section .input-wrapper input {
         color: #5A6268;
       }
-      .MiniValine .info .col .count {
+      .info .col .count {
         color: #28A745;
       }
     }
-  }
+}
   
