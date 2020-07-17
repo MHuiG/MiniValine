@@ -33,7 +33,6 @@ pull_request_rules:
     conditions:
       - author=renovate[bot]
       - status-success=build (12.x)
-      - status-success=license/cla
     actions:
       label:
         add: ["Build","🛠 Improvement"]

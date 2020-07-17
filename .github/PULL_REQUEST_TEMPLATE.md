@@ -3,8 +3,10 @@ Please write pull request readme in English, thanks!
 -->
 
 ## PR Checklist <!-- 我确认我已经查看了 -->
+
 <!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来选择) -->
 
+- [ ] I have read the [CLA Document](https://github.com/minivaline/minivaline/blob/master/.github/cla.md) and I hereby sign the CLA.
 - [ ] The commit message follows [guidelines for MiniValine](https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md).
 - [ ] Tests for the changes was maked (for bug fixes / features).
 - [ ] [Docs](https://github.com/MiniValine/MiniValine/blob/master/README.md) have been added / updated (for features).
