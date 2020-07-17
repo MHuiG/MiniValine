@@ -16,15 +16,7 @@ pull_request_rules:
       - "#approved-reviews-by>=1"
       - status-success=build (12.x)
       - status-success=Mergeable
-    actions:
-      merge:
-        method: merge
-      label:
-        add: ["Auto merge"]
-  - name: automatic merge if author is MHuiG
-    conditions:
-      - author=MHuiG
-      - status-success=build (12.x)
+      - status-success=license/cla
     actions:
       merge:
         method: merge
@@ -41,6 +33,7 @@ pull_request_rules:
     conditions:
       - author=renovate[bot]
       - status-success=build (12.x)
+      - status-success=license/cla
     actions:
       label:
         add: ["Build","🛠 Improvement"]
