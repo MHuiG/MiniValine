@@ -13,21 +13,35 @@ firstPRMergeComment: >
 # =============================================================================================== #
 # Configuration for request-info - https://github.com/behaviorbot/request-info
 
+# *OPTIONAL* Comment to reply with
+# Can be either a string :
+requestInfoReplyComment: >
+  We would appreciate it if you could provide us with more info about this issue/pr!
+
+requestInfoDefaultTitles:
+  - update readme.md
+  - updates
+  - update
+  - up
+  - updata
+  - add
+  - remove
+  - fix
+  - fix bug
+
 # *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
 requestInfoLabelToAdd: Need More Info
 
+# *OPTIONAL* Require Issues to contain more information than what is provided in the issue templates
+# Will fail if the issue's body is equal to a provided template
+checkIssueTemplate: true
+# *OPTIONAL* Require Pull Requests to contain more information than what is provided in the PR template
+# Will fail if the pull request's body is equal to the provided template
+checkPullRequestTemplate: true
 # *OPTIONAL* Add a list of people whose Issues/PRs will not be commented on
 # keys must be GitHub usernames
 requestInfoUserstoExclude:
   - MHuiG
-# =============================================================================================== #
-lockThreads:
-  toxicityThreshold: .7
-  numComments: 2
-  setTimeInHours: 72
-  replyComment: >
-    This thread is being locked due to exceeding the toxicity minimums. cc/ @minivaline
-
 # =============================================================================================== #
 # Configuration for todo-bot - https://github.com/JasonEtco/todo
 todo:
