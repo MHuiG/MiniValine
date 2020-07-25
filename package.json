@@ -68,7 +68,7 @@
     "babel-jest": "^26.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "blueimp-md5": "^2.13.0",
-    "css-loader": "^3.4.2",
+    "css-loader": "^4.0.0",
     "fibers": "^5.0.0",
     "github-markdown-css": "^4.0.0",
     "highlight.js": "^10.0.0",
