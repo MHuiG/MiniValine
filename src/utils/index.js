@@ -25,6 +25,7 @@ import ActivateCode from './ActivateCode'
 import previewEvt from './previewEvt'
 import visitor from './visitor'
 import barrager from './barrager'
+import cloudFlag from './cloudFlag'
 
 module.exports = {
   Config: Config,
@@ -53,5 +54,6 @@ module.exports = {
   previewEvt: previewEvt,
   visitor: visitor,
   barrager: barrager,
+  cloudFlag: cloudFlag,
   getCache: getCache
 }

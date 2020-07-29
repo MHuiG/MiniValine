@@ -1,6 +1,6 @@
-<img src='./.github/minivaline.png' width='120' align="right" />
+<img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 3.0 Alpha
+# This is MiniValine version 3.0
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
@@ -52,15 +52,15 @@ Two ways.
 - links
 
 ```html
-<script src="https://unpkg.com/minivaline@2/dist/MiniValine.min.js"></script>
+<script src="https://unpkg.com/minivaline@3/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
-<script src="https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
-<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@2/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@3/dist/MiniValine.min.js"></script>
 ```
 
 - npm install
@@ -116,6 +116,8 @@ new MiniValine({
 
 ## Options
 
+### Base Options
+
 - **el** `String`
 
   **Required**. [object HTMLDivElement]
@@ -128,15 +130,6 @@ new MiniValine({
 
   **Required**. Your App Key
 
-- **mode** `String`
-
-  Default: `DesertsP`
-
-  Options: 
-
-  * `DesertsP` DesertsP Style mode.
-  * `xCss`  xCss Style mode.
-
 - **placeholder** `String`
 
   Input Placeholder
@@ -146,31 +139,6 @@ new MiniValine({
   Default: `location.pathname`
   
   The pathname of the page.
-
-- **adminEmailMd5** `String` [ Just Only DesertsP Style mode]
-
-  The MD5 of Admin Email to show Admin Flag.
-
-- **master** `String Array` [ Just Only xCss Style mode]
-
-   Default: `[]`
-  
-  The MD5 String Array of master Email to show master Flag.
-
-- **friends** `String Array` [ Just Only xCss Style mode]
-
-   Default: `[]`
-  
-  The MD5 String Array of friends Email to show friends Flag.
-
-- **tagMeta** `String Array` [ Just Only xCss Style mode]
-
-   Default: `[]`
-  
-  The String Array of Words to show Flag.
-  
-  For Example:
-  `tagMeta: ["Master", "Friend", "Visitor"]`
 
 - **math** `Boolean`
 
@@ -245,8 +213,6 @@ new MiniValine({
   Default: `http[s]://[tab/us].avoscloud.com`
   
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
-<!--
-### Experimental
 
 - **barrager** `Number`
 
@@ -264,7 +230,74 @@ new MiniValine({
 
   Default: `admin`
   
-  Write permissions for the administrator role.
+  Write permissions for the administrator role. 
+  
+  [Valine-Android](https://github.com/yinhanlei/Valine-Android)  [Valine-iOS](https://github.com/xaoxuu/Valine-iOS) 
+
+### Mode Options
+
+- **mode** `String`
+
+  Default: `DesertsP`
+
+  Options: 
+
+  * `DesertsP` DesertsP Style mode.
+  * `xCss`  xCss Style mode.
+
+
+#### DesertsP Style mode Options
+
+##### visitor flag
+
+- **adminEmailMd5** `String` 
+
+  The MD5 of Admin Email to show Admin Flag.
+
+#### xCss Style mode Options
+
+##### visitor flag
+
+- **closeFlag** `Boolean` 
+
+  Default: `false`
+  
+  Turn off visitor flag.
+
+###### Visitor Flag Local Options
+
+- **master** `String Array`
+
+   Default: `[]`
+  
+  The MD5 String Array of master Email to show master Flag.
+
+- **friends** `String Array`
+
+   Default: `[]`
+  
+  The MD5 String Array of friends Email to show friends Flag.
+
+- **tagMeta** `String Array`
+
+   Default: `[]`
+  
+  The String Array of Words to show Flag (only three).
+  
+  For Example:
+  `tagMeta: ["Master", "Friend", "Visitor"]`
+
+###### Visitor Flag Cloud Option
+
+- **cloudflag** `Boolean`
+
+  Default: `false`
+  
+  If `cloudflag` is turned on, the setting of `Visitor Flag Local Options` is invalid.
+
+  [How to Set Visitor Flag Cloud Option For xCss Style mode?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-set-visitor-flag-cloud-option-for-xcss-style-mode)
+
+##### xCss Style mode Others Options
 
 - **region** `Boolean`
 
@@ -272,8 +305,14 @@ new MiniValine({
   
   According to IP output area.
   
-  Note: Currently only Chinese API is available.
--->
+  Note: Currently only Chinese API is available. NoRecordIP: `false`.
+
+- **closeUA** `Boolean`
+
+  Default: `false`
+  
+  Turn off UA detection.
+
 
 ## ToDo
 

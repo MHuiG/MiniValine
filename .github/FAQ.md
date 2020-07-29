@@ -6,6 +6,24 @@ We welcome you to join the development of MiniValine. Please see [contributing d
 
 Also, we welcome Issue or PR to MiniValine.
 
+## How to Set Visitor Flag Cloud Option For xCss Style mode?
+
+If `cloudflag` is turned on, the setting of `Visitor Flag Local Options` is invalid.
+
+Create Class `Roles` and `Users`.
+
+![](https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/v1.png)
+
+Create column `name` , `nick` , `color` in `Roles`.
+
+![](https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/v2.png)
+
+Create column `emailhash` , `role` in `Users`.
+
+![](https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/v3.png)
+
+Notice the correspondence between `name` in `Roles` and `role` in `Users`.
+
 ## How to Add Dark Mode?
 
 Assume that the trigger class of Dark Mode is `.darkmode`

@@ -50,7 +50,7 @@ const vcard = function (root, m) {
   } else if (root.mode === 'xCss') {
     let ua = m.get('ua') || ''
     let uaMeta = ''
-    if (ua) {
+    if (ua && !root.config.closeUA) {
       ua = uaparser(ua)
       const svgstr = 'https://cdn.jsdelivr.net/gh/MiniValine/svg@master/'
       try {
@@ -123,21 +123,36 @@ const vcard = function (root, m) {
         }
       } catch (e) {}
     }
-    root.master = root.master.map(i => i.toLowerCase())
-    root.friends = root.friends.map(i => i.toLowerCase())
-    var ism = root.master.includes(md5(m.get('mail').toLowerCase()))
-    var isf = root.friends.includes(md5(m.get('mail').toLowerCase()))
-    var gat = ism
-      ? '<span class="vtag vmaster">' +
+    var gat = ''
+    if ((!root.config.closeFlag) && (!root.config.cloudflag)) {
+      root.master = root.master.map(i => i.toLowerCase())
+      root.friends = root.friends.map(i => i.toLowerCase())
+      var ism = root.master.includes(md5(m.get('mail').toLowerCase()))
+      var isf = root.friends.includes(md5(m.get('mail').toLowerCase()))
+      gat = ism
+        ? '<span class="vtag vmaster">' +
         root.tagMeta[0] +
         '</span>'
-      : isf
-        ? '<span class="vtag vfriend">' +
+        : isf
+          ? '<span class="vtag vfriend">' +
 			root.tagMeta[1] +
 			'</span>'
-        : '<span class="vtag vvisitor">' +
+          : '<span class="vtag vvisitor">' +
 			root.tagMeta[2] +
 			'</span>'
+    }
+    if ((!root.config.closeFlag) && root.config.cloudflag) {
+      try {
+        var vRoles = root.cloudFlag.Roles
+        var ehash = md5(m.get('mail').toLowerCase()).toUpperCase()
+        var vflag = root.cloudFlag.Users[ehash]
+        if (!vflag) {
+          gat = '<span class="vtag" style="background:' + `${vRoles.visitor && vRoles.visitor.color ? vRoles.visitor.color : '#828282'}` + ';">' + `${vRoles.visitor && vRoles.visitor.nick ? vRoles.visitor.nick : 'visitor'}` + '</span>'
+        } else {
+          gat = '<span class="vtag" style="background:' + `${root.cloudFlag.Roles[vflag] && root.cloudFlag.Roles[vflag].color ? root.cloudFlag.Roles[vflag].color : '#6cf'}` + ';">' + `${root.cloudFlag.Roles[vflag] && root.cloudFlag.Roles[vflag].nick ? root.cloudFlag.Roles[vflag].nick : 'visitor'}` + '</span>'
+        }
+      } catch (e) {}
+    }
     gat = root.tagMeta.length ? gat : ''
     const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +

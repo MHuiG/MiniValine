@@ -21,9 +21,11 @@ MiniValineFactory.prototype.initCheck = function () {
         root.initBody()
       })
     } else if (root.mode === 'xCss') {
-      import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
-        init()
-      })
+      if (!root.config.closeUA) {
+        import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
+          init()
+        })
+      }
       import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
         root.ele = getEle(root)
         root.initBody()
@@ -43,6 +45,7 @@ MiniValineFactory.prototype.initBody = function () {
     // console.log(ex)
     return
   }
+  util.cloudFlag(root)
   root.loading.hide(root.parentCount)
   root.loading.show()
   util.initCount(root)
