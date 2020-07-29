@@ -8,6 +8,8 @@ Also, we welcome Issue or PR to MiniValine.
 
 ## How to Set Visitor Flag Cloud Option For xCss Style mode?
 
+cloudflag : true
+
 If `cloudflag` is turned on, the setting of `Visitor Flag Local Options` is invalid.
 
 Create Class `Roles` and `Users`.
