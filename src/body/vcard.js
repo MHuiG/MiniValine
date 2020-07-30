@@ -125,21 +125,23 @@ const vcard = function (root, m) {
     }
     var gat = ''
     if ((!root.config.closeFlag) && (!root.config.cloudflag)) {
-      root.master = root.master.map(i => i.toLowerCase())
-      root.friends = root.friends.map(i => i.toLowerCase())
-      var ism = root.master.includes(md5(m.get('mail').toLowerCase()))
-      var isf = root.friends.includes(md5(m.get('mail').toLowerCase()))
-      gat = ism
-        ? '<span class="vtag vmaster">' +
+      try {
+        root.master = root.master.map(i => i.toLowerCase())
+        root.friends = root.friends.map(i => i.toLowerCase())
+        var ism = root.master.includes(md5(m.get('mail').toLowerCase()))
+        var isf = root.friends.includes(md5(m.get('mail').toLowerCase()))
+        gat = ism
+          ? '<span class="vtag vmaster">' +
         root.tagMeta[0] +
         '</span>'
-        : isf
-          ? '<span class="vtag vfriend">' +
+          : isf
+            ? '<span class="vtag vfriend">' +
 			root.tagMeta[1] +
 			'</span>'
-          : '<span class="vtag vvisitor">' +
+            : '<span class="vtag vvisitor">' +
 			root.tagMeta[2] +
 			'</span>'
+      } catch (e) {}
     }
     if ((!root.config.closeFlag) && root.config.cloudflag) {
       try {
