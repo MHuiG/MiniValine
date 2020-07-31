@@ -10,6 +10,9 @@ const initStyle = (root) => {
     if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
       import(/* webpackChunkName: "style-barrager" */'../style/barrager.scss')
     }
+    if (root.config.dark) {
+      import(/* webpackChunkName: "style-dark" */'../style/dark.scss')
+    }
   }, 5)
 }
 module.exports = initStyle

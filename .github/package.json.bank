@@ -14,7 +14,10 @@
     "dev": "cross-env env_config=web node_modules/.bin/webpack-dev-server --colors --hot --inline",
     "clear": "rm -rf dist/* ",
     "check": "eslint src",
-    "format": "eslint src --fix"
+    "format": "eslint src --fix",
+    "cover": "jest --coverage --runInBand --detectOpenHandles",
+    "snyk-protect": "snyk protect",
+    "prepublish0": "npm run snyk-protect"
   },
   "keywords": [
     "MiniValine",
@@ -49,6 +52,7 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
     "exports-loader": "1.1.0",
+    "jest": "26.2.2",
     "node-sass": "4.14.1",
     "postcss-loader": "3.0.0",
     "sass-loader": "9.0.2",
@@ -61,6 +65,7 @@
   },
   "dependencies": {
     "autosize": "^4.0.2",
+    "babel-jest": "^26.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "blueimp-md5": "^2.13.0",
     "css-loader": "^4.0.0",
@@ -77,6 +82,32 @@
     "string-format": "^2.0.0",
     "ua-parser-js": "^0.7.21",
     "xss": "^1.0.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less|scss|styl)$": "<rootDir>/test/__mocks__/style.js",
+      "^!!raw-loader": "<rootDir>/test/__mocks__/text.js"
+    },
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/MiniValine.js",
+      "src/html/*",
+      "src/utils/domUtils.js",
+      "src/utils/MathJax.js",
+      "src/utils/md.js",
+      "src/utils/setAV.js",
+      "src/utils/initAV.js",
+      "src/utils/timeago.js",
+      "src/utils/initConfig.js"
+    ],
+    "globals": {
+      "VERSION": "1.0.0-test"
+    }
   },
   "snyk": false
 }

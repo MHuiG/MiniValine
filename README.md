@@ -1,6 +1,6 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 3.0
+# This is MiniValine version 3.x
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
@@ -157,6 +157,12 @@ new MiniValine({
   Default: `true`
   
   Support Markdown.
+
+- **dark** `Boolean`
+
+  Default: `false`
+  
+  Dark model.
 
 - **lang** `String`
 
