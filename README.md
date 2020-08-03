@@ -374,7 +374,6 @@ Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/D
 <a href="https://polyfill.io"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/7843ef58-ad2c-4e57-9779-7e467ba0a7dd.png" title="Powered by Polyfill.io" height="48px"/></a>
 <a href="https://app.bundle-analyzer.com"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/0c8dcfad-194c-4caa-bc5a-905d3a91366a.png" title="Powered by Bundle Analyzer" height="48px"/></a>
 <a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0" alt="Powered by MathJax" height="48px"/></a>
-<a href="https://imgkr.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/d3d0c549-cddc-4d5b-8154-ecb689a46eae.png" title="Powered by 图壳" height="48px"/></a>
 <a href="https://jsxss.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/76bb3636-9a8b-4c6b-b0dd-fed3da99b7a8.png" title="Powered by JsXSS" height="48px"/></a>
 <a href="https://highlightjs.org/"><img align="center" src="https://imgkr.cn-bj.ufileos.com/84668cd8-5d5a-444a-b8de-fd05f64241b1.png" title="Powered by highlightjs" height="48px"/></a>
 

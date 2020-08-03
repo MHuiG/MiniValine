@@ -25,7 +25,7 @@ const uploadImage = (root) => {
         insertAtCaret(_veditor, uploadText)
         loadImage(file, function (err, ret) {
           if (!err && ret) {
-            _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data})`)
+            _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data.url})`)
             root.C.comment = _veditor.value
           }
         })
@@ -49,7 +49,7 @@ const uploadImage = (root) => {
   })
   const loadImage = (file, callback) => {
     const formData = new FormData()
-    formData.append('file', file)
+    formData.append('image', file)
     const xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -66,7 +66,8 @@ const uploadImage = (root) => {
     xhr.onerror = function (e) {
       console.log(e)
     }
-    xhr.open('POST', 'https://imgkr.com/api/files/upload', true)
+    xhr.open('POST', 'https://pic.alexhchu.com/api/upload', true)
+    console.log(formData)
     xhr.send(formData)
   }
   var dashboard = document.getElementsByClassName('veditor')[0]
@@ -85,4 +86,5 @@ const uploadImage = (root) => {
     walkfile(files)
   })
 }
+
 module.exports = uploadImage
