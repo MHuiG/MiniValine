@@ -67,7 +67,6 @@ const uploadImage = (root) => {
       console.log(e)
     }
     xhr.open('POST', 'https://pic.alexhchu.com/api/upload', true)
-    console.log(formData)
     xhr.send(formData)
   }
   var dashboard = document.getElementsByClassName('veditor')[0]
