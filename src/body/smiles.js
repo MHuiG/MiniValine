@@ -1,6 +1,6 @@
 const smiles = function (root) {
   var checksmiles = setInterval(function () {
-    if (typeof root.emoticonList == 'undefined') return
+    if ((typeof root.emoticonList == 'undefined') || (root.emoticonList.length == 0)) return
     clearInterval(checksmiles)
     const smileWrapper = root.el.querySelector('.vsmile-icons ul')
     const smileBar = root.el.querySelector('.vsmile-bar ul')
@@ -23,8 +23,8 @@ const smiles = function (root) {
           try { barli.appendChild(img) } catch (e) {}
         }
       }
-      smileWrapper.appendChild(li)
-      smileBar.appendChild(barli)
+      try { smileWrapper.appendChild(li) } catch (e) {}
+      try { smileBar.appendChild(barli) } catch (e) {}
     }
     try {
       root.el.querySelector('.vsmile-icons > ul > li:nth-child(1)').style.display = 'block'
