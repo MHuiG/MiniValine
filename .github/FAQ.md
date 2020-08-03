@@ -10,7 +10,7 @@ Also, we welcome Issue or PR to MiniValine.
 
 cloudflag : true
 
-If `cloudflag` is turned on, the setting of `Visitor Flag Local Options` is invalid.
+If `cloudflag` is turned on, the setting of [Visitor Flag Local Options](https://github.com/MiniValine/MiniValine#visitor-flag-local-options) is invalid.
 
 Create Class `Roles` and `Users`.
 
