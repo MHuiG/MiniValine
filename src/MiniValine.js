@@ -2,36 +2,40 @@ import body from './body'
 import util from './utils'
 const MiniValineFactory = function (option) {
   const root = this
-  root.config = option
-  util.Config(root)
-  util.initStyle(root)
-  util.ActivateCode(root)
-  util.script(root)
-  util.i18n(root)
-  util.initLibs(root)
+  try {
+    root.config = option
+    util.Config(root)
+    util.initStyle(root)
+    util.ActivateCode(root)
+    util.script(root)
+    util.i18n(root)
+    util.initLibs(root)
+  } catch (e) {}
 }
 MiniValineFactory.prototype.initCheck = function () {
   const root = this
-  var check = setInterval(function () {
-    if (typeof root.i18n == 'undefined') return
-    clearInterval(check)
-    if (root.mode === 'DesertsP') {
-      import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
-        root.ele = getEle(root)
-        root.initBody()
-      })
-    } else if (root.mode === 'xCss') {
-      if (!root.config.closeUA) {
-        import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
-          init()
+  try {
+    var check = setInterval(function () {
+      if (typeof root.i18n == 'undefined') return
+      clearInterval(check)
+      if (root.mode === 'DesertsP') {
+        import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
+          root.ele = getEle(root)
+          root.initBody()
+        })
+      } else if (root.mode === 'xCss') {
+        if (!root.config.closeUA) {
+          import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
+            init()
+          })
+        }
+        import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
+          root.ele = getEle(root)
+          root.initBody()
         })
       }
-      import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
-        root.ele = getEle(root)
-        root.initBody()
-      })
-    }
-  }, 5)
+    }, 5)
+  } catch (e) {}
 }
 MiniValineFactory.prototype.initBody = function () {
   const root = this
@@ -41,15 +45,16 @@ MiniValineFactory.prototype.initBody = function () {
     root.nodata.show()
     body.smiles(root)
     util.setAV(root)
-  } catch (ex) {
-    // console.log(ex)
+  } catch (e) {
     return
   }
-  util.cloudFlag(root)
-  root.loading.hide(root.parentCount)
-  root.loading.show()
-  util.initCount(root)
-  root.bind()
+  try {
+    util.cloudFlag(root)
+    root.loading.hide(root.parentCount)
+    root.loading.show()
+    util.initCount(root)
+    root.bind()
+  } catch (e) {}
 }
 MiniValineFactory.prototype.bind = function () {
   const root = this
