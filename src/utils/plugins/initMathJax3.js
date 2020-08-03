@@ -19,7 +19,7 @@ const init = () => {
           }
       }
   `
-  document.getElementsByTagName('body')[0].appendChild(script)
+  try { document.getElementsByTagName('body')[0].appendChild(script) } catch (e) {}
   getScript('https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js')
 }
 export function initMathJax () {

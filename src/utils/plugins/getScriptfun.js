@@ -15,7 +15,7 @@ const getScriptfun = (url, callback, condition) => {
       }
     }
     script.src = url
-    document.getElementsByTagName('head')[0].appendChild(script)
+    try { document.getElementsByTagName('head')[0].appendChild(script) } catch (e) {}
   }
 }
 module.exports = getScriptfun

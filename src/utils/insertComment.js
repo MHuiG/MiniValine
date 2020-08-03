@@ -16,8 +16,7 @@ const insertComment = (root, body) => {
         item.setAttribute('rel', 'nofollow')
       }
     }
-    if (!top) _vlist.appendChild(_vcard)
-    else _vlist.insertBefore(_vcard, _vlis[0])
+    if (!top) { try { _vlist.appendChild(_vcard) } catch (e) {} } else _vlist.insertBefore(_vcard, _vlis[0])
     const _vcontent = _vcard.querySelector('.vcomment')
     expandEvt(_vcontent)
     root.AtEvt(_vcard)

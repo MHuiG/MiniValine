@@ -12,7 +12,7 @@ const atEvt = (root) => {
       root.inputs.comment.value = `${root.inputs.comment.value}`
       // move inputs
       const commentEl = vcard.querySelector(`#comment-${_id}`)
-      commentEl.appendChild(root.el.querySelector('.vinputs-wrap'))
+      try { commentEl.appendChild(root.el.querySelector('.vinputs-wrap')) } catch (e) {}
       root.el.querySelector('.vcancel-comment-reply').removeAttribute('style')
       // remove comment trigger
       if (root.mode === 'DesertsP') {

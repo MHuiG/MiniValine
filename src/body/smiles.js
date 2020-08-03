@@ -15,12 +15,12 @@ const smiles = function (root) {
           `${smileList[i][j]}`
         )
         img.setAttribute('class', 'lazyload')
-        li.appendChild(img)
+        try { li.appendChild(img) } catch (e) {}
         if (j === 0) {
           img = document.createElement('img')
           img.setAttribute('src', `${smileList[i][0]}`)
           img.removeAttribute('class', 'lazyload')
-          barli.appendChild(img)
+          try { barli.appendChild(img) } catch (e) {}
         }
       }
       smileWrapper.appendChild(li)

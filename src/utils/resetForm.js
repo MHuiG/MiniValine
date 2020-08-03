@@ -28,9 +28,11 @@ const resetForm = (root) => {
     root.el
       .querySelector('.vcancel-comment-reply')
       .setAttribute('style', 'display:none')
-    root.el
-      .querySelector('#vinputs-placeholder')
-      .appendChild(root.el.querySelector('.vinputs-wrap'))
+    try {
+      root.el
+        .querySelector('#vinputs-placeholder')
+        .appendChild(root.el.querySelector('.vinputs-wrap'))
+    } catch (e) {}
   }
 }
 module.exports = resetForm
