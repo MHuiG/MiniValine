@@ -1,6 +1,8 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
 # This is MiniValine version 2.7.x Stable
+
+The date of EOL: 2020-7-30
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
