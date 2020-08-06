@@ -4,7 +4,8 @@ name: 'Lock threads'
 on:
   schedule:
     - cron: '0 0 * * *'
-
+  issues:
+    types: [closed]
 jobs:
   lock:
     runs-on: ubuntu-latest
@@ -12,22 +13,22 @@ jobs:
       - uses: dessant/lock-threads@v2
         with:
           github-token: ${{ github.token }}
-          issue-lock-inactive-days: '1'
+          issue-lock-inactive-days: '0'
           issue-exclude-created-before: ''
           issue-exclude-labels: ''
           issue-lock-labels: ''
-          issue-lock-comment: >
-            This issue has been automatically locked since there
-            has not been any recent activity after it was closed.
-            Please open a new issue for related bugs.
+          issue-lock-comment: '' # >
+            #This issue has been automatically locked since there
+            #has not been any recent activity after it was closed.
+            #Please open a new issue for related bugs.
           issue-lock-reason: 'resolved'
-          pr-lock-inactive-days: '1'
+          pr-lock-inactive-days: '0'
           pr-exclude-created-before: ''
           pr-exclude-labels: ''
           pr-lock-labels: ''
-          pr-lock-comment: >
-            This pull request has been automatically locked since there
-            has not been any recent activity after it was closed.
-            Please open a new issue for related bugs.
+          pr-lock-comment: '' #>
+            #This pull request has been automatically locked since there
+            #has not been any recent activity after it was closed.
+            #Please open a new issue for related bugs.
           pr-lock-reason: 'resolved'
           process-only: ''
