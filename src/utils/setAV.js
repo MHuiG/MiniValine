@@ -18,14 +18,13 @@ const setAV = function (root) {
     }
   }
   serverURLs = root.config.serverURLs || prefix
-  if (typeof window.disableAVInit === 'undefined') {
+  try {
     AV.init({
       appId: root.config.appId,
       appKey: root.config.appKey,
       serverURLs
     })
-    window.disableAVInit = true
-  }
+  } catch (e) {}
   root.v = AV
 }
 module.exports = setAV

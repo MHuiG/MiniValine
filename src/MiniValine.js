@@ -4,6 +4,7 @@ const MiniValineFactory = function (option) {
   const root = this
   try {
     root.config = option
+    if (!document.querySelectorAll(root.config.el)[0]) return
     util.Config(root)
     util.initStyle(root)
     util.ActivateCode(root)
