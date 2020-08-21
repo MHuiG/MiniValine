@@ -102,10 +102,10 @@ new MiniValine({
     <script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
 </head>
 <body>
-    <div class="comment"></div>
+    <div class="mvcomment"></div>
     <script>
       new MiniValine({
-          el: '.comment',
+          el: '.mvcomment',
           appId: 'Your App ID',
           appKey: 'Your Key',
           placeholder: 'Write a Comment O(∩_∩)O~~'
@@ -143,9 +143,9 @@ new MiniValine({
         }
     };
     function pjax_minivaline() {
-        if(!document.querySelectorAll(".comment")[0])return;
+        if(!document.querySelectorAll(".mvcomment")[0])return;
         new MiniValine({
-            el: '.comment',
+            el: '.mvcomment',
             appId: 'Your App ID',
             appKey: 'Your Key',
             placeholder: 'Write a Comment O(∩_∩)O~~'
