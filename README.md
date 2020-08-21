@@ -115,6 +115,51 @@ new MiniValine({
 </html>
 ```
 
+### The Smart Way with pjax
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MiniValine - A simple comment system based on Leancloud.</title>
+</head>
+<body>
+    <div class="comment"></div>
+    <script>
+    function load_minivaline() {
+        window.onload = function () {
+            var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+            var src = 'https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js'
+            var script = document.createElement('script')
+            script.setAttribute('type','text/javascript')
+            script.onload = function() {
+               pjax_minivaline()
+            }
+            script.setAttribute('src', src)
+            HEAD.appendChild(script)
+        }
+    };
+    function pjax_minivaline() {
+        if(!document.querySelectorAll(".comment")[0])return;
+        new MiniValine({
+            el: '.comment',
+            appId: 'Your App ID',
+            appKey: 'Your Key',
+            placeholder: 'Write a Comment O(∩_∩)O~~'
+        });
+    }
+    load_minivaline();
+    document.addEventListener('pjax:complete', function () {
+        pjax_minivaline();
+    });
+    </script>
+</body>
+</html>
+```
+
 ## Options
 
 ### Base Options
