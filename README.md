@@ -127,7 +127,7 @@ new MiniValine({
     <title>MiniValine - A simple comment system based on Leancloud.</title>
 </head>
 <body>
-    <div class="comment"></div>
+    <div class="mvcomment"></div>
     <script>
     function load_minivaline() {
         window.onload = function () {
