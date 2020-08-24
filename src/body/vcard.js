@@ -50,9 +50,9 @@ const vcard = function (root, m) {
   } else if (root.mode === 'xCss') {
     let ua = m.get('ua') || ''
     let uaMeta = ''
+    const svgstr = 'https://cdn.jsdelivr.net/gh/MiniValine/svg@master/'
     if (ua && !root.config.closeUA) {
       ua = uaparser(ua)
-      const svgstr = 'https://cdn.jsdelivr.net/gh/MiniValine/svg@master/'
       try {
         if (ua.browser && ua.browser.name) {
           uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr
@@ -113,13 +113,13 @@ const vcard = function (root, m) {
         } else {
           uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'magic.svg"/></i>Magical OS</span>'
         }
-        if (root.config.region) {
-          try {
-            var loc = m.get('log').region.data.location
-            if (loc) {
-              uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'map.svg"/></i>' + loc + '</span>'
-            }
-          } catch (e) {}
+      } catch (e) {}
+    }
+    if (root.config.region) {
+      try {
+        var loc = m.get('log').region.data.location
+        if (loc) {
+          uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'map.svg"/></i>' + loc + '</span>'
         }
       } catch (e) {}
     }

@@ -20,3 +20,5 @@ renovate.json
 postcss.config.js
 .eslintrc.yml
 .eslintignore
+.snyk
+SECURITY.md
