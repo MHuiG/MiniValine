@@ -130,7 +130,7 @@ new MiniValine({
     <div class="mvcomment"></div>
     <script>
     function load_minivaline() {
-        window.onload = function () {
+        setTimeout(function() {
             var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
             var src = 'https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js'
             var script = document.createElement('script')
@@ -140,7 +140,7 @@ new MiniValine({
             }
             script.setAttribute('src', src)
             HEAD.appendChild(script)
-        }
+        }, 1);
     };
     function pjax_minivaline() {
         if(!document.querySelectorAll(".mvcomment")[0])return;
@@ -387,7 +387,7 @@ new MiniValine({
 
 ## About
 
-* This project is always open source and free.
+* This project is always open source and free(freedom).
 * This project does not have any competitive relationship with any other project.
 * This project is a collection of inspiration from the Valine family. Thanks to every developer for their inspiration and contribution.
 * The project is open source only for sharing, developers are not obliged to provide after-sales service.
