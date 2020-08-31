@@ -26,6 +26,9 @@ The date of EOL: 10 minutes later
 
 **[MiniValine FAQs](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md)**
 
+**[Purge Jsdelivr CDN Cache](https://purge.jsdelivr.net/npm/minivaline)**
+
+
 ## Features
 
 - High speed.
