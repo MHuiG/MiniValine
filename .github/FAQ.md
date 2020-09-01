@@ -1,5 +1,36 @@
 # <div align="center">MiniValine FAQs</div>
 
+## How to improve the security of MiniValine?
+
+MiniValine version 4.x makes incompatible modification on the basis of MiniValine version 3.x to improve the security of MiniValine.
+
+Since the QQ avatar API exposes the user's mailbox, the function of QQ avatar is deleted in MiniValine version 4.x.
+
+Thanks to the idea of [imaegoo](https://github.com/imaegoo), [it](https://github.com/imaegoo/Valine) enhances the protection of users' privacy.
+
+MiniValine version 4.x adds a visible field (mailmd5) to store mail MD5.
+
+Here I offer an idea:
+
+**Try to use cloudflare workers edge computing to improve the security of MiniValine.**
+
+Since **appid** and **appkey** are required to call the database API:
+
+![](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/data/2020831194318.png)
+
+However, it is a security risk to write them directly on the front-end page. Therefore, the author directly writes the database API key in cloudflare worker.
+
+Insert a fake API key into the front page for confusion. The figure below shows that it is a fake key.
+
+![](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/data/2020831194331.png)
+
+When the request is forwarded to the user, the authenticity of the request API is changed to hide the authenticity of the request to the back-end.
+
+Specific implementation can refer to [related documents](https://developers.cloudflare.com/workers/runtime-apis/request)
+
+You can implement your own security policy by running JavaScript at the edge with [Cloudflare Workers](https://workers.cloudflare.com).
+
+
 ## How to join the development of MiniValine?
 
 We welcome you to join the development of MiniValine. Please see [contributing document](https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md). 🤗

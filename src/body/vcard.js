@@ -2,8 +2,8 @@ import { GBUrl } from '../Default'
 import timeAgo from './timeago'
 const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
-  const Hash = md5(m.get('mail'))
-  var gravatarUrl = GravatarUrl(m, root)
+  const Hash = m.get('mailMd5')
+  var gravatarUrl = `${GBUrl + Hash}?size=80&d=robohash`
   if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
     try {
       if (window.MV.barrager.enable) {
@@ -128,8 +128,8 @@ const vcard = function (root, m) {
       try {
         root.master = root.master.map(i => i.toLowerCase())
         root.friends = root.friends.map(i => i.toLowerCase())
-        var ism = root.master.includes(md5(m.get('mail').toLowerCase()))
-        var isf = root.friends.includes(md5(m.get('mail').toLowerCase()))
+        var ism = root.master.includes(m.get('mailMd5').toLowerCase())
+        var isf = root.friends.includes(m.get('mailMd5').toLowerCase())
         gat = ism
           ? '<span class="vtag vmaster">' +
         root.tagMeta[0] +
@@ -146,7 +146,7 @@ const vcard = function (root, m) {
     if ((!root.config.closeFlag) && root.config.cloudflag) {
       try {
         var vRoles = root.cloudFlag.Roles
-        var ehash = md5(m.get('mail').toLowerCase()).toUpperCase()
+        var ehash = m.get('mailMd5').toLowerCase().toUpperCase()
         var vflag = root.cloudFlag.Users[ehash]
         if (!vflag) {
           gat = '<span class="vtag" style="background:' + `${vRoles.visitor && vRoles.visitor.color ? vRoles.visitor.color : '#828282'}` + ';">' + `${vRoles.visitor && vRoles.visitor.nick ? vRoles.visitor.nick : 'visitor'}` + '</span>'
@@ -175,17 +175,5 @@ const vcard = function (root, m) {
     return HTML
   }
 }
-const GravatarUrl = (m, root) => {
-  const Hash = md5(m.get('mail'))
-  var gravatarUrl = `${GBUrl + Hash}?size=80&d=robohash`
-  if (root.enableQQ && (m.get('mail').indexOf('@qq.com') >= 0)) {
-    var prefix = m.get('mail').replace(/@.*/, '')
-    var pattern = /^\d+$/g
-    var result = prefix.match(pattern)
-    if (result !== null) {
-      gravatarUrl = 'https://q1.qlogo.cn/g?b=qq&nk=' + prefix + '&s=100'
-    }
-  }
-  return gravatarUrl
-}
+
 module.exports = vcard

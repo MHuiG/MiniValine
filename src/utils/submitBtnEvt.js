@@ -32,6 +32,7 @@ const submitBtnEvt = (root) => {
       const linkRet = check.link(root.C.link)
       root.C.mail = mailRet.k ? mailRet.v : ''
       root.C.link = linkRet.k ? linkRet.v : ''
+	  root.C.mailMd5=md5(root.C.mail)
       if (!mailRet.k || !linkRet.k) {
         root.alert.show({
           type: 0,

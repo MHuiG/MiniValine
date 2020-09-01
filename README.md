@@ -1,6 +1,6 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 3.x
+# This is MiniValine version 4.x
 The date of EOL: 10 minutes later
 ------------------------------
 
@@ -248,12 +248,6 @@ new MiniValine({
   Default: `6`
   
   Pagination size.
-
-- **enableQQ** `Boolean`
-
-  Default: `false`
-  
-  Enable QQ avatar API.
 
 - **visitor** `Boolean`
 
