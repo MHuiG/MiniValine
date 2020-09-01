@@ -56,15 +56,15 @@ Two ways.
 - links
 
 ```html
-<script src="https://unpkg.com/minivaline@3/dist/MiniValine.min.js"></script>
+<script src="https://unpkg.com/minivaline@4/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
-<script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js"></script>
 
 <!-- or -->
 
-<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@3/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@4/dist/MiniValine.min.js"></script>
 ```
 
 - npm install
