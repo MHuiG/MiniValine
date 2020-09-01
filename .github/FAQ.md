@@ -20,7 +20,7 @@ Since **appid** and **appkey** are required to call the database API:
 
 However, it is a security risk to write them directly on the front-end page. Therefore, the author directly writes the database API key in cloudflare worker.
 
-Insert a fake API key into the front page for confusion. The figure below shows that it is a fake key.
+Insert a fake API key into the front page for confusion. [You can try to find appkey and appid in my blog source code.](https://blog.mhuig.top/) The figure below shows that it is a fake key. 
 
 ![](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/data/2020831194331.png)
 
