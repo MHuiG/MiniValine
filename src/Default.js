@@ -16,5 +16,5 @@ export const C = {
   mailMd5: '',
   link: '',
   ua: navigator.userAgent,
-  url: location.pathname,
+  url: location.pathname
 }
