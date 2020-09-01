@@ -1,13 +1,6 @@
 .MiniValine {
     * {
       box-sizing: border-box;
-      @font-face{
-          font-family: "Varela Round";
-          src: "https://cdn.jsdelivr.net/gh/MHuiG/blog-cdn@latest/fonts/VarelaRound/VarelaRound-Regular.ttf";
-          font-weight: normal;
-          font-style: normal;
-          font-display: 'swap';
-      }
       font-family: Varela Round, Rubik, Helvetica, Arial, sans-serif, PingFang SC, Lantinghei SC,
         Helvetica Neue, Helvetica, Arial, Microsoft YaHei, STHeitiSC-Light, simsun,
         WenQuanYi Zen Hei, WenQuanYi Micro Hei, "sans-serif";
