@@ -146,7 +146,7 @@ const vcard = function (root, m) {
     if ((!root.config.closeFlag) && root.config.cloudflag) {
       try {
         var vRoles = root.cloudFlag.Roles
-        var ehash = m.get('mailMd5').toLowerCase().toUpperCase()
+        var ehash = m.get('mailMd5').toLowerCase()
         var vflag = root.cloudFlag.Users[ehash]
         if (!vflag) {
           gat = '<span class="vtag" style="background:' + `${vRoles.visitor && vRoles.visitor.color ? vRoles.visitor.color : '#828282'}` + ';">' + `${vRoles.visitor && vRoles.visitor.nick ? vRoles.visitor.nick : 'visitor'}` + '</span>'
@@ -155,7 +155,6 @@ const vcard = function (root, m) {
         }
       } catch (e) {}
     }
-    gat = root.tagMeta.length ? gat : ''
     const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
 				`<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
