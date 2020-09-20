@@ -20,6 +20,7 @@ The date of EOL: 10 minutes later
 
 > MiniValine is a simple and minimalist comment system based on Leancloud
 ------------------------------
+
 **[Live Demo](https://minivaline.github.io)**
 
 **[Awesome MiniValine](https://github.com/MiniValine/AWESOME-MiniValine)**
