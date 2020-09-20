@@ -289,7 +289,7 @@ new MiniValine({
 
   Default: `false`
   
-  Turn off Load CSS.
+  Turn off loading CSS.
 
 
 ### Mode Options
