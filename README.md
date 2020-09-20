@@ -284,6 +284,13 @@ new MiniValine({
   
   [Valine-Android](https://github.com/yinhanlei/Valine-Android)  [Valine-iOS](https://github.com/xaoxuu/Valine-iOS) 
 
+- **closeCSS** `Boolean`
+
+  Default: `false`
+  
+  Turn off Load CSS.
+
+
 ### Mode Options
 
 - **mode** `String`
