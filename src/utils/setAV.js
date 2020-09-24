@@ -10,7 +10,7 @@ const setAV = function (root) {
         break
         // US
       case '-MdYXbMMI':
-        prefix += 'us.avoscloud.com'
+        prefix += 'console.leancloud.app'
         break
       default:
         prefix += 'avoscloud.com'
