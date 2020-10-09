@@ -50,7 +50,7 @@
     "eslint-plugin-standard": "4.0.1",
     "exports-loader": "1.1.0",
     "node-sass": "4.14.1",
-    "postcss-loader": "4.0.3",
+    "postcss-loader": "4.0.4",
     "sass-loader": "10.0.3",
     "style-loader": "2.0.0",
     "uglifyjs-webpack-plugin": "2.2.0",
