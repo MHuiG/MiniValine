@@ -46,7 +46,7 @@ MiniValineFactory.prototype.Start = function () {
     root.nodata.show()
     body.smiles(root)
     util.setAV(root)
-	util.visitor(root)
+    util.visitor(root)
   } catch (e) {
     return
   }
