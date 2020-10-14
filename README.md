@@ -220,7 +220,7 @@ new MiniValine({
 
 - **emoticonUrl** `String Array`
 
-  Default: `['https://cdn.jsdelivr.net/npm/alus@latest','https://cdn.jsdelivr.net/gh/MiniValine/qq@latest','https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest','https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest','https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest','https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest']`
+  Default: `['https://cdn.jsdelivr.net/npm/alus@latest']`
   
   Expression Url.
   
