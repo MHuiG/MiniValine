@@ -17,7 +17,18 @@ var WEBPACK_CONFIG = {
     MiniValine: './src/index.js'
   },
   optimization: {
-    minimize: false
+    minimize: false,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name (module) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+            return `npm.${packageName.replace('@', '')}`
+          }
+        }
+      }
+    }
   },
   output: {
     path: BUILD_PATH,
