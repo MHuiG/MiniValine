@@ -1,4 +1,4 @@
-import { GBUrl } from '../Default'
+import { MVUrl, GBUrl } from '../Default'
 import timeAgo from './timeago'
 const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
@@ -50,7 +50,7 @@ const vcard = function (root, m) {
   } else if (root.mode === 'xCss') {
     let ua = m.get('ua') || ''
     let uaMeta = ''
-    const svgstr = 'https://cdn.jsdelivr.net/gh/MiniValine/svg@master/'
+    const svgstr = MVUrl+'/imgs/svg/'
     if (ua && !root.config.closeUA) {
       ua = uaparser(ua)
       try {
