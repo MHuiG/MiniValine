@@ -73,7 +73,7 @@
     "snyk": "^1.348.1",
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
-    "webpack": "4.44.2",
+    "webpack": "5.1.0",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.0"
   },
