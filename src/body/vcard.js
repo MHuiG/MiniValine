@@ -50,7 +50,7 @@ const vcard = function (root, m) {
   } else if (root.mode === 'xCss') {
     let ua = m.get('ua') || ''
     let uaMeta = ''
-    const svgstr = MVUrl+'/imgs/svg/'
+    const svgstr = MVUrl + '/imgs/svg/'
     if (ua && !root.config.closeUA) {
       ua = uaparser(ua)
       try {
