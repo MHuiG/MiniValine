@@ -14,9 +14,9 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 10.0.0
-    - name: Prepublish
-      run: |
-        npm i
+    #- name: Prepublish
+    #  run: |
+    #    npm i
     - name: Publish if version has been updated
       uses: MHuiG/npm-publish-action@master
       with:
