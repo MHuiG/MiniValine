@@ -24,6 +24,9 @@ MiniValineFactory.prototype.initCheck = function () {
           root.ele = getEle(root)
           root.Start()
         })
+        import(/* webpackChunkName: "vcard-DesertsP" */'./body/vcard-DesertsP.js').then(({ Vcard }) => {
+          root.Vcard = Vcard()
+        })
       } else if (root.mode === 'xCss') {
         if (!root.config.closeUA) {
           import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
@@ -65,7 +68,7 @@ MiniValineFactory.prototype.Start = function () {
     if (root.mode === 'DesertsP') {
       util.startEvt(root)
     }
-    if ((!root.config.barrager) || (root.config.barrager)) {
+    if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
       util.barrager(root)
     }
     util.getCache(root)
