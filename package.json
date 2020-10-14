@@ -49,13 +49,13 @@
     "style-loader": "2.0.0",
     "uglifyjs-webpack-plugin": "2.2.0",
     "url-loader": "4.1.1",
-    "ua-parser-js": "0.7.21",
+    "ua-parser-js": "0.7.22",
     "xss": "1.0.3",
     "blueimp-md5": "2.13.0",
-    "marked": "1.0.0",
+    "marked": "1.1.1",
     "github-markdown-css": "4.0.0",
     "highlight.js": "10.0.0",
-    "lazysizes": "5.2.0",
+    "lazysizes": "5.2.1",
     "autosize": "^4.0.2"
   },
   "dependencies": {
