@@ -53,15 +53,7 @@ Two ways.
 - links
 
 ```html
-<script src="https://unpkg.com/minivaline@4/dist/MiniValine.min.js"></script>
-
-<!-- or -->
-
 <script src="https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js"></script>
-
-<!-- or -->
-
-<script src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@4/dist/MiniValine.min.js"></script>
 ```
 
 - npm install
@@ -256,6 +248,8 @@ new MiniValine({
   
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
 
+  [Try to use cloudflare workers edge computing to improve the security](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-improve-the-security-of-minivaline)
+
 - **barrager** `Number`
 
   Default: `1`
@@ -276,6 +270,12 @@ new MiniValine({
   
   [Valine-Android](https://github.com/yinhanlei/Valine-Android)  [Valine-iOS](https://github.com/xaoxuu/Valine-iOS) 
 
+- **closeCSS** `Boolean`
+
+  Default: `false`
+  
+  Turn off loading CSS.
+ 
 ### Mode Options
 
 - **mode** `String`
