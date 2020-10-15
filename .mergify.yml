@@ -17,6 +17,8 @@ pull_request_rules:
       - status-success=build (12.x)
       - status-success=Mergeable
       - status-success=license/cla
+      - status-success=Travis CI - Pull Request
+      - status-success=Travis CI - Branch
     actions:
       merge:
         method: merge
