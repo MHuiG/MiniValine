@@ -216,9 +216,9 @@ new MiniValine({
 
   Localization language key, en and zh-CN are currently available.
   
-  More i18n info: [minivaline-i18n](https://github.com/MiniValine/minivaline-i18n)
-  
   [How to Add or Improve translation?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-add-or-improve-translation)
+  
+  [af-ZA ar-SA ca-ES cs-CZ da-DK de-DE en-US en es-ES fr-FR it-IT ja-JP ko-KR nl-NL no-NO pl-PL pt-BR pt-PT ro-RO ru-RU sr-SP sv-SE tr-TR uk-UA vi-VN zh-CN  zh-HK zh-TW]
 
 - **emoticonUrl** `String Array`
 
@@ -249,10 +249,6 @@ new MiniValine({
 - **visitor** `Boolean`
 
   Default: `true`
-  
-  Only `article reading access statistics`and `whole site access statistics` are provided. For other functions, please set it to "false" and configure `MiniValine Counter`by yourself.
-
-  **[MiniValine Counter](https://github.com/MiniValine/minivaline-counter)**
 
 - **serverURLs** `String`
 
