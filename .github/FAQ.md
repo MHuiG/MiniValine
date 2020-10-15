@@ -20,11 +20,11 @@ Since **appid** and **appkey** are required to call the database API:
 
 However, it is a security risk to write them directly on the front-end page. Therefore, the author directly writes the database API key in cloudflare worker.
 
-Insert a fake API key into the front page for confusion. The figure below shows that it is a fake key.
+Insert a Fake API key into the front page to confusion.  The figure below shows that it is a Fake Key. 
 
 ![](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/data/2020831194331.png)
 
-When the request is forwarded to the user, the authenticity of the request API is changed to hide the authenticity of the request to the back-end.
+We intercept user requests at the edge of the network and judge the validity of the requests. Edge computing is used to dynamically change the request header and replace it with the real API key to forward the request to the back-end database to hide the API key during data interaction.
 
 Specific implementation can refer to [related documents](https://developers.cloudflare.com/workers/runtime-apis/request)
 
