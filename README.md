@@ -1,10 +1,9 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
 # This is MiniValine version 4.x
-The date of EOL: 10 minutes later
+The date of EOL: 2020.10.15
 ------------------------------
 
-[![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
 [![NPM][npm-version-image]][npm-version-url]
 [![GPL Licence](https://cdn.jsdelivr.net/gh/MHuiG/imgbed/github/gpl.svg)](https://opensource.org/licenses/GPL-3.0/)
 [![npm downloads](https://img.shields.io/npm/dm/minivaline.svg?style=flat-square)](https://www.npmjs.com/package/minivaline)
@@ -25,8 +24,6 @@ The date of EOL: 10 minutes later
 **[Awesome MiniValine](https://github.com/MiniValine/AWESOME-MiniValine)**
 
 **[MiniValine FAQs](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md)**
-
-**[Purge Jsdelivr CDN Cache](https://purge.jsdelivr.net/npm/minivaline)**
 
 
 ## Features
@@ -363,68 +360,10 @@ new MiniValine({
   Turn off UA detection.
 
 
-## ToDo
-
-- Extraction from the core library to reduce volume.
-
-- Project engineering
-
-- Component modularity
-
-- And more.
-
-## Feedback
-
-* Visit the [AWESOME MiniValine](https://github.com/MiniValine/AWESOME-MiniValine) list to share plugins and tutorials with other users.
-* Report a bug in [GitHub Issues][issues-bug-url].
-* [Add or improve translation](https://crowdin.com/project/minivaline) in few seconds.
-* Request a new feature on [GitHub][issues-feat-url].
-* Join our [Gitter][gitter-url] chats.
-* Vote for [popular feature requests][feat-req-vote-url].
-
-## About
-
-* This project is always open source and free(freedom).
-* This project does not have any competitive relationship with any other project.
-* This project is a collection of inspiration from the Valine family. Thanks to every developer for their inspiration and contribution.
-* The project is open source only for sharing, developers are not obliged to provide after-sales service.
-
-## Contributing
-
-We welcome you to join the development of MiniValine. Please see [contributing document][contributing-document-url]. 🤗
-
-Also, we welcome Issue or PR to MiniValine.
-
-## Contributors
-
-### Code Contributors
-
-This project exists thanks to all the people who contribute. 
-
-[![contributors-image]][contributors-url]
-
-## Thanks
-
-Tribute to excellent open source! Tribute to excellent sharers!
-
-Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/DesertsP)!
-
-<a href="https://github.com"><img align="center" width="100" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" title="Powered by GitHub" /></a>
-<a href="https://travis-ci.com"><img align="center" width="140" src="https://raw.githubusercontent.com/travis-ci/travis-web/master/public/images/logos/TravisCI-Full-Color.png" title="Powered by TravisCI" /></a>
-<a href="https://crowdin.com"><img align="center" width="180" src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png" title="Powered by Crowdin" /></a>
-<a href="https://codacy.com"><img align="center" width="155" src="https://user-images.githubusercontent.com/16944225/55026017-623f8f00-5002-11e9-88bf-0d6a5884c6c2.png" title="Powered by Codacy" /></a>
-<a href="https://www.leancloud.cn"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/cdb8f605-9759-48f5-882d-1dd9db1eddae.png" title="Powered by LeanCloud" /></a>
-<a href="https://polyfill.io"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/7843ef58-ad2c-4e57-9779-7e467ba0a7dd.png" title="Powered by Polyfill.io" height="48px"/></a>
-<a href="https://app.bundle-analyzer.com"><img align="center" width="180" src="https://imgkr.cn-bj.ufileos.com/0c8dcfad-194c-4caa-bc5a-905d3a91366a.png" title="Powered by Bundle Analyzer" height="48px"/></a>
-<a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0" alt="Powered by MathJax" height="48px"/></a>
-<a href="https://jsxss.com"><img align="center" src="https://imgkr.cn-bj.ufileos.com/76bb3636-9a8b-4c6b-b0dd-fed3da99b7a8.png" title="Powered by JsXSS" height="48px"/></a>
-<a href="https://highlightjs.org/"><img align="center" src="https://imgkr.cn-bj.ufileos.com/84668cd8-5d5a-444a-b8de-fd05f64241b1.png" title="Powered by highlightjs" height="48px"/></a>
-
 ## License
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMiniValine%2FMiniValine?ref=badge_large)
 
 
 
