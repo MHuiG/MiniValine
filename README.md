@@ -1,7 +1,7 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
 # This is MiniValine version 4.x
-The date of EOL: 2020.10.15
+
 ------------------------------
 
 [![NPM][npm-version-image]][npm-version-url]
