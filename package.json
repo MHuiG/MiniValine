@@ -33,9 +33,9 @@
   },
   "homepage": "https://github.com/MiniValine/MiniValine#readme",
   "devDependencies": {
-    "@babel/cli": "7.11.5",
-    "@babel/core": "7.11.5",
-    "@babel/preset-env": "7.11.5",
+    "@babel/cli": "7.12.0",
+    "@babel/core": "7.12.0",
+    "@babel/preset-env": "7.12.0",
     "@bundle-analyzer/webpack-plugin": "0.5.1",
     "autoprefixer": "10.0.1",
     "babel-eslint": "10.1.0",
