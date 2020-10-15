@@ -19,6 +19,7 @@
 
 > MiniValine is a simple and minimalist comment system based on Leancloud
 ------------------------------
+
 **[Live Demo](https://minivaline.github.io)**
 
 **[Awesome MiniValine](https://github.com/MiniValine/AWESOME-MiniValine)**
@@ -53,7 +54,10 @@ Two ways.
 - links
 
 ```html
+
 <script src="https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js"></script>
+
+
 ```
 
 - npm install
@@ -77,8 +81,8 @@ new MiniValine({
 
 ## Get `App ID`/`App Key`
 **Get `App ID`/`App Key` from LeanCloud**  
-[Click here](https://leancloud.cn/dashboard/login.html#/signup) to register or login in `LeanCloud`.  
-[Click here](https://leancloud.cn/dashboard/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
+[Click here](https://console.leancloud.app/login.html#/signup) to register or login in `LeanCloud`.  
+[Click here](https://console.leancloud.app/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
 
 ## Usage
 
@@ -214,7 +218,7 @@ new MiniValine({
 
 - **emoticonUrl** `String Array`
 
-  Default: `['https://cdn.jsdelivr.net/npm/alus@latest','https://cdn.jsdelivr.net/gh/MiniValine/qq@latest','https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest','https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest','https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest','https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest']`
+  Default: `['https://cdn.jsdelivr.net/npm/alus@latest']`
   
   Expression Url.
   
@@ -242,6 +246,7 @@ new MiniValine({
 
   Default: `true`
 
+
 - **serverURLs** `String`
 
   Default: `http[s]://[tab/us].avoscloud.com`
@@ -249,6 +254,7 @@ new MiniValine({
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
 
   [Try to use cloudflare workers edge computing to improve the security](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-improve-the-security-of-minivaline)
+
 
 - **barrager** `Number`
 
@@ -275,7 +281,7 @@ new MiniValine({
   Default: `false`
   
   Turn off loading CSS.
- 
+
 ### Mode Options
 
 - **mode** `String`
@@ -354,6 +360,7 @@ new MiniValine({
   Default: `false`
   
   Turn off UA detection.
+
 
 
 ## License

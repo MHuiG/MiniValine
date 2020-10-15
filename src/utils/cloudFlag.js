@@ -11,7 +11,7 @@ const cloudFlag = (root) => {
       AV.Query.doCloudQuery('select * from Users limit 100000000  order by -createdAt').then((rets) => {
         root.cloudFlag.Users = {}
         for (var i = 0; i < rets.results.length; i++) {
-          root.cloudFlag.Users[rets.results[i].get('emailhash').toUpperCase()] = rets.results[i].get('role')
+          root.cloudFlag.Users[rets.results[i].get('emailhash').toLowerCase()] = rets.results[i].get('role')
         }
       }, (error) => { console.log(error) })
     } catch (e) {}

@@ -76,6 +76,11 @@ const submitBtnEvt = (root) => {
         kill()
       }
     } catch (e) {}
+    try {
+      if (window.MV.MC && window.MV.MC.util) {
+        window.MV.MC.util.Visitor()
+      }
+    } catch (e) {}
     comment.setACL(getAcl())
     comment
       .save({ log: window.MV })
@@ -102,11 +107,6 @@ const submitBtnEvt = (root) => {
         root.submitting.hide()
         root.nodata.hide()
         root.reset()
-        try {
-          if (window.MV.MC && window.MV.MC.util) {
-            window.MV.MC.util.Visitor()
-          }
-        } catch (e) {}
       })
       .catch((ex) => {
         root.submitting.hide()

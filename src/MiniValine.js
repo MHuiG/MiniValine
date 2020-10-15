@@ -17,12 +17,12 @@ MiniValineFactory.prototype.initCheck = function () {
   const root = this
   try {
     var check = setInterval(function () {
-      if (typeof root.i18n == 'undefined') return
+      if (!root.i18n) return
       clearInterval(check)
       if (root.mode === 'DesertsP') {
         import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
           root.ele = getEle(root)
-          root.initBody()
+          root.Start()
         })
       } else if (root.mode === 'xCss') {
         if (!root.config.closeUA) {
@@ -32,13 +32,13 @@ MiniValineFactory.prototype.initCheck = function () {
         }
         import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
           root.ele = getEle(root)
-          root.initBody()
+          root.Start()
         })
       }
     }, 5)
   } catch (e) {}
 }
-MiniValineFactory.prototype.initBody = function () {
+MiniValineFactory.prototype.Start = function () {
   const root = this
   try {
     body.el(root)
@@ -46,6 +46,7 @@ MiniValineFactory.prototype.initBody = function () {
     root.nodata.show()
     body.smiles(root)
     util.setAV(root)
+    util.visitor(root)
   } catch (e) {
     return
   }
@@ -54,33 +55,28 @@ MiniValineFactory.prototype.initBody = function () {
     root.loading.hide(root.parentCount)
     root.loading.show()
     util.initCount(root)
-    root.bind()
+    util.insertComment(root, body)
+    util.parentQuery(root)
+    util.nestQuery(root)
+    util.alert(root)
+    util.inputs(root)
+    util.previewEvt(root)
+    util.smileEvt(root)
+    if (root.mode === 'DesertsP') {
+      util.startEvt(root)
+    }
+    if ((!root.config.barrager) || (root.config.barrager)) {
+      util.barrager(root)
+    }
+    util.getCache(root)
+    util.resetForm(root)
+    util.uploadImage(root)
+    util.cancelReply(root)
+    util.smileBtnEvt(root)
+    util.previewBtnEvt(root)
+    util.atEvt(root)
+    util.submitBtnEvt(root)
+    util.smile(root)
   } catch (e) {}
-}
-MiniValineFactory.prototype.bind = function () {
-  const root = this
-  util.insertComment(root, body)
-  util.parentQuery(root)
-  util.nestQuery(root)
-  util.alert(root)
-  util.inputs(root)
-  util.previewEvt(root)
-  util.smileEvt(root)
-  if (root.mode === 'DesertsP') {
-    util.startEvt(root)
-  }
-  if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
-    util.barrager(root)
-  }
-  util.getCache(root)
-  util.resetForm(root)
-  util.uploadImage(root)
-  util.cancelReply(root)
-  util.smileBtnEvt(root)
-  util.previewBtnEvt(root)
-  util.atEvt(root)
-  util.submitBtnEvt(root)
-  util.smile(root)
-  util.visitor(root)
 }
 module.exports = MiniValineFactory
