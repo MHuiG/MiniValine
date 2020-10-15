@@ -1,4 +1,4 @@
-export const VERSION = '4.2.10'
+export const VERSION = '4.2.11'
 export const MVUrl = 'https://cdn.jsdelivr.net/npm/minivaline@' + VERSION
 export const GBUrl = 'https://gravatar.loli.net/avatar/'
 export const EUrl = [MVUrl + '/imgs/alus', MVUrl + '/imgs/qq', MVUrl + '/imgs/Bilibilis', MVUrl + '/imgs/tieba', MVUrl + '/imgs/twemoji', MVUrl + '/imgs/weibo', MVUrl + '/imgs/funny']
