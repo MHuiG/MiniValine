@@ -25,7 +25,7 @@ MiniValineFactory.prototype.initCheck = function () {
           root.Start()
         })
         import(/* webpackChunkName: "vcard-DesertsP" */'./body/vcard-DesertsP.js').then(({ Vcard }) => {
-          root.Vcard = Vcard()
+          root.Vcard = Vcard(root)
         })
       } else if (root.mode === 'xCss') {
         if (!root.config.closeUA) {
@@ -36,6 +36,11 @@ MiniValineFactory.prototype.initCheck = function () {
         import(/* webpackChunkName: "body-xCss" */'./body/xCss.js').then(({ getEle }) => {
           root.ele = getEle(root)
           root.Start()
+        })
+      }
+      if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
+        import(/* webpackChunkName: "vcard-barrager" */'./body/vcard-barrager.js').then(({ Vbarrager }) => {
+          root.Vbarrager = Vbarrager(root)
         })
       }
     }, 5)

@@ -1,7 +1,8 @@
 import timeAgo from './timeago'
-export function Vcard () {
-    const item(root,m,gravatarUrl)=>{
-	const HTML = '<div class="vcomment-body">' +
+export function Vcard (root) {
+  return (root, m, gravatarUrl) => {
+    const Hash = m.get('mailMd5')
+    const HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
 				`<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
 				`<a rid='${m.id}' at='@${m.get('nick')}' class="vat" id="at-${m.id}">${root.i18n.reply}</a>` +
@@ -17,5 +18,6 @@ export function Vcard () {
 			'<div class="vshow-children-wrapper" style="display: none"></div>' +
 			`<ul class="vlist" id="children-list-${m.id}"></ul>` +
 		'</div>'
-    return HTML}
+    return HTML
+  }
 }
