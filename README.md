@@ -1,7 +1,20 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
 # This is MiniValine version 4.x
-The date of EOL: 10 minutes later
+
+
+此项目已放生（/滑稽）
+
+由于笔者最近较忙，本仓库已开启 mergify bot，签署cla且通过CI构建即可自动合并。
+
+As the author is busy recently, mergify bot has been enabled in this repo, signed CLA and built through Ci to automatically merge.
+
+Code formatting:
+
+```
+npm run format
+```
+
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)

@@ -13,9 +13,7 @@ pull_request_rules:
     conditions:
       - label!=has conflicts
       - label!=🚧 Work in Progress
-      - "#approved-reviews-by>=1"
       - status-success=build (12.x)
-      - status-success=Mergeable
       - status-success=license/cla
       - status-success=Travis CI - Pull Request
       - status-success=Travis CI - Branch
