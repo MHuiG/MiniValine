@@ -5,9 +5,9 @@
 
 此项目已放生（/滑稽）
 
-由于笔者最近较忙，本仓库已开启 mergify bot，签署cla且通过CI构建即可自动合并。
+由于笔者最近较忙，本仓库已开启 mergify bot, 签署CLA且通过CI构建即可自动合并PR。
 
-As the author is busy recently, mergify bot has been enabled in this repo, signed CLA and built through Ci to automatically merge.
+Since the author is very busy recently, mergify bot has been enabled in this repo. After signing CLA and passing CI building, PR can be automatically merged.
 
 Code formatting:
 
