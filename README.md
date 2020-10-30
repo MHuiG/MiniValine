@@ -401,6 +401,32 @@ We welcome you to join the development of MiniValine. Please see [contributing d
 
 Also, we welcome PR to MiniValine.
 
+### Install dependency package
+
+```
+npm i
+```
+
+### Code formatting
+
+```
+npm run format
+```
+
+### Development Preview
+
+```
+npm run dev
+```
+
+### Development Build
+
+[CDN_PATH](https://github.com/MiniValine/MiniValine/blob/0ebc8ba03595633d1f39120c40f6d2d324dfd6ad/webpack.config.js#L6)
+
+```
+npm run build
+```
+
 ## Contributors
 
 ### Code Contributors
