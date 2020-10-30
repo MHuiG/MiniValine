@@ -2,19 +2,6 @@
 
 # This is MiniValine version 4.x
 
-
-此项目已放生（/滑稽）
-
-由于笔者最近较忙，本仓库已开启 mergify bot, 签署CLA且通过CI构建即可自动合并PR。
-
-Since the author is very busy recently, mergify bot has been enabled in this repo. After signing CLA and passing CI building, PR can be automatically merged.
-
-Code formatting:
-
-```
-npm run format
-```
-
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
