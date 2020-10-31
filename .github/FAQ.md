@@ -1,5 +1,9 @@
 # <div align="center">MiniValine FAQs</div>
 
+> Hi, now try to **Separate** the documents from the project. You can find the details here [FAQ](https://minivaline.js.org/docs/en/#/FAQ) [Option.Advance](https://minivaline.js.org/docs/en/#/Options?id=advance)
+>
+> Fork here <https://github.com/MiniValine/docs>
+
 ## How to improve the security of MiniValine?
 
 MiniValine version 4.x makes incompatible modification on the basis of MiniValine version 3.x to improve the security of MiniValine.

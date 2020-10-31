@@ -18,16 +18,14 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c203d6a0703457081c8d563a0b3b810)](https://www.codacy.com/gh/MiniValine/MiniValine?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MiniValine/MiniValine&amp;utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/8202/projects/10351/branches/142143/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8202&pid=10351&bid=142143)
 
+[![](https://img.shields.io/badge/jsdelivr-purge-green)](https://purge.jsdelivr.net/npm/minivaline)
+
 > MiniValine is a simple and minimalist comment system based on Leancloud
 ------------------------------
 
-**[Live Demo](https://minivaline.github.io)**
+**[Demo](https://minivaline.github.io)** | **[Docs](https://minivaline.js.org/docs/)** | **[FAQs](https://minivaline.js.org/docs/en/#/FAQ)** | **[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)**
 
-**[Awesome MiniValine](https://github.com/MiniValine/AWESOME-MiniValine)**
 
-**[MiniValine FAQs](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md)**
-
-**[Purge Jsdelivr CDN Cache](https://purge.jsdelivr.net/npm/minivaline)**
 
 
 ## Features
@@ -82,9 +80,11 @@ new MiniValine({
 ```
 
 ## Get `App ID`/`App Key`
-**Get `App ID`/`App Key` from LeanCloud**  
+**Get `App ID`/`App Key` from LeanCloud** 
 [Click here](https://console.leancloud.app/login.html#/signup) to register or login in `LeanCloud`.  
 [Click here](https://console.leancloud.app/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
+
+>  [Detail](https://minivaline.js.org/docs/en/#/Options?id=get-app-idapp-key)
 
 ## Usage
 
@@ -112,6 +112,8 @@ new MiniValine({
 </body>
 </html>
 ```
+
+> [Example](https://github.com/MiniValine/MiniValine.github.io/blob/master/index.html)
 
 ### The Smart Way with pjax
 
@@ -158,7 +160,9 @@ new MiniValine({
 </html>
 ```
 
-## Options
+## v4.x Options
+
+> **More Option** and **Different Version** Support [here](https://minivaline.js.org/docs/en/#/Options)
 
 ### Base Options
 
@@ -175,6 +179,8 @@ new MiniValine({
   **Required**. Your App Key
 
 - **placeholder** `String`
+
+  Default: null
 
   Input Placeholder
 
@@ -256,7 +262,7 @@ new MiniValine({
   
   This configuration is suitable for domestic custom domain name users, the overseas version will be automatically detected (no need to fill in manually).
 
-  [Try to use cloudflare workers edge computing to improve the security](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-improve-the-security-of-minivaline)
+  [Try to use cloudflare workers edge computing to improve the security](https://minivaline.js.org/docs/en/#/FAQ?id=how-to-improve-the-security-of-minivaline)
 
 
 - **barrager** `Number`
@@ -286,7 +292,7 @@ new MiniValine({
   Turn off loading CSS.
 
 
-### Mode Options
+### Style Options
 
 - **mode** `String`
 
@@ -294,8 +300,8 @@ new MiniValine({
 
   Options: 
 
-  * `DesertsP` DesertsP Style mode.
-  * `xCss`  xCss Style mode.
+  * `DesertsP` DesertsP Style mode. | [Demo](https://minivaline.js.org/xCss.html)
+  * `xCss`  xCss Style mode. | [Demo](https://minivaline.js.org/DesertsP.html)
 
 
 #### DesertsP Style mode Options
@@ -316,7 +322,7 @@ new MiniValine({
   
   Turn off visitor flag.
 
-###### Visitor Flag Local Options
+##### Visitor Flag Local Options
 
 - **master** `String Array`
 
@@ -339,7 +345,7 @@ new MiniValine({
   For Example:
   `tagMeta: ["Master", "Friend", "Visitor"]`
 
-###### Visitor Flag Cloud Option
+##### Visitor Flag Cloud Option
 
 - **cloudflag** `Boolean`
 
@@ -347,7 +353,7 @@ new MiniValine({
   
   If `cloudflag` is turned on, the setting of `Visitor Flag Local Options` is invalid.
 
-  [How to Set Visitor Flag Cloud Option For xCss Style mode?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-set-visitor-flag-cloud-option-for-xcss-style-mode)
+  [How to Set Visitor Flag Cloud Option For xCss Style mode?](https://minivaline.js.org/docs/en/#/Options?id=how-to-set-visitor-flag-cloud-option-for-xcss-style-mode)
 
 ##### xCss Style mode Others Options
 
