@@ -1,6 +1,6 @@
 <img src='./.github/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 2.7.x Stable
+# This is MiniValine version 2.7.x Stable | [CHANGELOG](https://minivaline.js.org/docs/en/#/CHANGELOG)
 
 The date of EOL: 2020-7-30
 ------------------------------
