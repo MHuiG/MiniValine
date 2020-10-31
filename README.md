@@ -82,6 +82,7 @@ new MiniValine({
 ## Get `App ID`/`App Key`
 **Get `App ID`/`App Key` from LeanCloud** 
 [Click here](https://console.leancloud.app/login.html#/signup) to register or login in `LeanCloud`.  
+
 [Click here](https://console.leancloud.app/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
 
 >  [Detail](https://minivaline.js.org/docs/en/#/Options?id=get-app-idapp-key)
@@ -97,7 +98,7 @@ new MiniValine({
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MiniValine - A simple comment system based on Leancloud.</title>
     <!--Load js and insert it before </ body>-->
-    <script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js"></script>
 </head>
 <body>
     <div class="mvcomment"></div>
@@ -132,7 +133,7 @@ new MiniValine({
     function load_minivaline() {
         setTimeout(function() {
             var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-            var src = 'https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js'
+            var src = 'https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js'
             var script = document.createElement('script')
             script.setAttribute('type','text/javascript')
             script.onload = function() {
@@ -222,7 +223,7 @@ new MiniValine({
   
   More i18n info: [minivaline-i18n](https://github.com/MiniValine/minivaline-i18n)
   
-  [How to Add or Improve translation?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-add-or-improve-translation)
+  [How to Add or Improve translation?](https://minivaline.js.org/docs/en/#/Contribute?id=how-to-add-or-improve-translation)
 
 - **emoticonUrl** `String Array`
 
@@ -230,7 +231,7 @@ new MiniValine({
   
   Expression Url.
   
-  [How to customize emoticons?](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons)
+  [How to customize emoticons?](https://minivaline.js.org/docs/en/#/Options?id=how-to-customize-emoticons)
 
 - **NoRecordIP** `Boolean`
 
@@ -474,8 +475,9 @@ Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/D
 [issues-bug-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/MiniValine/MiniValine/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
 [feat-req-vote-url]: https://github.com/MiniValine/MiniValine/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22
-[contributing-document-url]: https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md
+[contributing-document-url]: https://minivaline.js.org/docs/en/#/Pre-Contribute
 [mergify]: https://mergify.io
 [mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/MiniValine/MiniValine&style=flat
 [contributors-image]: https://opencollective.com/minivaline/contributors.svg?width=890
 [contributors-url]: https://github.com/MiniValine/MiniValine/graphs/contributors
+
