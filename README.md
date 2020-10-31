@@ -1,7 +1,7 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
 # This is MiniValine version 3.x
-The date of EOL: 2020.09.01
+The date of EOL: 2020.09.01 | [CHANGELOG](https://minivaline.js.org/docs/en/#/CHANGELOG)
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
