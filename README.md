@@ -23,7 +23,7 @@
 > MiniValine is a simple and minimalist comment system based on Leancloud
 ------------------------------
 
-**[Demo](https://minivaline.github.io)** | **[Docs](https://minivaline.js.org/docs/)** | **[FAQs](https://minivaline.js.org/docs/en/#/FAQ)** | **[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)**
+**[Demo](https://minivaline.github.io)** | **[Docs](https://minivaline.js.org/docs/)** | **[FAQs](https://minivaline.js.org/docs/en/#/FAQ)** | **[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)** | [CHANGELOG](https://minivaline.js.org/docs/en/#/CHANGELOG)
 
 
 
