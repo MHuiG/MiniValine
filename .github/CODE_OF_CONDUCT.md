@@ -1,9 +1,5 @@
 # <div align="center">MiniValine</div>
 
-> Hi, now try to **Separate** the documents from the project. You can find the details [here](https://minivaline.js.org/docs/) 
->
-> Fork here <https://github.com/MiniValine/docs>
-
 A CODE_OF_CONDUCT dictates how conversation during code updates, issue communication, and pull requests should happen within [MiniValine](https://github.com/MiniValine/MiniValine) repository.  We expect all users to show respect and courtesy to others through our repositories. Anyone violating these rules will not be reviewed and will be blocked and expelled from our repositories immediately upon discovery.
 
 ## Table Of Contents

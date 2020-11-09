@@ -1,9 +1,5 @@
 # <div align="center">MiniValine</div>
 
-> Hi, now try to **Separate** the documents from the project. You can find the details [here](https://minivaline.js.org/docs/) 
->
-> Fork here <https://github.com/MiniValine/docs>
-
 First of all, thanks for taking your time to contribute and help make our project even better than it is today! The following is a set of guidelines for contributing to [MiniValine](https://github.com/MiniValine) and its libs submodules. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Table Of Contents

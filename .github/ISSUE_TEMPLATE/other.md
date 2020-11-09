@@ -16,8 +16,8 @@ Please follow this Issue template to provide relevant information, such as sourc
 <!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来选择) -->
 
 - [ ] I am using [the latest](https://github.com/MiniValine/MiniValine/releases/latest) version of MiniValine.
-- [ ] I have reviewed the [MiniValine FAQs](https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md), which does not help me.
-- [ ] I have reviewed the latest Roadmap on GitHub and searched for current [issues](https://github.com/MiniValine/MiniValine/issues), which does not help me.
+- [ ] I have reviewed the [MiniValine FAQs](https://minivaline.js.org/docs/en/#/FAQ), which does not help me.
+- [ ] I have searched for current [issues](https://github.com/MiniValine/MiniValine/issues), which does not help me.
 
 ***
 

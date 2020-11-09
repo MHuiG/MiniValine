@@ -9,7 +9,7 @@ Please write pull request readme in English, thanks!
 - [ ] I have read the [CLA Document](https://github.com/minivaline/minivaline/blob/master/.github/cla.md) and I hereby sign the CLA.
 - [ ] The commit message follows [guidelines for MiniValine](https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md).
 - [ ] Tests for the changes was maked (for bug fixes / features).
-- [ ] [Docs](https://github.com/MiniValine/MiniValine/blob/master/README.md) have been added / updated (for features).
+- [ ] [Docs](https://github.com/MiniValine/docs) have been added / updated (for features).
 
 ## PR Type
 <!-- What kind of change does this PR introduce? -->
