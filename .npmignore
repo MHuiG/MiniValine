@@ -22,3 +22,4 @@ postcss.config.js
 .eslintignore
 .snyk
 SECURITY.md
+CF-LC
