@@ -34,8 +34,6 @@ Specific implementation can refer to [related documents](https://developers.clou
 
 You can implement your own security policy by running JavaScript at the edge with [Cloudflare Workers](https://workers.cloudflare.com).
 
-[@MiniValine/CF-LC](https://github.com/MiniValine/CF-LC)
-
 ## How to join the development of MiniValine?
 
 We welcome you to join the development of MiniValine. Please see [contributing document](https://github.com/MiniValine/MiniValine/blob/master/.github/CONTRIBUTING.md). 🤗
