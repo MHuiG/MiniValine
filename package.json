@@ -1,11 +1,11 @@
 {
   "name": "minivaline",
-  "version": "4.2.11",
+  "version": "4.3.0",
   "description": "A simple and minimalist comment system based on Leancloud.",
   "main": "/dist/MiniValine.min.js",
   "author": {
-    "name": "MHuiG",
-    "url": "https://github.com/MHuiG",
+    "name": "MiniValine",
+    "url": "https://github.com/MiniValine",
     "email": "i@mail.com"
   },
   "scripts": {
