@@ -6,7 +6,7 @@ const version = require('./package.json').version
 var CDN_PATH = 'https://cdn.jsdelivr.net/npm/minivaline@' + version + '/dist/'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin");
 var plugins = [
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
@@ -43,7 +43,10 @@ var WEBPACK_CONFIG = {
   devServer: {
     publicPath: '/dist/',
     inline: true,
-    port: 8088
+    port: 8088,
+	open:true,
+	hot:true,
+	compress: true,
   },
   module: {
     rules: [{
@@ -80,31 +83,14 @@ var WEBPACK_CONFIG = {
 }
 if (process.env.env_config == 'build') {
   plugins.push(new CleanWebpackPlugin())
-  plugins.push(new UglifyJsPlugin({
-    parallel: 4,
-    sourceMap: false,
-    parallel: true,
-    uglifyOptions: {
-      warnings: false,
-      ie8: true,
-      safari10: true,
-      output: {
-        comments: false,
-        beautify: false,
-        ascii_only: true
-      },
-      compress: {
-        collapse_vars: true,
-        reduce_vars: true
-      }
-    }
+  plugins.push(new TerserPlugin({
+	parallel: 4,
   }))
   WEBPACK_CONFIG.devtool = false
   WEBPACK_CONFIG.optimization.minimize = true
   WEBPACK_CONFIG.output.publicPath = CDN_PATH
 } else {
   plugins.push(new webpack.LoaderOptionsPlugin())
-  plugins.push(new webpack.NamedModulesPlugin())
   plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 

@@ -1,6 +1,6 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 4.x
+# This is MiniValine version 5.x-alpha
 
 ------------------------------
 
@@ -32,7 +32,7 @@
 - High speed.
 - Easy to customize.
 - [Safe by default](https://jsxss.com/en/try.html).
-- [Always compatible with IE](https://polyfill.io/).
+- [Compatible](https://polyfill.io/).
 - [Simple and lightweight](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
 - [Lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
 - Emoticon category.

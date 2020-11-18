@@ -11,7 +11,7 @@
   "scripts": {
     "test": "webpack",
     "build": "cross-env env_config=build  webpack",
-    "dev": "cross-env env_config=web node_modules/.bin/webpack-dev-server --colors --hot --inline",
+    "dev": "cross-env env_config=development node_modules/.bin/webpack serve --mode development --env development",
     "clear": "rm -rf dist/* ",
     "check": "eslint src",
     "format": "eslint src --fix"
@@ -37,27 +37,27 @@
     "@babel/core": "7.12.3",
     "@babel/preset-env": "7.12.1",
     "@bundle-analyzer/webpack-plugin": "0.5.1",
-    "babel-loader": "8.1.0",
+    "autosize": "4.0.2",
     "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
+    "blueimp-md5": "2.18.0",
     "clean-webpack-plugin": "3.0.0",
     "cross-env": "7.0.2",
     "exports-loader": "1.1.1",
+    "github-markdown-css": "4.0.0",
+    "highlight.js": "10.3.1",
+    "lazysizes": "5.2.2",
+    "marked": "1.2.0",
     "node-sass": "4.14.1",
     "postcss-loader": "4.0.4",
     "sass-loader": "10.0.3",
     "style-loader": "2.0.0",
-    "uglifyjs-webpack-plugin": "2.2.0",
-    "url-loader": "4.1.1",
     "ua-parser-js": "0.7.22",
-    "xss": "1.0.8",
-    "blueimp-md5": "2.18.0",
-    "marked": "1.2.0",
-    "github-markdown-css": "4.0.0",
-    "highlight.js": "10.3.1",
-    "lazysizes": "5.2.2",
-    "autosize": "4.0.2"
+    "url-loader": "4.1.1",
+    "xss": "1.0.8"
   },
   "dependencies": {
+    "@webpack-cli/serve": "^1.1.0",
     "autoprefixer": "9.8.6",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "css-loader": "^5.0.0",
@@ -73,9 +73,10 @@
     "snyk": "^1.348.1",
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
-    "webpack": "5.1.1",
-    "webpack-cli": "4.0.0",
-    "webpack-dev-server": "3.11.0"
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "snyk": false
 }
