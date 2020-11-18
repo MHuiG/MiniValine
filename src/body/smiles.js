@@ -1,15 +1,15 @@
 const smiles = function (root) {
-  var checksmiles = setInterval(function () {
+  const checksmiles = setInterval(function () {
     if ((typeof root.emoticonList == 'undefined') || (root.emoticonList.length === 0)) return
     clearInterval(checksmiles)
     const smileWrapper = root.el.querySelector('.vsmile-icons ul')
     const smileBar = root.el.querySelector('.vsmile-bar ul')
     const smileList = root.emoticonList || []
-    for (var i = 0; i < smileList.length; i++) {
-      var li = document.createElement('li')
-      var barli = document.createElement('li')
-      for (var j = 0; j < smileList[i].length; j++) {
-        var img = document.createElement('img')
+    for (let i = 0; i < smileList.length; i++) {
+      const li = document.createElement('li')
+      const barli = document.createElement('li')
+      for (let j = 0; j < smileList[i].length; j++) {
+        let img = document.createElement('img')
         img.setAttribute(
           'data-src',
           `${smileList[i][j]}`
@@ -28,15 +28,15 @@ const smiles = function (root) {
     }
     try {
       root.el.querySelector('.vsmile-icons > ul > li:nth-child(1)').style.display = 'block'
-      var btn = document.querySelectorAll('.vsmile-bar > ul > li')
-      var show = document.querySelectorAll('.vsmile-icons > ul > li')
-      for (var k = 0; k < btn.length; k++) {
+      const btn = document.querySelectorAll('.vsmile-bar > ul > li')
+      const show = document.querySelectorAll('.vsmile-icons > ul > li')
+      for (let k = 0; k < btn.length; k++) {
       // 把当前按钮的下标保存，按下按钮对应显示下标一致的盒子，其它盒子隐藏
         btn[k].index = k
         btn[k].onclick = function () {
         // 遍历每个按钮样式清空
         // 遍历每个盒子隐藏
-          for (var j = 0; j < btn.length; j++) {
+          for (let j = 0; j < btn.length; j++) {
             btn[j].className = ''
             show[j].style.display = 'none'
           }

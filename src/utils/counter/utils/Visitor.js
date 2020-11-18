@@ -1,8 +1,8 @@
 const Visitor = (util) => {
   try {
-    var o = Object.create(null)
-    var parser = new uaparser()
-    var testdate = new Date()
+    const o = Object.create(null)
+    const parser = new uaparser()
+    const testdate = new Date()
     o.time = testdate.getTime()
     o.href = window.location.href
     o.parser = parser.getResult()

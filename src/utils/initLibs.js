@@ -1,5 +1,5 @@
 const initLibs = (root) => {
-  var checkie = setInterval(function () {
+  const checkie = setInterval(function () {
     if (typeof Promise == 'undefined') { return }
     clearInterval(checkie)
     import(/* webpackChunkName: "lib" */'./plugins/lib.js').then(({ lib }) => {
