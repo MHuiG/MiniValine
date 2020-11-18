@@ -1,6 +1,6 @@
 import dom from './plugins/dom'
 const inputs = (root) => {
-  root.inputs = {}
+  root.inputs = Object.create(null)
   root.mapping = {
     veditor: 'comment',
     vnick: 'nick',

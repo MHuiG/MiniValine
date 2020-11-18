@@ -1,6 +1,6 @@
 const Visitor = (util) => {
   try {
-    var o = {}
+    var o = Object.create(null)
     var parser = new uaparser()
     var testdate = new Date()
     o.time = testdate.getTime()
