@@ -13,6 +13,6 @@ md.setOptions({
   }
 })
 export function markdown (o) {
-  var m = md(o)
+  const m = md(o)
   return m
 }

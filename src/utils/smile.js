@@ -9,8 +9,8 @@ const smile = (root) => {
       if (equar(s.emoticonUrl, root.emoticonUrl)) {
         root.emoticonList = s.emoticonList
         root.emoticon = []
-        for (var i = 0; i < root.emoticonList.length; i++) {
-          for (var j = 0; j < root.emoticonList[i].length; j++) {
+        for (let i = 0; i < root.emoticonList.length; i++) {
+          for (let j = 0; j < root.emoticonList[i].length; j++) {
             root.emoticon[root.emoticonList[i][j].split('/')[root.emoticonList[i][j].split('/').length - 1]] = root.emoticonList[i][j]
           }
         }
@@ -26,7 +26,7 @@ const smile = (root) => {
     if (window.MV.getSmile) {
       root.emoticonList = []
       root.emoticon = []
-      for (var k = 0; k < root.emoticonUrl.length; k++) {
+      for (let k = 0; k < root.emoticonUrl.length; k++) {
         getSmile(root, root.emoticonUrl[k])
       }
       window.MV.emoticonList = root.emoticonList
@@ -52,8 +52,8 @@ const getSmile = (root, Url) => {
     type: 'GET',
     success: function (data) {
       data = eval('(' + data + ')')
-      var tmp = []
-      for (var i = 0; i < data[0].length; i++) {
+      const tmp = []
+      for (let i = 0; i < data[0].length; i++) {
         tmp.push(Url + '/' + data[0][i])
         root.emoticon[data[0][i]] = Url + '/' + data[0][i]
       }

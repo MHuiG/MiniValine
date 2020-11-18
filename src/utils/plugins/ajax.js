@@ -2,15 +2,16 @@ const ajax = (options) => {
   options = options || {}
   options.type = (options.type || 'GET').toUpperCase()
   options.dataType = options.dataType || 'json'
-  var params = formatParams(options.data)
+  const params = formatParams(options.data)
+  let xhr = null
   if (window.XMLHttpRequest) {
-    var xhr = new XMLHttpRequest()
+    xhr = new XMLHttpRequest()
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP')
   }
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      var status = xhr.status
+      const status = xhr.status
       if (status >= 200 && status < 300) {
         options.success && options.success(xhr.responseText, xhr.responseXML)
       } else {
@@ -28,8 +29,8 @@ const ajax = (options) => {
   }
 }
 const formatParams = (data) => {
-  var arr = []
-  for (var name in data) {
+  const arr = []
+  for (const name in data) {
     arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]))
   }
   arr.push(('v=' + Math.random()).replace('.', ''))

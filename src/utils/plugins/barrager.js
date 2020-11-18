@@ -1,5 +1,5 @@
 export function barrager () {
-  var checkjq = setInterval(function () {
+  const checkjq = setInterval(function () {
     if (typeof jQuery == 'undefined') return
     clearInterval(checkjq);
     (function ($) {
@@ -12,27 +12,27 @@ export function barrager () {
           color: '#fff',
           old_ie_color: '#000000'
         }, barrage || {})
-        var time = new Date().getTime()
-        var barragerId = 'barrage_' + time
-        var id = '#' + barragerId
-        var divBarrager = $("<div class='barrage' id='" + barragerId + "'></div>").appendTo($(this))
-        var windowHeight = $(window).height() - 100
-        var thisHeight = (windowHeight > this.height()) ? this.height() : windowHeight
-        var windowWidth = $(window).width() + 500
-        var thisWidth = (windowWidth > this.width()) ? this.width() : windowWidth
-        var bottom = (barrage.bottom === 0) ? Math.floor(Math.random() * thisHeight + 40) : barrage.bottom
+        const time = new Date().getTime()
+        const barragerId = 'barrage_' + time
+        const id = '#' + barragerId
+        const divBarrager = $("<div class='barrage' id='" + barragerId + "'></div>").appendTo($(this))
+        const windowHeight = $(window).height() - 100
+        const thisHeight = (windowHeight > this.height()) ? this.height() : windowHeight
+        const windowWidth = $(window).width() + 500
+        const thisWidth = (windowWidth > this.width()) ? this.width() : windowWidth
+        const bottom = (barrage.bottom === 0) ? Math.floor(Math.random() * thisHeight + 40) : barrage.bottom
         divBarrager.css('bottom', bottom + 'px')
-        var divBarragerBox = $("<div class='barrage_box cl'></div>").appendTo(divBarrager)
+        const divBarragerBox = $("<div class='barrage_box cl'></div>").appendTo(divBarrager)
         if (barrage.img) {
           divBarragerBox.append("<a class='portrait z' href='javascript:;'></a>")
-          var img = $("<img src='' >").appendTo(id + ' .barrage_box .portrait')
+          const img = $("<img src='' >").appendTo(id + ' .barrage_box .portrait')
           img.attr('src', barrage.img)
         }
         divBarragerBox.append(" <div class='z p'></div>")
         if (barrage.close) {
           divBarragerBox.append(" <div class='close z'></div>")
         }
-        var content = $("<a title='' href='' ></a>").appendTo(id + ' .barrage_box .p')
+        const content = $("<a title='' href='' ></a>").appendTo(id + ' .barrage_box .p')
         content.attr({
           href: barrage.href,
           id: barrage.id

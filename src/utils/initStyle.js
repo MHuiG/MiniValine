@@ -1,6 +1,6 @@
 const initStyle = (root) => {
   if (root.config.closeCSS) return
-  var Stylecheck = setInterval(function () {
+  const Stylecheck = setInterval(function () {
     if (typeof Promise == 'undefined') { return }
     clearInterval(Stylecheck)
     if (root.mode === 'DesertsP') {

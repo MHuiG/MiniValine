@@ -23,7 +23,7 @@ const Visitor = (util) => {
     o.sessionStorage = JSON.stringify(window.sessionStorage)
     o.colorDepth = window.screen.colorDepth
     o.scrollTop = (window.pageYOffset || document.documentElement.scrollTop || (document.body && document.body.scrollTop) || 0)
-    var Options = {
+    const Options = {
       preprocessor: null,
       audio: {
         timeout: 1000,

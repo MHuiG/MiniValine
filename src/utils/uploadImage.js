@@ -19,7 +19,7 @@ const uploadImage = (root) => {
   })
   const walkfile = (files) => {
     if (files.length) {
-      for (var idx = 0; idx < files.length; idx++) {
+      for (let idx = 0; idx < files.length; idx++) {
         const file = files[idx]
         const uploadText = `![Uploading ${file.name}]()`
         insertAtCaret(_veditor, uploadText)
@@ -69,7 +69,7 @@ const uploadImage = (root) => {
     xhr.open('POST', 'https://pic.alexhchu.com/api/upload', true)
     xhr.send(formData)
   }
-  var dashboard = document.getElementsByClassName('veditor')[0]
+  const dashboard = document.getElementsByClassName('veditor')[0]
   dashboard.addEventListener('dragover', function (e) {
     e.preventDefault()
     e.stopPropagation()
@@ -81,7 +81,7 @@ const uploadImage = (root) => {
   dashboard.addEventListener('drop', function (e) {
     e.preventDefault()
     e.stopPropagation()
-    var files = this.files || e.dataTransfer.files
+    const files = this.files || e.dataTransfer.files
     walkfile(files)
   })
 }
