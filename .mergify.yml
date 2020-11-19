@@ -46,4 +46,4 @@ pull_request_rules:
       - status-success=build (12.x)
     actions:
       label:
-        add: ["security","🛠 Improvement"]
+        add: ["dependencies","security","🛠 Improvement"]
