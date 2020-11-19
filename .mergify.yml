@@ -4,11 +4,6 @@ pull_request_rules:
       - merged
     actions:
       delete_head_branch: {}
-  - name: remove outdated reviews
-    conditions:
-      - base=master
-    actions:
-      dismiss_reviews: {}
   - name: Automatic merge
     conditions:
       - label!=has conflicts
@@ -30,14 +25,14 @@ pull_request_rules:
       - status-success=build (12.x)
     actions:
       label:
-        add: ["Build","🛠 Improvement"]
+        add: ["🛠 Improvement"]
   - name: automatic merge for Renovate pull requests
     conditions:
       - author=renovate[bot]
       - status-success=build (12.x)
     actions:
       label:
-        add: ["Build","🛠 Improvement"]
+        add: ["🛠 Improvement"]
   - name: automatic merge for ImgBot pull requests
     conditions:
       - author=imgbot[bot]
