@@ -25,14 +25,14 @@ pull_request_rules:
       - status-success=build (12.x)
     actions:
       label:
-        add: ["🛠 Improvement"]
+        add: ["dependencies","🛠 Improvement"]
   - name: automatic merge for Renovate pull requests
     conditions:
       - author=renovate[bot]
       - status-success=build (12.x)
     actions:
       label:
-        add: ["🛠 Improvement"]
+        add: ["dependencies","🛠 Improvement"]
   - name: automatic merge for ImgBot pull requests
     conditions:
       - author=imgbot[bot]
@@ -46,4 +46,4 @@ pull_request_rules:
       - status-success=build (12.x)
     actions:
       label:
-        add: ["🛠 Improvement"]
+        add: ["security","🛠 Improvement"]
