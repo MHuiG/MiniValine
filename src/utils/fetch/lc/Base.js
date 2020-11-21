@@ -37,6 +37,7 @@ export function FetchLCBase (root) {
     query.notEqualTo('isSpam', true)
     query.count().then((count) => {
       root.el.querySelector('.count').innerHTML = count
+      root.parentCount = count
     }).catch((ex) => {
       console.log(ex)
       root.el.querySelector('.count').innerHTML = 0

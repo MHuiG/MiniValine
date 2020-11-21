@@ -8,6 +8,7 @@ const parentQuery = (root) => {
     const cq = root.v.Query
       .doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
     cq.then((rets) => {
+      console.log(rets)
       rets = (rets && rets.results) || []
       const len = rets.length
       if (len) {
@@ -52,13 +53,6 @@ const parentQuery = (root) => {
       root.loading.hide(root.parentCount)
     })
   }
-  root.v.Query.doCloudQuery(
-    `select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`
-  ).then((data) => {
-    root.parentCount = data.count
-    root.parentQuery(1)
-  }).catch((ex) => {
-    console.log(ex)
-  })
+  root.parentQuery(1)
 }
 module.exports = parentQuery

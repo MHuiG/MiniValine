@@ -12,6 +12,7 @@ const nestQuery = (root) => {
       root.v.Query.doCloudQuery(`select count(*) from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
         .then(
           (data) => {
+            console.log(data)
             const { count } = data
             if (count > 0) {
               const showChildrenWrapper = vchild.querySelector('.vshow-children-wrapper')
@@ -50,7 +51,7 @@ const nestQuery = (root) => {
           }
         })
         .catch((ex) => {
-        // console.log(ex)
+          // console.log(ex)
           root.loading.hide(root.parentCount)
         })
     }, level * 60)
