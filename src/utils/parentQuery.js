@@ -5,10 +5,8 @@ const parentQuery = (root) => {
   root.parentCount = 0
   root.parentQuery = (pageNum = 1) => {
     root.loading.show()
-    const cq = root.v.Query
-      .doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
-    cq.then((rets) => {
-      console.log(rets)
+    const callback = (rets) => {
+      // console.log(rets)
       rets = (rets && rets.results) || []
       const len = rets.length
       if (len) {
@@ -48,11 +46,13 @@ const parentQuery = (root) => {
         }
       } catch (e) {}
       root.loading.hide(root.parentCount)
-    }).catch((ex) => {
-      // console.log(ex)
-      root.loading.hide(root.parentCount)
-    })
+    }
+    root.fetchParentList(root, pageNum, callback)
   }
-  root.parentQuery(1)
+  const callback = (data) => {
+    root.parentCount = data.count
+    root.parentQuery(1)
+  }
+  root.fetchParentCount(root, callback)
 }
 module.exports = parentQuery

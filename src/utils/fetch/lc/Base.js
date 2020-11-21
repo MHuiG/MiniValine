@@ -37,10 +37,44 @@ export function FetchLCBase (root) {
     query.notEqualTo('isSpam', true)
     query.count().then((count) => {
       root.el.querySelector('.count').innerHTML = count
-      root.parentCount = count
+      // root.parentCount = count
     }).catch((ex) => {
       console.log(ex)
       root.el.querySelector('.count').innerHTML = 0
+    })
+  }
+  root.fetchParentList = (root, pageNum, callback) => {
+    const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
+    cq.then((rets) => {
+      callback(rets)
+    }).catch((ex) => {
+      // console.log(ex)
+      root.loading.hide(root.parentCount)
+    })
+  }
+  root.fetchParentCount = (root, callback) => {
+    const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+    cq.then((rets) => {
+      callback(rets)
+    }).catch((ex) => {
+      console.log(ex)
+    })
+  }
+  root.fetchNextList = (root, _id, callback) => {
+    const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+    cq.then((rets) => {
+      callback(rets)
+    }).catch((ex) => {
+      // console.log(ex)
+      root.loading.hide(root.parentCount)
+    })
+  }
+  root.fetchNextCount = (root, _id, callback) => {
+    const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+    cq.then((rets) => {
+      callback(rets)
+    }).catch((ex) => {
+      console.log(ex)
     })
   }
   root.postComment = (root, callback) => {
