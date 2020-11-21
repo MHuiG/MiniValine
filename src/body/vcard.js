@@ -3,7 +3,7 @@ import timeAgo from './timeago'
 const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   const Hash = m.get('mailMd5')
-  var gravatarUrl = `${GBUrl + Hash}?size=80&d=robohash`
+  const gravatarUrl = `${GBUrl + Hash}?size=80&d=robohash`
   if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
     root.Vbarrager(root, m, gravatarUrl)
   }
@@ -79,19 +79,19 @@ const vcard = function (root, m) {
     }
     if (root.config.region) {
       try {
-        var loc = m.get('log').region.data.location
+        const loc = m.get('log').region.data.location
         if (loc) {
           uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr + 'map.svg"/></i>' + loc + '</span>'
         }
       } catch (e) {}
     }
-    var gat = ''
+    let gat = ''
     if ((!root.config.closeFlag) && (!root.config.cloudflag)) {
       try {
         root.master = root.master.map(i => i.toLowerCase())
         root.friends = root.friends.map(i => i.toLowerCase())
-        var ism = root.master.includes(m.get('mailMd5').toLowerCase())
-        var isf = root.friends.includes(m.get('mailMd5').toLowerCase())
+        const ism = root.master.includes(m.get('mailMd5').toLowerCase())
+        const isf = root.friends.includes(m.get('mailMd5').toLowerCase())
         gat = ism
           ? '<span class="vtag vmaster">' +
         root.tagMeta[0] +
@@ -107,9 +107,9 @@ const vcard = function (root, m) {
     }
     if ((!root.config.closeFlag) && root.config.cloudflag) {
       try {
-        var vRoles = root.cloudFlag.Roles
-        var ehash = m.get('mailMd5').toLowerCase()
-        var vflag = root.cloudFlag.Users[ehash]
+        const vRoles = root.cloudFlag.Roles
+        const ehash = m.get('mailMd5').toLowerCase()
+        const vflag = root.cloudFlag.Users[ehash]
         if (!vflag) {
           gat = '<span class="vtag" style="background:' + `${vRoles.visitor && vRoles.visitor.color ? vRoles.visitor.color : '#828282'}` + ';">' + `${vRoles.visitor && vRoles.visitor.nick ? vRoles.visitor.nick : 'visitor'}` + '</span>'
         } else {

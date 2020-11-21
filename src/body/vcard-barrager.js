@@ -10,7 +10,7 @@ export function Vbarrager (root) {
         } else {
           window.MV.barrager.bottom = window.MV.barrager.bottom - 60
         }
-        var item = {
+        const item = {
           img: gravatarUrl,
           info: m.get('comment').replace(/<[^>]+>/g, '').replace(/\n/g, '').replace(/\r\n/g, '').slice(0, 25).trim(),
           href: '#' + m.id,

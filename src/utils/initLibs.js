@@ -4,7 +4,14 @@ const initLibs = (root) => {
     clearInterval(checkie)
     import(/* webpackChunkName: "lib" */'./plugins/lib.js').then(({ lib }) => {
       lib()
-      root.initCheck()
+      if (root.backend == 'lc') {
+        import(/* webpackChunkName: "lib-av" */'./plugins/lib-av.js').then(({ lib }) => {
+          lib()
+          root.initCheck()
+        })
+      } else {
+        root.initCheck()
+      }
     })
   }, 5)
 }

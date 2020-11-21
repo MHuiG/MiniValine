@@ -16,19 +16,19 @@ const MiniValineFactory = function (option) {
 MiniValineFactory.prototype.initCheck = function () {
   const root = this
   try {
-    var check = setInterval(function () {
+    const check = setInterval(function () {
       if (!root.i18n) return
       clearInterval(check)
-	  if(root.backend=="lc"){
-          import(/* webpackChunkName: "fetch-lc-base" */'./utils/fetch/lc/Base.js').then(({ FetchLCBase }) => {
-            FetchLCBase(root)
-          })
-		  if (root.config.cloudflag) {
+      if (root.backend == 'lc') {
+        import(/* webpackChunkName: "fetch-lc-base" */'./utils/fetch/lc/Base.js').then(({ FetchLCBase }) => {
+          FetchLCBase(root)
+        })
+        if (root.config.cloudflag) {
           import(/* webpackChunkName: "fetch-lc-CloudFlag" */'./utils/fetch/lc/CloudFlag.js').then(({ FetchLCCloudFlag }) => {
             FetchLCCloudFlag(root)
           })
-		  }
-	  }
+        }
+      }
       if (root.mode === 'DesertsP') {
         import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
           root.ele = getEle(root)
@@ -63,7 +63,7 @@ MiniValineFactory.prototype.Start = function () {
     body.loading(root)
     root.nodata.show()
     body.smiles(root)
-    if(root.backend=="lc"){root.setAV(root)}
+    if (root.backend == 'lc') { root.setAV(root) }
     util.visitor(root)
   } catch (e) {
     return

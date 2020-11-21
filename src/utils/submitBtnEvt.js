@@ -48,17 +48,6 @@ const submitBtnEvt = (root) => {
   const commitEvt = () => {
     submitBtn.setAttribute('disabled', true)
     root.submitting.show()
-    // 声明类型
-    const Ct = root.v.Object.extend('Comment')
-    // 新建对象
-    const comment = new Ct()
-    for (const i in root.C) {
-      if (root.C.hasOwnProperty(i)) {
-        if (i === 'at') continue
-        const _v = root.C[i]
-        comment.set(i, _v)
-      }
-    }
     try {
       const IPv4reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/
       const IPv6reg = /^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/
@@ -73,31 +62,31 @@ const submitBtnEvt = (root) => {
         window.MV.MC.util.Visitor()
       }
     } catch (e) {}
-    const callback=(commentItem)=>{
-		localStorage &&
-		localStorage.setItem(
-		  'MiniValineCache',
-		  JSON.stringify({
-			nick: root.C.nick,
-			link: root.C.link,
-			mail: root.C.mail
-		  })
-		)
-	const _count = root.el.querySelector('.count')
-	_count.innerText = Number(_count.innerText) + 1
-	if (root.C.rid === '') {
-	  root.insertComment(commentItem, null, true)
-	} else {
-	  // get children vlist
-	  const _vlist = root.el.querySelector(`#children-list-${root.C.rid}`)
-	  root.insertComment(commentItem, _vlist, true)
-	}
-	submitBtn.removeAttribute('disabled')
-	root.submitting.hide()
-	root.nodata.hide()
-	root.reset()
-	}
-	root.postComment(root,comment,callback)
+    const callback = (commentItem) => {
+      localStorage &&
+        localStorage.setItem(
+          'MiniValineCache',
+          JSON.stringify({
+            nick: root.C.nick,
+            link: root.C.link,
+            mail: root.C.mail
+          })
+        )
+      const _count = root.el.querySelector('.count')
+      _count.innerText = Number(_count.innerText) + 1
+      if (root.C.rid === '') {
+        root.insertComment(commentItem, null, true)
+      } else {
+        // get children vlist
+        const _vlist = root.el.querySelector(`#children-list-${root.C.rid}`)
+        root.insertComment(commentItem, _vlist, true)
+      }
+      submitBtn.removeAttribute('disabled')
+      root.submitting.hide()
+      root.nodata.hide()
+      root.reset()
+    }
+    root.postComment(root, callback)
   }
   dom.on('click', submitBtn, root.submitEvt)
 }
