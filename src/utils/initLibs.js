@@ -5,7 +5,7 @@ const initLibs = (root) => {
     import(/* webpackChunkName: "lib" */'./plugins/lib.js').then(({ lib }) => {
       lib()
       if (root.backend == 'lc') {
-        import(/* webpackChunkName: "lib-av" */'./plugins/lib-av.js').then(({ lib }) => {
+        import(/* webpackChunkName: "lib-av" */'./plugins/lib-AV.js').then(({ lib }) => {
           lib()
           root.initCheck()
         })
