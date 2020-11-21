@@ -19,6 +19,16 @@ MiniValineFactory.prototype.initCheck = function () {
     var check = setInterval(function () {
       if (!root.i18n) return
       clearInterval(check)
+	  if(root.backend=="lc"){
+          import(/* webpackChunkName: "fetch-lc-base" */'./utils/fetch/lc/Base.js').then(({ FetchLCBase }) => {
+            FetchLCBase(root)
+          })
+		  if (root.config.cloudflag) {
+          import(/* webpackChunkName: "fetch-lc-CloudFlag" */'./utils/fetch/lc/CloudFlag.js').then(({ FetchLCCloudFlag }) => {
+            FetchLCCloudFlag(root)
+          })
+		  }
+	  }
       if (root.mode === 'DesertsP') {
         import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
           root.ele = getEle(root)
@@ -53,16 +63,15 @@ MiniValineFactory.prototype.Start = function () {
     body.loading(root)
     root.nodata.show()
     body.smiles(root)
-    util.setAV(root)
+    if(root.backend=="lc"){root.setAV(root)}
     util.visitor(root)
   } catch (e) {
     return
   }
   try {
-    util.cloudFlag(root)
     root.loading.hide(root.parentCount)
     root.loading.show()
-    util.initCount(root)
+    root.fetchCount(root)
     util.insertComment(root, body)
     util.parentQuery(root)
     util.nestQuery(root)

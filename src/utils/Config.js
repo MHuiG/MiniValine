@@ -16,5 +16,6 @@ const Config = function (root) {
   root.C = C
   root.C.url = root.config.pathname || location.pathname
   root.role = root.config.role ? root.config.role : 'admin'
+  root.backend = root.config.backend ? root.config.backend : 'lc'
 }
 module.exports = Config

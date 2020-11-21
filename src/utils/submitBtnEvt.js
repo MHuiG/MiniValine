@@ -45,14 +45,6 @@ const submitBtnEvt = (root) => {
     }
     MakeComment(root, root, render)
   }
-  // setting access
-  const getAcl = () => {
-    const acl = new root.v.ACL()
-    acl.setWriteAccess('role:' + root.role, true)
-    acl.setPublicReadAccess(true)
-    acl.setPublicWriteAccess(false)
-    return acl
-  }
   const commitEvt = () => {
     submitBtn.setAttribute('disabled', true)
     root.submitting.show()
@@ -81,36 +73,31 @@ const submitBtnEvt = (root) => {
         window.MV.MC.util.Visitor()
       }
     } catch (e) {}
-    comment.setACL(getAcl())
-    comment
-      .save({ log: window.MV })
-      .then((commentItem) => {
-        localStorage &&
-            localStorage.setItem(
-              'MiniValineCache',
-              JSON.stringify({
-                nick: root.C.nick,
-                link: root.C.link,
-                mail: root.C.mail
-              })
-            )
-        const _count = root.el.querySelector('.count')
-        _count.innerText = Number(_count.innerText) + 1
-        if (root.C.rid === '') {
-          root.insertComment(commentItem, null, true)
-        } else {
-          // get children vlist
-          const _vlist = root.el.querySelector(`#children-list-${root.C.rid}`)
-          root.insertComment(commentItem, _vlist, true)
-        }
-        submitBtn.removeAttribute('disabled')
-        root.submitting.hide()
-        root.nodata.hide()
-        root.reset()
-      })
-      .catch((ex) => {
-        root.submitting.hide()
-      })
+    const callback=(commentItem)=>{
+		localStorage &&
+		localStorage.setItem(
+		  'MiniValineCache',
+		  JSON.stringify({
+			nick: root.C.nick,
+			link: root.C.link,
+			mail: root.C.mail
+		  })
+		)
+	const _count = root.el.querySelector('.count')
+	_count.innerText = Number(_count.innerText) + 1
+	if (root.C.rid === '') {
+	  root.insertComment(commentItem, null, true)
+	} else {
+	  // get children vlist
+	  const _vlist = root.el.querySelector(`#children-list-${root.C.rid}`)
+	  root.insertComment(commentItem, _vlist, true)
+	}
+	submitBtn.removeAttribute('disabled')
+	root.submitting.hide()
+	root.nodata.hide()
+	root.reset()
+	}
+	root.postComment(root,comment,callback)
   }
   dom.on('click', submitBtn, root.submitEvt)
 }
