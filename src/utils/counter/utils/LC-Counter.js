@@ -59,7 +59,7 @@ const createCounter = function (Counter, o) {
     console.log(ex)
   })
 }
-const Counter = () => {
+
+export function Counter () {
   CounterFactory.add(AV.Object.extend('Counter'))
 }
-module.exports = Counter

@@ -5,6 +5,10 @@ const MCounterFactory = function (option) {
   window.MV.MC.util = util
   window.MV.MC.vc = option.vc
   util.Visitor(util)
-  util.Counter()
+  if (!root.config.backend) {
+    import(/* webpackChunkName: "fetch-lc-counter" */'./utils/LC-Counter.js').then(({ Counter }) => {
+      Counter()
+    })
+  }
 }
 module.exports = MCounterFactory
