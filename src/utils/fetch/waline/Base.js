@@ -15,10 +15,27 @@ export function FetchBase (root) {
       }
     })
   }
+  root.fetchTotalPages = (root, callback) => {
+    ajax({
+      url: url,
+      type: 'GET',
+      data: {
+        path: root.config.pathname,
+        pageSize: root.pageSize,
+        page: 1
+      },
+      success: function (data) {
+        data = eval('(' + data + ')')
+        window.MV.WalinePageData = data
+        callback(data.totalPages)
+      }
+    })
+  }
   root.fetchParentList = (root, pageNum, callback) => {
     if (pageNum == 1) {
       const item = new Bean()
       const a = item.beanList(window.MV.WalinePageData.data)
+	  console.log(a)
       callback(a)
     } else {
       ajax({
@@ -39,24 +56,8 @@ export function FetchBase (root) {
       })
     }
   }
-  root.fetchTotalPages = (root, callback) => {
-    ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        path: root.config.pathname,
-        pageSize: root.pageSize,
-        page: 1
-      },
-      success: function (data) {
-        data = eval('(' + data + ')')
-        window.MV.WalinePageData = data
-        callback(data.totalPages)
-      }
-    })
-  }
   root.fetchNextList = (root, _id, callback) => {
-
+    // console.log(window.MV.WalinePageData)
   }
   root.fetchNextCount = (root, _id, callback) => {
 

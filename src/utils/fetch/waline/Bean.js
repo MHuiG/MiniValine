@@ -14,13 +14,17 @@ function Bean () {
     this.set('browser', it.browser)
     this.set('os', it.os)
     this.set('comment', it.comment)
+    const item = new Bean()
+    this.set('children', item.beanList(it.children))
   }
   this.beanList = function (data) {
     const list = []
-    for (let i = data.length - 1; i >= 0; i--) {
-      const item = new Bean()
-      item.create(data[i])
-      list.push(item)
+    if (data && data.length) {
+      for (let i = data.length - 1; i >= 0; i--) {
+        const item = new Bean()
+        item.create(data[i])
+        list.push(item)
+      }
     }
     return list
   }

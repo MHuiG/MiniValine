@@ -42,6 +42,14 @@ export function FetchBase (root) {
       root.el.querySelector('.count').innerHTML = 0
     })
   }
+  root.fetchTotalPages = (root, callback) => {
+    const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+    cq.then((rets) => {
+      callback(Math.ceil(rets.count / root.pageSize))
+    }).catch((ex) => {
+      console.log(ex)
+    })
+  }
   root.fetchParentList = (root, pageNum, callback) => {
     const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
     cq.then((rets) => {
@@ -50,14 +58,6 @@ export function FetchBase (root) {
     }).catch((ex) => {
       // console.log(ex)
       root.loading.hide(root.parentCount)
-    })
-  }
-  root.fetchTotalPages = (root, callback) => {
-    const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
-    cq.then((rets) => {
-      callback(Math.ceil(rets.count / root.pageSize))
-    }).catch((ex) => {
-      console.log(ex)
     })
   }
   root.fetchNextList = (root, _id, callback) => {
