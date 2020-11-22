@@ -17,7 +17,6 @@ export function FetchBase (root) {
   }
   root.fetchParentList = (root, pageNum, callback) => {
     if (pageNum == 1) {
-      console.log(window.MV.WalinePageData)
       const item = new Bean()
       const a = item.beanList(window.MV.WalinePageData.data)
       callback(a)
@@ -32,10 +31,10 @@ export function FetchBase (root) {
         },
         success: function (data) {
           data = eval('(' + data + ')')
-          console.log(data.data[0])
+          window.MV.WalinePageData = data
           const item = new Bean()
-          item.set('nick', data.data[0].nick)
-          console.log(item.get('nick'))
+          const a = item.beanList(data.data)
+          callback(a)
         }
       })
     }
