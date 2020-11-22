@@ -27,7 +27,6 @@ export function FetchBase (root) {
       success: function (data) {
         data = eval('(' + data + ')')
         window.MV.WalinePageData = data
-        console.log(data)
         callback(data.totalPages)
       }
     })
@@ -35,9 +34,8 @@ export function FetchBase (root) {
   root.fetchParentList = (root, pageNum, callback) => {
     if (pageNum == 1) {
       const item = new Bean()
-      const a = item.beanList(window.MV.WalinePageData.data)
-      console.log(a)
-      callback(a)
+      window.MV.WalinePageList = item.beanList(window.MV.WalinePageData.data)
+      callback(window.MV.WalinePageList)
     } else {
       ajax({
         url: url,
@@ -51,18 +49,41 @@ export function FetchBase (root) {
           data = eval('(' + data + ')')
           window.MV.WalinePageData = data
           const item = new Bean()
-          const a = item.beanList(data.data)
-          callback(a)
+          window.MV.WalinePageList = item.beanList(data.data)
+          callback(window.MV.WalinePageList)
         }
       })
     }
   }
-  root.fetchNextList = (root, _id, callback) => {
-    console.log(window.MV.WalinePageData)
-    console.log(_id)
+  root.fetchNextList = (root, id, callback) => {
+    const list = []
+    const data = window.MV.WalinePageList
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].children) {
+        for (let j = 0; j < data[i].children.length; j++) {
+          if (id == data[i].children[j].rid) {
+            list.push(data[i].children[j])
+          }
+        }
+      }
+    }
+    callback(list)
   }
-  root.fetchNextCount = (root, _id, callback) => {
-
+  root.fetchNextCount = (root, id, showMore) => {
+    const list = []
+    const data = window.MV.WalinePageList
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].children) {
+        for (let j = 0; j < data[i].children.length; j++) {
+          if (id == data[i].children[j].rid) {
+            list.push(data[i].children[j])
+          }
+        }
+      }
+    }
+    if (list.length > 0) {
+      showMore(1) // 显示加载更多
+    }
   }
   root.postComment = (root, callback) => {
 

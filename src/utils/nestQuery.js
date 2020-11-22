@@ -9,9 +9,7 @@ const nestQuery = (root) => {
       vchild.setAttribute('style', 'margin-left: 0 !important')
     }
     if (level >= root.maxNestLevel) {
-      const callback = (data) => {
-        // console.log(data)
-        const { count } = data
+      const callback = (count) => {
         if (count > 0) {
           const showChildrenWrapper = vchild.querySelector('.vshow-children-wrapper')
           showChildrenWrapper.setAttribute('style', 'display: block !important;')
@@ -28,7 +26,6 @@ const nestQuery = (root) => {
     }
     setTimeout(function () {
       const callback = (rets) => {
-        rets = (rets && rets.results) || []
         const len = rets.length
         if (len) {
           for (let i = 0; i < len; i++) {

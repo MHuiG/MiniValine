@@ -11,8 +11,7 @@ function Bean () {
     this.set('link', it.link)
     this.set('createdAt', new Date(it.createdAt))
     this.set('id', it.objectId)
-    this.set('rid', it.rid)
-    this.set('pid', it.pid)
+    this.set('rid', it.pid) // 请注意这里没有错误
     this.set('browser', it.browser)
     this.set('os', it.os)
     this.set('comment', it.comment)

@@ -63,6 +63,7 @@ export function FetchBase (root) {
   root.fetchNextList = (root, _id, callback) => {
     const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
     cq.then((rets) => {
+      rets = (rets && rets.results) || []
       callback(rets)
     }).catch((ex) => {
       // console.log(ex)
@@ -72,7 +73,8 @@ export function FetchBase (root) {
   root.fetchNextCount = (root, _id, callback) => {
     const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
     cq.then((rets) => {
-      callback(rets)
+      const { count } = rets
+      callback(count)
     }).catch((ex) => {
       console.log(ex)
     })
