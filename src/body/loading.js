@@ -19,9 +19,9 @@ const loading = function (root) {
       vloading.setAttribute('style', 'display:block;')
       root.nodata.hide()
     },
-    hide (parentCount) {
+    hide (TotalPages) {
       vloading.setAttribute('style', 'display:none;')
-      parentCount === 0 && root.nodata.show()
+      TotalPages === 0 && root.nodata.show()
     }
   }
   // submitting

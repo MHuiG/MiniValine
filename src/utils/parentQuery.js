@@ -2,7 +2,7 @@ import dom from './plugins/dom'
 import killXSS from './plugins/killXSS'
 const parentQuery = (root) => {
   let num = 1
-  root.parentCount = 0
+  root.TotalPages = 0
   root.parentQuery = (pageNum = 1) => {
     root.loading.show()
     const callback = (rets) => {
@@ -12,7 +12,7 @@ const parentQuery = (root) => {
       if (len) {
         for (let i = 0; i < len; i++) {
           if (i == 0) {
-            root.loading.hide(root.parentCount)
+            root.loading.hide(root.TotalPages)
           }
           if (rets[i].get('isSpam')) continue
           const render = (o) => {
@@ -29,7 +29,7 @@ const parentQuery = (root) => {
           killXSS(rets[i], render)
         }
         const vpage = root.el.querySelector('.vpage')
-        vpage.innerHTML = root.pageSize * pageNum < root.parentCount
+        vpage.innerHTML = pageNum < root.TotalPages
           ? `<div id="vmore" class="more">${root.i18n.more}</div>`
           : ''
         const vmore = vpage.querySelector('#vmore')
@@ -45,14 +45,15 @@ const parentQuery = (root) => {
           window.MV.barrager.enable = 0
         }
       } catch (e) {}
-      root.loading.hide(root.parentCount)
+      root.loading.hide(root.TotalPages)
     }
     root.fetchParentList(root, pageNum, callback)
   }
   const callback = (data) => {
-    root.parentCount = data.count
+    root.TotalPages = data
     root.parentQuery(1)
+    console.log(data)
   }
-  root.fetchParentCount(root, callback)
+  root.fetchTotalPages(root, callback)
 }
 module.exports = parentQuery

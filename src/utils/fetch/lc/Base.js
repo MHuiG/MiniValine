@@ -51,10 +51,10 @@ export function FetchBase (root) {
       root.loading.hide(root.parentCount)
     })
   }
-  root.fetchParentCount = (root, callback) => {
+  root.fetchTotalPages = (root, callback) => {
     const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
     cq.then((rets) => {
-      callback(rets)
+      callback(Math.ceil(rets.count / root.pageSize))
     }).catch((ex) => {
       console.log(ex)
     })

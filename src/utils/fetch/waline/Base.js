@@ -1,5 +1,5 @@
 import ajax from '../../plugins/ajax'
-import Bean from '../Bean'
+import Bean from './Bean'
 export function FetchBase (root) {
   root.fetchCount = (root) => {
     const url = `${root.config.serverURLs}/comment`
@@ -34,8 +34,21 @@ export function FetchBase (root) {
       }
     })
   }
-  root.fetchParentCount = (root, callbackfun) => {
-    callbackfun(1) // test
+  root.fetchTotalPages = (root, callback) => {
+    const url = `${root.config.serverURLs}/comment`
+    ajax({
+      url: url,
+      type: 'GET',
+      data: {
+        path: root.config.pathname,
+        pageSize: root.pageSize,
+        page: 1
+      },
+      success: function (data) {
+        data = eval('(' + data + ')')
+        callback(data.totalPages)
+      }
+    })
   }
   root.fetchNextList = (root, _id, callback) => {
 
