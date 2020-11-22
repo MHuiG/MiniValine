@@ -20,15 +20,19 @@ MiniValineFactory.prototype.initCheck = function () {
       if (!root.i18n) return
       clearInterval(check)
       if (root.backend == 'lc') {
-        import(/* webpackChunkName: "fetch-lc-base" */'./utils/fetch/lc/Base.js').then(({ FetchLCBase }) => {
-          FetchLCBase(root)
+        import(/* webpackChunkName: "fetch-lc-base" */'./utils/fetch/lc/Base.js').then(({ FetchBase }) => {
+          FetchBase(root)
         })
         if (root.config.cloudflag) {
-          import(/* webpackChunkName: "fetch-lc-CloudFlag" */'./utils/fetch/lc/CloudFlag.js').then(({ FetchLCCloudFlag }) => {
-            FetchLCCloudFlag(root)
+          import(/* webpackChunkName: "fetch-lc-CloudFlag" */'./utils/fetch/lc/CloudFlag.js').then(({ FetchCloudFlag }) => {
+            FetchCloudFlag(root)
           })
         }
-      }
+      }else if (root.backend == 'waline') {
+        import(/* webpackChunkName: "fetch-waline-base" */'./utils/fetch/waline/Base.js').then(({ FetchBase }) => {
+          FetchBase(root)
+        })
+	  }
       if (root.mode === 'DesertsP') {
         import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
           root.ele = getEle(root)

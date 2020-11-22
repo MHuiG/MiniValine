@@ -1,4 +1,4 @@
-export function FetchLCBase (root) {
+export function FetchBase (root) {
   root.setAV = function (root) {
     // set serverURLs
     let prefix = 'https://'

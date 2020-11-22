@@ -1,4 +1,4 @@
-export function FetchLCCloudFlag (root) {
+export function FetchCloudFlag (root) {
   try {
     root.cloudFlag = Object.create(null)
     AV.Query.doCloudQuery('select * from Roles limit 100000000  order by -createdAt').then((rets) => {
