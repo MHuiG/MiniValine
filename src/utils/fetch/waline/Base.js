@@ -86,6 +86,38 @@ export function FetchBase (root) {
     }
   }
   root.postComment = (root, callback) => {
+    /* function getParent (obj) {
+      return obj.parentNode.parentNode.id
+    } */
+    const item = new Bean()
+    for (const i in root.C) {
+      if (root.C.hasOwnProperty(i)) {
+        let _v = root.C[i]
+        if (i === 'at') { _v = _v.substr(1) }
+        item.set(i, _v)
+      }
+    }
+    item.set('createdAt', new Date())
+    console.log(item)
+    // console.log(document.querySelector("#comment-"+item.rid))
+    callback(item)
 
+    /* ajax({
+      url: url,
+      type: 'POST',
+      data: {
+		  comment:item.comment,
+		  link:item.link,
+		  mail:item.mail,
+		  nick:item.nick,
+		  ua:item.ua,
+		  url:item.url,
+		  at:item.at,
+		  rid:item.rid,
+	  },
+      success: function (data) {
+        callback(item)
+      }
+    }) */
   }
 }
