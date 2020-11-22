@@ -1,4 +1,5 @@
 import ajax from '../../plugins/ajax'
+import Bean from '../Bean'
 export function FetchBase (root) {
   root.fetchCount = (root) => {
     const url = `${root.config.serverURLs}/comment`
@@ -26,7 +27,10 @@ export function FetchBase (root) {
       },
       success: function (data) {
         data = eval('(' + data + ')')
-        console.log(data)
+        console.log(data.data[0])
+        const item = new Bean()
+        item.set('nick', data.data[0].nick)
+        console.log(item.get('nick'))
       }
     })
   }
