@@ -28,11 +28,11 @@ MiniValineFactory.prototype.initCheck = function () {
             FetchCloudFlag(root)
           })
         }
-      }else if (root.backend == 'waline') {
+      } else if (root.backend == 'waline') {
         import(/* webpackChunkName: "fetch-waline-base" */'./utils/fetch/waline/Base.js').then(({ FetchBase }) => {
           FetchBase(root)
         })
-	  }
+      }
       if (root.mode === 'DesertsP') {
         import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
           root.ele = getEle(root)
