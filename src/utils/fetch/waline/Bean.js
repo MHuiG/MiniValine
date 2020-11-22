@@ -11,6 +11,8 @@ function Bean () {
     this.set('link', it.link)
     this.set('createdAt', new Date(it.createdAt))
     this.set('id', it.objectId)
+    this.set('rid', it.rid)
+    this.set('pid', it.pid)
     this.set('browser', it.browser)
     this.set('os', it.os)
     this.set('comment', it.comment)
@@ -20,7 +22,7 @@ function Bean () {
   this.beanList = function (data) {
     const list = []
     if (data && data.length) {
-      for (let i = data.length - 1; i >= 0; i--) {
+      for (let i = 0; i < data.length; i++) {
         const item = new Bean()
         item.create(data[i])
         list.push(item)

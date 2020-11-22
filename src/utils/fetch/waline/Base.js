@@ -27,6 +27,7 @@ export function FetchBase (root) {
       success: function (data) {
         data = eval('(' + data + ')')
         window.MV.WalinePageData = data
+        console.log(data)
         callback(data.totalPages)
       }
     })
@@ -35,7 +36,7 @@ export function FetchBase (root) {
     if (pageNum == 1) {
       const item = new Bean()
       const a = item.beanList(window.MV.WalinePageData.data)
-	  console.log(a)
+      console.log(a)
       callback(a)
     } else {
       ajax({
@@ -57,7 +58,8 @@ export function FetchBase (root) {
     }
   }
   root.fetchNextList = (root, _id, callback) => {
-    // console.log(window.MV.WalinePageData)
+    console.log(window.MV.WalinePageData)
+    console.log(_id)
   }
   root.fetchNextCount = (root, _id, callback) => {
 
