@@ -7,7 +7,6 @@ const parentQuery = (root) => {
     root.loading.show()
     const callback = (rets) => {
       // console.log(rets)
-      rets = (rets && rets.results) || []
       const len = rets.length
       if (len) {
         for (let i = 0; i < len; i++) {
@@ -52,7 +51,6 @@ const parentQuery = (root) => {
   const callback = (data) => {
     root.TotalPages = data
     root.parentQuery(1)
-    console.log(data)
   }
   root.fetchTotalPages(root, callback)
 }

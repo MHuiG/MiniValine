@@ -1,8 +1,8 @@
 import ajax from '../../plugins/ajax'
 import Bean from './Bean'
 export function FetchBase (root) {
+  const url = `${root.config.serverURLs}/comment`
   root.fetchCount = (root) => {
-    const url = `${root.config.serverURLs}/comment`
     ajax({
       url: url,
       type: 'GET',
@@ -16,26 +16,31 @@ export function FetchBase (root) {
     })
   }
   root.fetchParentList = (root, pageNum, callback) => {
-    const url = `${root.config.serverURLs}/comment`
-    ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        path: root.config.pathname,
-        pageSize: root.pageSize,
-        page: pageNum
-      },
-      success: function (data) {
-        data = eval('(' + data + ')')
-        console.log(data.data[0])
-        const item = new Bean()
-        item.set('nick', data.data[0].nick)
-        console.log(item.get('nick'))
-      }
-    })
+    if (pageNum == 1) {
+      console.log(window.MV.WalinePageData)
+      const item = new Bean()
+      const a = item.beanList(window.MV.WalinePageData.data)
+      callback(a)
+    } else {
+      ajax({
+        url: url,
+        type: 'GET',
+        data: {
+          path: root.config.pathname,
+          pageSize: root.pageSize,
+          page: pageNum
+        },
+        success: function (data) {
+          data = eval('(' + data + ')')
+          console.log(data.data[0])
+          const item = new Bean()
+          item.set('nick', data.data[0].nick)
+          console.log(item.get('nick'))
+        }
+      })
+    }
   }
   root.fetchTotalPages = (root, callback) => {
-    const url = `${root.config.serverURLs}/comment`
     ajax({
       url: url,
       type: 'GET',
@@ -46,6 +51,7 @@ export function FetchBase (root) {
       },
       success: function (data) {
         data = eval('(' + data + ')')
+        window.MV.WalinePageData = data
         callback(data.totalPages)
       }
     })

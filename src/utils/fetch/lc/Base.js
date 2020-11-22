@@ -45,6 +45,7 @@ export function FetchBase (root) {
   root.fetchParentList = (root, pageNum, callback) => {
     const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
     cq.then((rets) => {
+      rets = (rets && rets.results) || []
       callback(rets)
     }).catch((ex) => {
       // console.log(ex)
