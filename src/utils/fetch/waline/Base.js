@@ -86,9 +86,6 @@ export function FetchBase (root) {
     }
   }
   root.postComment = (root, callback) => {
-    /* function getParent (obj) {
-      return obj.parentNode.parentNode.id
-    } */
     const item = new Bean()
     for (const i in root.C) {
       if (root.C.hasOwnProperty(i)) {
@@ -98,26 +95,25 @@ export function FetchBase (root) {
       }
     }
     item.set('createdAt', new Date())
-    console.log(item)
-    // console.log(document.querySelector("#comment-"+item.rid))
-    callback(item)
-
-    /* ajax({
+    const parentNode = JSON.parse(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent)
+    const data = {
+      comment: item.comment,
+      link: item.link,
+      mail: item.mail,
+      nick: item.nick,
+      ua: item.ua,
+      url: item.url,
+      at: item.at,
+      rid: parentNode.pid,
+      pid: parentNode.id
+    }
+    ajax({
       url: url,
       type: 'POST',
-      data: {
-		  comment:item.comment,
-		  link:item.link,
-		  mail:item.mail,
-		  nick:item.nick,
-		  ua:item.ua,
-		  url:item.url,
-		  at:item.at,
-		  rid:item.rid,
-	  },
+      data: data,
       success: function (data) {
         callback(item)
       }
-    }) */
+    })
   }
 }
