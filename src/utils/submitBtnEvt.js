@@ -23,7 +23,7 @@ const submitBtnEvt = (root) => {
     // render markdown
     const render = (root) => {
       root.C.comment = root.TEXT
-      if (root.C.at !== '') {
+      if ((root.backend == 'lc') && (root.C.at !== '')) {
         const at = `<a class="at" href='#${root.C.rid}'>${root.C.at}</a>`
         root.C.comment = at + ' , ' + root.C.comment
       }

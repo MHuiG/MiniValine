@@ -151,9 +151,7 @@ const vcard = function (root, m) {
 			`<section class="text-wrapper"  id="comment-${m.id}">`
     if (root.backend == 'waline') {
       // 兼容处理
-      try {
-        HTML += `<div class="comment-item" style="display: none">${window.btoa(JSON.stringify(m))}</div>`
-      } catch (e) {}
+      HTML += `<div class="comment-item" style="display: none">${window.btoa(unescape(encodeURIComponent(JSON.stringify(m))))}</div>`
     }
     HTML += `<div class="vcomment">${m.get('comment')}</div>` +
 			'</section>' +

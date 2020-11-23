@@ -5,6 +5,7 @@ const previewEvt = (root) => {
     const previewText = root.el.querySelector('.vpreview-text')
     const veditor = root.el.querySelector('.veditor')
     const render = (previewText) => {
+      previewText.preview = true
       previewText.innerHTML = previewText.TEXT
       previewText.removeAttribute('style')
       previewText.setAttribute('triggered', 1)

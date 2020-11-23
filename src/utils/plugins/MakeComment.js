@@ -6,7 +6,11 @@ const MakeComment = (root, o, render) => {
       const m = ls[i].match(/!\(:(.*?\.\w+):\)/)[1]
       const em = root.emoticon[m]
       const R = new RegExp('!\\(:' + m.replace(/\./, '\\.') + ':\\)', 'g')
-      root.C.comment = root.C.comment.replace(R, `<img src="${em}" alt="${m}" class="vemoticon-img">`)
+      if (root.backend == 'lc') {
+        root.C.comment = root.C.comment.replace(R, `<img src="${em}" alt="${m}" class="vemoticon-img">`)
+      } else if (root.backend == 'waline') {
+        root.C.comment = root.C.comment.replace(R, `![${m}](${em})`) // waline必须启用 markdown
+      }
     }
   }
   o.TEXT = root.C.comment

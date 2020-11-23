@@ -119,6 +119,9 @@ export function FetchBase (root) {
       type: 'POST',
       data: data,
       success: function (data) {
+        data = eval('(' + data + ')')
+        const item = new Bean()
+        item.create(data.data)
         callback(item)
       }
     })
