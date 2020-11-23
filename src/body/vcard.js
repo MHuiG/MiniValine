@@ -140,7 +140,7 @@ const vcard = function (root, m) {
         }
       } catch (e) {}
     }
-    const HTML = '<div class="vcomment-body">' +
+    let HTML = '<div class="vcomment-body">' +
 			'<div class="vhead" >' +
 				`<img class="vavatar lazyload" data-src="${gravatarUrl}"/>` +
 				`<a rid='${m.id}' at='@${m.get('nick')}' class="vat" id="at-${m.id}">${root.i18n.reply}</a>` +
@@ -148,9 +148,14 @@ const vcard = function (root, m) {
 				`<br/><span class="vtime">${timeAgo(m.get('createdAt'), root.i18n)}</span>` +
 				'</div>' +
 			'</div>' +
-			`<section class="text-wrapper"  id="comment-${m.id}">` +
-			`<div class="comment-item" style="display: none">${window.btoa(JSON.stringify(m))}</div>` +
-				`<div class="vcomment">${m.get('comment')}</div>` +
+			`<section class="text-wrapper"  id="comment-${m.id}">`
+    if (root.backend == 'waline') {
+      // 兼容处理
+      try {
+        HTML += `<div class="comment-item" style="display: none">${window.btoa(JSON.stringify(m))}</div>`
+      } catch (e) {}
+    }
+    HTML += `<div class="vcomment">${m.get('comment')}</div>` +
 			'</section>' +
 		'</div>' +
 		'<div class="vcomment-children">' +

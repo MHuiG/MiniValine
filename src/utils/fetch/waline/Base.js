@@ -95,17 +95,24 @@ export function FetchBase (root) {
       }
     }
     item.set('createdAt', new Date())
-    const parentNode = window.atob(JSON.parse(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent))
-    const data = {
+    let data = Object.create(null)
+    data = {
       comment: item.comment,
       link: item.link,
       mail: item.mail,
       nick: item.nick,
       ua: item.ua,
       url: item.url,
-      at: item.at,
-      rid: parentNode.pid,
-      pid: parentNode.id
+      at: item.at
+    }
+    if (data.at) {
+      const parentNode = JSON.parse(window.atob(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent))
+      if (parentNode.pid) {
+        data.rid = parentNode.pid
+      } else {
+        data.rid = parentNode.id
+      }
+      data.pid = parentNode.id
     }
     ajax({
       url: url,
