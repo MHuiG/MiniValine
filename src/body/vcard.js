@@ -31,7 +31,7 @@ const vcard = function (root, m) {
         }
         if (bn) {
           uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr
-          if (['samsung browser'].includes(bn)) {
+          if (['mobile', 'samsung', 'samsung browser'].includes(bn)) {
             uaMeta += 'mobile-alt'
           } else if (['android', 'android browser'].includes(bn)) {
             uaMeta += 'android'
@@ -71,11 +71,11 @@ const vcard = function (root, m) {
         }
         if (on) {
           uaMeta += '<span class="vsys"><i><embed class="msvg" src="' + svgstr
-          if (['mac os', 'ios'].includes(on)) {
+          if (['mac', 'mac os', 'ios'].includes(on)) {
             uaMeta += 'apple'
-          } else if (['chromium os'].includes(on)) {
+          } else if (['chromium', 'chromium os'].includes(on)) {
             uaMeta += 'chrome'
-          } else if (['firefox os'].includes(on)) {
+          } else if (['firefox', 'firefox os'].includes(on)) {
             uaMeta += 'firefox'
           } else if (['windows phone', 'windows'].includes(on)) {
             uaMeta += 'windows'
