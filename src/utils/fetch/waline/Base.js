@@ -95,7 +95,7 @@ export function FetchBase (root) {
       }
     }
     item.set('createdAt', new Date())
-    const parentNode = JSON.parse(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent)
+    const parentNode = window.atob(JSON.parse(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent))
     const data = {
       comment: item.comment,
       link: item.link,

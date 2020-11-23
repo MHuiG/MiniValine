@@ -149,7 +149,7 @@ const vcard = function (root, m) {
 				'</div>' +
 			'</div>' +
 			`<section class="text-wrapper"  id="comment-${m.id}">` +
-			`<div class="comment-item" style="display: none">${JSON.stringify(m)}</div>` +
+			`<div class="comment-item" style="display: none">${window.btoa(JSON.stringify(m))}</div>` +
 				`<div class="vcomment">${m.get('comment')}</div>` +
 			'</section>' +
 		'</div>' +
