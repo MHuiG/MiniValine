@@ -34,7 +34,7 @@
   "homepage": "https://github.com/MiniValine/MiniValine#readme",
   "devDependencies": {
     "@babel/cli": "7.12.8",
-    "@babel/core": "7.12.8",
+    "@babel/core": "7.12.9",
     "@babel/preset-env": "7.12.7",
     "@bundle-analyzer/webpack-plugin": "0.5.1",
     "autosize": "4.0.2",
