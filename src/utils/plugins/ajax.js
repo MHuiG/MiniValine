@@ -13,7 +13,13 @@ const ajax = (options) => {
     if (xhr.readyState === 4) {
       const status = xhr.status
       if (status >= 200 && status < 300) {
-        options.success && options.success(eval('('+xhr.responseText+')'), eval('('+xhr.responseXML+')')) // no safe
+        if (options.success) {
+          try {
+            options.success && options.success(JSON.parse(xhr.responseText), JSON.parse(xhr.responseXML))
+          } catch (e) {
+            options.success(xhr.responseText, xhr.responseXML)
+          }
+        }
       } else {
         options.fail && options.fail(status)
       }
