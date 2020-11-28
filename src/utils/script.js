@@ -2,7 +2,7 @@ import { pf } from '../Default'
 import getScript from './plugins/getScript'
 import GetIP from './plugins/GetIP'
 const script = (root) => {
-  if (!root.config.NoRecordIP) {
+  if ((root.backend == 'lc') && (!root.config.NoRecordIP)) {
     if (typeof window.MV.ip == 'undefined') {
       GetIP(root)
     } else {
@@ -21,7 +21,7 @@ const script = (root) => {
       window.MV.jq = true
     }
   }
-  if ((typeof root.visitor == 'undefined') || (root.visitor)) {
+  if ((root.backend == 'lc') && ((typeof root.visitor == 'undefined') || (root.visitor))) {
     getScript('https://cdn.jsdelivr.net/npm/fingerprintjs2')
   }
 }
