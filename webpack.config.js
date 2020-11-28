@@ -41,8 +41,9 @@ var WEBPACK_CONFIG = {
   },
   devtool: 'cheap-module-source-map',
   devServer: {
-    publicPath: '/dist/',
-    inline: true,
+    dev: {
+      publicPath: '/dist/',
+    },
     port: 8088,
 	open:true,
 	hot:true,
