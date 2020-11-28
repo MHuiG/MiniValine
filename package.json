@@ -73,7 +73,7 @@
     "source-map": "^0.7.0",
     "string-format": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
-    "webpack": "^4.44.2",
+    "webpack": "^5.1.1",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   },
