@@ -9,7 +9,6 @@ export function Counter (root) {
       path: root.config.pathname
     },
     success: function (data) {
-      data = eval('(' + data + ')')
       document.querySelectorAll('.leancloud_visitors,.leancloud-visitors')[0].querySelector('.leancloud-visitors-count').innerText = data.data[0].time
     }
   })

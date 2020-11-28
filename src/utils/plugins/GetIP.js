@@ -8,7 +8,6 @@ const GetIP = (root) => {
         type: 'json'
       },
       success: function (data) {
-        data = eval('(' + data + ')')
         window.MV.fuck = 1
         window.MV.region = data
         root.C.ip = data.data.myip

@@ -25,7 +25,6 @@ export function FetchBase (root) {
         page: 1
       },
       success: function (data) {
-        data = eval('(' + data + ')')
         window.MV.WalinePageData = data
         callback(data.totalPages)
       }
@@ -46,7 +45,6 @@ export function FetchBase (root) {
           page: pageNum
         },
         success: function (data) {
-          data = eval('(' + data + ')')
           window.MV.WalinePageData = data
           const item = new Bean()
           window.MV.WalinePageList = item.beanList(data.data)
@@ -119,7 +117,6 @@ export function FetchBase (root) {
       type: 'POST',
       data: data,
       success: function (data) {
-        data = eval('(' + data + ')')
         const item = new Bean()
         item.create(data.data)
         callback(item)

@@ -51,7 +51,6 @@ const getSmile = (root, Url) => {
     url: Url + '/index.json',
     type: 'GET',
     success: function (data) {
-      data = eval('(' + data + ')')
       const tmp = []
       for (let i = 0; i < data[0].length; i++) {
         tmp.push(Url + '/' + data[0][i])
