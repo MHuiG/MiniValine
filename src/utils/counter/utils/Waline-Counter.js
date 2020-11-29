@@ -9,7 +9,9 @@ export function Counter (root) {
       path: root.config.pathname
     },
     success: function (data) {
-      document.querySelectorAll('.leancloud_visitors,.leancloud-visitors')[0].querySelector('.leancloud-visitors-count').innerText = data.data[0].time
+      try {
+        document.querySelectorAll('.leancloud_visitors,.leancloud-visitors')[0].querySelector('.leancloud-visitors-count').innerText = data.data[0].time
+      } catch (e) {}
     }
   })
 }

@@ -17,6 +17,8 @@ const i18n = (root) => {
       window.MV.getI18n = 1
     }
     if (window.MV.getI18n) {
+      const temp = root.lang.split('-')
+      root.lang = temp[0] + '-' + temp[1].toUpperCase()
       ajax({
         url: i18nUrl + root.lang + '/index.json',
         type: 'GET',

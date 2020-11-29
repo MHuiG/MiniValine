@@ -53,13 +53,16 @@ const Visitor = (util) => {
       ERROR: 'error',
       EXCLUDED: 'excluded'
     }
+
     if (window.requestIdleCallback) {
       requestIdleCallback(function () {
-        Fingerprint2.getV18(Options, function (result, components) {
-          window.MV.finger = {}
-          window.MV.finger.hash = result
-          window.MV.finger.components = components
-        })
+        try {
+          Fingerprint2.getV18(Options, function (result, components) {
+            window.MV.finger = {}
+            window.MV.finger.hash = result
+            window.MV.finger.components = components
+          })
+        } catch (e) {}
       })
     } else {
       setTimeout(function () {
@@ -70,6 +73,7 @@ const Visitor = (util) => {
         })
       }, 500)
     }
+
     window.MV.log = o
   } catch (e) {}
 }
