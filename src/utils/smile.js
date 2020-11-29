@@ -36,13 +36,16 @@ const smile = (root) => {
       root.emoticon = window.MV.emoticon
     }
     setTimeout(function () {
-      localStorage && localStorage.setItem(
-        'MiniValineSmile',
-        JSON.stringify({
-          emoticonUrl: window.MV.emoticonUrl,
-          emoticonList: window.MV.emoticonList
-        })
-      )
+      if ((typeof root.emoticonList != 'undefined') && (root.emoticonList.length != 0)) {
+        localStorage && localStorage.setItem(
+          'MiniValineSmile',
+          JSON.stringify({
+            emoticonUrl: window.MV.emoticonUrl,
+            emoticonList: window.MV.emoticonList
+          })
+
+        )
+      }
     }, 5000)
   }
 }
