@@ -19,7 +19,7 @@
 [![DeepScan grade](https://deepscan.io/api/teams/11674/projects/14601/branches/275411/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=11674&pid=14601&bid=275411)
 [![](https://img.shields.io/badge/jsdelivr-purge-green)](https://purge.jsdelivr.net/npm/minivaline)
 
-> MiniValine is a simple and minimalist comment system based on Leancloud
+> MiniValine is a simple and minimalist comment system
 ------------------------------
 
 **[Demo](https://minivaline.github.io)** | **[Docs](https://minivaline.js.org/docs/)** | **[FAQs](https://minivaline.js.org/docs/en/#/FAQ)** | **[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)** | [CHANGELOG](https://minivaline.js.org/docs/en/#/CHANGELOG)
