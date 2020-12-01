@@ -9,7 +9,7 @@ function Bean () {
     this.set('nick', it.nick)
     this.set('mailMd5', it.mail)
     this.set('link', it.link)
-    this.set('createdAt', new Date(it.createdAt))
+    this.set('createdAt', new Date(it.insertedAt)) // 兼容处理
     this.set('id', it.objectId)
     this.set('rid', it.pid) // 请注意这里没有错误
     this.set('pid', it.rid) // 兼容处理
