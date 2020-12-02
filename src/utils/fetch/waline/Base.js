@@ -12,6 +12,10 @@ export function FetchBase (root) {
       },
       success: function (data) {
         root.el.querySelector('.count').innerHTML = data
+      },
+      error: function (status, responseText) {
+        console.error(status)
+        console.error(responseText)
       }
     })
   }
@@ -27,6 +31,10 @@ export function FetchBase (root) {
       success: function (data) {
         window.MV.WalinePageData = data
         callback(data.totalPages)
+      },
+      error: function (status, responseText) {
+        console.error(status)
+        console.error(responseText)
       }
     })
   }
@@ -49,6 +57,10 @@ export function FetchBase (root) {
           const item = new Bean()
           window.MV.WalinePageList = item.beanList(data.data)
           callback(window.MV.WalinePageList)
+        },
+        error: function (status, responseText) {
+          console.error(status)
+          console.error(responseText)
         }
       })
     }
@@ -120,6 +132,10 @@ export function FetchBase (root) {
         const item = new Bean()
         item.create(data.data)
         callback(item)
+      },
+      error: function (status, responseText) {
+        console.error(status)
+        console.error(responseText)
       }
     })
   }

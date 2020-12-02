@@ -12,17 +12,17 @@ const ajax = (options) => {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       const status = xhr.status
+      let responseText = xhr.responseText
+      let responseXML = xhr.responseXML
+      try {
+        responseText = JSON.parse(responseText)
+        responseXML = JSON.parse(responseXML)
+      } catch (e) {
+        console.error(responseText)
+        console.error(e)
+      }
       if (status >= 200 && status < 300) {
         if (options.success) {
-          let responseText = xhr.responseText
-          let responseXML = xhr.responseXML
-          try {
-            responseText = JSON.parse(responseText)
-            responseXML = JSON.parse(responseXML)
-          } catch (e) {
-            console.error(responseText)
-            console.error(e)
-          }
           try {
             options.success(responseText, responseXML)
           } catch (e) {
@@ -31,7 +31,7 @@ const ajax = (options) => {
           }
         }
       } else {
-        options.fail && options.fail(status)
+        options.error && options.error(status, responseText)
       }
     }
   }
