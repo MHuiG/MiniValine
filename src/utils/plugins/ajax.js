@@ -14,11 +14,20 @@ const ajax = (options) => {
       const status = xhr.status
       if (status >= 200 && status < 300) {
         if (options.success) {
+          let responseText = xhr.responseText
+          let responseXML = xhr.responseXML
           try {
-            options.success && options.success(JSON.parse(xhr.responseText), JSON.parse(xhr.responseXML))
+            responseText = JSON.parse(responseText)
+            responseXML = JSON.parse(responseXML)
           } catch (e) {
-            console.log(xhr.responseText)
-            options.success(xhr.responseText, xhr.responseXML) // test
+            console.log(responseText)
+            console.log(e)
+          }
+          try {
+            options.success(responseText, responseXML)
+          } catch (e) {
+            console.log(responseText)
+            console.log(e)
           }
         }
       } else {
