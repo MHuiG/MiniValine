@@ -111,6 +111,7 @@ export function FetchBase (root) {
       }
       data.pid = parentNode.id
     }
+	console.log(data)
     ajax({
       url: url,
       type: 'POST',
