@@ -17,7 +17,8 @@ const ajax = (options) => {
           try {
             options.success && options.success(JSON.parse(xhr.responseText), JSON.parse(xhr.responseXML))
           } catch (e) {
-            options.success(xhr.responseText, xhr.responseXML)
+            console.log(xhr.responseText)
+            options.success(xhr.responseText, xhr.responseXML) // test
           }
         }
       } else {

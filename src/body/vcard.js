@@ -3,7 +3,7 @@ import timeAgo from './timeago'
 const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   const Hash = m.get('mailMd5')
-  const gravatarUrl = `${GBUrl + Hash}?size=80&d=robohash`
+  const gravatarUrl = `${GBUrl + Hash}?s=48&d=robohash`
   if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
     root.Vbarrager(root, m, gravatarUrl)
   }

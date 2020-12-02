@@ -92,7 +92,6 @@ export function FetchBase (root) {
         item.set(i, _v)
       }
     }
-    item.set('createdAt', new Date())
     let data = Object.create(null)
     data = {
       comment: item.comment,
