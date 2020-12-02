@@ -20,14 +20,14 @@ const ajax = (options) => {
             responseText = JSON.parse(responseText)
             responseXML = JSON.parse(responseXML)
           } catch (e) {
-            console.log(responseText)
-            console.log(e)
+            console.error(responseText)
+            console.error(e)
           }
           try {
             options.success(responseText, responseXML)
           } catch (e) {
-            console.log(responseText)
-            console.log(e)
+            console.error(responseText)
+            console.error(e)
           }
         }
       } else {

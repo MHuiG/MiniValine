@@ -38,7 +38,7 @@ export function FetchBase (root) {
     query.count().then((count) => {
       root.el.querySelector('.count').innerHTML = count
     }).catch((ex) => {
-      console.log(ex)
+      console.error(ex)
       root.el.querySelector('.count').innerHTML = 0
     })
   }
@@ -47,7 +47,7 @@ export function FetchBase (root) {
     cq.then((rets) => {
       callback(Math.ceil(rets.count / root.pageSize))
     }).catch((ex) => {
-      console.log(ex)
+      console.error(ex)
     })
   }
   root.fetchParentList = (root, pageNum, callback) => {
@@ -56,7 +56,7 @@ export function FetchBase (root) {
       rets = (rets && rets.results) || []
       callback(rets)
     }).catch((ex) => {
-      // console.log(ex)
+      // console.error(ex)
       root.loading.hide(root.parentCount)
     })
   }
@@ -66,7 +66,7 @@ export function FetchBase (root) {
       rets = (rets && rets.results) || []
       callback(rets)
     }).catch((ex) => {
-      // console.log(ex)
+      // console.error(ex)
       root.loading.hide(root.parentCount)
     })
   }
@@ -76,7 +76,7 @@ export function FetchBase (root) {
       const { count } = rets
       callback(count)
     }).catch((ex) => {
-      console.log(ex)
+      console.error(ex)
     })
   }
   root.postComment = (root, callback) => {

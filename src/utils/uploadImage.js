@@ -64,7 +64,7 @@ const uploadImage = (root) => {
       }
     }
     xhr.onerror = function (e) {
-      console.log(e)
+      console.error(e)
     }
     xhr.open('POST', 'https://pic.alexhchu.com/api/upload', true)
     xhr.send(formData)

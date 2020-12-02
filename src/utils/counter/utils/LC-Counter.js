@@ -8,7 +8,7 @@ const CounterFactory = {
       const lpv = document.querySelectorAll('.leancloud_pv,.leancloud-pv')
       addFun(Counter, lpv, 1)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 }
@@ -33,7 +33,7 @@ const addFun = (Counter, lvs, ispv) => {
         v.save().then(rt => {
           lv.querySelector('.leancloud-visitors-count').innerText = rt.get('time')
         }).catch(ex => {
-          console.log(ex)
+          console.error(ex)
         })
       } else {
         createCounter(Counter, o)
@@ -56,7 +56,7 @@ const createCounter = function (Counter, o) {
   newCounter.save().then(ret => {
     o.el.querySelector('.leancloud-visitors-count').innerText = 1
   }).catch(ex => {
-    console.log(ex)
+    console.error(ex)
   })
 }
 

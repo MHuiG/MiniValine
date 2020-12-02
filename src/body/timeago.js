@@ -31,7 +31,7 @@ const timeAgo = (date, i18n) => {
       return dateFormat(date)
     }
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 

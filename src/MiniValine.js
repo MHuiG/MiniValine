@@ -11,7 +11,7 @@ const MiniValineFactory = function (option) {
     util.script(root)
     util.i18n(root)
     util.initLibs(root)
-  } catch (e) { console.log(e) }
+  } catch (e) { console.error(e) }
 }
 MiniValineFactory.prototype.initCheck = function () {
   const root = this
@@ -58,7 +58,7 @@ MiniValineFactory.prototype.initCheck = function () {
         })
       }
     }, 5)
-  } catch (e) { console.log(e) }
+  } catch (e) { console.error(e) }
 }
 MiniValineFactory.prototype.Start = function () {
   const root = this
@@ -70,7 +70,7 @@ MiniValineFactory.prototype.Start = function () {
     if (root.backend == 'lc') { root.setAV(root) }
     util.visitor(root)
   } catch (e) {
-    console.log(e)
+    console.error(e)
     return
   }
   try {
@@ -99,6 +99,6 @@ MiniValineFactory.prototype.Start = function () {
     util.atEvt(root)
     util.submitBtnEvt(root)
     util.smile(root)
-  } catch (e) { console.log(e) }
+  } catch (e) { console.error(e) }
 }
 module.exports = MiniValineFactory
