@@ -4,7 +4,7 @@ import check from './plugins/check'
 const submitBtnEvt = (root) => {
   const submitBtn = root.el.querySelector('.vsubmit')
   root.submitEvt = (e) => {
-    if (submitBtn.getAttribute('disabled')) {
+    if (submitBtn.getAttribute('disabled-submit')) {
       root.alert.show({
         type: 0,
         text: root.i18n.wait + 'ヾ(๑╹◡╹)ﾉ"',
@@ -46,7 +46,7 @@ const submitBtnEvt = (root) => {
     MakeComment(root, root, render)
   }
   const commitEvt = () => {
-    submitBtn.setAttribute('disabled', true)
+    submitBtn.setAttribute('disabled-submit', true)
     root.submitting.show()
     try {
       const IPv4reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/
@@ -81,7 +81,7 @@ const submitBtnEvt = (root) => {
         const _vlist = root.el.querySelector(`#children-list-${root.C.rid}`)
         root.insertComment(commentItem, _vlist, true)
       }
-      submitBtn.removeAttribute('disabled')
+      submitBtn.removeAttribute('disabled-submit')
       root.submitting.hide()
       root.nodata.hide()
       root.reset()

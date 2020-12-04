@@ -28,8 +28,8 @@ const alert = (root) => {
     console.error(status)
     console.error(data)
     let msg = data
-    if (data.errmsg || data.message) {
-      msg = data.errmsg || data.message
+    if (data.errmsg || data.message || data.msg) {
+      msg = data.errmsg || data.message || data.msg
     } else {
       try {
         msg = JSON.stringify(data)
@@ -37,11 +37,20 @@ const alert = (root) => {
         msg = 'ERROR'
       }
     }
+
+    if (msg === '""') {
+      msg = 'network error'
+    }
     root.alert.show({
       type: 0,
       text: msg,
       ctxt: root.i18n.confirm
     })
+
+    root.el.querySelector('.vsubmit').removeAttribute('disabled-submit')
+    root.submitting.hide()
+    root.nodata.hide()
+    root.reset()
   }
 }
 module.exports = alert

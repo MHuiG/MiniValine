@@ -95,7 +95,6 @@ export function FetchBase (root) {
         item.set(i, _v)
       }
     }
-    item.set('createdAt', new Date()) // 兼容处理
     let data = Object.create(null)
     data = {
       comment: item.comment,
@@ -123,15 +122,16 @@ export function FetchBase (root) {
       success: function (data) {
         if (data.errno) {
           root.error(data.errno, data)
-        } else {
+        } else if (data.comment) {
           const item = new Bean()
           item.create(data.data)
+          callback(item)
+        } else {
+          root.error(12138, data)
         }
-        callback(item)
       },
       error: function (status, data) {
         root.error(status, data)
-        callback(item)
       }
     })
   }
