@@ -76,10 +76,14 @@ MiniValineFactory.prototype.Start = function () {
   try {
     root.loading.hide(root.parentCount)
     root.loading.show()
-    root.fetchCount(root)
-    util.insertComment(root, body)
-    util.parentQuery(root)
-    util.nestQuery(root)
+    const checkFetchCount = setInterval(function () {
+      if (!root.fetchCount) return
+      clearInterval(checkFetchCount)
+      root.fetchCount(root)
+      util.insertComment(root, body)
+      util.parentQuery(root)
+      util.nestQuery(root)
+    }, 5)
     util.alert(root)
     util.inputs(root)
     util.previewEvt(root)

@@ -13,9 +13,9 @@ export function FetchBase (root) {
       success: function (data) {
         root.el.querySelector('.count').innerHTML = data
       },
-      error: function (status, responseText) {
+      error: function (status, data) {
         console.error(status)
-        console.error(responseText)
+        console.error(data)
       }
     })
   }
@@ -32,9 +32,9 @@ export function FetchBase (root) {
         window.MV.WalinePageData = data
         callback(data.totalPages)
       },
-      error: function (status, responseText) {
+      error: function (status, data) {
         console.error(status)
-        console.error(responseText)
+        console.error(data)
       }
     })
   }
@@ -58,9 +58,9 @@ export function FetchBase (root) {
           window.MV.WalinePageList = item.beanList(data.data)
           callback(window.MV.WalinePageList)
         },
-        error: function (status, responseText) {
+        error: function (status, data) {
           console.error(status)
-          console.error(responseText)
+          console.error(data)
         }
       })
     }
@@ -104,6 +104,7 @@ export function FetchBase (root) {
         item.set(i, _v)
       }
     }
+    item.set('createdAt', new Date()) // 兼容处理
     let data = Object.create(null)
     data = {
       comment: item.comment,
@@ -133,9 +134,17 @@ export function FetchBase (root) {
         item.create(data.data)
         callback(item)
       },
-      error: function (status, responseText) {
+      error: function (status, data) {
         console.error(status)
-        console.error(responseText)
+        console.error(data)
+        if (data.errmsg) {
+          root.alert.show({
+            type: 0,
+            text: data.errmsg,
+            ctxt: root.i18n.confirm
+          })
+        }
+        callback(item)
       }
     })
   }
