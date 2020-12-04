@@ -7,7 +7,7 @@ const alert = (root) => {
       const vbtns = mark.querySelector('.vbtns')
       const cBtn = `<button class="vcancel vbtn">${(o.ctxt) || root.i18n.cancel}</button>`
       const oBtn = `<button class="vsure vbtn">${(o.otxt) || root.i18n.continue}</button>`
-      vbtns.innerHTML = `${cBtn}${o.type && oBtn}`
+      vbtns.innerHTML = `${cBtn}${o.type ? oBtn : ''}`
       mark.querySelector('.vcancel').addEventListener('click', (e) => {
         root.alert.hide()
       })
