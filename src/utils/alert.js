@@ -31,7 +31,11 @@ const alert = (root) => {
     if (data.errmsg || data.message) {
       msg = data.errmsg || data.message
     } else {
-      msg = JSON.stringify(data)
+      try {
+        msg = JSON.stringify(data)
+      } catch (e) {
+        msg = 'ERROR'
+      }
     }
     root.alert.show({
       type: 0,
