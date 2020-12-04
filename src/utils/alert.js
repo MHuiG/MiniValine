@@ -24,5 +24,20 @@ const alert = (root) => {
       mark.setAttribute('style', 'display:none;')
     }
   }
+  root.error = (status, data) => {
+    console.error(status)
+    console.error(data)
+    let msg = data
+    if (data.errmsg || data.message) {
+      msg = data.errmsg || data.message
+    } else {
+      msg = JSON.stringify(data)
+    }
+    root.alert.show({
+      type: 0,
+      text: msg,
+      ctxt: root.i18n.confirm
+    })
+  }
 }
 module.exports = alert

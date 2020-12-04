@@ -13,10 +13,7 @@ export function FetchBase (root) {
       success: function (data) {
         root.el.querySelector('.count').innerHTML = data
       },
-      error: function (status, data) {
-        console.error(status)
-        console.error(data)
-      }
+      error: root.error
     })
   }
   root.fetchTotalPages = (root, callback) => {
@@ -32,10 +29,7 @@ export function FetchBase (root) {
         window.MV.WalinePageData = data
         callback(data.totalPages)
       },
-      error: function (status, data) {
-        console.error(status)
-        console.error(data)
-      }
+      error: root.error
     })
   }
   root.fetchParentList = (root, pageNum, callback) => {
@@ -58,10 +52,7 @@ export function FetchBase (root) {
           window.MV.WalinePageList = item.beanList(data.data)
           callback(window.MV.WalinePageList)
         },
-        error: function (status, data) {
-          console.error(status)
-          console.error(data)
-        }
+        error: root.error
       })
     }
   }
@@ -135,15 +126,7 @@ export function FetchBase (root) {
         callback(item)
       },
       error: function (status, data) {
-        console.error(status)
-        console.error(data)
-        if (data.errmsg) {
-          root.alert.show({
-            type: 0,
-            text: data.errmsg,
-            ctxt: root.i18n.confirm
-          })
-        }
+        root.error(status, data)
         callback(item)
       }
     })

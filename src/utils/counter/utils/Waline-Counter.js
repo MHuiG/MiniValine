@@ -12,6 +12,7 @@ export function Counter (root) {
       try {
         document.querySelectorAll('.leancloud_visitors,.leancloud-visitors')[0].querySelector('.leancloud-visitors-count').innerText = data.data[0].time
       } catch (e) {}
-    }
+    },
+    error: root.error
   })
 }
