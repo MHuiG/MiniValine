@@ -121,8 +121,12 @@ export function FetchBase (root) {
       type: 'POST',
       data: data,
       success: function (data) {
-        const item = new Bean()
-        item.create(data.data)
+        if (data.errno) {
+          root.error(data.errno, data)
+        } else {
+          const item = new Bean()
+          item.create(data.data)
+        }
         callback(item)
       },
       error: function (status, data) {
