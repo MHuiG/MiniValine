@@ -25,6 +25,9 @@ const parentQuery = (root) => {
             root.nestQuery(parentVcard)
           }
           rets[i].TEXT = rets[i].get('comment')
+          if (root.backend == 'waline') {
+            rets[i].NOXSS = true
+          }
           killXSS(rets[i], render)
         }
         const vpage = root.el.querySelector('.vpage')

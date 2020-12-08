@@ -122,7 +122,7 @@ export function FetchBase (root) {
       success: function (data) {
         if (data.errno) {
           root.error(data.errno, data)
-        } else if (data.comment) {
+        } else if (data.data.comment) {
           const item = new Bean()
           item.create(data.data)
           callback(item)

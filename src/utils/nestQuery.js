@@ -36,6 +36,9 @@ const nestQuery = (root) => {
                 root.nestQuery(vl, level + 1)
               }
               rets[i].TEXT = rets[i].get('comment')
+              if (root.backend == 'waline') {
+                rets[i].NOXSS = true
+              }
               killXSS(rets[i], render)
             }
           }

@@ -14,6 +14,9 @@ const initStyle = (root) => {
     if (root.config.dark) {
       import(/* webpackChunkName: "style-dark" */'../style/dark.scss')
     }
+    if (root.backend == 'waline') {
+      import(/* webpackChunkName: "style-math" */'../style/math.scss')
+    }
   }, 5)
 }
 module.exports = initStyle
