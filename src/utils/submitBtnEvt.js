@@ -48,20 +48,6 @@ const submitBtnEvt = (root) => {
   const commitEvt = () => {
     submitBtn.setAttribute('disabled-submit', true)
     root.submitting.show()
-    try {
-      const IPv4reg = /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$/
-      const IPv6reg = /^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/
-      const testip = root.C.ip
-      if ((!testip) || (!((IPv4reg.test(testip)) || (IPv6reg.test(testip)))) || (testip == '127.0.0.1')) {
-        window.MV.fuck = 0
-        kill()
-      }
-    } catch (e) {}
-    try {
-      if (window.MV.MC && window.MV.MC.util) {
-        window.MV.MC.util.Visitor()
-      }
-    } catch (e) {}
     const callback = (commentItem) => {
       localStorage &&
         localStorage.setItem(

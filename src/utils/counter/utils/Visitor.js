@@ -1,4 +1,4 @@
-const Visitor = (util) => {
+const Visitor = () => {
   try {
     const o = Object.create(null)
     const parser = new uaparser()

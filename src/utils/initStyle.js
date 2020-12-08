@@ -8,7 +8,7 @@ const initStyle = (root) => {
     } else if (root.mode === 'xCss') {
       import(/* webpackChunkName: "style-xCss" */'../style/xCss.scss')
     }
-    if ((typeof root.config.danmu == 'undefined') || (root.config.danmu)) {
+    if (root.config.barrager) {
       import(/* webpackChunkName: "style-barrager" */'../style/barrager.scss')
     }
     if (root.config.dark) {

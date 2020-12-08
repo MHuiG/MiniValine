@@ -18,16 +18,20 @@ const ajax = (options) => {
         responseText = JSON.parse(responseText)
         responseXML = JSON.parse(responseXML)
       } catch (e) {
-        console.error(responseText)
-        console.error(e)
+        if (responseText) {
+          console.error(responseText)
+          console.error(e)
+        }
       }
       if (status >= 200 && status < 300) {
         if (options.success) {
           try {
             options.success(responseText, responseXML)
           } catch (e) {
-            console.error(responseText)
-            console.error(e)
+            if (responseText) {
+              console.error(responseText)
+              console.error(e)
+            }
           }
         }
       } else {

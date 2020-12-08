@@ -13,7 +13,7 @@ const script = (root) => {
     getScript(pf)
     window.MV.pf = true
   }
-  if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
+  if (root.config.barrager) {
     if (typeof window.MV.jq == 'undefined') {
       if (typeof jQuery == 'undefined') {
         getScript('https://cdn.jsdelivr.net/npm/jquery')

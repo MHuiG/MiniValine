@@ -42,7 +42,7 @@ MiniValineFactory.prototype.initCheck = function () {
           root.Vcard = Vcard(root)
         })
       } else if (root.mode === 'xCss') {
-        if (!root.config.closeUA) {
+        if (!root.config.closeUA && (root.backend != 'waline')) {
           import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
             init()
           })
@@ -52,7 +52,7 @@ MiniValineFactory.prototype.initCheck = function () {
           root.Start()
         })
       }
-      if ((typeof root.config.barrager == 'undefined') || (root.config.barrager)) {
+      if (root.config.barrager) {
         import(/* webpackChunkName: "vcard-barrager" */'./body/vcard-barrager.js').then(({ Vbarrager }) => {
           root.Vbarrager = Vbarrager(root)
         })

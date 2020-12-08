@@ -1,3 +1,4 @@
+import Visitor from './Visitor'
 const CounterFactory = {
   add (Counter) {
     try {
@@ -62,4 +63,5 @@ const createCounter = function (Counter, o) {
 
 export function Counter () {
   CounterFactory.add(AV.Object.extend('Counter'))
+  Visitor()
 }

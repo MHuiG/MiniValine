@@ -43,7 +43,7 @@ const parentQuery = (root) => {
         }
       }
       try {
-        if ((typeof window.MV.barrager.bottom != 'undefined') && ((typeof root.config.barrager == 'undefined') || (root.config.barrager == 1))) {
+        if ((typeof window.MV.barrager.bottom != 'undefined') && (root.config.barrager == 1)) {
           window.MV.barrager.enable = 0
         }
       } catch (e) {}
