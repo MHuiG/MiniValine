@@ -1,4 +1,4 @@
-export const VERSION = '5.0.0-alpha.17'
+export const VERSION = '5.0.0-alpha.18'
 export const MVUrl = 'https://cdn.jsdelivr.net/npm/minivaline@' + VERSION
 export const GBUrl = 'https://secure.gravatar.com/avatar/'
 export const EUrl = [MVUrl + '/imgs/alus', MVUrl + '/imgs/qq', MVUrl + '/imgs/Bilibilis', MVUrl + '/imgs/tieba', MVUrl + '/imgs/twemoji', MVUrl + '/imgs/weibo', MVUrl + '/imgs/funny']
