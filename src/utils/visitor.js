@@ -1,5 +1,5 @@
 const visitor = (root) => {
-  if ((typeof root.visitor == 'undefined') || (root.visitor)) {
+  if (root.config.visitor) {
     import(/* webpackChunkName: "visitor" */'./counter/').then(({ MCo }) => {
       MCo(root.config)
     })

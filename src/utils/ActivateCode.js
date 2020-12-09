@@ -6,7 +6,7 @@ const ActivateCode = (root) => {
       }
     }, 500)
     if (root.backend == 'waline') return
-    if (root.math == false) return
+    if (!root.config.math) return
     import(/* webpackChunkName: "math" */'./plugins/MathJax').then(({ MathJaxSupport }) => {
       MathJaxSupport(root)
     })

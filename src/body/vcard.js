@@ -13,7 +13,7 @@ const vcard = function (root, m) {
     let ua = m.get('ua') || ''
     let uaMeta = ''
     const svgstr = MVUrl + '/imgs/svg/'
-    if ((ua || (root.backend == 'waline')) && !root.config.closeUA) {
+    if ((ua || (root.backend == 'waline')) && root.config.enableUA) {
       try {
         let bn = ''
         let on = ''
@@ -109,7 +109,7 @@ const vcard = function (root, m) {
       } catch (e) {}
     }
     let gat = ''
-    if ((!root.config.closeFlag) && (!root.config.cloudflag)) {
+    if (root.config.enableFlag && (!root.config.cloudflag)) {
       try {
         root.master = root.master.map(i => i.toLowerCase())
         root.friends = root.friends.map(i => i.toLowerCase())
@@ -128,7 +128,7 @@ const vcard = function (root, m) {
 			'</span>'
       } catch (e) {}
     }
-    if ((!root.config.closeFlag) && root.config.cloudflag) {
+    if (root.config.enableFlag && root.config.cloudflag) {
       try {
         const vRoles = root.cloudFlag.Roles
         const ehash = m.get('mailMd5').toLowerCase()
