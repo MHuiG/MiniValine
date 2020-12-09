@@ -55,7 +55,7 @@ Two ways.
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js"></script>
 
 ```
 
@@ -97,7 +97,7 @@ new MiniValine({
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MiniValine - A simple comment system based on Leancloud.</title>
     <!--Load js and insert it before </ body>-->
-    <script src="https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js"></script>
 </head>
 <body>
     <div class="mvcomment"></div>
@@ -132,7 +132,7 @@ new MiniValine({
     function load_minivaline() {
         setTimeout(function() {
             var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-            var src = 'https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js'
+            var src = 'https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js'
             var script = document.createElement('script')
             script.setAttribute('type','text/javascript')
             script.onload = function() {
