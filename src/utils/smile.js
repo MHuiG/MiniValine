@@ -51,7 +51,7 @@ const smile = (root) => {
 }
 const getSmile = (root, Url) => {
   ajax({
-    url: Url + '/index.json',
+    url: Url.replace(/\/$/g, '') + '/index.json',
     type: 'GET',
     success: function (data) {
       const tmp = []

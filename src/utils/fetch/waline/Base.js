@@ -1,14 +1,14 @@
 import ajax from '../../plugins/ajax'
 import Bean from './Bean'
 export function FetchBase (root) {
-  const url = `${root.config.serverURLs}/comment`
+  const url = `${root.serverURL}/comment`
   root.fetchCount = (root) => {
     ajax({
       url: url,
       type: 'GET',
       data: {
         type: 'count',
-        url: root.config.pathname
+        url: root.path
       },
       success: function (data) {
         root.el.querySelector('.count').innerHTML = data
@@ -21,7 +21,7 @@ export function FetchBase (root) {
       url: url,
       type: 'GET',
       data: {
-        path: root.config.pathname,
+        path: root.path,
         pageSize: root.pageSize,
         page: 1
       },
@@ -42,7 +42,7 @@ export function FetchBase (root) {
         url: url,
         type: 'GET',
         data: {
-          path: root.config.pathname,
+          path: root.path,
           pageSize: root.pageSize,
           page: pageNum
         },

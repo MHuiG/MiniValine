@@ -11,7 +11,9 @@ const Config = function (root) {
   root.mode = root.config.mode || 'xCss'
   root.placeholder = root.config.placeholder || ''
   root.C = C
-  root.C.url = root.config.path || root.config.pathname || location.pathname
+  root.path = root.config.path || root.config.pathname || location.pathname
+  root.C.url = root.path
+  root.serverURL = root.config.serverURLs ? root.config.serverURLs.replace(/\/$/g, '') : ''
   root.role = root.config.role ? root.config.role : 'admin'
   root.backend = root.config.backend ? root.config.backend : 'lc'
 }

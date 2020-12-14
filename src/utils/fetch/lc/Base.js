@@ -3,7 +3,7 @@ export function FetchBase (root) {
     // set serverURLs
     let prefix = 'https://'
     let serverURLs = ''
-    if (!root.config.serverURLs) {
+    if (!root.serverURL) {
       switch (root.config.appId.slice(-9)) {
         // TAB
         case '-9Nh9j0Va':
@@ -18,7 +18,7 @@ export function FetchBase (root) {
           break
       }
     }
-    serverURLs = root.config.serverURLs || prefix
+    serverURLs = root.serverURL || prefix
     try {
       AV.init({
         appId: root.config.appId,
