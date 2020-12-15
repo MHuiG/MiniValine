@@ -3,8 +3,8 @@ import util from './utils'
 const MiniValineFactory = function (option) {
   const root = this
   try {
-    root.config = option
-    if (!document.querySelectorAll(root.config.el)[0]) return
+    root.conf = option
+    if (!document.querySelectorAll(root.conf.el)[0]) return
     util.Config(root)
     util.initStyle(root)
     util.ActivateCode(root)
@@ -19,21 +19,21 @@ MiniValineFactory.prototype.initCheck = function () {
     const check = setInterval(function () {
       if (!root.i18n) return
       clearInterval(check)
-      if (root.backend == 'lc') {
+      if (root.conf.backend == 'lc') {
         import(/* webpackChunkName: "fetch-lc-base" */'./utils/fetch/lc/Base.js').then(({ FetchBase }) => {
           FetchBase(root)
         })
-        if (root.config.cloudflag) {
+        if (root.conf.cloudflag) {
           import(/* webpackChunkName: "fetch-lc-CloudFlag" */'./utils/fetch/lc/CloudFlag.js').then(({ FetchCloudFlag }) => {
             FetchCloudFlag(root)
           })
         }
-      } else if (root.backend == 'waline') {
+      } else if (root.conf.backend == 'waline') {
         import(/* webpackChunkName: "fetch-waline-base" */'./utils/fetch/waline/Base.js').then(({ FetchBase }) => {
           FetchBase(root)
         })
       }
-      if (root.mode === 'DesertsP') {
+      if (root.conf.mode === 'DesertsP') {
         import(/* webpackChunkName: "body-DesertsP" */'./body/DesertsP.js').then(({ getEle }) => {
           root.ele = getEle(root)
           root.Start()
@@ -41,8 +41,8 @@ MiniValineFactory.prototype.initCheck = function () {
         import(/* webpackChunkName: "vcard-DesertsP" */'./body/vcard-DesertsP.js').then(({ Vcard }) => {
           root.Vcard = Vcard(root)
         })
-      } else if (root.mode === 'xCss') {
-        if (root.config.enableUA && (root.backend != 'waline')) {
+      } else if (root.conf.mode === 'xCss') {
+        if (root.conf.enableUA && (root.conf.backend != 'waline')) {
           import(/* webpackChunkName: "ua" */'./utils/plugins/ua.js').then(({ init }) => {
             init()
           })
@@ -52,7 +52,7 @@ MiniValineFactory.prototype.initCheck = function () {
           root.Start()
         })
       }
-      if (root.config.barrager) {
+      if (root.conf.barrager) {
         import(/* webpackChunkName: "vcard-barrager" */'./body/vcard-barrager.js').then(({ Vbarrager }) => {
           root.Vbarrager = Vbarrager(root)
         })
@@ -67,7 +67,7 @@ MiniValineFactory.prototype.Start = function () {
     body.loading(root)
     root.nodata.show()
     body.smiles(root)
-    if (root.backend == 'lc') { root.setAV(root) }
+    if (root.conf.backend == 'lc') { root.setAV(root) }
     util.visitor(root)
   } catch (e) {
     console.error(e)
@@ -88,10 +88,10 @@ MiniValineFactory.prototype.Start = function () {
     util.inputs(root)
     util.previewEvt(root)
     util.smileEvt(root)
-    if (root.mode === 'DesertsP') {
+    if (root.conf.mode === 'DesertsP') {
       util.startEvt(root)
     }
-    if (root.config.barrager) {
+    if (root.conf.barrager) {
       util.barrager(root)
     }
     util.getCache(root)

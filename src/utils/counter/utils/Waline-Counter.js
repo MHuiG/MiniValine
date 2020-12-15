@@ -1,12 +1,12 @@
 import ajax from '../../plugins/ajax'
 
 export function Counter (root) {
-  const url = `${root.serverURL}/article`
+  const url = `${root.conf.serverURL}/article`
   ajax({
     url: url,
     type: 'POST',
     data: {
-      path: root.path
+      path: root.conf.path
     },
     success: function (data) {
       try {

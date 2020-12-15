@@ -1,7 +1,7 @@
 const el = function (root) {
-  const el = Object.prototype.toString.call(root.config.el) === '[object HTMLDivElement]'
-    ? root.config.el
-    : document.querySelectorAll(root.config.el)[0]
+  const el = Object.prototype.toString.call(root.conf.el) === '[object HTMLDivElement]'
+    ? root.conf.el
+    : document.querySelectorAll(root.conf.el)[0]
   if (Object.prototype.toString.call(el) !== '[object HTMLDivElement]') {
     return
   }

@@ -10,7 +10,7 @@ export function getEle (root) {
 									'<div class="textarea-wrapper">' +
                                         '<div class="commentTrigger">' +
                                             `<div class="avatar"><img class="visitor_avatar lazyload" data-src="${`${GBUrl + DEHash}?size=80`}"></div>` +
-                                            `<div class="trigger_title">${root.placeholder}</div>` +
+                                            `<div class="trigger_title">${root.conf.placeholder}</div>` +
                                         '</div>' +
                                         '<div class="veditor-area">' +
                                             '<textarea placeholder="" class="veditor"></textarea>' +

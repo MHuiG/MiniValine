@@ -1,12 +1,12 @@
 import ajax from './plugins/ajax'
 
 const smile = (root) => {
-  window.MV.emoticonUrl = root.emoticonUrl
+  window.MV.emoticonUrl = root.conf.emoticonUrl
   if (!window.MV.emoticonList) {
     let s = localStorage && localStorage.getItem('MiniValineSmile')
     if (s) {
       s = JSON.parse(s)
-      if (equar(s.emoticonUrl, root.emoticonUrl)) {
+      if (equar(s.emoticonUrl, root.conf.emoticonUrl)) {
         root.emoticonList = s.emoticonList
         root.emoticon = []
         for (let i = 0; i < root.emoticonList.length; i++) {
@@ -26,8 +26,8 @@ const smile = (root) => {
     if (window.MV.getSmile) {
       root.emoticonList = []
       root.emoticon = []
-      for (let k = 0; k < root.emoticonUrl.length; k++) {
-        getSmile(root, root.emoticonUrl[k])
+      for (let k = 0; k < root.conf.emoticonUrl.length; k++) {
+        getSmile(root, root.conf.emoticonUrl[k])
       }
       window.MV.emoticonList = root.emoticonList
       window.MV.emoticon = root.emoticon

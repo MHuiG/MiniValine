@@ -1,5 +1,5 @@
 export const MathJaxSupport = (root) => {
-  if ((typeof MathJax === 'undefined') && root.config.math) {
+  if ((typeof MathJax === 'undefined') && root.conf.math) {
     import(/* webpackChunkName: "math" */'./initMathJax3.js').then(({ initMathJax }) => {
       initMathJax()
     })

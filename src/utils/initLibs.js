@@ -4,7 +4,7 @@ const initLibs = (root) => {
     clearInterval(checkie)
     import(/* webpackChunkName: "lib" */'./plugins/lib.js').then(({ lib }) => {
       lib()
-      if (root.backend == 'lc') {
+      if (root.conf.backend == 'lc') {
         import(/* webpackChunkName: "lib-av" */'./plugins/lib-AV.js').then(({ lib }) => {
           lib()
           root.initCheck()

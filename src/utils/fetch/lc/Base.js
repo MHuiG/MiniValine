@@ -3,8 +3,8 @@ export function FetchBase (root) {
     // set serverURLs
     let prefix = 'https://'
     let serverURLs = ''
-    if (!root.serverURL) {
-      switch (root.config.appId.slice(-9)) {
+    if (!root.conf.serverURL) {
+      switch (root.conf.appId.slice(-9)) {
         // TAB
         case '-9Nh9j0Va':
           prefix += 'tab.leancloud.cn'
@@ -18,11 +18,11 @@ export function FetchBase (root) {
           break
       }
     }
-    serverURLs = root.serverURL || prefix
+    serverURLs = root.conf.serverURL || prefix
     try {
       AV.init({
-        appId: root.config.appId,
-        appKey: root.config.appKey,
+        appId: root.conf.appId,
+        appKey: root.conf.appKey,
         serverURLs
       })
     } catch (e) {}
@@ -45,13 +45,13 @@ export function FetchBase (root) {
   root.fetchTotalPages = (root, callback) => {
     const cq = root.v.Query.doCloudQuery(`select count(*) from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
     cq.then((rets) => {
-      callback(Math.ceil(rets.count / root.pageSize))
+      callback(Math.ceil(rets.count / root.conf.pageSize))
     }).catch((ex) => {
       console.error(ex)
     })
   }
   root.fetchParentList = (root, pageNum, callback) => {
-    const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.pageSize},${root.pageSize}`)
+    const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.conf.region ? ',log' : ''} from Comment where (rid='' or rid is not exists) and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt limit ${(pageNum - 1) * root.conf.pageSize},${root.conf.pageSize}`)
     cq.then((rets) => {
       rets = (rets && rets.results) || []
       callback(rets)
@@ -61,7 +61,7 @@ export function FetchBase (root) {
     })
   }
   root.fetchNextList = (root, _id, callback) => {
-    const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.config.region ? ',log' : ''} from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
+    const cq = root.v.Query.doCloudQuery(`select nick, comment, link, rid, isSpam, mailMd5, ua ${root.conf.region ? ',log' : ''} from Comment where rid='${_id}' and (url='${root.C.url}' or url='${`${root.C.url}/`}') order by -createdAt`)
     cq.then((rets) => {
       rets = (rets && rets.results) || []
       callback(rets)
@@ -94,7 +94,7 @@ export function FetchBase (root) {
     // setting access
     const getAcl = () => {
       const acl = new root.v.ACL()
-      acl.setWriteAccess('role:' + root.role, true)
+      acl.setWriteAccess('role:' + root.conf.role, true)
       acl.setPublicReadAccess(true)
       acl.setPublicWriteAccess(false)
       return acl

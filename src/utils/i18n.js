@@ -6,7 +6,7 @@ const i18n = (root) => {
     let s = localStorage && localStorage.getItem('MiniValineI18n')
     if (s) {
       s = JSON.parse(s)
-      if (s.lang == root.lang) {
+      if (s.lang == root.conf.lang) {
         root.i18n = s.i18n
         window.MV.i18n = root.i18n
         window.MV.getI18n = 0
@@ -17,12 +17,12 @@ const i18n = (root) => {
       window.MV.getI18n = 1
     }
     if (window.MV.getI18n) {
-      const temp = root.lang.split('-')
+      const temp = root.conf.lang.split('-')
       if (temp.length == 2) {
-        root.lang = temp[0] + '-' + temp[1].toUpperCase()
+        root.conf.lang = temp[0] + '-' + temp[1].toUpperCase()
       }
       ajax({
-        url: i18nUrl + root.lang + '/index.json',
+        url: i18nUrl + root.conf.lang + '/index.json',
         type: 'GET',
         success: function (data) {
           root.i18n = data
@@ -30,7 +30,7 @@ const i18n = (root) => {
           localStorage && localStorage.setItem(
             'MiniValineI18n',
             JSON.stringify({
-              lang: root.lang,
+              lang: root.conf.lang,
               i18n: root.i18n
             })
           )

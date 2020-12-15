@@ -25,7 +25,7 @@ const parentQuery = (root) => {
             root.nestQuery(parentVcard)
           }
           rets[i].TEXT = rets[i].get('comment')
-          if (root.backend == 'waline') {
+          if (root.conf.backend == 'waline') {
             rets[i].NOXSS = true
           }
           killXSS(rets[i], render)
@@ -43,7 +43,7 @@ const parentQuery = (root) => {
         }
       }
       try {
-        if ((typeof window.MV.barrager.bottom != 'undefined') && (root.config.barrager == 1)) {
+        if ((typeof window.MV.barrager.bottom != 'undefined') && (root.conf.barrager == 1)) {
           window.MV.barrager.enable = 0
         }
       } catch (e) {}

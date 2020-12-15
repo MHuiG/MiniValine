@@ -4,16 +4,16 @@ const vcard = function (root, m) {
   m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   const Hash = m.get('mailMd5')
   const gravatarUrl = `${GBUrl + Hash}?s=48&d=robohash`
-  if (root.config.barrager) {
+  if (root.conf.barrager) {
     root.Vbarrager(root, m, gravatarUrl)
   }
-  if (root.mode === 'DesertsP') {
+  if (root.conf.mode === 'DesertsP') {
     return root.Vcard(root, m, gravatarUrl)
-  } else if (root.mode === 'xCss') {
+  } else if (root.conf.mode === 'xCss') {
     let ua = m.get('ua') || ''
     let uaMeta = ''
     const svgstr = MVUrl + '/imgs/svg/'
-    if ((ua || (root.backend == 'waline')) && root.config.enableUA) {
+    if ((ua || (root.conf.backend == 'waline')) && root.conf.enableUA) {
       try {
         let bn = ''
         let on = ''
@@ -25,7 +25,7 @@ const vcard = function (root, m) {
           if (ua.os && ua.os.name) {
             on = ua.os.name.toLowerCase()
           }
-        } else if (root.backend == 'waline') {
+        } else if (root.conf.backend == 'waline') {
           bn = m.get('browser').split(' ')[0].toLowerCase()
           on = m.get('os').split(' ')[0].toLowerCase()
         }
@@ -61,7 +61,7 @@ const vcard = function (root, m) {
 			(ua.browser.version ? ua.browser.version : '') +
 			'</span>' +
 			' '
-          } else if (root.backend == 'waline') {
+          } else if (root.conf.backend == 'waline') {
             uaMeta += '.svg"/></i>' +
 			m.get('browser') +
 			'</span>'
@@ -90,7 +90,7 @@ const vcard = function (root, m) {
 			' ' +
 			(ua.os.version ? ua.os.version : '') +
             '</span>'
-          } else if (root.backend == 'waline') {
+          } else if (root.conf.backend == 'waline') {
             uaMeta += '.svg"/></i>' +
 			m.get('os') +
 			'</span>'
@@ -100,7 +100,7 @@ const vcard = function (root, m) {
         }
       } catch (e) {}
     }
-    if (root.config.region) {
+    if (root.conf.region) {
       try {
         const loc = m.get('log').region.data.location
         if (loc) {
@@ -109,26 +109,26 @@ const vcard = function (root, m) {
       } catch (e) {}
     }
     let gat = ''
-    if (root.config.enableFlag && (!root.config.cloudflag)) {
+    if (root.conf.enableFlag && (!root.conf.cloudflag)) {
       try {
-        root.master = root.master.map(i => i.toLowerCase())
-        root.friends = root.friends.map(i => i.toLowerCase())
-        const ism = root.master.includes(m.get('mailMd5').toLowerCase())
-        const isf = root.friends.includes(m.get('mailMd5').toLowerCase())
+        root.conf.master = root.conf.master.map(i => i.toLowerCase())
+        root.conf.friends = root.conf.friends.map(i => i.toLowerCase())
+        const ism = root.conf.master.includes(m.get('mailMd5').toLowerCase())
+        const isf = root.conf.friends.includes(m.get('mailMd5').toLowerCase())
         gat = ism
           ? '<span class="vtag vmaster">' +
-        root.tagMeta[0] +
+        root.conf.tagMeta[0] +
         '</span>'
           : isf
             ? '<span class="vtag vfriend">' +
-			root.tagMeta[1] +
+			root.conf.tagMeta[1] +
 			'</span>'
             : '<span class="vtag vvisitor">' +
-			root.tagMeta[2] +
+			root.conf.tagMeta[2] +
 			'</span>'
       } catch (e) {}
     }
-    if (root.config.enableFlag && root.config.cloudflag) {
+    if (root.conf.enableFlag && root.conf.cloudflag) {
       try {
         const vRoles = root.cloudFlag.Roles
         const ehash = m.get('mailMd5').toLowerCase()
@@ -149,7 +149,7 @@ const vcard = function (root, m) {
 				'</div>' +
 			'</div>' +
 			`<section class="text-wrapper"  id="comment-${m.id}">`
-    if (root.backend == 'waline') {
+    if (root.conf.backend == 'waline') {
       // 兼容处理
       HTML += `<div class="comment-item" style="display: none">${window.btoa(unescape(encodeURIComponent(JSON.stringify(m))))}</div>`
     }

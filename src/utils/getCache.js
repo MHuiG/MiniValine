@@ -9,7 +9,7 @@ const getCache = (root) => {
       root.el.querySelector(`.v${k}`).value = s[k]
       root.C[k] = s[k]
     }
-    if ((s.mail !== '') && (root.mode === 'DesertsP')) {
+    if ((s.mail !== '') && (root.conf.mode === 'DesertsP')) {
       const el = root.el.querySelector('.visitor_avatar')
       el.setAttribute('data-src', `${GBUrl + md5(s.mail.toLowerCase().trim())}?size=80&d=robohash`)
     }

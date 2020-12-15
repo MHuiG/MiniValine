@@ -8,7 +8,7 @@ const nestQuery = (root) => {
     if (level <= 0) {
       vchild.setAttribute('style', 'margin-left: 0 !important')
     }
-    if (level >= root.maxNestLevel) {
+    if (level >= root.conf.maxNest) {
       const callback = (count) => {
         if (count > 0) {
           const showChildrenWrapper = vchild.querySelector('.vshow-children-wrapper')
@@ -36,7 +36,7 @@ const nestQuery = (root) => {
                 root.nestQuery(vl, level + 1)
               }
               rets[i].TEXT = rets[i].get('comment')
-              if (root.backend == 'waline') {
+              if (root.conf.backend == 'waline') {
                 rets[i].NOXSS = true
               }
               killXSS(rets[i], render)

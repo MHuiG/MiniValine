@@ -1,7 +1,7 @@
 const visitor = (root) => {
-  if (root.config.visitor) {
+  if (root.conf.visitor) {
     import(/* webpackChunkName: "visitor" */'./counter/').then(({ MCo }) => {
-      MCo(root.config)
+      MCo(root.conf)
     })
   }
 }
