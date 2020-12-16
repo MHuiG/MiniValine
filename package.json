@@ -34,7 +34,7 @@
   "devDependencies": {
     "@babel/cli": "7.12.10",
     "@babel/core": "7.12.10",
-    "@babel/preset-env": "7.12.10",
+    "@babel/preset-env": "7.12.11",
     "@bundle-analyzer/webpack-plugin": "0.5.1",
     "autosize": "4.0.2",
     "babel-eslint": "10.1.0",
