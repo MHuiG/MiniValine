@@ -95,7 +95,7 @@ new MiniValine({
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MiniValine - A simple comment system based on Leancloud.</title>
+    <title>MiniValine - A simple comment system.</title>
     <!--Load js and insert it before </ body>-->
     <script src="https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js"></script>
 </head>
@@ -124,7 +124,7 @@ new MiniValine({
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MiniValine - A simple comment system based on Leancloud.</title>
+    <title>MiniValine - A simple comment system based.</title>
 </head>
 <body>
     <div class="mvcomment"></div>
@@ -238,6 +238,11 @@ Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/D
 <a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/mj_logo.png" border="0" alt="Powered by MathJax" height="48px"/></a>
 <a href="https://jsxss.com"><img align="center" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/xss.png" title="Powered by JsXSS" height="48px"/></a>
 <a href="https://highlightjs.org"><img align="center" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/highlightjs.png" title="Powered by highlightjs" height="48px"/></a>
+
+
+## Blocked User
+
+@eallion : Potential threat
 
 ## License
 
