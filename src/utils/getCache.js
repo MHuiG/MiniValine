@@ -1,4 +1,3 @@
-import { GBUrl } from '../Default'
 const getCache = (root) => {
   let s = localStorage && localStorage.getItem('MiniValineCache')
   if (s) {
@@ -11,7 +10,7 @@ const getCache = (root) => {
     }
     if ((s.mail !== '') && (root.conf.mode === 'DesertsP')) {
       const el = root.el.querySelector('.visitor_avatar')
-      el.setAttribute('data-src', `${GBUrl + md5(s.mail.toLowerCase().trim())}?size=80&d=robohash`)
+      el.setAttribute('data-src', `${root.conf.avatarUrl + '/' + md5(s.mail.toLowerCase().trim())}?s=48&d=${root.conf.avatarD}`)
     }
   }
 }

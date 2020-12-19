@@ -1,4 +1,4 @@
-import { GBUrl, DEHash } from '../Default'
+import { DEHash } from '../Default'
 import format from 'string-format'
 export function getEle (root) {
   const HTML = '<div id="vinputs-placeholder">' +
@@ -9,7 +9,7 @@ export function getEle (root) {
                                     '</div>' +
 									'<div class="textarea-wrapper">' +
                                         '<div class="commentTrigger">' +
-                                            `<div class="avatar"><img class="visitor_avatar lazyload" data-src="${`${GBUrl + DEHash}?size=80`}"></div>` +
+                                            `<div class="avatar"><img class="visitor_avatar lazyload" data-src="${`${root.conf.avatarUrl + '/' + DEHash}?s=48`}"></div>` +
                                             `<div class="trigger_title">${root.conf.placeholder}</div>` +
                                         '</div>' +
                                         '<div class="veditor-area">' +

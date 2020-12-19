@@ -1,5 +1,7 @@
-import { MaxNL, PS, EUrl, C } from '../Default'
+import { MaxNL, PS, EUrl, C, avatarUrl, avatarD } from '../Default'
 const Config = function (root) {
+  root.conf.avatarUrl = root.conf.avatarUrl ? root.conf.avatarUrl.replace(/\/$/g, '') : avatarUrl
+  root.conf.avatarD = root.conf.avatarD || avatarD
   root.conf.emoticonUrl = root.conf.emoticonUrl || EUrl
   root.conf.lang = root.conf.lang || navigator.language || navigator.userLanguage
   root.conf.maxNest = root.conf.maxNest || MaxNL
