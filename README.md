@@ -2,6 +2,7 @@
 
 # This is MiniValine version 4.x
 
+# The date of EOL: 2020.12.20
 ------------------------------
 
 [![version](https://img.shields.io/github/release/MiniValine/MiniValine.svg?style=flat-square)](https://github.com/MiniValine/MiniValine/releases)
