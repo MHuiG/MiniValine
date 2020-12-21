@@ -239,11 +239,6 @@ Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/D
 <a href="https://jsxss.com"><img align="center" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/xss.png" title="Powered by JsXSS" height="48px"/></a>
 <a href="https://highlightjs.org"><img align="center" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/highlightjs.png" title="Powered by highlightjs" height="48px"/></a>
 
-
-## Blocked User
-
-@eallion : Potential threat
-
 ## License
 
 [GPL-3.0](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
