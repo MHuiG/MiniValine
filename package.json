@@ -44,7 +44,7 @@
     "cross-env": "7.0.3",
     "exports-loader": "1.1.1",
     "github-markdown-css": "4.0.0",
-    "highlight.js": "10.4.1",
+    "highlight.js": "10.5.0",
     "lazysizes": "5.2.2",
     "marked": "1.2.7",
     "node-sass": "5.0.0",
