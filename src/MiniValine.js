@@ -78,6 +78,7 @@ MiniValineFactory.prototype.Start = function () {
     root.loading.show()
     const checkFetchCount = setInterval(function () {
       if (!root.fetchCount) return
+      if (root.conf.backend == 'lc' && !root.setAV) return
       clearInterval(checkFetchCount)
       root.fetchCount(root)
       util.insertComment(root, body)

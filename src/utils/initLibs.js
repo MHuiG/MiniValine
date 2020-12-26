@@ -3,7 +3,7 @@ const initLibs = (root) => {
     if (typeof Promise == 'undefined') { return }
     clearInterval(checkie)
     import(/* webpackChunkName: "lib" */'./plugins/lib.js').then(({ lib }) => {
-      lib()
+      lib(root)
       if (root.conf.backend == 'lc') {
         import(/* webpackChunkName: "lib-av" */'./plugins/lib-AV.js').then(({ lib }) => {
           lib()

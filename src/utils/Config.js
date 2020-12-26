@@ -22,5 +22,8 @@ const Config = function (root) {
   }
   root.conf.role = root.conf.role ? root.conf.role : 'admin'
   root.conf.backend = root.conf.backend ? root.conf.backend : 'lc'
+  if (typeof root.conf.md == 'undefined') {
+    root.conf.md = true
+  }
 }
 module.exports = Config
