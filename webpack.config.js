@@ -54,7 +54,8 @@ var WEBPACK_CONFIG = {
       test: /\.js$/,
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env']
+		presets: ['@babel/preset-env'],
+		plugins: ["@babel/plugin-transform-modules-commonjs","@babel/transform-runtime"]
       }
     },
     {
@@ -80,12 +81,19 @@ var WEBPACK_CONFIG = {
     }
     ]
   },
+  target: ['web', 'es5'],
   plugins: plugins
 }
 if (process.env.env_config == 'build') {
   plugins.push(new CleanWebpackPlugin())
   plugins.push(new TerserPlugin({
 	parallel: 4,
+	terserOptions: {
+	  ecma: 5,
+	  toplevel: true,
+	  ie8: true,
+	  safari10: true,
+	},
   }))
   WEBPACK_CONFIG.devtool = false
   WEBPACK_CONFIG.optimization.minimize = true
