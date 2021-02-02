@@ -1,32 +1,30 @@
 export function FetchBase (root) {
   root.setAV = function (root) {
-    // set serverURLs
-    let prefix = 'https://'
-    let serverURLs = ''
-    if (!root.conf.serverURL) {
-      switch (root.conf.appId.slice(-9)) {
-        // TAB
-        case '-9Nh9j0Va':
-          prefix += 'tab.leancloud.cn'
-          break
-          // US
-        case '-MdYXbMMI':
-          prefix += 'console.leancloud.app'
-          break
-        default:
-          prefix += 'avoscloud.com'
-          break
-      }
+    let apiServer = root.conf.appId.slice(-9) !== '-MdYXbMMI' ? root.conf.serverURL : `https://${root.conf.appId.slice(0, 8).toLowerCase()}.api.lncldglobal.com`
+    if (!apiServer) {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + root.conf.appId)
+        .then(resp => resp.json())
+        .then(({ api_server }) => { // eslint-disable-line
+          apiServer = 'https://' + api_server // eslint-disable-line
+          try {
+            AV.init({
+              appId: root.conf.appId,
+              appKey: root.conf.appKey,
+              apiServer
+            })
+          } catch (e) {}
+          root.v = AV
+        })
+    } else {
+      try {
+        AV.init({
+          appId: root.conf.appId,
+          appKey: root.conf.appKey,
+          apiServer
+        })
+      } catch (e) {}
+      root.v = AV
     }
-    serverURLs = root.conf.serverURL || prefix
-    try {
-      AV.init({
-        appId: root.conf.appId,
-        appKey: root.conf.appKey,
-        serverURLs
-      })
-    } catch (e) {}
-    root.v = AV
   }
   root.fetchCount = (root) => {
     const query1 = new root.v.Query('Comment')

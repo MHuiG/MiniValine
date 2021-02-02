@@ -67,8 +67,6 @@ MiniValineFactory.prototype.Start = function () {
     body.loading(root)
     root.nodata.show()
     body.smiles(root)
-    if (root.conf.backend == 'lc') { root.setAV(root) }
-    util.visitor(root)
   } catch (e) {
     console.error(e)
     return
@@ -80,10 +78,24 @@ MiniValineFactory.prototype.Start = function () {
       if (!root.fetchCount) return
       if (root.conf.backend == 'lc' && !root.setAV) return
       clearInterval(checkFetchCount)
-      root.fetchCount(root)
-      util.insertComment(root, body)
-      util.parentQuery(root)
-      util.nestQuery(root)
+      if (root.conf.backend == 'lc') {
+        root.setAV(root)
+        const checkSetAV = setInterval(function () {
+          if (!root.v) return
+          clearInterval(checkSetAV)
+          util.visitor(root)
+          root.fetchCount(root)
+          util.insertComment(root, body)
+          util.parentQuery(root)
+          util.nestQuery(root)
+        }, 5)
+      } else {
+        util.visitor(root)
+        root.fetchCount(root)
+        util.insertComment(root, body)
+        util.parentQuery(root)
+        util.nestQuery(root)
+      }
     }, 5)
     util.alert(root)
     util.inputs(root)
