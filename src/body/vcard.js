@@ -5,7 +5,7 @@ const vcard = function (root, m) {
     m.set('nick', m.get('nick').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   }
   if (m.get('link')) {
-    m.set('link', m.get('link').slice(0, 20).trim().replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
+    m.set('link', m.get('link').replace(/&/g, '&amp;').replace(/\//g, '&#x2F').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;'))
   }
   const Hash = m.get('mailMd5')
   const gravatarUrl = `${root.conf.avatarUrl + '/' + Hash}?s=48&d=${root.conf.avatarD}`
