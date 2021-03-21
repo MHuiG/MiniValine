@@ -10,7 +10,7 @@ export function Counter (root) {
     },
     success: function (data) {
       try {
-        document.querySelectorAll('.leancloud_visitors,.leancloud-visitors')[0].querySelector('.leancloud-visitors-count').innerText = data.data[0].time
+        document.querySelectorAll('.leancloud_visitors,.leancloud-visitors')[0].querySelector('.leancloud-visitors-count').innerText = typeof data === 'number' ? data : data.data[0].time
       } catch (e) {}
     },
     error: root.error
