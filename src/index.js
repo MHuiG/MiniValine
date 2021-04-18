@@ -1,4 +1,3 @@
-import MiniValineFactory from './MiniValine'
 import { VERSION } from './Default'
 const MiniValine = (option) => {
   if (!window.MV) {
@@ -6,7 +5,8 @@ const MiniValine = (option) => {
     window.MV = Object.create(null)
     window.MV.v = VERSION
   }
-  return new MiniValineFactory(option)
+  const Factory = require('./Factory')
+  return new Factory(option)
 }
 module.exports = MiniValine
 module.exports.default = MiniValine

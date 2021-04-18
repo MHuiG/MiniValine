@@ -5,7 +5,6 @@ const insertComment = (root, body) => {
     _vcard.setAttribute('class', 'vcard')
     _vcard.setAttribute('id', m.id)
     _vcard.innerHTML = body.vcard(root, m)
-    root.ActivateCode(root)
     const _vlist = vlist || root.el.querySelector('.vlist')
     const _vlis = _vlist.querySelectorAll('li')
     const _as = _vcard.querySelectorAll('a')

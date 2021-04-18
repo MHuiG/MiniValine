@@ -1,9 +1,8 @@
 export const VERSION = '5.1.7'
 export const MVUrl = 'https://cdn.jsdelivr.net/npm/minivaline@' + VERSION
-export const avatarUrl = 'https://secure.gravatar.com/avatar'
+export const avatarUrl = 'https://cdn.v2ex.com/gravatar'
 export const avatarD = 'robohash'
 export const EUrl = [MVUrl + '/imgs/alus', MVUrl + '/imgs/qq', MVUrl + '/imgs/Bilibilis', MVUrl + '/imgs/tieba', MVUrl + '/imgs/twemoji', MVUrl + '/imgs/weibo', MVUrl + '/imgs/funny']
-export const pf = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=es6'
 export const i18nUrl = MVUrl + '/i18n/'
 export const DEHash = '9e63c80900d106cbbec5a9f4ea433a3e'
 export const MaxNL = 6

@@ -1,5 +1,4 @@
 import dom from './plugins/dom'
-import killXSS from './plugins/killXSS'
 const nestQuery = (root) => {
   root.nestQuery = (vcard, level = 1) => {
     const vchild = vcard.querySelector('.vcomment-children')
@@ -15,6 +14,7 @@ const nestQuery = (root) => {
           showChildrenWrapper.setAttribute('style', 'display: block !important;')
           showChildrenWrapper.innerHTML = `<span class="vshow-children" rid="${_id}">${root.i18n.more}</span>`
           const showChildren = showChildrenWrapper.querySelector('.vshow-children')
+          typeof root.conf.PageLoaded === 'function' && root.conf.PageLoaded()
           dom.on('click', showChildren, (e) => {
             showChildrenWrapper.setAttribute('style', 'display: none !important;')
             root.nestQuery(vcard, -1000)
@@ -30,16 +30,8 @@ const nestQuery = (root) => {
         if (len) {
           for (let i = 0; i < len; i++) {
             if (!rets[i].get('isSpam')) {
-              const render = (o) => {
-                rets[i].set('comment', o.TEXT)
-                const vl = root.insertComment(rets[i], _vlist, true)
-                root.nestQuery(vl, level + 1)
-              }
-              rets[i].TEXT = rets[i].get('comment')
-              if (root.conf.backend == 'waline') {
-                rets[i].NOXSS = true
-              }
-              killXSS(rets[i], render)
+              const vl = root.insertComment(rets[i], _vlist, true)
+              root.nestQuery(vl, level + 1)
             }
           }
         }

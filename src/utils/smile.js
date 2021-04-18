@@ -3,7 +3,7 @@ import ajax from './plugins/ajax'
 const smile = (root) => {
   window.MV.emoticonUrl = root.conf.emoticonUrl
   if (!window.MV.emoticonList) {
-    let s = localStorage && localStorage.getItem('MiniValineSmile')
+    let s = localStorage && localStorage.getItem('_ohhhoSmile')
     if (s) {
       s = JSON.parse(s)
       if (equar(s.emoticonUrl, root.conf.emoticonUrl)) {
@@ -38,7 +38,7 @@ const smile = (root) => {
     setTimeout(function () {
       if ((typeof root.emoticonList != 'undefined') && (root.emoticonList.length != 0)) {
         localStorage && localStorage.setItem(
-          'MiniValineSmile',
+          '_ohhhoSmile',
           JSON.stringify({
             emoticonUrl: window.MV.emoticonUrl,
             emoticonList: window.MV.emoticonList

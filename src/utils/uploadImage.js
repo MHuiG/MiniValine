@@ -23,9 +23,9 @@ const uploadImage = (root) => {
         const file = files[idx]
         const uploadText = `![Uploading ${file.name}]()`
         insertAtCaret(_veditor, uploadText)
-        loadImage(file, function (err, ret) {
-          if (!err && ret) {
-            _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${ret.data.url})`)
+        loadImage(file, function (err, res) {
+          if (!err && res) {
+            _veditor.value = _veditor.value.replace(uploadText, `\r\n![${file.name}](${root.conf.uploadImageParse(res)})`)
             root.C.comment = _veditor.value
           }
         })
@@ -66,7 +66,7 @@ const uploadImage = (root) => {
     xhr.onerror = function (e) {
       console.error(e)
     }
-    xhr.open('POST', 'https://pic.alexhchu.com/api/upload', true)
+    xhr.open('POST', root.conf.uploadImageURL, true)
     xhr.send(formData)
   }
   const dashboard = document.getElementsByClassName('veditor')[0]

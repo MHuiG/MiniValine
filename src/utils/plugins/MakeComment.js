@@ -1,4 +1,4 @@
-import MarkDown from './MarkDown'
+import ajax from './ajax'
 const MakeComment = (root, o, render) => {
   const ls = root.C.comment.match(/!\(:(.*?\.\w+):\)/g)
   if (ls) {
@@ -6,14 +6,21 @@ const MakeComment = (root, o, render) => {
       const m = ls[i].match(/!\(:(.*?\.\w+):\)/)[1]
       const em = root.emoticon[m]
       const R = new RegExp('!\\(:' + m.replace(/\./, '\\.') + ':\\)', 'g')
-      if (root.conf.backend == 'lc') {
-        root.C.comment = root.C.comment.replace(R, `<img src="${em}" alt="${m}" class="vemoticon-img">`)
-      } else if (root.conf.backend == 'waline') {
-        root.C.comment = root.C.comment.replace(R, `![${m}](${em})`) // waline必须启用 markdown
-      }
+      root.C.comment = root.C.comment.replace(R, `![${m}](${em})`)
     }
   }
-  o.TEXT = root.C.comment
-  MarkDown(root, o, render)
+  const url = `${root.conf.serverURL}/md`
+  ajax({
+    url: url,
+    type: 'POST',
+    data: {
+      s: root.C.comment
+    },
+    success: function (data) {
+      o.innerHTML = data
+      render(o)
+    },
+    error: root.error
+  })
 }
 module.exports = MakeComment

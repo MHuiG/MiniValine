@@ -1,6 +1,7 @@
-import ajax from '../../plugins/ajax'
+import ajax from '../plugins/ajax'
 import Bean from './Bean'
-export function FetchBase (root) {
+import getScript from '../plugins/getScript'
+function FetchBase (root) {
   const url = `${root.conf.serverURL}/comment`
   root.fetchCount = (root) => {
     ajax({
@@ -8,7 +9,7 @@ export function FetchBase (root) {
       type: 'GET',
       data: {
         type: 'count',
-        url: root.conf.path
+        path: root.conf.path
       },
       success: function (data) {
         root.el.querySelector('.count').innerHTML = data
@@ -21,44 +22,37 @@ export function FetchBase (root) {
       url: url,
       type: 'GET',
       data: {
+        type: 'totalPages',
         path: root.conf.path,
-        pageSize: root.conf.pageSize,
-        page: 1
+        pageSize: root.conf.pageSize
       },
       success: function (data) {
-        window.MV.WalinePageData = data
-        callback(data.totalPages)
+        callback(data)
       },
       error: root.error
     })
   }
   root.fetchParentList = (root, pageNum, callback) => {
-    if (pageNum == 1) {
-      const item = new Bean()
-      window.MV.WalinePageList = item.beanList(window.MV.WalinePageData.data)
-      callback(window.MV.WalinePageList)
-    } else {
-      ajax({
-        url: url,
-        type: 'GET',
-        data: {
-          path: root.conf.path,
-          pageSize: root.conf.pageSize,
-          page: pageNum
-        },
-        success: function (data) {
-          window.MV.WalinePageData = data
-          const item = new Bean()
-          window.MV.WalinePageList = item.beanList(data.data)
-          callback(window.MV.WalinePageList)
-        },
-        error: root.error
-      })
-    }
+    ajax({
+      url: url,
+      type: 'GET',
+      data: {
+        path: root.conf.path,
+        pageSize: root.conf.pageSize,
+        page: pageNum
+      },
+      success: function (data) {
+        window.MV.PageData = data
+        const item = new Bean()
+        window.MV.PageDataList = item.beanList(data)
+        callback(window.MV.PageDataList)
+      },
+      error: root.error
+    })
   }
   root.fetchNextList = (root, id, callback) => {
     const list = []
-    const data = window.MV.WalinePageList
+    const data = window.MV.PageDataList
     for (let i = 0; i < data.length; i++) {
       if (data[i].children) {
         for (let j = 0; j < data[i].children.length; j++) {
@@ -72,7 +66,7 @@ export function FetchBase (root) {
   }
   root.fetchNextCount = (root, id, showMore) => {
     const list = []
-    const data = window.MV.WalinePageList
+    const data = window.MV.PageDataList
     for (let i = 0; i < data.length; i++) {
       if (data[i].children) {
         for (let j = 0; j < data[i].children.length; j++) {
@@ -87,6 +81,7 @@ export function FetchBase (root) {
     }
   }
   root.postComment = (root, callback) => {
+    root.postComment.callback = callback
     const item = new Bean()
     for (const i in root.C) {
       if (root.C.hasOwnProperty(i)) {
@@ -103,16 +98,17 @@ export function FetchBase (root) {
       nick: item.nick,
       ua: item.ua,
       url: item.url,
-      at: item.at
+      at: item.at,
+      accesstoken: window.MV.accesstoken
     }
     if (data.at) {
-      const parentNode = JSON.parse(window.atob(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent))
+      const parentNode = JSON.parse(decodeURIComponent(window.atob(document.querySelector('#comment-' + item.rid + ' .comment-item').textContent)))
       if (parentNode.pid) {
-        data.rid = parentNode.pid
+        data.pid = parentNode.pid
       } else {
-        data.rid = parentNode.id
+        data.pid = parentNode.id
       }
-      data.pid = parentNode.id
+      data.rid = parentNode.id
     }
     console.log(data) // test
     ajax({
@@ -120,12 +116,12 @@ export function FetchBase (root) {
       type: 'POST',
       data: data,
       success: function (data) {
-        if (data.errno) {
-          root.error(data.errno, data)
-        } else if (data.data.comment) {
+        if (data.comment) {
           const item = new Bean()
-          item.create(data.data)
+          item.create(data)
           callback(item)
+        } else if (data.capcode) {
+          getScript(`${root.conf.serverURL}/ChallengeCaptcha`)
         } else {
           root.error(12138, data)
         }
@@ -136,3 +132,5 @@ export function FetchBase (root) {
     })
   }
 }
+
+module.exports = FetchBase

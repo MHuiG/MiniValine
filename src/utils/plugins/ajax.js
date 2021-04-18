@@ -19,8 +19,8 @@ const ajax = (options) => {
         responseXML = JSON.parse(responseXML)
       } catch (e) {
         if (responseText) {
-          console.error(responseText)
-          console.error(e)
+          // console.error(responseText)
+          // console.error(e)
         }
       }
       if (status >= 200 && status < 300) {
@@ -56,4 +56,5 @@ const formatParams = (data) => {
   arr.push(('v=' + Math.random()).replace('.', ''))
   return arr.join('&')
 }
+window.MV.ajax = ajax
 module.exports = ajax

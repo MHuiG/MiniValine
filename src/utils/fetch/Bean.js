@@ -7,12 +7,12 @@ function Bean () {
   }
   this.create = function (it) {
     this.set('nick', it.nick)
-    this.set('mailMd5', it.mail)
+    this.set('mailMd5', it.mailMd5)
     this.set('link', it.link)
-    this.set('createdAt', new Date(it.insertedAt)) // 兼容处理
-    this.set('id', it.objectId)
-    this.set('rid', it.pid) // 请注意这里没有错误
-    this.set('pid', it.rid) // 兼容处理
+    this.set('createdAt', new Date(it.createdAt))
+    this.set('id', it.id)
+    this.set('rid', it.rid)
+    this.set('pid', it.pid)
     this.set('browser', it.browser)
     this.set('os', it.os)
     this.set('comment', it.comment)

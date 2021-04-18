@@ -1,5 +1,4 @@
 import dom from './plugins/dom'
-import killXSS from './plugins/killXSS'
 const parentQuery = (root) => {
   let num = 1
   root.TotalPages = 0
@@ -13,22 +12,13 @@ const parentQuery = (root) => {
           if (i == 0) {
             root.loading.hide(root.TotalPages)
           }
-          if (rets[i].get('isSpam')) continue
-          const render = (o) => {
-            rets[i].set('comment', o.TEXT)
-            const parentVcard = root.insertComment(
-              rets[i],
-              root.el.querySelector('.vlist'),
-              false
-            )
-            parentVcard.setAttribute('style', 'margin-bottom: .5em')
-            root.nestQuery(parentVcard)
-          }
-          rets[i].TEXT = rets[i].get('comment')
-          if (root.conf.backend == 'waline') {
-            rets[i].NOXSS = true
-          }
-          killXSS(rets[i], render)
+          const parentVcard = root.insertComment(
+            rets[i],
+            root.el.querySelector('.vlist'),
+            false
+          )
+          parentVcard.setAttribute('style', 'margin-bottom: .5em')
+          root.nestQuery(parentVcard)
         }
         const vpage = root.el.querySelector('.vpage')
         vpage.innerHTML = pageNum < root.TotalPages
@@ -42,11 +32,7 @@ const parentQuery = (root) => {
           })
         }
       }
-      try {
-        if ((typeof window.MV.barrager.bottom != 'undefined') && (root.conf.barrager == 1)) {
-          window.MV.barrager.enable = 0
-        }
-      } catch (e) {}
+      typeof root.conf.PageLoaded === 'function' && root.conf.PageLoaded()
       root.loading.hide(root.TotalPages)
     }
     root.fetchParentList(root, pageNum, callback)

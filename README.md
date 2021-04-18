@@ -1,6 +1,6 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 5.x
+# This is MiniValine version 6.x
 
 ------------------------------
 
@@ -22,30 +22,15 @@
 > MiniValine is a simple and minimalist comment system
 ------------------------------
 
-**[Demo](https://minivaline.github.io)** | **[Docs](https://minivaline.js.org/docs/)** | **[FAQs](https://minivaline.js.org/docs/en/#/FAQ)** | **[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)** | [CHANGELOG](https://minivaline.js.org/docs/en/#/CHANGELOG)
-
-
-
+**[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)**
 
 ## Features
 
-- High speed.
-- Easy to customize.
-- [Safe by default](https://jsxss.com/en/try.html).
-- [Compatible](https://polyfill.io/).
-- [Simple and lightweight](https://app.bundle-analyzer.com/gh/MiniValine/MiniValine).
-- [Lazy loading](https://github.com/aFarkas/lazysizes) [picture emoji](https://github.com/MiniValine/alus).
-- Emoticon category.
-- [Code highlighting](https://highlightjs.org/static/demo/).
-- [Markdown](https://guides.github.com/features/mastering-markdown/).
-- [MathJax](https://www.mathjax.org/).
-- Enter live preview.
-- [Upload pictures](https://imgkr.com/) pasting or dragging.
-- [Multiple languages](https://crowdin.com/project/minivaline).
-- Integrated xCss and DesertsP Style mode.
-- Admin Flag.
-- [Browser and Operating System icon](https://github.com/MiniValine/svg).
-- Comment barrage.
+> 基于 CloudFlareWorker 和 CloudFlareKV/IPFS 技术的极简评论系统
+
+* 使用 Cloudflare Workers 构建无服务器应用程序并部署到Cloudflare的边缘网络
+* 使用 Cloudflare Workers KV 全球分布式键值存储构建高度动态API
+* 使用 IPFS 分布式文件系统实现去中心化分布式存储
 
 ## Install
 
@@ -78,14 +63,6 @@ new MiniValine({
 })
 ```
 
-## Get `App ID`/`App Key`
-**Get `App ID`/`App Key` from LeanCloud** 
-[Click here](https://console.leancloud.app/login.html#/signup) to register or login in `LeanCloud`.  
-
-[Click here](https://console.leancloud.app/applist.html#/newapp) Create new application in `LeanCloud`, and you will get `appId`/`appKey`.
-
->  [Detail](https://minivaline.js.org/docs/en/#/Options?id=get-app-idapp-key)
-
 ## Usage
 
 ```html
@@ -104,16 +81,14 @@ new MiniValine({
     <script>
       new MiniValine({
           el: '.mvcomment',
-          appId: 'Your App ID',
-          appKey: 'Your Key',
-          placeholder: 'Write a Comment O(∩_∩)O~~'
+          placeholder: 'Write a Comment O(∩_∩)O~~',
+          serverURL: 'https://xxxxxxxxx',
       });
     </script>
 </body>
 </html>
 ```
 
-> [Example](https://github.com/MiniValine/MiniValine.github.io/blob/master/index.html)
 
 ### The Smart Way with pjax
 
@@ -146,9 +121,8 @@ new MiniValine({
         if(!document.querySelectorAll(".mvcomment")[0])return;
         new MiniValine({
             el: '.mvcomment',
-            appId: 'Your App ID',
-            appKey: 'Your Key',
-            placeholder: 'Write a Comment O(∩_∩)O~~'
+            placeholder: 'Write a Comment O(∩_∩)O~~',
+            serverURL: 'https://xxxxxxxxx',
         });
     }
     load_minivaline();
@@ -229,13 +203,15 @@ Tribute to excellent open source! Tribute to excellent sharers!
 
 Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/DesertsP)!
 
+Thanks to [CloudFlare](https://www.cloudflare.com) for their support.
+
+<img src="https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg" width="300">
+
 <a href="https://github.com"><img align="center" width="100" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/GitHub-Logo.png" title="Powered by GitHub" /></a>
 <a href="https://travis-ci.com"><img align="center" width="140" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/TravisCI-Full-Color.png" title="Powered by TravisCI" /></a>
 <a href="https://crowdin.com"><img align="center" width="180" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/crowdin-logo1-small.png" title="Powered by Crowdin" /></a>
 <a href="https://codacy.com"><img align="center" width="155" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/codacy.png" title="Powered by Codacy" /></a>
-<a href="https://polyfill.io"><img align="center" width="180" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/polyfill.png" title="Powered by Polyfill.io" height="48px"/></a>
 <a href="https://app.bundle-analyzer.com"><img align="center" width="180" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/bundle-analyzer.png" title="Powered by Bundle Analyzer" height="48px"/></a>
-<a href="https://www.mathjax.org"><img align="center" title="Powered by MathJax" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/mj_logo.png" border="0" alt="Powered by MathJax" height="48px"/></a>
 <a href="https://jsxss.com"><img align="center" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/xss.png" title="Powered by JsXSS" height="48px"/></a>
 <a href="https://highlightjs.org"><img align="center" src="https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/highlightjs.png" title="Powered by highlightjs" height="48px"/></a>
 
@@ -263,6 +239,23 @@ Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/D
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
+
+## 授权链
+
+MiniValine version 6.x 基于 ohhho kernel 开发
+
+[MiniValine](https://github.com/MiniValine/MiniValine) [2021.4.18](https://github.com/MiniValine/MiniValine/tree/f2c5b97ed1571fc34b18f44b1db303089061388a)-present [GPLV3 or later](https://github.com/MiniValine/MiniValine/blob/master/LICENSE)
+
+[ohhho kernel](https://github.com/MHuiG/ohhho) [2021.3.7](https://github.com/MHuiG/ohhho/tree/f8896843ee3dfb5c0b4213a0f7a57fa96b4d10ee)-present [GPL-3.0 Only](https://github.com/MHuiG/ohhho/blob/master/LICENSE)
+
+[MiniValine](https://github.com/MiniValine/MiniValine) [2020.3.10](https://github.com/MiniValine/MiniValine/tree/c572885421f5818b13931ba3023689897d41df16)-[2021](https://github.com/MiniValine/MiniValine/tree/e006726baf526478d890429b50c376b9e7c534a2) [GPLV3 or later](https://github.com/MiniValine/MiniValine/blob/e006726baf526478d890429b50c376b9e7c534a2/LICENSE)
+
+[Valine-Ex](https://github.com/DesertsP/Valine) [2017.8.13](https://github.com/DesertsP/Valine/tree/80caa2600f4cf92b84ec1b9815077748dd16dcbf)-[2019.5.28](https://github.com/DesertsP/Valine/tree/71090fed6e336ffded7d3e56f0909c8443c2bf8a)  [GPL-2.0 Only](https://github.com/DesertsP/Valine/blob/71090fed6e336ffded7d3e56f0909c8443c2bf8a/LICENSE)
+
+[Valine](https://github.com/xCss/Valine) [2017.8.3](https://github.com/xCss/Valine/tree/e1fb38559efa085866f531b473f4050001b97b83)-[2017.8.13](https://github.com/xCss/Valine/tree/cefd272eacdea665f20bc1eeeb18780984896eb2) [GPL-2.0 Only](https://github.com/xCss/Valine/blob/cefd272eacdea665f20bc1eeeb18780984896eb2/LICENSE)
+
+向以上开源项目以及贡献者致敬！
+
 
 [npm-version-image]: https://img.shields.io/npm/v/minivaline.svg?style=flat-square
 [npm-version-url]: https://www.npmjs.com/package/minivaline

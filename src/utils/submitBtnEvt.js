@@ -22,17 +22,11 @@ const submitBtnEvt = (root) => {
     }
     // render markdown
     const render = (root) => {
-      root.C.comment = root.TEXT
-      if ((root.conf.backend == 'lc') && (root.C.at !== '')) {
-        const at = `<a class="at" href='#${root.C.rid}'>${root.C.at}</a>`
-        root.C.comment = at + ' , ' + root.C.comment
-      }
       // veirfy
       const mailRet = check.mail(root.C.mail)
       const linkRet = check.link(root.C.link)
       root.C.mail = mailRet.k ? mailRet.v : ''
       root.C.link = linkRet.k ? linkRet.v : ''
-      root.C.mailMd5 = md5(root.C.mail)
       if (!mailRet.k || !linkRet.k) {
         root.alert.show({
           type: 0,
@@ -51,7 +45,7 @@ const submitBtnEvt = (root) => {
     const callback = (commentItem) => {
       localStorage &&
         localStorage.setItem(
-          'MiniValineCache',
+          '_ohhho',
           JSON.stringify({
             nick: root.C.nick,
             link: root.C.link,

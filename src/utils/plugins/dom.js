@@ -17,4 +17,5 @@ const utils = {
     }
   }
 }
+window.MV.dom = utils
 module.exports = utils

@@ -14,12 +14,6 @@ const atEvt = (root) => {
       const commentEl = vcard.querySelector(`#comment-${_id}`)
       try { commentEl.appendChild(root.el.querySelector('.vinputs-wrap')) } catch (e) {}
       root.el.querySelector('.vcancel-comment-reply').removeAttribute('style')
-      // remove comment trigger
-      if (root.conf.mode === 'DesertsP') {
-        root.el.querySelector('.commentTrigger').setAttribute('style', 'display:none')
-        root.el.querySelector('.auth-section').removeAttribute('style')
-        root.el.querySelector('.veditor').focus()
-      }
       // focus
       root.inputs.comment.focus()
     })
