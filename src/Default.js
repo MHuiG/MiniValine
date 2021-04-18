@@ -1,4 +1,4 @@
-export const VERSION = '5.1.7'
+export const VERSION = '6.0.0'
 export const MVUrl = 'https://cdn.jsdelivr.net/npm/minivaline@' + VERSION
 export const avatarUrl = 'https://cdn.v2ex.com/gravatar'
 export const avatarD = 'robohash'
