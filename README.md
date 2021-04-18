@@ -1,6 +1,6 @@
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
-# This is MiniValine version 5.x
+# This is MiniValine version 5.x LTS
 
 ------------------------------
 
