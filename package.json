@@ -55,7 +55,7 @@
   "dependencies": {
     "blueimp-md5": "2.18.0",
     "highlight.js": "10.7.2",
-    "marked": "2.0.1",
+    "marked": "2.0.3",
     "ua-parser-js": "0.7.28",
     "xss": "1.0.8",
     "@webpack-cli/serve": "^1.1.0",
