@@ -22,13 +22,16 @@
 > MiniValine is a simple and minimalist comment system
 ------------------------------
 
-**[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)**
+**[Demo](https://minivaline.js.org)** | **[Docs](https://minivaline.js.org/docs/)** | **[Awesome](https://github.com/MiniValine/AWESOME-MiniValine)**
 
-** MiniValine 自 version 6.x 起回归极简主义！**
+MiniValine 自 version 6.x 起回归极简主义！ 因此 6.x 移除了 5.x 的全部功能特性，只保留了基础评论功能！！！
+
+> Less is More
+------------------------------
 
 ## Features
 
-> 基于 CloudFlareWorker 和 CloudFlareKV/IPFS 技术的极简评论系统
+> 基于 CloudFlareWorker 和 CloudFlareKV/IPFS 技术的极简风评论系统
 
 * 使用 Cloudflare Workers 构建无服务器应用程序并部署到Cloudflare的边缘网络
 * 使用 Cloudflare Workers KV 全球分布式键值存储构建高度动态API
@@ -44,121 +47,21 @@
 
 ## Install
 
-Two ways.
-
-- links
-
-```html
-
-<script src="https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js"></script>
-
-```
-
-- npm install
-
-``` bash
-# Install minivaline
-npm install minivaline --save
-```
-
-``` js
-// Use import
-import MiniValine from 'minivaline';
-// or Use require
-const MiniValine = require('minivaline');
-
-new MiniValine({
-    el:'#vcomments',
-    // other config
-})
-```
-
-## Usage
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MiniValine - A simple comment system.</title>
-    <!--Load js and insert it before </ body>-->
-    <script src="https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js"></script>
-</head>
-<body>
-    <div class="mvcomment"></div>
-    <script>
-      new MiniValine({
-          el: '.mvcomment',
-          placeholder: 'Write a Comment O(∩_∩)O~~',
-          serverURL: 'https://xxxxxxxxx',
-      });
-    </script>
-</body>
-</html>
-```
-
-
-### The Smart Way with pjax
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MiniValine - A simple comment system based.</title>
-</head>
-<body>
-    <div class="mvcomment"></div>
-    <script>
-    function load_minivaline() {
-        setTimeout(function() {
-            var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-            var src = 'https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js'
-            var script = document.createElement('script')
-            script.setAttribute('type','text/javascript')
-            script.onload = function() {
-               pjax_minivaline()
-            }
-            script.setAttribute('src', src)
-            HEAD.appendChild(script)
-        }, 1);
-    };
-    function pjax_minivaline() {
-        if(!document.querySelectorAll(".mvcomment")[0])return;
-        new MiniValine({
-            el: '.mvcomment',
-            placeholder: 'Write a Comment O(∩_∩)O~~',
-            serverURL: 'https://xxxxxxxxx',
-        });
-    }
-    load_minivaline();
-    document.addEventListener('pjax:complete', function () {
-        pjax_minivaline();
-    });
-    </script>
-</body>
-</html>
-```
+> **More Install Info** [here](https://minivaline.js.org/docs/cn/#/Install)
 
 ## Options
 
-> **More Option** and **Different Version** Support [here](https://minivaline.js.org/docs/en/#/Options)
+> **More Option Info** [here](https://minivaline.js.org/docs/cn/#/Options)
 
 ## Feedback
 
 * Visit the [AWESOME MiniValine](https://github.com/MiniValine/AWESOME-MiniValine) list to share plugins and tutorials with other users.
 * [Add or improve translation](https://crowdin.com/project/minivaline) in few seconds.
 * Join our [Gitter][gitter-url] chats.
-
-<!--
 * Report a bug in [GitHub Issues][issues-bug-url].
 * Request a new feature on [GitHub][issues-feat-url].
 * Vote for [popular feature requests][feat-req-vote-url].
--->
+
 
 ## About
 
@@ -234,7 +137,7 @@ Thanks to [CloudFlare](https://www.cloudflare.com) for their support.
 
 ```
     MiniValine
-    Copyright (C) 2019-now  MiniValine Team
+    Copyright (C) 2019-present  MiniValine Team
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
