@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "blueimp-md5": "2.18.0",
-    "highlight.js": "10.6.0",
+    "highlight.js": "10.7.2",
     "marked": "2.0.1",
     "ua-parser-js": "0.7.24",
     "xss": "1.0.8",
