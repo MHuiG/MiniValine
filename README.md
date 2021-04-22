@@ -116,6 +116,8 @@ Tribute to excellent open source! Tribute to excellent sharers!
 
 Tribute to [@xCss](https://github.com/xCss) and [@DesertsP](https://github.com/DesertsP)!
 
+感谢 [@ZanderZhao](https://github.com/ZanderZhao) 提供的文档建设支持，[@zane-ng](https://github.com/zane-ng) 提供的文档翻译校对支持。
+
 Thanks to [CloudFlare](https://www.cloudflare.com) for their support.
 
 <img src="https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg" width="300">
