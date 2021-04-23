@@ -20,6 +20,7 @@ globals:
   "MCounter": true
   "kill": true
   "Fingerprint2": true
+  "MV": true
 parser: babel-eslint
 parserOptions:
   ecmaVersion: 2018

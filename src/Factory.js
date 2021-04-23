@@ -2,6 +2,7 @@ import 'lazysizes'
 import body from './body'
 import util from './utils'
 import FetchBase from './utils/fetch/Base.js'
+import WS from './utils/fetch/ws'
 window.autosize = require('autosize')
 const Factory = function (option) {
   const root = this
@@ -9,6 +10,7 @@ const Factory = function (option) {
     root.conf = option
     if (!document.querySelectorAll(root.conf.el)[0]) return
     util.Config(root)
+    WS(root)
     util.i18n(root)
     root.initCheck()
   } catch (e) { console.error(e) }
@@ -40,7 +42,6 @@ Factory.prototype.Start = function () {
     root.loading.hide(root.parentCount)
     root.loading.show()
 
-    root.fetchCount(root)
     util.insertComment(root, body)
     util.parentQuery(root)
     util.nestQuery(root)

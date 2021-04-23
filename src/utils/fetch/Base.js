@@ -1,54 +1,8 @@
-import ajax from '../plugins/ajax'
 import Bean from './Bean'
-import getScript from '../plugins/getScript'
+
 function FetchBase (root) {
-  const url = `${root.conf.serverURL}/comment`
-  root.fetchCount = (root) => {
-    ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        type: 'count',
-        path: root.conf.path
-      },
-      success: function (data) {
-        root.el.querySelector('.count').innerHTML = data
-      },
-      error: root.error
-    })
-  }
-  root.fetchTotalPages = (root, callback) => {
-    ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        type: 'totalPages',
-        path: root.conf.path,
-        pageSize: root.conf.pageSize
-      },
-      success: function (data) {
-        callback(data)
-      },
-      error: root.error
-    })
-  }
-  root.fetchParentList = (root, pageNum, callback) => {
-    ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        path: root.conf.path,
-        pageSize: root.conf.pageSize,
-        page: pageNum
-      },
-      success: function (data) {
-        window.MV.PageData = data
-        const item = new Bean()
-        window.MV.PageDataList = item.beanList(data)
-        callback(window.MV.PageDataList)
-      },
-      error: root.error
-    })
+  root.fetchParentList = (root, pageNum) => {
+    MV.websocket.send(JSON.stringify({ opt: 'ParentList', path: root.conf.path, pageSize: root.conf.pageSize, page: pageNum, tz: new Date() }))
   }
   root.fetchNextList = (root, id, callback) => {
     const list = []
@@ -111,25 +65,7 @@ function FetchBase (root) {
       data.rid = parentNode.id
     }
     console.log(data) // test
-    ajax({
-      url: url,
-      type: 'POST',
-      data: data,
-      success: function (data) {
-        if (data.comment) {
-          const item = new Bean()
-          item.create(data)
-          callback(item)
-        } else if (data.capcode) {
-          getScript(`${root.conf.serverURL}/ChallengeCaptcha`)
-        } else {
-          root.error(12138, data)
-        }
-      },
-      error: function (status, data) {
-        root.error(status, data)
-      }
-    })
+    MV.websocket.send(JSON.stringify({ opt: 'postComment', msg: data, tz: new Date() }))
   }
 }
 

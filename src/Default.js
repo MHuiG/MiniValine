@@ -1,6 +1,6 @@
-export const VERSION = '6.0.1'
+export const VERSION = '6.1.0'
 export const MVUrl = 'https://cdn.jsdelivr.net/npm/minivaline@' + VERSION
-export const avatarUrl = 'https://cdn.v2ex.com/gravatar'
+export const avatarUrl = 'https://sdn.geekzu.org/avatar'
 export const avatarD = 'robohash'
 export const EUrl = [MVUrl + '/imgs/alus', MVUrl + '/imgs/qq', MVUrl + '/imgs/Bilibilis', MVUrl + '/imgs/tieba', MVUrl + '/imgs/twemoji', MVUrl + '/imgs/weibo', MVUrl + '/imgs/funny']
 export const i18nUrl = MVUrl + '/i18n/'

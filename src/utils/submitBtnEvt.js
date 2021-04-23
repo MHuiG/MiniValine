@@ -1,5 +1,4 @@
 import dom from './plugins/dom'
-import MakeComment from './plugins/MakeComment'
 import check from './plugins/check'
 const submitBtnEvt = (root) => {
   const submitBtn = root.el.querySelector('.vsubmit')
@@ -20,24 +19,30 @@ const submitBtnEvt = (root) => {
       root.inputs.nick.focus()
       return
     }
-    // render markdown
-    const render = (root) => {
-      // veirfy
-      const mailRet = check.mail(root.C.mail)
-      const linkRet = check.link(root.C.link)
-      root.C.mail = mailRet.k ? mailRet.v : ''
-      root.C.link = linkRet.k ? linkRet.v : ''
-      if (!mailRet.k || !linkRet.k) {
-        root.alert.show({
-          type: 0,
-          text: root.i18n.inputTips,
-          ctxt: root.i18n.confirm
-        })
-      } else {
-        commitEvt()
+    // render comment
+    const ls = root.C.comment.match(/!\(:(.*?\.\w+):\)/g)
+    if (ls) {
+      for (let i = 0; i < ls.length; i++) {
+        const m = ls[i].match(/!\(:(.*?\.\w+):\)/)[1]
+        const em = root.emoticon[m]
+        const R = new RegExp('!\\(:' + m.replace(/\./, '\\.') + ':\\)', 'g')
+        root.C.comment = root.C.comment.replace(R, `![${m}](${em})`)
       }
     }
-    MakeComment(root, root, render)
+    // veirfy
+    const mailRet = check.mail(root.C.mail)
+    const linkRet = check.link(root.C.link)
+    root.C.mail = mailRet.k ? mailRet.v : ''
+    root.C.link = linkRet.k ? linkRet.v : ''
+    if (!mailRet.k || !linkRet.k) {
+      root.alert.show({
+        type: 0,
+        text: root.i18n.inputTips,
+        ctxt: root.i18n.confirm
+      })
+    } else {
+      commitEvt()
+    }
   }
   const commitEvt = () => {
     submitBtn.setAttribute('disabled-submit', true)

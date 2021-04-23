@@ -1,6 +1,6 @@
 {
   "name": "minivaline",
-  "version": "6.0.1",
+  "version": "6.1.0",
   "description": "A simple and minimalist comment system.",
   "main": "/dist/MiniValine.min.js",
   "author": {

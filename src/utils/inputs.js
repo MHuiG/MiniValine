@@ -18,23 +18,7 @@ const inputs = (root) => {
       if (i == 'veditor') {
         dom.on('input', _el, (e) => {
           window.MV.VDL = _el.value.length
-          if (!window.MV.VDPI) {
-            window.MV.VDPI = 1
-            const VDI = setInterval(() => {
-              if (window.MV.VDL != _el.value.length) {
-                window.MV.VDL = _el.value.length
-                window.MV.VDP = 0
-              } else {
-                window.MV.VDP = 1
-              }
-              if (window.MV.VDP) {
-                root.previewEvt(root)
-                clearInterval(VDI)
-                window.MV.VDP = 0
-                window.MV.VDPI = 0
-              }
-            }, 2500)
-          }
+          root.previewEvt(root)
         })
       }
     }

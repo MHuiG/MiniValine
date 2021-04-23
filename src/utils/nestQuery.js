@@ -24,20 +24,18 @@ const nestQuery = (root) => {
       root.fetchNextCount(root, _id, callback)
       return
     }
-    setTimeout(function () {
-      const callback = (rets) => {
-        const len = rets.length
-        if (len) {
-          for (let i = 0; i < len; i++) {
-            if (!rets[i].get('isSpam')) {
-              const vl = root.insertComment(rets[i], _vlist, true)
-              root.nestQuery(vl, level + 1)
-            }
+    const callback = (rets) => {
+      const len = rets.length
+      if (len) {
+        for (let i = 0; i < len; i++) {
+          if (!rets[i].get('isSpam')) {
+            const vl = root.insertComment(rets[i], _vlist, true)
+            root.nestQuery(vl, level + 1)
           }
         }
       }
-      root.fetchNextList(root, _id, callback)
-    }, level * 60)
+    }
+    root.fetchNextList(root, _id, callback)
   }
 }
 module.exports = nestQuery

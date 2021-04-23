@@ -41,7 +41,7 @@ MiniValine 自 version 6.x 起回归极简主义！ 因此 6.x 移除了 5.x 的
 
 - 前端 JS 脚本完整版共计一个（MiniValine.min.js） 文件大小约为 80 KB，gzip 压缩后约为 25 KB。
 - 前端 JS 脚本无样式版共计一个（MiniValine.o.min.js） 文件大小约为 45 KB。
-- 系统关键请求共计3个。
+- 系统关键请求共计 ~3个~ 1个(websocket)。
 - ~~中国地区使用 CloudFlareAnycast 技术和 DNSPOD 智能解析技术 以及 优选 CloudFlare节点 IP 负载均衡的方法，~~ 系统关键请求时间可在 200-500ms 左右。
 
 
