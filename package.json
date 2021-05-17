@@ -39,7 +39,7 @@
     "@babel/preset-env": "7.14.2",
     "@babel/runtime": "7.14.0",
     "@bundle-analyzer/webpack-plugin": "0.5.1",
-    "autosize": "4.0.3",
+    "autosize": "5.0.0",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.2",
     "clean-webpack-plugin": "3.0.0",
