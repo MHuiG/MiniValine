@@ -6,6 +6,7 @@ install:
   - npm install -g eslint
   - npm install -g @bundle-analyzer/cli
   - npm install
+  - npm install webpack
 script:
   - npm run build
   #- npm test
