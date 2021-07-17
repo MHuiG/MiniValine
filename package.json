@@ -61,7 +61,7 @@
     "@webpack-cli/serve": "^1.1.0",
     "autoprefixer": "9.8.6",
     "css-loader": "^6.0.0",
-    "eslint": "7.30.0",
+    "eslint": "7.31.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.23.4",
     "eslint-plugin-node": "11.1.0",
