@@ -10,8 +10,6 @@ pull_request_rules:
       - label!=🚧 Work in Progress
       - status-success=build (12.x)
       - status-success=license/cla
-      - status-success=Travis CI - Pull Request
-      - status-success=Travis CI - Branch
       - status-success=Mergeable
       - "#approved-reviews-by>=1"
     actions:
