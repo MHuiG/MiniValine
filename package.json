@@ -57,7 +57,7 @@
     "highlight.js": "11.2.0",
     "marked": "3.0.7",
     "ua-parser-js": "0.7.28",
-    "xss": "1.0.9",
+    "xss": "1.0.10",
     "@webpack-cli/serve": "^1.1.0",
     "autoprefixer": "10.3.7",
     "css-loader": "^6.0.0",
