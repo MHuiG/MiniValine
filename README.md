@@ -1,3 +1,8 @@
+
+# MiniValine will be abandoned soon, refactoring plan has started. ~[MHuiG/ohhho](https://github.com/MHuiG/ohhho)~ [CoPoKo/Maxwell](https://github.com/CoPoKo/Maxwell)
+# MiniValine 即将废弃 已开启重构计划 ~[MHuiG/ohhho](https://github.com/MHuiG/ohhho)~ [CoPoKo/Maxwell](https://github.com/CoPoKo/Maxwell)
+
+
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
 
 # This is MiniValine version 6.x
