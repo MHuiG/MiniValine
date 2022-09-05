@@ -1,6 +1,15 @@
 
-# MiniValine will be abandoned soon, refactoring plan has started. ~[MHuiG/ohhho](https://github.com/MHuiG/ohhho)~ [CoPoKo/Maxwell](https://github.com/CoPoKo/Maxwell)
-# MiniValine 即将废弃 已开启重构计划 ~[MHuiG/ohhho](https://github.com/MHuiG/ohhho)~ [CoPoKo/Maxwell](https://github.com/CoPoKo/Maxwell)
+# MiniValine has been deprecated due to the termination of upstream services
+# 由于上游服务已终止,MiniValine 已被弃用
+
+[leancloud: 2022 年 8 月起，国际版共享域名不再向中国大陆提供服务](https://forum.leancloud.cn/t/2022-8/25408)
+
+[the deprecation of the Infura public API and gateway to 10th August](https://blog.infura.io/post/ipfs-public-api-and-gateway-deprecation)
+
+
+
+
+
 
 
 <img src='https://cdn.jsdelivr.net/gh/MiniValine/MiniValine@master/.github/img/minivaline.png' width='120' align="right" />
