@@ -7,7 +7,7 @@
 [the deprecation of the Infura public API and gateway to 10th August](https://blog.infura.io/post/ipfs-public-api-and-gateway-deprecation)
 
 
-
+还有一件事情，之前误删过一次仓库，这是误删之前的一些 [forks 和魔改](https://github.com/fossabot/MiniValine/network/members)
 
 
 
